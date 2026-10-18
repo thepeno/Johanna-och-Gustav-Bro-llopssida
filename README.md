@@ -7,7 +7,7 @@ One-page wedding website. Editors build the page from blocks in Payload CMS; gue
 ## Getting started
 
 ```bash
-cp .env.example .env        # then set PAYLOAD_SECRET to a long random string
+cp .env.example .env        # then set PAYLOAD_SECRET to a long random string and GUEST_PASSWORD
 npm install
 npm run seed                # first admin user + demo content with placeholder images
 npm run dev                 # http://localhost:3000  (admin at /admin)
@@ -50,6 +50,14 @@ Add, remove and reorder blocks freely in the admin; the frontend renders whateve
 
 Every new reply triggers two plain-text emails from an `afterChange` hook on the collection (`src/hooks/rsvpEmails.ts`): a summary to the couple (`RSVP_NOTIFY_TO`, comma-separated; falls back to Site settings → contact email) and a confirmation to the guest in the site language with the wedding date. Mail goes through [Resend](https://resend.com) when `RESEND_API_KEY` is set (`EMAIL_FROM_ADDRESS` must be on a domain verified there); without it Payload logs the emails to the dev server console instead. Sending never blocks the reply: failures are logged and the guest still sees the success message.
 
+### Guest password
+
+The public page is behind one shared password, `GUEST_PASSWORD` in the environment. `src/proxy.ts` checks every request except `/admin`, `/api`, `/_next` and static files; without a valid cookie it shows `src/app/(frontend)/guest-login` in place of the page (the URL stays the same). The form posts to `src/actions/guestAccess.ts`, which allows 10 tries per 10 minutes per IP, compares the password without regard to case or surrounding spaces, and sets an httpOnly `guest_access` cookie for a year. The cookie is an HMAC of the password signed with `PAYLOAD_SECRET`, so changing `GUEST_PASSWORD` signs every guest out. The screen's text follows Site settings → language. The RSVP action checks the cookie as well, since server actions can be posted to any path.
+
+Why an env var and not a Site settings field: the Site settings global is publicly readable at `/api/globals/site-settings`, so a password stored there would need its own field access rules to stay hidden. It would also need a database write to set it. Changing the env var means restarting or redeploying the server; on Vercel and similar hosts that's an edit in the dashboard.
+
+If `GUEST_PASSWORD` is unset the gate is off in development, and in production nobody gets past it, so a missing variable can't leave the page open.
+
 ## Project layout
 
 ```
@@ -61,10 +69,11 @@ src/
   blocks/<Name>/           config.ts (Payload) + Component.tsx (React)
   blocks/RenderBlocks.tsx  blockType → component
   components/              Nav, Footer, Section, Countdown, Img, RichText, ui/Button
-  actions/rsvp.ts          server action for the form
-  lib/                     data loaders, i18n strings, utils
+  actions/                 server actions: rsvp.ts (form), guestAccess.ts (guest password)
+  proxy.ts                 guest password gate in front of the public page
+  lib/                     data loaders, i18n strings, guest cookie, rate limiter, utils
   seed/                    seed script, demo content, placeholder image generator
-  app/(frontend)/          layout, page, styles.css (Tailwind theme + section themes)
+  app/(frontend)/          layout, page, guest-login screen, styles.css (Tailwind theme + section themes)
   app/(payload)/           Payload admin and REST/GraphQL routes (generated)
 ```
 
@@ -84,4 +93,4 @@ Inspired by editorial photography templates: condensed uppercase serif headlines
 
 ## Deploying
 
-Any Node host works (Vercel, Railway, a VPS). Set `DATABASE_URL`, `PAYLOAD_SECRET` and `NEXT_PUBLIC_SERVER_URL`. Uploaded files are stored on disk under `media/`; on serverless hosts swap in a Payload storage adapter (S3, Vercel Blob, Cloudflare R2).
+Any Node host works (Vercel, Railway, a VPS). Set `DATABASE_URL`, `PAYLOAD_SECRET`, `NEXT_PUBLIC_SERVER_URL` and `GUEST_PASSWORD`. Uploaded files are stored on disk under `media/`; on serverless hosts swap in a Payload storage adapter (S3, Vercel Blob, Cloudflare R2).

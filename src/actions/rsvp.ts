@@ -1,11 +1,12 @@
 'use server'
 
-import { createHash } from 'node:crypto'
-import { headers } from 'next/headers'
+import { cookies } from 'next/headers'
 import { z } from 'zod'
 import { getHomePage, getPayloadClient, getSiteSettings } from '@/lib/data'
 import { t } from '@/lib/i18n'
 import { rsvpIsOpen } from '@/blocks/Rsvp/shared'
+import { GUEST_COOKIE, hasGuestAccess } from '@/lib/guestAccess'
+import { clientKey, createLimiter } from '@/lib/rateLimit'
 
 export type RsvpState =
   | { status: 'idle' }
@@ -31,21 +32,15 @@ const schema = z.object({
   website: z.string().max(0).optional(),
 })
 
-// Tiny in-memory limiter (per server instance): 5 replies / 10 min / IP
-const WINDOW_MS = 10 * 60_000
-const LIMIT = 5
-const hits = new Map<string, number[]>()
-const tooMany = (key: string) => {
-  const now = Date.now()
-  const recent = (hits.get(key) ?? []).filter((ts) => now - ts < WINDOW_MS)
-  recent.push(now)
-  hits.set(key, recent)
-  return recent.length > LIMIT
-}
+const tooMany = createLimiter(5, 10 * 60_000) // 5 replies / 10 min / IP
 
 export async function submitRsvp(_prev: RsvpState, formData: FormData): Promise<RsvpState> {
   const settings = await getSiteSettings()
   const ui = t(settings?.locale)
+  // Server actions can be posted to any path, so don't rely on the proxy alone
+  if (!(await hasGuestAccess((await cookies()).get(GUEST_COOKIE)?.value))) {
+    return { status: 'error', message: ui.genericError }
+  }
 
   const raw = Object.fromEntries(formData.entries())
   const values = Object.fromEntries(
@@ -71,9 +66,7 @@ export async function submitRsvp(_prev: RsvpState, formData: FormData): Promise<
   const maxParty = block.maxPartySize ?? 2
   const partySize = data.attending === 'yes' ? Math.min(data.partySize, maxParty) : 1
 
-  const h = await headers()
-  const ip = h.get('x-forwarded-for')?.split(',')[0]?.trim() || h.get('x-real-ip') || 'local'
-  const ipHash = createHash('sha256').update(ip).digest('hex').slice(0, 16)
+  const ipHash = await clientKey()
   if (tooMany(ipHash)) return { status: 'error', message: ui.tooMany, values }
 
   try {

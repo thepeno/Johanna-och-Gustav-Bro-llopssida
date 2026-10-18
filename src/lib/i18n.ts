@@ -23,6 +23,13 @@ export const ui = {
     tooMany: 'För många försök. Vänta några minuter.',
     closed: 'Svarstiden har gått ut.',
     mapLink: 'Visa på karta',
+    gateEyebrow: 'Välkommen till vårt bröllop',
+    gateIntro: 'Skriv lösenordet från inbjudan för att se sidan.',
+    gatePassword: 'Lösenord',
+    gateShow: 'Visa lösenordet',
+    gateSubmit: 'Öppna sidan',
+    gateChecking: 'Kontrollerar…',
+    gateWrong: 'Fel lösenord. Kontrollera stavningen och försök igen.',
   },
   'en-GB': {
     menu: 'Menu',
@@ -46,6 +53,13 @@ export const ui = {
     tooMany: 'Too many attempts. Please wait a few minutes.',
     closed: 'Replies are closed.',
     mapLink: 'Open map',
+    gateEyebrow: 'Welcome to our wedding',
+    gateIntro: 'Enter the password from your invitation to see the page.',
+    gatePassword: 'Password',
+    gateShow: 'Show password',
+    gateSubmit: 'Open the page',
+    gateChecking: 'Checking…',
+    gateWrong: 'Wrong password. Check the spelling and try again.',
   },
 } as const
 
