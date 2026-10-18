@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { exportRsvps } from '@/endpoints/exportRsvps'
 import { sendRsvpEmails } from '@/hooks/rsvpEmails'
 
 // Guest replies. Guests never talk to this collection directly: the public form
@@ -12,7 +13,9 @@ export const Rsvps: CollectionConfig = {
     useAsTitle: 'name',
     defaultColumns: ['name', 'attending', 'partySize', 'email', 'createdAt'],
     listSearchableFields: ['name', 'email', 'guestNames'],
+    components: { beforeListTable: ['@/components/admin/ExportRsvpsButton#ExportRsvpsButton'] },
   },
+  endpoints: [{ path: '/export', method: 'get', handler: exportRsvps }],
   hooks: { afterChange: [sendRsvpEmails] },
   access: {
     read: ({ req }) => Boolean(req.user),

@@ -11,7 +11,7 @@
   --color-ink: #1d1a17;
   --color-ink-soft: #5d574f;
 
-  --font-display: var(--font-display), 'Bodoni Moda', 'Didot', Georgia, serif;
+  --font-display: var(--font-display), 'EB Garamond', Georgia, serif;
   --font-serif: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
   --font-mono: var(--font-mono), 'DM Mono', ui-monospace, monospace;
 
@@ -82,11 +82,9 @@
 
 @utility display {
   font-family: var(--font-display);
+  font-style: italic;
   font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
   line-height: 1.02; /* room for Å Ä Ö rings */
-  font-stretch: 85%;
 }
 
 @utility prose-wedding {
@@ -114,8 +112,7 @@
   & h3,
   & h4 {
     font-family: var(--font-display);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+    font-style: italic;
     margin-top: 1.5em;
   }
   & strong {

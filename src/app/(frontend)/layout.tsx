@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
-import { Bodoni_Moda, Cormorant_Garamond, DM_Mono } from 'next/font/google'
+import { Cormorant_Garamond, DM_Mono, EB_Garamond } from 'next/font/google'
 import React from 'react'
 import { getSiteSettings } from '@/lib/data'
 import './styles.css'
 
-const display = Bodoni_Moda({
+const display = EB_Garamond({
   subsets: ['latin'],
+  weight: ['400'],
+  style: ['italic'],
   variable: '--font-display',
-  axes: ['opsz'],
   display: 'swap',
 })
 const serif = Cormorant_Garamond({
