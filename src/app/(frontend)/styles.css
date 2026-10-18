@@ -1,0 +1,135 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ivory: #efece6;
+  --color-ivory-deep: #e4dfd5;
+  --color-sand: #cfc6b6;
+  --color-espresso: #2a1412;
+  --color-espresso-soft: #3b1f1b;
+  --color-olive: #7f8158;
+  --color-olive-deep: #666841;
+  --color-ink: #1d1a17;
+  --color-ink-soft: #5d574f;
+
+  --font-display: var(--font-display), 'Bodoni Moda', 'Didot', Georgia, serif;
+  --font-serif: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
+  --font-mono: var(--font-mono), 'DM Mono', ui-monospace, monospace;
+
+  --tracking-label: 0.22em;
+  --animate-fade-up: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Per-theme tokens: components use these so a block looks right on any background. */
+.theme-ivory {
+  --bg: var(--color-ivory);
+  --fg: var(--color-ink);
+  --fg-soft: var(--color-ink-soft);
+  --line: color-mix(in oklab, var(--color-ink) 18%, transparent);
+  --surface: color-mix(in oklab, var(--color-ivory) 70%, white);
+  --accent: var(--color-olive);
+}
+.theme-espresso {
+  --bg: var(--color-espresso);
+  --fg: var(--color-ivory);
+  --fg-soft: color-mix(in oklab, var(--color-ivory) 70%, var(--color-espresso));
+  --line: color-mix(in oklab, var(--color-ivory) 22%, transparent);
+  --surface: color-mix(in oklab, var(--color-espresso) 80%, white 8%);
+  --accent: var(--color-sand);
+}
+.theme-olive {
+  --bg: var(--color-olive);
+  --fg: var(--color-ivory);
+  --fg-soft: color-mix(in oklab, var(--color-ivory) 75%, var(--color-olive));
+  --line: color-mix(in oklab, var(--color-ivory) 25%, transparent);
+  --surface: color-mix(in oklab, var(--color-olive) 85%, white 10%);
+  --accent: var(--color-ivory);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-ivory text-ink font-serif antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  ::selection {
+    background: var(--color-olive);
+    color: var(--color-ivory);
+  }
+}
+
+@utility label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--fg-soft, var(--color-ink-soft));
+}
+
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.02; /* room for Å Ä Ö rings */
+  font-stretch: 85%;
+}
+
+@utility prose-wedding {
+  & p {
+    margin-block: 0.75em;
+  }
+  & p:first-child {
+    margin-top: 0;
+  }
+  & p:last-child {
+    margin-bottom: 0;
+  }
+  & a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  & ul {
+    list-style: disc;
+    padding-left: 1.25em;
+  }
+  & ol {
+    list-style: decimal;
+    padding-left: 1.25em;
+  }
+  & h3,
+  & h4 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 1.5em;
+  }
+  & strong {
+    font-weight: 600;
+  }
+}
+
+/* Native <details> accordion in the FAQ */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .faq-icon {
+  transform: rotate(45deg);
+}
