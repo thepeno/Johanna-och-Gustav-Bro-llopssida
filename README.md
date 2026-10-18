@@ -9,7 +9,7 @@ One-page wedding website. Editors build the page from blocks in Payload CMS; gue
 ```bash
 cp .env.example .env        # then set PAYLOAD_SECRET to a long random string and GUEST_PASSWORD
 npm install
-npm run seed                # first admin user + demo content with placeholder images
+npm run seed                # first admin user + the page content (Morais layout, placeholder photo)
 npm run dev                 # http://localhost:3000  (admin at /admin)
 ```
 
@@ -34,13 +34,14 @@ Every block has an **anchor** (its `#hash`), an optional **nav label** (empty = 
 
 | Block | Purpose | Notable fields |
 | --- | --- | --- |
-| Hero | Opener | announcement line set large (empty = the names), photo, line under the date (falls back to weekday + venue), days-left line, CTA button |
+| Hero | Opener | small-caps eyebrow ("Spara datumet"), headline (empty = the names), photo, paragraph under the date (falls back to weekday + venue), optional days-left line and CTA button |
 | Our story | Text + up to two photos | rich text, milestones (date, title, text) |
-| Schedule | Timeline of the day | events with time, title, location, description |
+| Schedule | Parts of the day side by side (Vigsel / Fest) | optional heading, events with title, place, address and time, optional button |
 | Details | Practical info cards | venue, travel, accommodation, dress code, gifts… each with optional image and link |
 | Gallery | Masonry photo grid | images with captions |
 | RSVP form | Reply form | deadline (form closes after that day), max party size, toggles for dietary / song / message, success and closed messages |
 | FAQ | Accordion | question + rich-text answer |
+| Text | A statement in large type (the gift note) | small-caps label, text, optional button |
 
 Add, remove and reorder blocks freely in the admin; the frontend renders whatever is in `layout`. To add a new block type: create `src/blocks/<Name>/config.ts` and `Component.tsx`, register both in `src/collections/Pages.ts` and `src/blocks/RenderBlocks.tsx`, then run `npm run generate:types`.
 

@@ -6,6 +6,7 @@ import { Details } from '@/blocks/Details/config'
 import { Gallery } from '@/blocks/Gallery/config'
 import { Rsvp } from '@/blocks/Rsvp/config'
 import { Faq } from '@/blocks/Faq/config'
+import { Text } from '@/blocks/Text/config'
 import { revalidateHomeAfterCollectionChange } from '@/hooks/revalidate'
 
 export const HOME_SLUG = 'home'
@@ -35,7 +36,7 @@ export const Pages: CollectionConfig = {
       name: 'layout',
       type: 'blocks',
       required: true,
-      blocks: [Hero, Story, Schedule, Details, Gallery, Rsvp, Faq],
+      blocks: [Hero, Story, Schedule, Details, Gallery, Rsvp, Faq, Text],
     },
     {
       name: 'meta',

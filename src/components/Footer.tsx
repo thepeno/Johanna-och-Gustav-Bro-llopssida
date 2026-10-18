@@ -1,28 +1,26 @@
 import React from 'react'
 import type { SiteSetting } from '@/payload-types'
 
-/** Closing note, a dash, a big link to the reply form, then the small print. */
+/** Morais's closing: a line of thanks, a dash, a big underlined reply link, the hashtag. */
 export function Footer({ settings, rsvp }: { settings: SiteSetting; rsvp?: { anchor: string; label: string } }) {
   return (
     <footer className="theme-ivory bg-cream text-ink">
       <div className="mx-auto flex max-w-6xl flex-col items-center px-5 py-24 text-center md:px-10 md:py-32">
         {settings.footerNote && <p className="max-w-md">{settings.footerNote}</p>}
-        <span aria-hidden className="mt-4 block">
+        <span aria-hidden className="mt-3 block">
           —
         </span>
         {rsvp && (
-          <a href={`#${rsvp.anchor}`} className="display mt-8 border-b border-ink pb-1 text-6xl md:text-7xl">
+          <a href={`#${rsvp.anchor}`} className="title mt-6 border-b border-ink">
             {rsvp.label}
           </a>
         )}
-        <div className="mt-16 flex flex-col items-center gap-2 font-sans text-[0.9375rem]">
-          {settings.hashtag && <span>{settings.hashtag}</span>}
-          {settings.contactEmail && (
-            <a href={`mailto:${settings.contactEmail}`} className="label underline">
-              {settings.contactEmail}
-            </a>
-          )}
-        </div>
+        {settings.hashtag && <p className="mt-16 font-sans text-[1.0625rem]">{settings.hashtag}</p>}
+        {settings.contactEmail && (
+          <a href={`mailto:${settings.contactEmail}`} className="mt-2 underline">
+            {settings.contactEmail}
+          </a>
+        )}
       </div>
     </footer>
   )

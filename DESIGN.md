@@ -1,26 +1,31 @@
 ---
 name: Johanna & Gustav
-description: A one-page wedding site directly inspired by Squarespace's Morais. Cream paper, black ink, everything centred.
+description: A one-page wedding site built to match Squarespace's Morais demo section for section. Cream paper, black ink, everything centred.
 colors:
   cream: "#f5f1eb"
   cream-deep: "#ece6dc"
   white: "#ffffff"
-  ink: "#111111"
+  ink: "#000000"
   ink-soft: "#57524b"
   error: "#9b2c2c"
 typography:
-  hero:
+  title:
     fontFamily: "Helvetica Neue, Helvetica, Inter Tight, Arial, sans-serif"
-    fontSize: "clamp(3.25rem, 10vw, 6rem)"
+    fontSize: "clamp(3.25rem, 7.85vw, 6.3rem)"
     fontWeight: 400
-    lineHeight: 1.02
+    lineHeight: 1.09
     letterSpacing: "-0.02em"
-  display:
+  statement:
     fontFamily: "Helvetica Neue, Helvetica, Inter Tight, Arial, sans-serif"
-    fontSize: "3rem"
+    fontSize: "clamp(1.75rem, 3.4vw, 2.73rem)"
     fontWeight: 400
-    lineHeight: 1.1
+    lineHeight: 1.3
     letterSpacing: "-0.02em"
+  eyebrow:
+    fontFamily: "Libre Caslon Text, Times New Roman, serif"
+    fontSize: "1rem"
+    fontWeight: 400
+    lineHeight: 1.8
   headline:
     fontFamily: "Helvetica Neue, Helvetica, Inter Tight, Arial, sans-serif"
     fontSize: "1.875rem"
@@ -39,9 +44,9 @@ typography:
     lineHeight: 1.6
   ui:
     fontFamily: "Helvetica Neue, Helvetica, Inter Tight, Arial, sans-serif"
-    fontSize: "0.9375rem"
+    fontSize: "1.0625rem"
     fontWeight: 400
-    letterSpacing: "0.01em"
+    letterSpacing: "0.05em"
 rounded:
   none: "0px"
 spacing:
@@ -59,8 +64,8 @@ components:
     typography: "{typography.ui}"
     rounded: "{rounded.none}"
     padding: "12px 32px"
-    height: "48px"
-    width: "224px"
+    height: "56px"
+    width: "240px"
   button-outline-hover:
     backgroundColor: "{colors.ink}"
     textColor: "{colors.cream}"
@@ -83,7 +88,7 @@ components:
 
 **Creative North Star: "Squarespace's Morais, made by a friend with taste"**
 
-The page follows Squarespace's Morais wedding template closely. It should look like someone without much web experience made it, but someone with impeccable taste. Cream and white sections alternate down one long page. Everything is centred. Headings are a plain grotesque at regular weight, never bold. Everything you read is a bookish serif. Photos are black and white. There are no tricks: no eyebrows, no section numbers, no entrance animations, no sticky header changing colour, no ticking countdown.
+The page matches Squarespace's Morais demo section for section: "Spara datumet", the headline, a black-and-white photo, the date, a paragraph, Vigsel / Fest side by side, the reply button, a cream travel panel on white, the gift note, and a footer ending on a big "OSA". The reply form sits on the page, where Morais links to a separate page. It should look like someone without much web experience made it, but someone with impeccable taste. Cream and white sections alternate down one long page. Everything is centred. Headings are a plain grotesque at regular weight, never bold. Everything you read is a bookish serif. Photos are black and white. There are no tricks: no section numbers, no entrance animations, no sticky header changing colour, no ticking countdown. The only small capitals are Morais's own: "Spara datumet" and "Önskelista".
 
 The page is warm, unhurried and intimate. Each section is one heading, a few lines of text and maybe a photo or a short list, with generous space between. Its personality comes from restraint and good type, not decoration.
 
@@ -104,8 +109,8 @@ Two papers and one ink. Colour comes from the photographs, and they're black and
 - **Cream** (#f5f1eb): the page, the header, the footer, the hero and every second section. Form fields on a cream panel are white.
 - **Cream Deep** (#ece6dc): a slightly darker cream, defined as a token for tonal variation.
 - **White** (#ffffff): the alternate section background. Form fields on white are cream.
-- **Ink** (#111111): all text, button outlines, the radio and checkbox fill, text selection.
-- **Ink Soft** (#57524b): secondary text such as intros, locations and descriptions. It is 6.6:1 on cream.
+- **Ink** (#000000): pure black, as in Morais. All text, button outlines, the radio and checkbox fill, text selection.
+- **Ink Soft** (#57524b): rarely used secondary text. It is 6.6:1 on cream.
 - **Error** (#9b2c2c): form errors only. It is 6.5:1 on cream.
 
 Each section theme sets `--bg`, `--fg`, `--fg-soft`, `--line` (ink at 22%) and `--field` (the input background). Components read only these. The stored theme values are still `ivory`, `espresso` and `olive`. They now mean Cream, White, and Cream panel on white, and the admin labels say so.
@@ -123,15 +128,16 @@ Each section theme sets `--bg`, `--fg`, `--fg-soft`, `--line` (ink at 22%) and `
 **Character:** A quiet Swiss grotesque for anything you glance at (names, headings, buttons, labels on form fields), and a warm book serif for anything you read. It's the pairing Morais uses, and it looks like a printed card rather than a website.
 
 ### Hierarchy
-- **Hero** (400, clamp(3.25rem, 10vw, 6rem), line-height 1.02, -0.02em): the opening line ("Vi gifter oss") and the big date. Never larger than 6rem.
-- **Display** (400, 2.25rem rising to 3rem, line-height 1.1, -0.02em): section headings (h2), always centred and balanced.
-- **Headline** (400, 1.5–1.875rem): schedule items, detail cards, milestones.
+- **Title** (400, clamp(3.25rem, 7.85vw, 6.3rem), line-height 1.09, -0.02em): the headline ("Vi gifter oss!"), the date and the footer's "OSA". About 100px at 1280px wide, as in Morais.
+- **Statement** (400, clamp(1.75rem, 3.4vw, 2.73rem), line-height 1.3, -0.02em): the hero paragraph, section headings, the Vigsel / Fest titles and the gift note. 43px at 1280px.
+- **Eyebrow** (Libre Caslon 400, 1rem, uppercase, no added spacing): "Spara datumet" and "Önskelista", nothing else.
+- **Headline** (400, 1.5–1.875rem): milestones in the optional Our story block.
 - **Body** (Libre Caslon 400, 1.0625rem, line-height 1.75): running text, centred, 36rem wide at most.
 - **Small** (Libre Caslon 400, 0.9375rem): captions, milestone dates, the contact email.
-- **UI** (grotesque 400, 0.9375–1rem): nav links, button text, form field labels, in sentence case.
+- **UI** (grotesque 400, 1.0625rem): the header names and buttons in capitals with 0.05em spacing; form field labels in sentence case at 0.9375rem.
 
 ### Named Rules
-**The No Eyebrow Rule.** Headings stand alone. No small labels above them, no "01 —" numbering, no tracked capitals. The block `label` field in the CMS is deliberately not rendered.
+**The Morais Eyebrow Rule.** Small serif capitals appear only where Morais has them: above the hero headline and above the gift note. Section headings otherwise stand alone, with no "01 —" numbering. The old block `label` field isn't rendered; the Text block has its own label.
 
 **The Regular Weight Rule.** Headings are weight 400. Size and space make them headings, never boldness.
 
@@ -139,7 +145,7 @@ Each section theme sets `--bg`, `--fg`, `--fg-soft`, `--line` (ink at 22%) and `
 
 Everything sits in one centred column: max-width 1152px, side padding 20px (40px from 768px up), vertical section padding 80px (112px from 768px up). The heading sits 48–64px above its content. Text is centred. Lists of things (the schedule, detail cards, milestones) become centred columns in a grid: one on phones, two from 640px, three from 1024px. The FAQ is a single 42rem column with hairline rules. Breakpoints are Tailwind's defaults, 640 / 768 / 1024px.
 
-The header is not fixed. The names are on the left; section links and an outlined reply button are on the right. On phones a two-line menu icon opens a full-screen cream overlay with the links in large grotesque. The hero is the announcement in large type, then a black-and-white photo inset (4:5 on phones, 3:2 from 640px), then the date set large, then one serif line and the reply button. The footer has the closing note, an em dash, a big underlined reply link, then the hashtag and email.
+The header is not fixed. The names are on the left in grotesque capitals, with one outlined "OSA" button on the right (desktop). On phones a two-line menu icon opens a full-screen cream overlay. The hero is "Spara datumet", the headline, a black-and-white photo inset (4:5 on phones, 3:2 from 640px), the date at the same size as the headline, then the paragraph in statement size. The schedule follows in the same cream section: Vigsel and Fest side by side, each with an underlined place, its address and the time, then the reply button. The footer has the closing note, an em dash, a big underlined "OSA", then the hashtag and email.
 
 Motion is limited to colour changes on hover (200ms) and the FAQ plus rotating 45°. Nothing fades in and nothing parallaxes.
 
@@ -159,8 +165,8 @@ Every corner is square: photos, buttons, inputs, the panel. Lines are 1px. The F
 Plain, familiar and well spaced, like a good Squarespace site set up by someone careful.
 
 ### Buttons
-- **Shape:** square, 1px ink outline, at least 48px tall and 224px wide.
-- **Default:** transparent background, grotesque 1rem in sentence case, ink text.
+- **Shape:** square, 1px ink outline, at least 56px tall and 240px wide.
+- **Default:** transparent background, grotesque capitals at 1.0625rem with 0.05em spacing, ink text.
 - **Hover:** fills ink, and the text turns the section's paper colour (200ms).
 - **Disabled:** 50% opacity, not clickable.
 - **Links:** serif text with a 1px underline offset by 0.2em.
@@ -173,11 +179,14 @@ Plain, familiar and well spaced, like a good Squarespace site set up by someone 
 - **Choice (attending):** native radio buttons stacked vertically with 44px tap rows, not styled chips.
 
 ### Navigation
-- **Desktop:** names on the left (grotesque 1.125rem), section links at 0.9375rem that underline on hover, and the reply link as a small outlined box.
+- **Desktop:** names on the left in grotesque capitals (1.0625rem), and the reply link as an outlined button on the right. No other links, as in Morais.
 - **Mobile:** a two-line icon that becomes an X, opening a full-height cream overlay with centred links at 2.25rem.
 
 ### Hero (signature)
-The announcement in large type, a black-and-white photo, the date in large type, then the weekday and venue with "244 dagar kvar" underneath. The day count updates once a minute and is blank on the server. The reply button comes last.
+"Spara datumet", "Vi gifter oss!", a black-and-white photo, "14 augusti 2027" at the same size, then the paragraph about the day. An optional day count updates once a minute and is blank on the server.
+
+### Text block
+Morais's Registry: an eyebrow, a statement-size paragraph and an optional outlined button.
 
 ### Footer (signature)
 The closing note, an em dash, the reply link at 3.75–4.5rem with a 1px underline, then the hashtag and contact email in small type. Lifted straight from Morais's closing RSVP.
@@ -196,6 +205,6 @@ The closing note, an em dash, the reply link at 3.75–4.5rem with a 1px underli
 - **Don't** drift toward template wedding sites: no script fonts, blush pink, floral clip art or gold foil.
 - **Don't** use app or SaaS UI: no rounded cards, drop shadows, bright accent buttons or icon-heavy layouts.
 - **Don't** go rustic DIY: no kraft paper, twine, chalkboard or mason-jar textures.
-- **Don't** put eyebrows or section numbers above headings, or use tracked uppercase labels.
+- **Don't** add eyebrows beyond Morais's two, section numbers, or tracked uppercase labels.
 - **Don't** add entrance animations, a sticky header that changes on scroll, or a ticking seconds countdown.
-- **Don't** make headings bold or larger than 6rem.
+- **Don't** make headings bold.

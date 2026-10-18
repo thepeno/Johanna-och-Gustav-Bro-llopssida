@@ -135,7 +135,7 @@ export interface Page {
   id: string;
   title: string;
   slug: string;
-  layout: (HeroBlock | StoryBlock | ScheduleBlock | DetailsBlock | GalleryBlock | RsvpBlock | FaqBlock)[];
+  layout: (HeroBlock | StoryBlock | ScheduleBlock | DetailsBlock | GalleryBlock | RsvpBlock | FaqBlock | TextBlock)[];
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -160,17 +160,18 @@ export interface HeroBlock {
   /**
    * Background. Alternate cream and white between sections.
    */
-  /**
-   * Background. Alternate cream and white between sections.
-   */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   image: string | Media;
   /**
-   * The big opening line, e.g. "Vi gifter oss". Empty shows the names.
+   * Small capitals above the headline, e.g. "Spara datumet"
    */
   eyebrow?: string | null;
   /**
-   * Line under the date. Leave empty to show the weekday and venue from Site settings.
+   * The big opening line, e.g. "Vi gifter oss!". Empty shows the names.
+   */
+  heading?: string | null;
+  /**
+   * Paragraph under the date. Leave empty to show the weekday and venue from Site settings.
    */
   tagline?: string | null;
   showCountdown?: boolean | null;
@@ -253,9 +254,6 @@ export interface StoryBlock {
   /**
    * Background. Alternate cream and white between sections.
    */
-  /**
-   * Background. Alternate cream and white between sections.
-   */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   /**
    * Not shown on the page (kept for older content)
@@ -313,15 +311,15 @@ export interface ScheduleBlock {
   /**
    * Background. Alternate cream and white between sections.
    */
-  /**
-   * Background. Alternate cream and white between sections.
-   */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   /**
    * Not shown on the page (kept for older content)
    */
   label?: string | null;
-  heading: string;
+  /**
+   * Optional. Leave empty to continue straight from the hero, like Morais.
+   */
+  heading?: string | null;
   intro?: string | null;
   events?:
     | {
@@ -331,10 +329,21 @@ export interface ScheduleBlock {
         time: string;
         title: string;
         location?: string | null;
+        /**
+         * e.g. the address. Line breaks are kept.
+         */
         description?: string | null;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Button under the schedule, e.g. "OSA"
+   */
+  ctaLabel?: string | null;
+  /**
+   * Anchor to scroll to, e.g. "osa"
+   */
+  ctaAnchor?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'schedule';
@@ -352,9 +361,6 @@ export interface DetailsBlock {
    * Leave empty to hide this section from the menu
    */
   navLabel?: string | null;
-  /**
-   * Background. Alternate cream and white between sections.
-   */
   /**
    * Background. Alternate cream and white between sections.
    */
@@ -412,9 +418,6 @@ export interface GalleryBlock {
   /**
    * Background. Alternate cream and white between sections.
    */
-  /**
-   * Background. Alternate cream and white between sections.
-   */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   /**
    * Not shown on the page (kept for older content)
@@ -446,9 +449,6 @@ export interface RsvpBlock {
    * Leave empty to hide this section from the menu
    */
   navLabel?: string | null;
-  /**
-   * Background. Alternate cream and white between sections.
-   */
   /**
    * Background. Alternate cream and white between sections.
    */
@@ -506,9 +506,6 @@ export interface FaqBlock {
   /**
    * Background. Alternate cream and white between sections.
    */
-  /**
-   * Background. Alternate cream and white between sections.
-   */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   /**
    * Not shown on the page (kept for older content)
@@ -539,6 +536,43 @@ export interface FaqBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'faq';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TextBlock".
+ */
+export interface TextBlock {
+  /**
+   * Used in the URL hash, e.g. "schema" → #schema
+   */
+  anchor: string;
+  /**
+   * Leave empty to hide this section from the menu
+   */
+  navLabel?: string | null;
+  /**
+   * Background. Alternate cream and white between sections.
+   */
+  theme?: ('ivory' | 'espresso' | 'olive') | null;
+  /**
+   * Small capitals above the text, e.g. "Önskelista"
+   */
+  label?: string | null;
+  /**
+   * Shown in large type
+   */
+  text: string;
+  /**
+   * Button text
+   */
+  linkLabel?: string | null;
+  /**
+   * Button link. No link, no button.
+   */
+  linkUrl?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'text';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -688,6 +722,7 @@ export interface PagesSelect<T extends boolean = true> {
         gallery?: T | GalleryBlockSelect<T>;
         rsvp?: T | RsvpBlockSelect<T>;
         faq?: T | FaqBlockSelect<T>;
+        text?: T | TextBlockSelect<T>;
       };
   meta?:
     | T
@@ -709,6 +744,7 @@ export interface HeroBlockSelect<T extends boolean = true> {
   theme?: T;
   image?: T;
   eyebrow?: T;
+  heading?: T;
   tagline?: T;
   showCountdown?: T;
   showScrollHint?: T;
@@ -761,6 +797,8 @@ export interface ScheduleBlockSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
+  ctaLabel?: T;
+  ctaAnchor?: T;
   id?: T;
   blockName?: T;
 }
@@ -847,6 +885,21 @@ export interface FaqBlockSelect<T extends boolean = true> {
         answer?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TextBlock_select".
+ */
+export interface TextBlockSelect<T extends boolean = true> {
+  anchor?: T;
+  navLabel?: T;
+  theme?: T;
+  label?: T;
+  text?: T;
+  linkLabel?: T;
+  linkUrl?: T;
   id?: T;
   blockName?: T;
 }
@@ -995,7 +1048,7 @@ export interface SiteSetting {
    */
   locale?: ('sv-SE' | 'en-GB') | null;
   /**
-   * Shown under the names in the hero, e.g. "Ekebyhovs slott, Ekerö"
+   * Venue line, e.g. "Agdatorps gård, Blekinge". Used when the hero paragraph is empty.
    */
   venueShort?: string | null;
   /**

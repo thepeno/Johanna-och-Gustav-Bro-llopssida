@@ -5,13 +5,17 @@ import { Img } from '@/components/Img'
 import { RichText } from '@/components/RichText'
 import { asMedia } from '@/lib/utils'
 
+// Like Morais's Travel: heading, a paragraph, then each place as an underlined
+// name (linked when there is a URL) with its address below.
 export function DetailsBlockComponent({ block }: { block: DetailsBlock }) {
+  const cards = block.cards ?? []
   return (
     <Section anchor={block.anchor} theme={block.theme}>
       <SectionHeading heading={block.heading} intro={block.intro} />
-      <ul className="mx-auto grid max-w-5xl gap-x-10 gap-y-16 text-center sm:grid-cols-2 lg:grid-cols-3">
-        {block.cards?.map((card, i) => {
+      <ul className={`mx-auto grid max-w-4xl gap-x-16 gap-y-14 text-center ${cards.length > 1 ? 'sm:grid-cols-2' : ''} ${cards.length > 2 ? 'lg:grid-cols-3' : ''}`}>
+        {cards.map((card, i) => {
           const image = asMedia(card.image)
+          const external = card.linkUrl?.startsWith('http')
           return (
             <li key={card.id ?? i} className="flex flex-col items-center">
               {image && (
@@ -24,16 +28,17 @@ export function DetailsBlockComponent({ block }: { block: DetailsBlock }) {
                   />
                 </div>
               )}
-              <h3 className="display text-3xl">{card.title}</h3>
-              <RichText data={card.body} className="mt-4 max-w-sm text-(--fg-soft)" />
-              {card.linkUrl && (
-                <a
-                  href={card.linkUrl}
-                  target={card.linkUrl.startsWith('http') ? '_blank' : undefined}
-                  rel="noreferrer"
-                  className="mt-4 underline"
-                >
-                  {card.linkLabel || card.linkUrl}
+              {card.linkUrl ? (
+                <a href={card.linkUrl} target={external ? '_blank' : undefined} rel="noreferrer" className="underline">
+                  {card.title}
+                </a>
+              ) : (
+                <p className="underline">{card.title}</p>
+              )}
+              <RichText data={card.body} className="max-w-sm" />
+              {card.linkLabel && card.linkUrl && (
+                <a href={card.linkUrl} target={external ? '_blank' : undefined} rel="noreferrer" className="mt-3 underline">
+                  {card.linkLabel}
                 </a>
               )}
             </li>

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-18T17:51:40+00:00",
+  "generatedAt": "2026-10-18T18:25:40+00:00",
   "title": "Design System: Johanna & Gustav",
   "extensions": {
     "colorMeta": {
@@ -52,16 +52,16 @@
       "ink": {
         "role": "neutral",
         "displayName": "Ink",
-        "canonical": "oklch(17.8% 0.000 89.9)",
+        "canonical": "oklch(0% 0 0)",
         "tonalRamp": [
-          "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
-          "#eeeeee"
+          "#000000",
+          "#1b1b1b",
+          "#363636",
+          "#555555",
+          "#777777",
+          "#9b9b9b",
+          "#c1c1c1",
+          "#e8e8e8"
         ]
       },
       "ink-soft": {
@@ -96,29 +96,33 @@
       }
     },
     "typographyMeta": {
-      "hero": {
-        "displayName": "Hero",
-        "purpose": "The opening line and the big date."
+      "title": {
+        "displayName": "Title",
+        "purpose": "Headline, date, footer OSA (~100px)."
       },
-      "display": {
-        "displayName": "Display",
-        "purpose": "Centred section headings."
+      "statement": {
+        "displayName": "Statement",
+        "purpose": "Hero paragraph, headings, Vigsel / Fest, gift note (43px)."
+      },
+      "eyebrow": {
+        "displayName": "Eyebrow",
+        "purpose": "\"Spara datumet\" and \"Önskelista\" only."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Schedule items, detail cards, milestones."
+        "purpose": "Milestones."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Everything people read, centred."
+        "purpose": "Everything people read."
       },
       "small": {
         "displayName": "Small",
-        "purpose": "Captions, milestone dates, contact email."
+        "purpose": "Captions, contact email."
       },
       "ui": {
         "displayName": "UI",
-        "purpose": "Nav links, button text, form labels, in sentence case."
+        "purpose": "Header names and buttons in capitals; form labels."
       }
     },
     "shadows": [],
@@ -150,8 +154,8 @@
       "kind": "button",
       "refersTo": "button-outline",
       "description": "The one button: a black outline around sentence-case sans text, filled on hover.",
-      "html": "<button class=\"ds-btn\">Skicka svar</button>",
-      "css": ".ds-btn { font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-size: 16px; letter-spacing: .01em; min-height: 48px; min-width: 224px; padding: 12px 32px; background: transparent; color: #111; border: 1px solid #111; border-radius: 0; cursor: pointer; transition: background-color .2s, color .2s; } .ds-btn:hover { background: #111; color: #f5f1eb; } .ds-btn:focus-visible { outline: 1px solid #111; outline-offset: 4px; } .ds-btn:disabled { opacity: .5; pointer-events: none; }"
+      "html": "<button class=\"ds-btn\">OSA</button>",
+      "css": ".ds-btn { font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-size: 17px; letter-spacing: .05em; text-transform: uppercase; min-height: 56px; min-width: 240px; padding: 12px 32px; background: transparent; color: #000; border: 1px solid #000; border-radius: 0; cursor: pointer; transition: background-color .2s, color .2s; } .ds-btn:hover { background: #000; color: #f5f1eb; } .ds-btn:focus-visible { outline: 1px solid #000; outline-offset: 4px; } .ds-btn:disabled { opacity: .5; pointer-events: none; }"
     },
     {
       "name": "Boxed Field",
@@ -159,7 +163,7 @@
       "refersTo": "input-box",
       "description": "A plain boxed input with a sans label above, the way people expect a form to look.",
       "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Allergier eller specialkost <em>(frivilligt)</em></span><input class=\"ds-input\" type=\"text\"></label>",
-      "css": ".ds-field { display: flex; flex-direction: column; gap: 8px; max-width: 420px; } .ds-field-label { font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-size: 15px; color: #111; } .ds-field-label em { font-style: normal; color: #57524b; } .ds-input { border: 1px solid rgba(17,17,17,.22); background: #fff; padding: 12px 16px; font-family: 'Libre Caslon Text', 'Times New Roman', serif; font-size: 17px; color: #111; border-radius: 0; transition: border-color .2s; } .ds-input:focus { outline: none; border-color: #111; } .ds-input:focus-visible { outline: 1px solid #111; outline-offset: 4px; }"
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 8px; max-width: 420px; } .ds-field-label { font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-size: 15px; color: #000; } .ds-field-label em { font-style: normal; color: #57524b; } .ds-input { border: 1px solid rgba(0,0,0,.22); background: #fff; padding: 12px 16px; font-family: 'Libre Caslon Text', 'Times New Roman', serif; font-size: 17px; color: #000; border-radius: 0; transition: border-color .2s; } .ds-input:focus { outline: none; border-color: #000; } .ds-input:focus-visible { outline: 1px solid #000; outline-offset: 4px; }"
     },
     {
       "name": "Attending Radios",
@@ -167,7 +171,7 @@
       "refersTo": "input-box",
       "description": "Native radio buttons tinted ink, stacked, with 44px rows.",
       "html": "<fieldset class=\"ds-radios\"><legend>Kommer du?</legend><label><input type=\"radio\" name=\"a\" checked> Ja, jag kommer</label><label><input type=\"radio\" name=\"a\"> Tyvärr, jag kan inte</label></fieldset>",
-      "css": ".ds-radios { border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; } .ds-radios legend { font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-size: 15px; margin-bottom: 12px; } .ds-radios label { display: flex; align-items: center; gap: 12px; min-height: 44px; font-family: 'Libre Caslon Text', 'Times New Roman', serif; font-size: 17px; cursor: pointer; } .ds-radios input { width: 18px; height: 18px; accent-color: #111; }"
+      "css": ".ds-radios { border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; } .ds-radios legend { font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-size: 15px; margin-bottom: 12px; } .ds-radios label { display: flex; align-items: center; gap: 12px; min-height: 44px; font-family: 'Libre Caslon Text', 'Times New Roman', serif; font-size: 17px; cursor: pointer; } .ds-radios input { width: 18px; height: 18px; accent-color: #000; }"
     },
     {
       "name": "Header",
@@ -175,7 +179,7 @@
       "refersTo": "nav-bar",
       "description": "Names on the left; section links and a small outlined reply box on the right.",
       "html": "<nav class=\"ds-nav\"><a class=\"ds-names\" href=\"#\">Johanna &amp; Gustav</a><div class=\"ds-right\"><a href=\"#\">Vår historia</a><a href=\"#\">Dagen</a><a href=\"#\">Frågor</a><a class=\"ds-rsvp\" href=\"#\">OSA</a></div></nav>",
-      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; padding: 28px 40px; background: #f5f1eb; color: #111; font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; } .ds-names { font-size: 18px; letter-spacing: -.01em; color: inherit; text-decoration: none; } .ds-right { display: flex; align-items: center; gap: 28px; font-size: 15px; } .ds-right a { color: inherit; text-decoration: none; text-underline-offset: .2em; } .ds-right a:hover, .ds-right a:focus-visible { text-decoration: underline; } .ds-right .ds-rsvp { border: 1px solid #111; padding: 8px 20px; transition: background-color .2s, color .2s; } .ds-right .ds-rsvp:hover { background: #111; color: #f5f1eb; text-decoration: none; }"
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; padding: 28px 40px; background: #f5f1eb; color: #000; font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; } .ds-names { font-size: 18px; letter-spacing: -.01em; color: inherit; text-decoration: none; } .ds-right { display: flex; align-items: center; gap: 28px; font-size: 15px; } .ds-right a { color: inherit; text-decoration: none; text-underline-offset: .2em; } .ds-right a:hover, .ds-right a:focus-visible { text-decoration: underline; } .ds-right .ds-rsvp { border: 1px solid #000; padding: 8px 20px; transition: background-color .2s, color .2s; } .ds-right .ds-rsvp:hover { background: #000; color: #f5f1eb; text-decoration: none; }"
     },
     {
       "name": "Section Heading",
@@ -183,7 +187,7 @@
       "refersTo": "display",
       "description": "A centred regular-weight heading with a short serif intro. No eyebrow.",
       "html": "<div class=\"ds-head\"><h2>Så här ser dagen ut</h2><p>Allt sker på Ekebyhovs slott och i Ekerö kyrka, med några minuters promenad emellan.</p></div>",
-      "css": ".ds-head { text-align: center; max-width: 640px; margin: 0 auto; background: #f5f1eb; padding: 48px 24px; } .ds-head h2 { font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-weight: 400; font-size: 48px; line-height: 1.1; letter-spacing: -.02em; margin: 0; color: #111; text-wrap: balance; } .ds-head p { font-family: 'Libre Caslon Text', 'Times New Roman', serif; font-size: 17px; line-height: 1.75; color: #57524b; margin: 24px auto 0; max-width: 36rem; }"
+      "css": ".ds-head { text-align: center; max-width: 640px; margin: 0 auto; background: #f5f1eb; padding: 48px 24px; } .ds-head h2 { font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-weight: 400; font-size: 48px; line-height: 1.1; letter-spacing: -.02em; margin: 0; color: #000; text-wrap: balance; } .ds-head p { font-family: 'Libre Caslon Text', 'Times New Roman', serif; font-size: 17px; line-height: 1.75; color: #57524b; margin: 24px auto 0; max-width: 36rem; }"
     },
     {
       "name": "Schedule Column",
@@ -191,7 +195,7 @@
       "refersTo": "headline",
       "description": "Like Morais's Ceremony / Reception: centred title, time and place.",
       "html": "<ol class=\"ds-sched\"><li><h3>Vigsel</h3><p>14.00</p><p class=\"soft\">Ekerö kyrka</p></li><li><h3>Middag</h3><p>17.30</p><p class=\"soft\">Orangeriet</p></li></ol>",
-      "css": ".ds-sched { list-style: none; margin: 0; padding: 32px; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 40px; text-align: center; background: #fff; } .ds-sched h3 { font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-weight: 400; font-size: 30px; letter-spacing: -.02em; line-height: 1.1; margin: 0; color: #111; } .ds-sched p { font-family: 'Libre Caslon Text', 'Times New Roman', serif; font-size: 17px; line-height: 1.75; margin: 12px 0 0; color: #111; } .ds-sched p.soft { margin: 0; color: #57524b; }"
+      "css": ".ds-sched { list-style: none; margin: 0; padding: 32px; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 40px; text-align: center; background: #fff; } .ds-sched h3 { font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-weight: 400; font-size: 30px; letter-spacing: -.02em; line-height: 1.1; margin: 0; color: #000; } .ds-sched p { font-family: 'Libre Caslon Text', 'Times New Roman', serif; font-size: 17px; line-height: 1.75; margin: 12px 0 0; color: #000; } .ds-sched p.soft { margin: 0; color: #57524b; }"
     },
     {
       "name": "Footer RSVP",
@@ -199,12 +203,12 @@
       "refersTo": "hero",
       "description": "Closing note, an em dash, and a big underlined reply link, lifted from Morais.",
       "html": "<footer class=\"ds-foot\"><p>Vi längtar tills vi får fira med er.</p><span>—</span><a href=\"#\">OSA</a><small>#johannaochgustav</small></footer>",
-      "css": ".ds-foot { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 64px 24px; background: #f5f1eb; color: #111; font-family: 'Libre Caslon Text', 'Times New Roman', serif; font-size: 17px; } .ds-foot p { margin: 0; } .ds-foot span { margin-top: 16px; } .ds-foot a { margin-top: 32px; font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-size: 64px; letter-spacing: -.02em; line-height: 1.1; color: #111; text-decoration: none; border-bottom: 1px solid #111; padding-bottom: 4px; } .ds-foot small { margin-top: 48px; font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-size: 15px; }"
+      "css": ".ds-foot { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 64px 24px; background: #f5f1eb; color: #000; font-family: 'Libre Caslon Text', 'Times New Roman', serif; font-size: 17px; } .ds-foot p { margin: 0; } .ds-foot span { margin-top: 16px; } .ds-foot a { margin-top: 32px; font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-size: 64px; letter-spacing: -.02em; line-height: 1.1; color: #000; text-decoration: none; border-bottom: 1px solid #000; padding-bottom: 4px; } .ds-foot small { margin-top: 48px; font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-size: 15px; }"
     }
   ],
   "narrative": {
     "northStar": "Squarespace's Morais, made by a friend with taste",
-    "overview": "**Creative North Star: \"Squarespace's Morais, made by a friend with taste\"**\n\nThe page follows Squarespace's Morais wedding template closely. It should look like someone without much web experience made it, but someone with impeccable taste. Cream and white sections alternate down one long page. Everything is centred. Headings are a plain grotesque at regular weight, never bold. Everything you read is a bookish serif. Photos are black and white. There are no tricks: no eyebrows, no section numbers, no entrance animations, no sticky header changing colour, no ticking countdown.\n\nThe page is warm, unhurried and intimate. Each section is one heading, a few lines of text and maybe a photo or a short list, with generous space between. Its personality comes from restraint and good type, not decoration.\n\nThree looks are off limits: template wedding sites (script fonts, blush pink, floral clip art, gold foil), app or SaaS UI (rounded cards, drop shadows, bright accent buttons, icons everywhere) and rustic DIY (kraft paper, twine, chalkboard, mason jars). The same goes for the developer-portfolio habits the first design had: tracked uppercase mono labels and 01 / 02 / 03 numbering.",
+    "overview": "**Creative North Star: \"Squarespace's Morais, made by a friend with taste\"**\n\nThe page matches Squarespace's Morais demo section for section: \"Spara datumet\", the headline, a black-and-white photo, the date, a paragraph, Vigsel / Fest side by side, the reply button, a cream travel panel on white, the gift note, and a footer ending on a big \"OSA\". The reply form sits on the page, where Morais links to a separate page. It should look like someone without much web experience made it, but someone with impeccable taste. Cream and white sections alternate down one long page. Everything is centred. Headings are a plain grotesque at regular weight, never bold. Everything you read is a bookish serif. Photos are black and white. There are no tricks: no section numbers, no entrance animations, no sticky header changing colour, no ticking countdown. The only small capitals are Morais's own: \"Spara datumet\" and \"Önskelista\".\n\nThe page is warm, unhurried and intimate. Each section is one heading, a few lines of text and maybe a photo or a short list, with generous space between. Its personality comes from restraint and good type, not decoration.\n\nThree looks are off limits: template wedding sites (script fonts, blush pink, floral clip art, gold foil), app or SaaS UI (rounded cards, drop shadows, bright accent buttons, icons everywhere) and rustic DIY (kraft paper, twine, chalkboard, mason jars). The same goes for the developer-portfolio habits the first design had: tracked uppercase mono labels and 01 / 02 / 03 numbering.",
     "keyCharacteristics": [
       "Cream (#f5f1eb) and white sections alternate; one optional cream panel set on white",
       "Centred column, headings in regular-weight Helvetica Neue, body in Libre Caslon Text",
@@ -224,8 +228,8 @@
         "section": "colors"
       },
       {
-        "name": "The No Eyebrow Rule",
-        "body": "Headings stand alone. No small labels above them, no \"01 —\" numbering, no tracked capitals. The block `label` field in the CMS is deliberately not rendered.",
+        "name": "The Morais Eyebrow Rule",
+        "body": "Small serif capitals appear only where Morais has them: above the hero headline and above the gift note. Section headings otherwise stand alone, with no \"01 —\" numbering. The old block `label` field isn't rendered; the Text block has its own label.",
         "section": "typography"
       },
       {
@@ -251,9 +255,9 @@
       "**Don't** drift toward template wedding sites: no script fonts, blush pink, floral clip art or gold foil.",
       "**Don't** use app or SaaS UI: no rounded cards, drop shadows, bright accent buttons or icon-heavy layouts.",
       "**Don't** go rustic DIY: no kraft paper, twine, chalkboard or mason-jar textures.",
-      "**Don't** put eyebrows or section numbers above headings, or use tracked uppercase labels.",
+      "**Don't** add eyebrows beyond Morais's two, section numbers, or tracked uppercase labels.",
       "**Don't** add entrance animations, a sticky header that changes on scroll, or a ticking seconds countdown.",
-      "**Don't** make headings bold or larger than 6rem."
+      "**Don't** make headings bold."
     ]
   }
 }

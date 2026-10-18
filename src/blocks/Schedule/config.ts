@@ -1,5 +1,5 @@
 import type { Block } from 'payload'
-import { headingFields, sectionFields } from '@/fields/section'
+import { sectionFields } from '@/fields/section'
 
 export const Schedule: Block = {
   slug: 'schedule',
@@ -7,7 +7,13 @@ export const Schedule: Block = {
   labels: { singular: 'Schedule', plural: 'Schedules' },
   fields: [
     ...sectionFields,
-    ...headingFields,
+    {
+      type: 'row',
+      fields: [
+        { name: 'label', type: 'text', admin: { width: '40%', description: 'Not shown on the page (kept for older content)' } },
+        { name: 'heading', type: 'text', admin: { width: '60%', description: 'Optional. Leave empty to continue straight from the hero, like Morais.' } },
+      ],
+    },
     { name: 'intro', type: 'textarea' },
     {
       name: 'events',
@@ -23,7 +29,14 @@ export const Schedule: Block = {
             { name: 'location', type: 'text', admin: { width: '35%' } },
           ],
         },
-        { name: 'description', type: 'textarea' },
+        { name: 'description', type: 'textarea', admin: { description: 'e.g. the address. Line breaks are kept.' } },
+      ],
+    },
+    {
+      type: 'row',
+      fields: [
+        { name: 'ctaLabel', type: 'text', admin: { width: '50%', description: 'Button under the schedule, e.g. "OSA"' } },
+        { name: 'ctaAnchor', type: 'text', admin: { width: '50%', description: 'Anchor to scroll to, e.g. "osa"' } },
       ],
     },
   ],

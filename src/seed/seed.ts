@@ -23,7 +23,7 @@ async function run() {
   // 2. Home page (skip unless --reset so edits made in /admin survive re-runs)
   const existing = await payload.find({ collection: 'pages', where: { slug: { equals: HOME_SLUG } }, limit: 1 })
   if (existing.totalDocs > 0 && !reset) {
-    payload.logger.info('Home page already exists – run `pnpm seed --reset` to replace it')
+    payload.logger.info('Home page already exists – run `npm run seed -- --reset` to replace it')
     process.exit(0)
   }
   if (reset) {
@@ -57,8 +57,8 @@ async function run() {
       // Block shapes are validated by Payload at create time
       layout: layout(ids) as never,
       meta: {
-        title: 'Johanna & Gustav gifter sig 19 juni 2027',
-        description: 'Allt om dagen: schema, plats, boende och OSA.',
+        title: 'Johanna & Gustav gifter sig 14 augusti 2027',
+        description: 'Lördag 14 augusti 2027 på Agdatorps gård i Blekinge. Tider, resa och OSA.',
         image: ids.hero,
       },
     },

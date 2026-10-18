@@ -7,6 +7,7 @@ import { DetailsBlockComponent } from './Details/Component'
 import { GalleryBlockComponent } from './Gallery/Component'
 import { RsvpBlockComponent } from './Rsvp/Component'
 import { FaqBlockComponent } from './Faq/Component'
+import { TextBlockComponent } from './Text/Component'
 
 type Block = Page['layout'][number]
 
@@ -30,6 +31,8 @@ export function RenderBlocks({ blocks, settings }: { blocks: Block[]; settings: 
             return <RsvpBlockComponent key={key} block={block} settings={settings} />
           case 'faq':
             return <FaqBlockComponent key={key} block={block} />
+          case 'text':
+            return <TextBlockComponent key={key} block={block} />
           default:
             return null
         }

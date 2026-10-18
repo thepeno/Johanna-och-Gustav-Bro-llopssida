@@ -36,10 +36,10 @@ export const SiteSettings: GlobalConfig = {
         },
       ],
     },
-    { name: 'venueShort', type: 'text', admin: { description: 'Shown under the names in the hero, e.g. "Ekebyhovs slott, Ekerö"' } },
+    { name: 'venueShort', type: 'text', admin: { description: 'Venue line, e.g. "Agdatorps gård, Blekinge". Used when the hero paragraph is empty.' } },
     { name: 'hashtag', type: 'text', admin: { description: 'e.g. #johannaochgustav2027' } },
     { name: 'contactEmail', type: 'email' },
-    { name: 'footerNote', type: 'text', defaultValue: 'Vi ses i juni!' },
+    { name: 'footerNote', type: 'text', defaultValue: 'Vi ser fram emot att fira med er!' },
     {
       name: 'countdownLabels',
       type: 'group',

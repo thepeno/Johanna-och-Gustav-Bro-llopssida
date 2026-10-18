@@ -19,12 +19,12 @@ export function Section({ anchor, theme, className, children }: Props) {
   )
 }
 
-/** Centred heading with an optional intro. No eyebrow: the heading carries itself. */
+/** Centred 43px heading with an optional intro, as in Morais's Travel section. */
 export function SectionHeading({ heading, intro }: { heading: string; intro?: string | null }) {
   return (
-    <div className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
-      <h2 className="display text-4xl md:text-5xl">{heading}</h2>
-      {intro && <p className="mx-auto mt-6 max-w-xl text-(--fg-soft)">{intro}</p>}
+    <div className="mx-auto mb-12 max-w-2xl text-center md:mb-14">
+      <h2 className="statement">{heading}</h2>
+      {intro && <p className="mx-auto mt-6 max-w-xl whitespace-pre-line">{intro}</p>}
     </div>
   )
 }
