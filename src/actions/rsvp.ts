@@ -10,7 +10,13 @@ import { rsvpIsOpen } from '@/blocks/Rsvp/shared'
 export type RsvpState =
   | { status: 'idle' }
   | { status: 'success'; message: string }
-  | { status: 'error'; message: string; fieldErrors?: Record<string, string[] | undefined> }
+  | {
+      status: 'error'
+      message: string
+      fieldErrors?: Record<string, string[] | undefined>
+      /** What the guest typed, so the form can refill itself after React resets it */
+      values?: Record<string, string>
+    }
 
 const schema = z.object({
   name: z.string().trim().min(2).max(120),
@@ -42,23 +48,33 @@ export async function submitRsvp(_prev: RsvpState, formData: FormData): Promise<
   const ui = t(settings?.locale)
 
   const raw = Object.fromEntries(formData.entries())
+  const values = Object.fromEntries(
+    Object.entries(raw).filter(
+      (e): e is [string, string] => typeof e[1] === 'string' && e[0] !== 'website',
+    ),
+  )
   const parsed = schema.safeParse(raw)
   if (!parsed.success) {
-    return { status: 'error', message: ui.genericError, fieldErrors: z.flattenError(parsed.error).fieldErrors }
+    return {
+      status: 'error',
+      message: ui.genericError,
+      fieldErrors: z.flattenError(parsed.error).fieldErrors,
+      values,
+    }
   }
   const data = parsed.data
   if (data.website) return { status: 'success', message: '' } // silently drop bots
 
   const page = await getHomePage()
   const block = page?.layout.find((b) => b.blockType === 'rsvp')
-  if (!block || !rsvpIsOpen(block.deadline)) return { status: 'error', message: ui.closed }
+  if (!block || !rsvpIsOpen(block.deadline)) return { status: 'error', message: ui.closed, values }
   const maxParty = block.maxPartySize ?? 2
   const partySize = data.attending === 'yes' ? Math.min(data.partySize, maxParty) : 1
 
   const h = await headers()
   const ip = h.get('x-forwarded-for')?.split(',')[0]?.trim() || h.get('x-real-ip') || 'local'
   const ipHash = createHash('sha256').update(ip).digest('hex').slice(0, 16)
-  if (tooMany(ipHash)) return { status: 'error', message: ui.tooMany }
+  if (tooMany(ipHash)) return { status: 'error', message: ui.tooMany, values }
 
   try {
     const payload = await getPayloadClient()
@@ -79,6 +95,6 @@ export async function submitRsvp(_prev: RsvpState, formData: FormData): Promise<
     return { status: 'success', message: block.successMessage || 'Tack!' }
   } catch (err) {
     console.error('RSVP create failed', err)
-    return { status: 'error', message: ui.genericError }
+    return { status: 'error', message: ui.genericError, values }
   }
 }

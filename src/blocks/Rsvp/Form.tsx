@@ -6,7 +6,13 @@ import type { Ui } from '@/lib/i18n'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
 
-type Props = { ui: Ui; maxPartySize: number; askDietary: boolean; askSong: boolean; askMessage: boolean }
+type Props = {
+  ui: Ui
+  maxPartySize: number
+  askDietary: boolean
+  askSong: boolean
+  askMessage: boolean
+}
 
 const field =
   'w-full border-0 border-b border-(--line) bg-transparent px-0 py-3 font-serif text-xl text-(--fg) placeholder:text-(--fg-soft)/60 focus:border-(--fg) focus:outline-none'
@@ -41,10 +47,14 @@ function Field({
 }
 
 export function RsvpForm({ ui, maxPartySize, askDietary, askSong, askMessage }: Props) {
-  const [state, action, pending] = useActionState<RsvpState, FormData>(submitRsvp, { status: 'idle' })
+  const [state, action, pending] = useActionState<RsvpState, FormData>(submitRsvp, {
+    status: 'idle',
+  })
   const [attending, setAttending] = useState<'yes' | 'no'>('yes')
   const [partySize, setPartySize] = useState(1)
   const errors = state.status === 'error' ? state.fieldErrors : undefined
+  // React clears the form after every submit; on an error we refill it from what was sent
+  const values = state.status === 'error' ? state.values : undefined
 
   if (state.status === 'success') {
     return (
@@ -91,10 +101,26 @@ export function RsvpForm({ ui, maxPartySize, askDietary, askSong, askMessage }: 
 
       <div className="grid gap-8 sm:grid-cols-2">
         <Field label={ui.name} name="name" error={errors?.name}>
-          <input id="name" name="name" type="text" autoComplete="name" required className={field} />
+          <input
+            id="name"
+            name="name"
+            defaultValue={values?.name}
+            type="text"
+            autoComplete="name"
+            required
+            className={field}
+          />
         </Field>
         <Field label={ui.email} name="email" error={errors?.email}>
-          <input id="email" name="email" type="email" autoComplete="email" required className={field} />
+          <input
+            id="email"
+            name="email"
+            defaultValue={values?.email}
+            type="email"
+            autoComplete="email"
+            required
+            className={field}
+          />
         </Field>
       </div>
 
@@ -117,7 +143,13 @@ export function RsvpForm({ ui, maxPartySize, askDietary, askSong, askMessage }: 
           </Field>
           {partySize > 1 && (
             <Field label={ui.guestNames} name="guestNames" error={errors?.guestNames}>
-              <input id="guestNames" name="guestNames" type="text" className={field} />
+              <input
+                id="guestNames"
+                name="guestNames"
+                defaultValue={values?.guestNames}
+                type="text"
+                className={field}
+              />
             </Field>
           )}
         </div>
@@ -125,17 +157,29 @@ export function RsvpForm({ ui, maxPartySize, askDietary, askSong, askMessage }: 
 
       {attending === 'yes' && askDietary && (
         <Field label={ui.dietary} name="dietary" optional={ui.optional} error={errors?.dietary}>
-          <input id="dietary" name="dietary" type="text" className={field} />
+          <input
+            id="dietary"
+            name="dietary"
+            defaultValue={values?.dietary}
+            type="text"
+            className={field}
+          />
         </Field>
       )}
       {attending === 'yes' && askSong && (
         <Field label={ui.song} name="song" optional={ui.optional} error={errors?.song}>
-          <input id="song" name="song" type="text" className={field} />
+          <input id="song" name="song" defaultValue={values?.song} type="text" className={field} />
         </Field>
       )}
       {askMessage && (
         <Field label={ui.message} name="message" optional={ui.optional} error={errors?.message}>
-          <textarea id="message" name="message" rows={3} className={cn(field, 'resize-y')} />
+          <textarea
+            id="message"
+            name="message"
+            defaultValue={values?.message}
+            rows={3}
+            className={cn(field, 'resize-y')}
+          />
         </Field>
       )}
 
