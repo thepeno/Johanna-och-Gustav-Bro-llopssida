@@ -15,7 +15,7 @@ type Props = {
 }
 
 const field =
-  'w-full rounded-none border border-(--line) bg-(--field) px-4 py-3 font-serif text-base text-(--fg) transition-colors focus:border-(--fg) focus:outline-none'
+  'min-h-[3.35rem] w-full rounded-none border border-(--fg) bg-[#fafafa] px-4 py-3 font-serif text-[1.0625rem] text-(--fg) focus:outline-none focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-(--fg)'
 
 function Field({
   label,
@@ -32,7 +32,7 @@ function Field({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={name} className="font-sans text-[0.9375rem]">
+      <label htmlFor={name} className="font-serif text-[1.0625rem]">
         {label}
         {optional && <span className="text-(--fg-soft)"> ({optional})</span>}
       </label>
@@ -74,7 +74,7 @@ export function RsvpForm({ ui, maxPartySize, askDietary, askSong, askMessage }: 
       </div>
 
       <fieldset>
-        <legend className="mb-3 font-sans text-[0.9375rem]">{ui.attending}</legend>
+        <legend className="mb-3 font-serif text-[1.0625rem]">{ui.attending}</legend>
         <div className="flex flex-col gap-1">
           {(['yes', 'no'] as const).map((value) => (
             <label key={value} className="flex min-h-11 cursor-pointer items-center gap-3">

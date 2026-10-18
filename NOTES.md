@@ -16,6 +16,8 @@ One lesson per entry. Update entries instead of duplicating them.
 - **npm, not pnpm.** The project started on pnpm; a collaborator on pnpm 11 hit `ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION` (a transitive dependency published hours earlier). Switched to npm with `package-lock.json` so that no extra tooling is needed beyond Node. Seed flags are passed as `npm run seed -- --reset`.
 - **Next 16 calls middleware `proxy`.** The guest gate is `src/proxy.ts` (export `proxy`, Node runtime by default). It *rewrites* to `/guest-login` instead of redirecting, so the URL stays `/` and the home page can stay statically rendered: only the proxy reads the cookie. Server actions are POSTs to whichever path they're called from, so the RSVP action checks the guest cookie itself as well; the proxy alone isn't enough.
 - **Turbopack won't follow a symlinked `node_modules`** ("points out of the filesystem root"). In a git worktree, run `npm ci` instead of linking to the main checkout's modules.
+- **The RSVP form has its own page but no content of its own.** `/osa` renders the RSVP block from the home page's layout (and the home page skips it), so editors keep one place to change it. Links reach it through `sectionHref()`: any button or menu entry whose anchor matches the RSVP block's anchor goes to `/osa`.
+- **After the password, go back via the Referer.** The proxy rewrites to the password screen without changing the URL, so the unlock action reads the `Referer` header to return the guest to that path (same-site paths only, never `/guest-login`).
 
 ## Open items
 

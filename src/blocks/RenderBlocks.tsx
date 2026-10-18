@@ -11,18 +11,18 @@ import { TextBlockComponent } from './Text/Component'
 
 type Block = Page['layout'][number]
 
-export function RenderBlocks({ blocks, settings }: { blocks: Block[]; settings: SiteSetting }) {
+export function RenderBlocks({ blocks, settings, rsvpAnchor }: { blocks: Block[]; settings: SiteSetting; rsvpAnchor?: string }) {
   return (
     <>
       {blocks.map((block, i) => {
         const key = block.id ?? `${block.blockType}-${i}`
         switch (block.blockType) {
           case 'hero':
-            return <HeroBlockComponent key={key} block={block} settings={settings} />
+            return <HeroBlockComponent key={key} block={block} settings={settings} rsvpAnchor={rsvpAnchor} />
           case 'story':
             return <StoryBlockComponent key={key} block={block} />
           case 'schedule':
-            return <ScheduleBlockComponent key={key} block={block} />
+            return <ScheduleBlockComponent key={key} block={block} rsvpAnchor={rsvpAnchor} />
           case 'details':
             return <DetailsBlockComponent key={key} block={block} />
           case 'gallery':

@@ -7,14 +7,15 @@ import { rsvpIsOpen } from './shared'
 import { formatDate } from '@/lib/utils'
 import { t } from '@/lib/i18n'
 
-export function RsvpBlockComponent({ block, settings }: { block: RsvpBlock; settings: SiteSetting }) {
+/** The reply section. On the RSVP page (`standalone`) it sits on cream with the heading as the page's h1. */
+export function RsvpBlockComponent({ block, settings, standalone }: { block: RsvpBlock; settings: SiteSetting; standalone?: boolean }) {
   const locale = settings.locale || 'sv-SE'
   const ui = t(locale)
   const open = rsvpIsOpen(block.deadline)
 
   return (
-    <Section anchor={block.anchor} theme={block.theme}>
-      <SectionHeading heading={block.heading} />
+    <Section anchor={block.anchor} theme={standalone ? 'ivory' : block.theme} className={standalone ? '[&>div]:pt-10 md:[&>div]:pt-14' : undefined}>
+      <SectionHeading heading={block.heading} as={standalone ? 'h1' : 'h2'} />
       <div className="mx-auto max-w-xl">
         <RichText data={block.intro} className="text-center" />
         {block.deadline && (

@@ -2,10 +2,11 @@ import React from 'react'
 import type { ScheduleBlock } from '@/payload-types'
 import { Section, SectionHeading } from '@/components/Section'
 import { Button } from '@/components/ui/Button'
+import { sectionHref } from '@/lib/utils'
 
 // Morais's Ceremony / Reception: a 43px title over the place, its address and
 // the time, side by side, with the reply button underneath.
-export function ScheduleBlockComponent({ block }: { block: ScheduleBlock }) {
+export function ScheduleBlockComponent({ block, rsvpAnchor }: { block: ScheduleBlock; rsvpAnchor?: string }) {
   const events = block.events ?? []
   return (
     <Section anchor={block.anchor} theme={block.theme} className={block.heading ? undefined : "[&>div]:pt-0 md:[&>div]:pt-0"}>
@@ -26,7 +27,7 @@ export function ScheduleBlockComponent({ block }: { block: ScheduleBlock }) {
       </ol>
       {block.ctaLabel && block.ctaAnchor && (
         <div className="mt-16 text-center">
-          <Button href={`#${block.ctaAnchor}`}>{block.ctaLabel}</Button>
+          <Button href={sectionHref(block.ctaAnchor, rsvpAnchor)}>{block.ctaLabel}</Button>
         </div>
       )}
     </Section>

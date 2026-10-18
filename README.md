@@ -23,7 +23,7 @@ The seed creates the first admin from `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD`
 
 | Where | What |
 | --- | --- |
-| **Pages** | The page with slug `home` is rendered at `/`. Its `layout` is a list of blocks (below). Other slugs are ignored for now. |
+| **Pages** | The page with slug `home` is rendered at `/`. Its `layout` is a list of blocks (below); the RSVP block is shown on its own page at `/osa` instead. Other slugs are ignored for now. |
 | **Site settings** (global) | Names, date and time, venue line, language (`sv-SE` / `en-GB`), hashtag, contact email, footer note, countdown labels. |
 | **Media** | Uploaded photos. Three sizes are generated (480 / 1000 / 1920 px) and a focal point can be set. |
 | **RSVPs** | Guest replies. Admin-only; the public form never talks to this collection directly. |
@@ -39,7 +39,7 @@ Every block has an **anchor** (its `#hash`), an optional **nav label** (empty = 
 | Schedule | Parts of the day side by side (Vigsel / Fest) | optional heading, events with title, place, address and time, optional button |
 | Details | Practical info cards | venue, travel, accommodation, dress code, gifts… each with optional image and link |
 | Gallery | Masonry photo grid | images with captions |
-| RSVP form | Reply form | deadline (form closes after that day), max party size, toggles for dietary / song / message, success and closed messages |
+| RSVP form | Reply form, shown on its own page at `/osa` (buttons and menu links whose anchor is this block's anchor go there) | deadline (form closes after that day), max party size, toggles for dietary / song / message, success and closed messages |
 | FAQ | Accordion | question + rich-text answer |
 | Text | A statement in large type (the gift note) | small-caps label, text, optional button |
 
@@ -47,13 +47,13 @@ Add, remove and reorder blocks freely in the admin; the frontend renders whateve
 
 ### RSVP flow
 
-`src/blocks/Rsvp/Form.tsx` (client) → `src/actions/rsvp.ts` (server action) → Payload Local API. The action validates with zod, drops honeypot submissions, enforces the deadline and max party size from the block config, and rate-limits to 5 replies per 10 minutes per IP (in memory, per instance). Replies are listed under **Guests → RSVPs** in the admin and can be exported from there.
+`/osa` (`src/app/(frontend)/osa/page.tsx`) → `src/blocks/Rsvp/Form.tsx` (client) → `src/actions/rsvp.ts` (server action) → Payload Local API. The action validates with zod, drops honeypot submissions, enforces the deadline and max party size from the block config, and rate-limits to 5 replies per 10 minutes per IP (in memory, per instance). Replies are listed under **Guests → RSVPs** in the admin and can be exported from there.
 
 Every new reply triggers two plain-text emails from an `afterChange` hook on the collection (`src/hooks/rsvpEmails.ts`): a summary to the couple (`RSVP_NOTIFY_TO`, comma-separated; falls back to Site settings → contact email) and a confirmation to the guest in the site language with the wedding date. Mail goes through [Resend](https://resend.com) when `RESEND_API_KEY` is set (`EMAIL_FROM_ADDRESS` must be on a domain verified there); without it Payload logs the emails to the dev server console instead. Sending never blocks the reply: failures are logged and the guest still sees the success message.
 
 ### Guest password
 
-The public page is behind one shared password, `GUEST_PASSWORD` in the environment. `src/proxy.ts` checks every request except `/admin`, `/api`, `/_next` and static files; without a valid cookie it shows `src/app/(frontend)/guest-login` in place of the page (the URL stays the same). The form posts to `src/actions/guestAccess.ts`, which allows 10 tries per 10 minutes per IP, compares the password without regard to case or surrounding spaces, and sets an httpOnly `guest_access` cookie for a year. The cookie is an HMAC of the password signed with `PAYLOAD_SECRET`, so changing `GUEST_PASSWORD` signs every guest out. The screen's text follows Site settings → language. The RSVP action checks the cookie as well, since server actions can be posted to any path.
+The public page is behind one shared password, `GUEST_PASSWORD` in the environment. `src/proxy.ts` checks every request except `/admin`, `/api`, `/_next` and static files; without a valid cookie it shows `src/app/(frontend)/guest-login` in place of the page (the URL stays the same). The form posts to `src/actions/guestAccess.ts`, which allows 10 tries per 10 minutes per IP, compares the password without regard to case or surrounding spaces, and sets an httpOnly `guest_access` cookie for a year, then sends the guest back to the page they opened (so a shared `/osa` link lands on the form). The cookie is an HMAC of the password signed with `PAYLOAD_SECRET`, so changing `GUEST_PASSWORD` signs every guest out. The screen's text follows Site settings → language. The RSVP action checks the cookie as well, since server actions can be posted to any path.
 
 Why an env var and not a Site settings field: the Site settings global is publicly readable at `/api/globals/site-settings`, so a password stored there would need its own field access rules to stay hidden. It would also need a database write to set it. Changing the env var means restarting or redeploying the server; on Vercel and similar hosts that's an edit in the dashboard.
 
@@ -74,7 +74,7 @@ src/
   proxy.ts                 guest password gate in front of the public page
   lib/                     data loaders, i18n strings, guest cookie, rate limiter, utils
   seed/                    seed script, demo content, placeholder image generator
-  app/(frontend)/          layout, page, guest-login screen, styles.css (Tailwind theme + section themes)
+  app/(frontend)/          layout, page, osa/ (RSVP page), guest-login screen, styles.css (Tailwind theme + section themes)
   app/(payload)/           Payload admin and REST/GraphQL routes (generated)
 ```
 

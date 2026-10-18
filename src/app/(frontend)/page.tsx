@@ -6,6 +6,7 @@ import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/Footer'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { asMedia } from '@/lib/utils'
+import { siteLinks } from '@/lib/links'
 
 export async function generateMetadata(): Promise<Metadata> {
   const [page, settings] = await Promise.all([getHomePage(), getSiteSettings()])
@@ -37,17 +38,15 @@ export default async function HomePage() {
     )
   }
 
-  const navItems = page.layout
-    .filter((block) => block.navLabel && block.blockType !== 'hero')
-    .map((block) => ({ anchor: block.anchor, label: block.navLabel as string }))
-  const rsvpBlock = page.layout.find((block) => block.blockType === 'rsvp')
-  const rsvp = rsvpBlock ? { anchor: rsvpBlock.anchor, label: rsvpBlock.navLabel || rsvpBlock.heading } : undefined
+  const { rsvp, rsvpAnchor, navItems } = siteLinks(page)
+  // The reply form lives on its own page (/osa), so it is left out here
+  const blocks = page.layout.filter((block) => block.blockType !== 'rsvp')
 
   return (
     <>
-      <Nav items={navItems} settings={settings} rsvpAnchor={rsvp?.anchor} />
+      <Nav items={navItems} settings={settings} rsvp={rsvp} />
       <main>
-        <RenderBlocks blocks={page.layout} settings={settings} />
+        <RenderBlocks blocks={blocks} settings={settings} rsvpAnchor={rsvpAnchor} />
       </main>
       <Footer settings={settings} rsvp={rsvp} />
     </>

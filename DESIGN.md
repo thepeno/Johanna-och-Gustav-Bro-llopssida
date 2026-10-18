@@ -88,7 +88,7 @@ components:
 
 **Creative North Star: "Squarespace's Morais, made by a friend with taste"**
 
-The page matches Squarespace's Morais demo section for section: "Spara datumet", the headline, a black-and-white photo, the date, a paragraph, Vigsel / Fest side by side, the reply button, a cream travel panel on white, the gift note, and a footer ending on a big "OSA". The reply form sits on the page, where Morais links to a separate page. It should look like someone without much web experience made it, but someone with impeccable taste. Cream and white sections alternate down one long page. Everything is centred. Headings are a plain grotesque at regular weight, never bold. Everything you read is a bookish serif. Photos are black and white. There are no tricks: no section numbers, no entrance animations, no sticky header changing colour, no ticking countdown. The only small capitals are Morais's own: "Spara datumet" and "Önskelista".
+The page matches Squarespace's Morais demo section for section: "Spara datumet", the headline, a black-and-white photo, the date, a paragraph, Vigsel / Fest side by side, the reply button, a cream travel panel on white, the gift note, and a footer ending on a big "OSA". Like Morais's /rsvp, the reply form has its own page at `/osa`: the big heading, the deadline line, then the form. It should look like someone without much web experience made it, but someone with impeccable taste. Cream and white sections alternate down one long page. Everything is centred. Headings are a plain grotesque at regular weight, never bold. Everything you read is a bookish serif. Photos are black and white. There are no tricks: no section numbers, no entrance animations, no sticky header changing colour, no ticking countdown. The only small capitals are Morais's own: "Spara datumet" and "Önskelista".
 
 The page is warm, unhurried and intimate. Each section is one heading, a few lines of text and maybe a photo or a short list, with generous space between. Its personality comes from restraint and good type, not decoration.
 
@@ -172,9 +172,9 @@ Plain, familiar and well spaced, like a good Squarespace site set up by someone 
 - **Links:** serif text with a 1px underline offset by 0.2em.
 
 ### Inputs / Fields
-- **Style:** a full 1px box in `--line`, background `--field` (cream on white sections, white on cream), padding 12px × 16px, serif body text, square corners.
-- **Label:** grotesque 0.9375rem above the field, in sentence case. "(frivilligt)" follows it in Ink Soft.
-- **Focus:** the border turns ink and there is no glow. The global focus ring is a 1px ink outline offset by 4px.
+- **Style:** as on Morais's RSVP page: a 1px black box, background #fafafa, at least 53px tall, padding 12px × 16px, serif text at 1.0625rem, square corners.
+- **Label:** serif 1.0625rem above the field, in sentence case. "(frivilligt)" follows it in Ink Soft.
+- **Focus:** a 1px ink outline offset by 2px, with no glow.
 - **Error:** Error-coloured text under the field with `role="alert"`.
 - **Choice (attending):** native radio buttons stacked vertically with 44px tap rows, not styled chips.
 

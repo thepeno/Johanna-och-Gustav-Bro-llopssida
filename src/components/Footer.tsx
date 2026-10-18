@@ -1,8 +1,9 @@
 import React from 'react'
 import type { SiteSetting } from '@/payload-types'
+import type { NavLink } from '@/lib/links'
 
 /** Morais's closing: a line of thanks, a dash, a big underlined reply link, the hashtag. */
-export function Footer({ settings, rsvp }: { settings: SiteSetting; rsvp?: { anchor: string; label: string } }) {
+export function Footer({ settings, rsvp }: { settings: SiteSetting; rsvp?: NavLink }) {
   return (
     <footer className="theme-ivory bg-cream text-ink">
       <div className="mx-auto flex max-w-6xl flex-col items-center px-5 py-24 text-center md:px-10 md:py-32">
@@ -11,7 +12,7 @@ export function Footer({ settings, rsvp }: { settings: SiteSetting; rsvp?: { anc
           —
         </span>
         {rsvp && (
-          <a href={`#${rsvp.anchor}`} className="title mt-6 border-b border-ink">
+          <a href={rsvp.href} className="title mt-6 border-b border-ink">
             {rsvp.label}
           </a>
         )}

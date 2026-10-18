@@ -1,6 +1,6 @@
 'use server'
 
-import { cookies } from 'next/headers'
+import { cookies, headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { getSiteSettings } from '@/lib/data'
 import { t } from '@/lib/i18n'
@@ -27,5 +27,18 @@ export async function unlockSite(_prev: GuestAccessState, formData: FormData): P
     path: '/',
     maxAge: GUEST_COOKIE_MAX_AGE,
   })
-  redirect('/')
+  redirect(await returnPath())
+}
+
+// The proxy shows the password screen at whatever URL the guest opened, so the
+// form posts from that page. Send them back there (same-site paths only).
+async function returnPath() {
+  const referer = (await headers()).get('referer')
+  if (!referer) return '/'
+  try {
+    const { pathname, search } = new URL(referer)
+    return pathname.startsWith('/') && !pathname.startsWith('//') && !pathname.startsWith('/guest-login') ? pathname + search : '/'
+  } catch {
+    return '/'
+  }
 }

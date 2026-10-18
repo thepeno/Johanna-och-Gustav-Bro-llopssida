@@ -3,12 +3,12 @@ import type { HeroBlock, SiteSetting } from '@/payload-types'
 import { Img } from '@/components/Img'
 import { DaysLeft } from '@/components/Countdown'
 import { Button } from '@/components/ui/Button'
-import { asMedia, formatDate } from '@/lib/utils'
+import { asMedia, formatDate, sectionHref } from '@/lib/utils'
 import { t } from '@/lib/i18n'
 
 // Morais's opening, in order: "Save the date", the headline, the photograph,
 // the date set just as large, then a paragraph in the 43px sans.
-export function HeroBlockComponent({ block, settings }: { block: HeroBlock; settings: SiteSetting }) {
+export function HeroBlockComponent({ block, settings, rsvpAnchor }: { block: HeroBlock; settings: SiteSetting; rsvpAnchor?: string }) {
   const media = asMedia(block.image)
   const locale = settings.locale || 'sv-SE'
   const ui = t(locale)
@@ -39,7 +39,7 @@ export function HeroBlockComponent({ block, settings }: { block: HeroBlock; sett
         )}
 
         {block.ctaLabel && block.ctaAnchor && (
-          <Button href={`#${block.ctaAnchor}`} className="mt-12">
+          <Button href={sectionHref(block.ctaAnchor, rsvpAnchor)} className="mt-12">
             {block.ctaLabel}
           </Button>
         )}

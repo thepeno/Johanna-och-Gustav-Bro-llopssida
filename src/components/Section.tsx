@@ -20,10 +20,10 @@ export function Section({ anchor, theme, className, children }: Props) {
 }
 
 /** Centred 43px heading with an optional intro, as in Morais's Travel section. */
-export function SectionHeading({ heading, intro }: { heading: string; intro?: string | null }) {
+export function SectionHeading({ heading, intro, as: Tag = 'h2' }: { heading: string; intro?: string | null; as?: 'h1' | 'h2' }) {
   return (
     <div className="mx-auto mb-12 max-w-2xl text-center md:mb-14">
-      <h2 className="statement">{heading}</h2>
+      <Tag className="statement">{heading}</Tag>
       {intro && <p className="mx-auto mt-6 max-w-xl whitespace-pre-line">{intro}</p>}
     </div>
   )
