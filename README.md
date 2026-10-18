@@ -13,7 +13,9 @@ pnpm seed                   # first admin user + demo content with placeholder i
 pnpm dev                    # http://localhost:3000  (admin at /admin)
 ```
 
-Requires Node 20+ and a MongoDB reachable at `DATABASE_URL` (locally: `brew services start mongodb-community`).
+Requires Node 20+ and a MongoDB reachable at `DATABASE_URL` (a free MongoDB Atlas cluster works; locally: `brew services start mongodb-community`).
+
+The project is pinned to pnpm 9.9.0 through the `packageManager` field. With Node installed, run `corepack enable` once and the right pnpm version is used automatically. Newer pnpm (10+) applies a minimum-release-age policy that can reject freshly published transitive dependencies in the lockfile, which is why the version is pinned.
 
 The seed creates the first admin from `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD` only when no user exists. Change that password after the first login. Re-running `pnpm seed` leaves an existing home page alone; `pnpm seed --reset` replaces the page and media (RSVPs are never touched).
 
