@@ -44,7 +44,7 @@ export function Nav({ items, settings }: { items: Item[]; settings: SiteSetting 
 
         <button
           type="button"
-          className="label flex items-center gap-2 md:hidden"
+          className="label flex items-center gap-2 text-current md:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}

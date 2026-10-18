@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, DM_Mono, EB_Garamond } from 'next/font/google'
+import { Cormorant_Garamond, EB_Garamond } from 'next/font/google'
 import React from 'react'
 import { getSiteSettings } from '@/lib/data'
 import './styles.css'
@@ -18,7 +18,6 @@ const serif = Cormorant_Garamond({
   variable: '--font-serif',
   display: 'swap',
 })
-const mono = DM_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-mono', display: 'swap' })
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings()
@@ -33,7 +32,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const settings = await getSiteSettings()
   const lang = (settings?.locale || 'sv-SE').split('-')[0]
   return (
-    <html lang={lang} className={`${display.variable} ${serif.variable} ${mono.variable}`}>
+    <html lang={lang} className={`${display.variable} ${serif.variable}`}>
       <body>{children}</body>
     </html>
   )

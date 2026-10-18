@@ -40,10 +40,12 @@ typography:
     fontWeight: 400
     lineHeight: 1.6
   label:
-    fontFamily: "DM Mono, ui-monospace, monospace"
-    fontSize: "0.6875rem"
+    fontFamily: "Cormorant Garamond, Georgia, serif"
+    fontSize: "1.125rem"
     fontWeight: 400
-    letterSpacing: "0.22em"
+    lineHeight: 1.4
+    letterSpacing: "0.01em"
+    fontFeature: "lnum"
 rounded:
   none: "0px"
 spacing:
@@ -101,7 +103,7 @@ components:
 
 **Creative North Star: "Squarespace's Morais, made personal"**
 
-The site follows Squarespace's Morais, an editorial photography template: big italic serif headlines, tiny mono labels with wide letter-spacing, numbered lists, and full-width sections in alternating colours. This version makes it warm, unhurried and intimate. Paper-coloured pages, dark-roast and sage sections, slow fade-ins and plenty of whitespace make it read like a personal letter, not a product. Nothing hurries the guest along. There is one long page, one action (reply), and room to read.
+The site follows Squarespace's Morais, an editorial photography template: big italic serif headlines, numbered lists, and full-width sections in alternating colours. This version makes it warm, unhurried and intimate. Morais's tracked uppercase mono labels made it look like a business, so every small piece of text is now an italic serif note in sentence case, like something written in the margin of a letter. Paper-coloured pages, dark-roast and sage sections, slow fade-ins and plenty of whitespace make it read like a personal letter, not a product. Nothing hurries the guest along. There is one long page, one action (reply), and room to read.
 
 It's a long-scroll page with a calm pace. Each section is one idea, set inside a 1280px column with generous vertical padding, and the theme alternates from section to section. Photos are square-cornered and usually full-bleed, in fixed aspect ratios. All depth comes from colour changes between sections, never from shadows.
 
@@ -109,7 +111,7 @@ The look must never drift toward three things: template wedding sites (script fo
 
 **Key Characteristics:**
 - Three section themes (Paper, Dark Roast, Sage) that editors choose block by block
-- An italic serif for every headline, a soft serif for body text, and tiny uppercase mono labels
+- An italic serif for every headline, and a soft serif for body text and the small italic notes around it
 - Square corners everywhere, hairline rules, no shadows
 - Numbered entries (01, 02, 03) as the main way to organise content
 - Printed, not pressed: controls are outlines and underlines that fill in with ink on hover
@@ -142,9 +144,9 @@ Every section theme sets five CSS variables: `--bg`, `--fg`, `--fg-soft`, `--lin
 
 **Display Font:** EB Garamond Italic, weight 400 (fallback Georgia, serif)
 **Body Font:** Cormorant Garamond, weights 400/500/600, roman and italic (fallback Georgia, serif)
-**Label Font:** DM Mono, weights 400/500 (fallback ui-monospace)
+**Label Font:** Cormorant Garamond Italic, the same family as the body text
 
-**Character:** Two Garamonds set the tone. One is a formal italic for names and headlines, the other a softer serif that reads like handwriting set in type. DM Mono adds small printer's notes around them: dates, numbers, labels.
+**Character:** Two Garamonds set the tone. One is a formal italic for names and headlines, the other a softer serif that reads like handwriting set in type. The small notes (dates, numbers, labels) are that softer serif in italic: personal, not printed by a machine.
 
 ### Hierarchy
 - **Hero** (400 italic, 15vw on phones and 9.5vw on desktop, line-height 0.95): only the couple's names in the hero.
@@ -152,12 +154,14 @@ Every section theme sets five CSS variables: `--bg`, `--fg`, `--fg-soft`, `--lin
 - **Headline** (400 italic, 1.875–2.25rem, line-height 1.02): h3s for milestones, schedule times, detail cards and countdown digits.
 - **Lead** (Cormorant italic, 1.25–1.5rem): taglines, locations, the footer note, success and closed messages.
 - **Body** (Cormorant 400, 1.0625rem, line-height 1.6; intros at 1.125–1.25rem): running text, kept to about 36–42rem wide (`max-w-xl` / `max-w-2xl`).
-- **Label** (DM Mono 400, 0.6875rem, letter-spacing 0.22em, uppercase, `--fg-soft`): eyebrows, nav links, field labels, numbering, buttons, dates.
+- **Label** (Cormorant Garamond italic 400, 1.125rem, line-height 1.4, letter-spacing 0.01em, sentence case, lining figures, `--fg-soft`): eyebrows, nav links, field labels, numbering, buttons, dates. At 18px it also stays readable for older relatives.
 
 ### Named Rules
 **The Å Ä Ö Rule.** Display type keeps a line-height of at least 1.02, so the rings and dots on Å, Ä and Ö don't touch the line above. The hero names use 0.95, which works only because names rarely carry them. Don't copy 0.95 elsewhere.
 
-**The Two Voices Rule.** Any piece of text is either serif or mono label. Never set body text in mono, and never set labels in serif.
+**The Margin Note Rule.** Small text is an italic serif note in sentence case. Never use uppercase with wide letter-spacing, and never use a mono or sans font. Those make the site look like a business.
+
+**The Lining Figures Rule.** Cormorant's default old-style figures make "01" read as "o1" and "1" as "ı". Labels and form fields use lining figures (`lining-nums`).
 
 ## Layout
 
@@ -184,7 +188,7 @@ Printed, not pressed. Controls look like ink on paper: outlines, underlines and 
 
 ### Buttons
 - **Shape:** square (0px), 1px `currentColor` outline.
-- **Default:** transparent background, label type (DM Mono uppercase, letter-spacing 0.22em), padding 16px × 28px, takes the section's `--fg`.
+- **Default:** transparent background, label type (Cormorant italic, 1.125rem, sentence case), padding 16px × 28px, takes the section's `--fg`.
 - **Hover:** fills with `--fg` and the text turns `--bg`, over 300ms. On the hero the button's `--fg`/`--bg` are forced to Paper/Dark Roast.
 - **Disabled:** 50% opacity, not clickable.
 - **Text link:** label type with a 1px `currentColor` underline (`border-b`, padding-bottom 4px) and an optional `↗`.
@@ -194,8 +198,8 @@ Printed, not pressed. Controls look like ink on paper: outlines, underlines and 
 - **Selected:** outline and fill in `--fg`, text in `--bg`.
 
 ### Inputs / Fields
-- **Style:** no box. Only a 1px `--line` bottom border, transparent background, no side padding, 12px top and bottom, Cormorant at 1.25rem (1.5rem on the password screen), text in `--fg`.
-- **Label:** label type above the field. "Optional" hints sit at the right in normal case at 60% opacity.
+- **Style:** no box. Only a 1px `--line` bottom border, transparent background, no side padding, 12px top and bottom, Cormorant at 1.25rem (1.5rem on the password screen) with lining figures, text in `--fg`.
+- **Label:** label type above the field. "Optional" hints sit at the right at 70% opacity.
 - **Focus:** the bottom border turns `--fg`. There is no glow or ring.
 - **Error:** label-type text in red-400 (red-300 on Dark Roast) with `role="alert"` under the field. Red-400 on Paper has low contrast. That's a known gap, not part of the style.
 
@@ -214,7 +218,7 @@ Four units in a row. The digits are display type at 1.875–3rem with tabular fi
 
 ### Do:
 - **Do** take every colour from the section's theme variables (`--fg`, `--bg`, `--fg-soft`, `--line`) so a block works on Paper, Dark Roast and Sage alike.
-- **Do** set headlines in EB Garamond Italic 400 with a line-height of at least 1.02, and every small piece of metadata in DM Mono uppercase at 0.6875rem and letter-spacing 0.22em.
+- **Do** set headlines in EB Garamond Italic 400 with a line-height of at least 1.02, and every small piece of text as a Cormorant italic note at 1.125rem in sentence case.
 - **Do** organise content with label-type numbers (01, 02, 03) and hairline rules.
 - **Do** keep corners square and lines at 1px.
 - **Do** keep motion to the `fade-up` entrance and 300ms colour fades.
@@ -227,3 +231,4 @@ Four units in a row. The digits are display type at 1.875–3rem with tabular fi
 - **Don't** hard-code Paper or Ink in components. An inverted state that hard-codes Paper disappears on a Paper section.
 - **Don't** use #000, #fff or any saturated colour outside the palette. The red error text is the only exception.
 - **Don't** set display type tighter than a line-height of 1.02 outside the hero names.
+- **Don't** bring back tracked uppercase or mono labels. They made the site look like a business.

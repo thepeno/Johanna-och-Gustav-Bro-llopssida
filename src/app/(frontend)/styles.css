@@ -13,9 +13,8 @@
 
   --font-display: var(--font-display), 'EB Garamond', Georgia, serif;
   --font-serif: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
-  --font-mono: var(--font-mono), 'DM Mono', ui-monospace, monospace;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --tracking-label: 0.22em;
   --animate-fade-up: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 
   @keyframes fade-up {
@@ -72,11 +71,15 @@
   }
 }
 
+/* The small voice: eyebrows, nav, field labels, buttons, dates. Italic serif in
+   sentence case, like a note in the margin of a letter, never tracked caps. */
 @utility label {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  font-variant-numeric: lining-nums; /* Cormorant's old-style 0 reads as an o in "01" */
   color: var(--fg-soft, var(--color-ink-soft));
 }
 

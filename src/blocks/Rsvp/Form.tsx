@@ -15,7 +15,7 @@ type Props = {
 }
 
 const field =
-  'w-full border-0 border-b border-(--line) bg-transparent px-0 py-3 font-serif text-xl text-(--fg) placeholder:text-(--fg-soft)/60 focus:border-(--fg) focus:outline-none'
+  'w-full border-0 border-b border-(--line) bg-transparent px-0 py-3 font-serif text-xl lining-nums text-(--fg) placeholder:text-(--fg-soft)/60 focus:border-(--fg) focus:outline-none'
 
 function Field({
   label,
@@ -34,7 +34,7 @@ function Field({
     <div className="flex flex-col gap-1">
       <label htmlFor={name} className="label flex items-baseline justify-between">
         {label}
-        {optional && <span className="normal-case tracking-normal opacity-60">{optional}</span>}
+        {optional && <span className="opacity-70">{optional}</span>}
       </label>
       {children}
       {error && (
