@@ -10,9 +10,9 @@ export function GuestLoginForm({ ui }: { ui: Ui }) {
   const [show, setShow] = useState(false)
 
   return (
-    <form action={action} className="flex flex-col gap-8">
+    <form action={action} className="mt-6 flex w-full flex-col gap-5 text-left">
       <div className="flex flex-col gap-2">
-        <label htmlFor="password" className="label">
+        <label htmlFor="password" className="font-sans text-[0.9375rem]">
           {ui.gatePassword}
         </label>
         <input
@@ -27,24 +27,24 @@ export function GuestLoginForm({ ui }: { ui: Ui }) {
           autoFocus
           aria-invalid={Boolean(state.error)}
           aria-describedby={state.error ? 'password-error' : undefined}
-          className="w-full border-0 border-b border-(--line) bg-transparent px-0 py-3 font-serif text-2xl text-(--fg) focus:border-(--fg) focus:outline-none"
+          className="w-full rounded-none border border-(--line) bg-white px-4 py-3 font-serif text-lg text-ink focus:border-ink focus:outline-none"
         />
-        <label className="flex w-fit cursor-pointer items-center gap-3 py-2 text-lg text-(--fg-soft)">
+        <label className="flex min-h-11 w-fit cursor-pointer items-center gap-3 text-(--fg-soft)">
           <input
             type="checkbox"
             checked={show}
             onChange={(e) => setShow(e.target.checked)}
-            className="size-5 accent-(--color-sand)"
+            className="size-[18px] accent-ink"
           />
           {ui.gateShow}
         </label>
         {state.error && (
-          <p id="password-error" className="text-lg text-red-300" role="alert">
+          <p id="password-error" className="text-error" role="alert">
             {state.error}
           </p>
         )}
       </div>
-      <Button as="button" type="submit" disabled={pending} className="w-full sm:w-fit">
+      <Button as="button" type="submit" disabled={pending} className="w-full">
         {pending ? ui.gateChecking : ui.gateSubmit}
       </Button>
     </form>

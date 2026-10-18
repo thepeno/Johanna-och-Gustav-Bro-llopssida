@@ -1,24 +1,24 @@
 import React from 'react'
 import type { SiteSetting } from '@/payload-types'
-import { formatDate } from '@/lib/utils'
 
-export function Footer({ settings }: { settings: SiteSetting }) {
+/** Closing note, a dash, a big link to the reply form, then the small print. */
+export function Footer({ settings, rsvp }: { settings: SiteSetting; rsvp?: { anchor: string; label: string } }) {
   return (
-    <footer className="theme-espresso bg-espresso text-ivory">
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-10 px-5 py-20 text-center md:px-10">
-        <p className="display text-5xl md:text-7xl">
-          {settings.partnerOne} <span className="font-serif italic normal-case tracking-normal">&amp;</span>{' '}
-          {settings.partnerTwo}
-        </p>
-        <p className="label">
-          {formatDate(settings.weddingDate, settings.locale || 'sv-SE')}
-          {settings.venueShort ? ` · ${settings.venueShort}` : ''}
-        </p>
-        {settings.footerNote && <p className="max-w-md font-serif text-2xl italic">{settings.footerNote}</p>}
-        <div className="label flex flex-wrap items-center justify-center gap-x-8 gap-y-3 opacity-70">
+    <footer className="theme-ivory bg-cream text-ink">
+      <div className="mx-auto flex max-w-6xl flex-col items-center px-5 py-24 text-center md:px-10 md:py-32">
+        {settings.footerNote && <p className="max-w-md">{settings.footerNote}</p>}
+        <span aria-hidden className="mt-4 block">
+          —
+        </span>
+        {rsvp && (
+          <a href={`#${rsvp.anchor}`} className="display mt-8 border-b border-ink pb-1 text-6xl md:text-7xl">
+            {rsvp.label}
+          </a>
+        )}
+        <div className="mt-16 flex flex-col items-center gap-2 font-sans text-[0.9375rem]">
           {settings.hashtag && <span>{settings.hashtag}</span>}
           {settings.contactEmail && (
-            <a href={`mailto:${settings.contactEmail}`} className="underline underline-offset-4">
+            <a href={`mailto:${settings.contactEmail}`} className="label underline">
               {settings.contactEmail}
             </a>
           )}

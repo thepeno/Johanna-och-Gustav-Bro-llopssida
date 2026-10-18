@@ -8,11 +8,11 @@ export const Hero: Block = {
   fields: [
     ...sectionFields,
     { name: 'image', type: 'upload', relationTo: 'media', required: true },
-    { name: 'eyebrow', type: 'text', admin: { description: 'Small text above the names, e.g. "Vi gifter oss"' } },
+    { name: 'eyebrow', type: 'text', admin: { description: 'The big opening line, e.g. "Vi gifter oss". Empty shows the names.' } },
     {
       name: 'tagline',
       type: 'text',
-      admin: { description: 'Italic line under the names. Leave empty to show the date and venue from Site settings.' },
+      admin: { description: 'Line under the date. Leave empty to show the weekday and venue from Site settings.' },
     },
     {
       type: 'row',

@@ -1,68 +1,66 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import type { SiteSetting } from '@/payload-types'
-import { cn } from '@/lib/utils'
+import { t } from '@/lib/i18n'
 
 type Item = { anchor: string; label: string }
 
-export function Nav({ items, settings }: { items: Item[]; settings: SiteSetting }) {
-  const [scrolled, setScrolled] = useState(false)
+/** Names on the left, sections and the reply button on the right; a plain overlay menu on phones. */
+export function Nav({ items, settings, rsvpAnchor }: { items: Item[]; settings: SiteSetting; rsvpAnchor?: string }) {
   const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  const monogram = `${settings.partnerOne[0] ?? ''} & ${settings.partnerTwo[0] ?? ''}`
-  const solid = scrolled || open
+  const ui = t(settings.locale)
+  const links = items.filter((item) => item.anchor !== rsvpAnchor)
+  const rsvp = items.find((item) => item.anchor === rsvpAnchor)
 
   return (
-    <header
-      className={cn(
-        'fixed inset-x-0 top-0 z-50 transition-colors duration-500',
-        solid ? 'theme-ivory bg-ivory/95 text-ink shadow-[0_1px_0_var(--line)] backdrop-blur' : 'text-ivory',
-      )}
-    >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-10" aria-label="Huvudmeny">
-        <a href="#top" className="display text-xl tracking-[0.15em]" onClick={() => setOpen(false)}>
-          {monogram}
+    <header className="theme-ivory relative z-50 bg-cream text-ink">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-5 md:px-10 md:py-7" aria-label={ui.menu}>
+        <a href="#top" className="font-sans text-lg tracking-[-0.01em]" onClick={() => setOpen(false)}>
+          {settings.partnerOne} &amp; {settings.partnerTwo}
         </a>
 
-        <ul className="hidden items-center gap-8 md:flex">
-          {items.map((item) => (
-            <li key={item.anchor}>
-              <a href={`#${item.anchor}`} className="label text-current/80 transition hover:text-current">
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="hidden items-center gap-8 md:flex">
+          <ul className="flex items-center gap-7 font-sans text-[0.9375rem]">
+            {links.map((item) => (
+              <li key={item.anchor}>
+                <a href={`#${item.anchor}`} className="hover:underline">
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          {rsvp && (
+            <a
+              href={`#${rsvp.anchor}`}
+              className="border border-ink px-5 py-2 font-sans text-[0.9375rem] transition-colors hover:bg-ink hover:text-cream"
+            >
+              {rsvp.label}
+            </a>
+          )}
+        </div>
 
         <button
           type="button"
-          className="label flex items-center gap-2 text-current md:hidden"
+          className="-mr-2 flex size-11 flex-col items-center justify-center gap-[7px] md:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
+          aria-label={open ? ui.close : ui.menu}
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? 'Stäng' : 'Meny'}
-          <span aria-hidden className="block h-px w-6 bg-current" />
+          <span aria-hidden className={`block h-px w-7 bg-ink transition-transform ${open ? 'translate-y-1 rotate-45' : ''}`} />
+          <span aria-hidden className={`block h-px w-7 bg-ink transition-transform ${open ? '-translate-y-1 -rotate-45' : ''}`} />
         </button>
       </nav>
 
       {open && (
-        <ul id="mobile-menu" className="flex flex-col gap-1 border-t border-(--line) px-5 pt-4 pb-8 md:hidden">
+        <ul
+          id="mobile-menu"
+          className="absolute inset-x-0 top-full flex h-[calc(100svh-5.25rem)] flex-col items-center justify-center gap-6 bg-cream pb-20 md:hidden"
+        >
           {items.map((item) => (
             <li key={item.anchor}>
-              <a
-                href={`#${item.anchor}`}
-                className="display block py-3 text-3xl"
-                onClick={() => setOpen(false)}
-              >
+              <a href={`#${item.anchor}`} className="display text-4xl" onClick={() => setOpen(false)}>
                 {item.label}
               </a>
             </li>

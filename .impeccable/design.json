@@ -1,193 +1,132 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-18T17:35:04+00:00",
+  "generatedAt": "2026-10-18T17:51:40+00:00",
   "title": "Design System: Johanna & Gustav",
   "extensions": {
     "colorMeta": {
-      "paper": {
+      "cream": {
         "role": "neutral",
-        "displayName": "Paper",
-        "canonical": "oklch(94.4% 0.009 84.6)",
+        "displayName": "Cream",
+        "canonical": "oklch(96.0% 0.009 78.3)",
         "tonalRamp": [
-          "#0c0b08",
+          "#0d0b08",
           "#272521",
-          "#44423d",
-          "#63615c",
-          "#85827d",
-          "#a7a59f",
-          "#cbc9c3",
+          "#45413d",
+          "#64615c",
+          "#85827c",
+          "#a8a49f",
+          "#ccc9c3",
           "#f1eee9"
         ]
       },
-      "paper-deep": {
+      "cream-deep": {
         "role": "neutral",
-        "displayName": "Paper Deep",
-        "canonical": "oklch(90.5% 0.015 84.6)",
+        "displayName": "Cream Deep",
+        "canonical": "oklch(92.7% 0.015 80.7)",
         "tonalRamp": [
-          "#0d0b06",
-          "#28251e",
-          "#464239",
-          "#656158",
-          "#868279",
-          "#a9a49b",
-          "#cdc9c0",
-          "#f2eee6"
+          "#0e0b06",
+          "#28241e",
+          "#464139",
+          "#666058",
+          "#878279",
+          "#aaa49b",
+          "#cec8bf",
+          "#f3eee6"
         ]
       },
-      "sand": {
+      "white": {
         "role": "neutral",
-        "displayName": "Sand",
-        "canonical": "oklch(82.9% 0.024 82.1)",
+        "displayName": "White",
+        "canonical": "oklch(100.0% 0.000 89.9)",
         "tonalRamp": [
-          "#0f0a03",
-          "#2a2419",
-          "#484134",
-          "#686052",
-          "#8a8172",
-          "#ada494",
-          "#d0c8b9",
-          "#f5eee0"
-        ]
-      },
-      "dark-roast": {
-        "role": "primary",
-        "displayName": "Dark Roast",
-        "canonical": "oklch(22.2% 0.037 25.9)",
-        "tonalRamp": [
-          "#160605",
-          "#341f1c",
-          "#543b38",
-          "#755956",
-          "#977a77",
-          "#bb9d99",
-          "#dec1be",
-          "#ffe8e4"
-        ]
-      },
-      "dark-roast-soft": {
-        "role": "neutral",
-        "displayName": "Dark Roast Soft",
-        "canonical": "oklch(27.6% 0.045 28.9)",
-        "tonalRamp": [
-          "#180504",
-          "#361d19",
-          "#573934",
-          "#795853",
-          "#9b7973",
-          "#c09b95",
-          "#e3c0ba",
-          "#ffe6e1"
-        ]
-      },
-      "sage": {
-        "role": "primary",
-        "displayName": "Sage",
-        "canonical": "oklch(59.1% 0.059 110.4)",
-        "tonalRamp": [
-          "#0d0c00",
-          "#272703",
-          "#44451d",
-          "#63643c",
-          "#84865d",
-          "#a6a97e",
-          "#cacda5",
-          "#f0f2ce"
-        ]
-      },
-      "sage-deep": {
-        "role": "neutral",
-        "displayName": "Sage Deep",
-        "canonical": "oklch(50.5% 0.057 110.8)",
-        "tonalRamp": [
-          "#0c0c00",
-          "#262704",
-          "#43451f",
-          "#62643e",
-          "#84865e",
-          "#a6a97f",
-          "#cacda6",
-          "#eff2cf"
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
         ]
       },
       "ink": {
         "role": "neutral",
         "displayName": "Ink",
-        "canonical": "oklch(22.0% 0.007 67.4)",
+        "canonical": "oklch(17.8% 0.000 89.9)",
         "tonalRamp": [
-          "#0d0b09",
-          "#272422",
-          "#45413e",
-          "#64605d",
-          "#85827e",
-          "#a8a4a0",
-          "#ccc8c4",
-          "#f1eeea"
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
         ]
       },
       "ink-soft": {
         "role": "neutral",
         "displayName": "Ink Soft",
-        "canonical": "oklch(46.0% 0.015 75.2)",
+        "canonical": "oklch(44.1% 0.013 76.5)",
         "tonalRamp": [
-          "#0e0a06",
-          "#29241e",
-          "#474139",
-          "#666058",
-          "#888179",
-          "#aba49b",
-          "#cec8c0",
-          "#f3eee6"
+          "#0e0b07",
+          "#28241f",
+          "#46413a",
+          "#666059",
+          "#87817a",
+          "#aaa49c",
+          "#cec8c1",
+          "#f3eee7"
+        ]
+      },
+      "error": {
+        "role": "tertiary",
+        "displayName": "Error",
+        "canonical": "oklch(46.5% 0.147 24.9)",
+        "tonalRamp": [
+          "#2d0000",
+          "#550000",
+          "#7e0914",
+          "#a43534",
+          "#cb5954",
+          "#f37c75",
+          "#ffa59d",
+          "#ffd0c7"
         ]
       }
     },
     "typographyMeta": {
       "hero": {
         "displayName": "Hero",
-        "purpose": "Only the couple's names in the hero."
+        "purpose": "The opening line and the big date."
       },
       "display": {
         "displayName": "Display",
-        "purpose": "Section headlines, footer names, password screen names."
+        "purpose": "Centred section headings."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Milestones, schedule times, detail cards, countdown digits."
-      },
-      "lead": {
-        "displayName": "Lead",
-        "purpose": "Taglines, locations, footer note, success and closed messages."
+        "purpose": "Schedule items, detail cards, milestones."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Running text, kept to about 36–42rem wide."
+        "purpose": "Everything people read, centred."
       },
-      "label": {
-        "displayName": "Label",
-        "purpose": "Italic margin notes: eyebrows, nav, field labels, numbering, buttons, dates."
+      "small": {
+        "displayName": "Small",
+        "purpose": "Captions, milestone dates, contact email."
+      },
+      "ui": {
+        "displayName": "UI",
+        "purpose": "Nav links, button text, form labels, in sentence case."
       }
     },
-    "shadows": [
-      {
-        "name": "nav-hairline",
-        "value": "0 1px 0 var(--line)",
-        "purpose": "The only shadow: a 1px hairline under the scrolled nav bar, acting as a border, not a lift."
-      }
-    ],
+    "shadows": [],
     "motion": [
       {
-        "name": "fade-up",
-        "value": "0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; from opacity 0, translateY(18px)",
-        "purpose": "Entrance for hero and password screen content."
-      },
-      {
-        "name": "state-fade",
-        "value": "300ms",
-        "purpose": "Colour changes on hover and the FAQ + rotation."
-      },
-      {
-        "name": "nav-fade",
-        "value": "500ms",
-        "purpose": "Nav changing from transparent to solid on scroll."
+        "name": "hover-fade",
+        "value": "200ms",
+        "purpose": "Colour change on button and nav hover; the FAQ plus rotation."
       }
     ],
     "breakpoints": [
@@ -210,125 +149,111 @@
       "name": "Outline Button",
       "kind": "button",
       "refersTo": "button-outline",
-      "description": "The only button style. Outline in the section colour that fills with ink on hover.",
+      "description": "The one button: a black outline around sentence-case sans text, filled on hover.",
       "html": "<button class=\"ds-btn\">Skicka svar</button>",
-      "css": ".ds-btn { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.4; letter-spacing: 0.01em; font-variant-numeric: lining-nums; display: inline-flex; align-items: center; gap: 12px; padding: 16px 28px; background: transparent; color: #1d1a17; border: 1px solid currentColor; border-radius: 0; cursor: pointer; transition: background-color .3s, color .3s; } .ds-btn:hover { background: #1d1a17; color: #efece6; } .ds-btn:focus-visible { outline: 1px solid #1d1a17; outline-offset: 4px; } .ds-btn:disabled { opacity: .5; pointer-events: none; }"
+      "css": ".ds-btn { font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-size: 16px; letter-spacing: .01em; min-height: 48px; min-width: 224px; padding: 12px 32px; background: transparent; color: #111; border: 1px solid #111; border-radius: 0; cursor: pointer; transition: background-color .2s, color .2s; } .ds-btn:hover { background: #111; color: #f5f1eb; } .ds-btn:focus-visible { outline: 1px solid #111; outline-offset: 4px; } .ds-btn:disabled { opacity: .5; pointer-events: none; }"
     },
     {
-      "name": "Outline Button on Dark Roast",
-      "kind": "button",
-      "refersTo": "button-outline-on-dark",
-      "description": "The same button on a Dark Roast section (hero, password screen).",
-      "html": "<div class=\"ds-dark\"><button class=\"ds-btn-dark\">Öppna sidan</button></div>",
-      "css": ".ds-dark { background: #2a1412; padding: 32px; } .ds-btn-dark { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.4; letter-spacing: 0.01em; font-variant-numeric: lining-nums; padding: 16px 28px; background: transparent; color: #efece6; border: 1px solid currentColor; border-radius: 0; cursor: pointer; transition: background-color .3s, color .3s; } .ds-btn-dark:hover { background: #efece6; color: #2a1412; } .ds-btn-dark:focus-visible { outline: 1px solid #efece6; outline-offset: 4px; }"
-    },
-    {
-      "name": "Underline Field",
+      "name": "Boxed Field",
       "kind": "input",
-      "refersTo": "input-underline",
-      "description": "Text input with no box: an italic label above a single hairline that darkens on focus.",
-      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Namn</span><input class=\"ds-input\" type=\"text\" placeholder=\"Johanna Andersson\"></label>",
-      "css": ".ds-field { display: flex; flex-direction: column; gap: 4px; max-width: 360px; } .ds-field-label { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.4; letter-spacing: 0.01em; font-variant-numeric: lining-nums; color: #5d574f; } .ds-input { border: 0; border-bottom: 1px solid rgba(29,26,23,.18); background: transparent; padding: 12px 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; color: #1d1a17; border-radius: 0; transition: border-color .3s; } .ds-input:focus, .ds-input:focus-visible { outline: none; border-bottom-color: #1d1a17; } .ds-input::placeholder { color: rgba(93,87,79,.6); }"
+      "refersTo": "input-box",
+      "description": "A plain boxed input with a sans label above, the way people expect a form to look.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Allergier eller specialkost <em>(frivilligt)</em></span><input class=\"ds-input\" type=\"text\"></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 8px; max-width: 420px; } .ds-field-label { font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-size: 15px; color: #111; } .ds-field-label em { font-style: normal; color: #57524b; } .ds-input { border: 1px solid rgba(17,17,17,.22); background: #fff; padding: 12px 16px; font-family: 'Libre Caslon Text', 'Times New Roman', serif; font-size: 17px; color: #111; border-radius: 0; transition: border-color .2s; } .ds-input:focus { outline: none; border-color: #111; } .ds-input:focus-visible { outline: 1px solid #111; outline-offset: 4px; }"
     },
     {
-      "name": "Choice Chips",
+      "name": "Attending Radios",
       "kind": "chip",
-      "refersTo": "choice-chip",
-      "description": "The RSVP yes/no choice: radio buttons that look like outlined labels.",
-      "html": "<div class=\"ds-chips\"><button class=\"ds-chip is-selected\">Ja, jag kommer</button><button class=\"ds-chip\">Tyvärr, jag kan inte</button></div>",
-      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 12px; } .ds-chip { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.4; letter-spacing: 0.01em; font-variant-numeric: lining-nums; padding: 12px 20px; background: transparent; color: #5d574f; border: 1px solid rgba(29,26,23,.18); border-radius: 0; cursor: pointer; transition: background-color .3s, color .3s, border-color .3s; } .ds-chip:hover { border-color: #1d1a17; color: #1d1a17; } .ds-chip.is-selected { background: #1d1a17; border-color: #1d1a17; color: #efece6; } .ds-chip:focus-visible { outline: 1px solid #1d1a17; outline-offset: 3px; }"
+      "refersTo": "input-box",
+      "description": "Native radio buttons tinted ink, stacked, with 44px rows.",
+      "html": "<fieldset class=\"ds-radios\"><legend>Kommer du?</legend><label><input type=\"radio\" name=\"a\" checked> Ja, jag kommer</label><label><input type=\"radio\" name=\"a\"> Tyvärr, jag kan inte</label></fieldset>",
+      "css": ".ds-radios { border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; } .ds-radios legend { font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-size: 15px; margin-bottom: 12px; } .ds-radios label { display: flex; align-items: center; gap: 12px; min-height: 44px; font-family: 'Libre Caslon Text', 'Times New Roman', serif; font-size: 17px; cursor: pointer; } .ds-radios input { width: 18px; height: 18px; accent-color: #111; }"
     },
     {
-      "name": "Navigation Bar (scrolled)",
+      "name": "Header",
       "kind": "nav",
-      "refersTo": "nav-bar-solid",
-      "description": "Fixed top bar with the initials monogram on the left and italic links on the right, shown solid once the page scrolls.",
-      "html": "<nav class=\"ds-nav\"><a class=\"ds-mono\" href=\"#\">J &amp; G</a><ul class=\"ds-links\"><li><a href=\"#\">Vår historia</a></li><li><a href=\"#\">Dagen</a></li><li><a href=\"#\">OSA</a></li></ul></nav>",
-      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; background: rgba(239,236,230,.95); color: #1d1a17; box-shadow: 0 1px 0 rgba(29,26,23,.18); backdrop-filter: blur(8px); } .ds-mono { font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: 20px; letter-spacing: .15em; color: inherit; text-decoration: none; } .ds-links { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; } .ds-links a { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.4; letter-spacing: 0.01em; font-variant-numeric: lining-nums; color: rgba(29,26,23,.8); text-decoration: none; transition: color .3s; } .ds-links a:hover, .ds-links a:focus-visible { color: #1d1a17; }"
+      "refersTo": "nav-bar",
+      "description": "Names on the left; section links and a small outlined reply box on the right.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-names\" href=\"#\">Johanna &amp; Gustav</a><div class=\"ds-right\"><a href=\"#\">Vår historia</a><a href=\"#\">Dagen</a><a href=\"#\">Frågor</a><a class=\"ds-rsvp\" href=\"#\">OSA</a></div></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; padding: 28px 40px; background: #f5f1eb; color: #111; font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; } .ds-names { font-size: 18px; letter-spacing: -.01em; color: inherit; text-decoration: none; } .ds-right { display: flex; align-items: center; gap: 28px; font-size: 15px; } .ds-right a { color: inherit; text-decoration: none; text-underline-offset: .2em; } .ds-right a:hover, .ds-right a:focus-visible { text-decoration: underline; } .ds-right .ds-rsvp { border: 1px solid #111; padding: 8px 20px; transition: background-color .2s, color .2s; } .ds-right .ds-rsvp:hover { background: #111; color: #f5f1eb; text-decoration: none; }"
     },
     {
       "name": "Section Heading",
       "kind": "custom",
       "refersTo": "display",
-      "description": "Italic eyebrow, italic display headline and an intro in the softer text colour. Opens every section.",
-      "html": "<div class=\"ds-head\"><p class=\"ds-eyebrow\">01 — Vår historia</p><h2 class=\"ds-h2\">Från en kaffe på Söder till ett ja på Fårö</h2><p class=\"ds-intro\">Det började med en kopp kaffe som blev tre.</p></div>",
-      "css": ".ds-head { max-width: 640px; } .ds-eyebrow { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.4; letter-spacing: 0.01em; font-variant-numeric: lining-nums; color: #5d574f; margin: 0 0 20px; } .ds-h2 { font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-weight: 400; font-size: 52px; line-height: 1.02; color: #1d1a17; margin: 0; } .ds-intro { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; line-height: 1.6; color: #5d574f; margin: 24px 0 0; max-width: 36rem; }"
+      "description": "A centred regular-weight heading with a short serif intro. No eyebrow.",
+      "html": "<div class=\"ds-head\"><h2>Så här ser dagen ut</h2><p>Allt sker på Ekebyhovs slott och i Ekerö kyrka, med några minuters promenad emellan.</p></div>",
+      "css": ".ds-head { text-align: center; max-width: 640px; margin: 0 auto; background: #f5f1eb; padding: 48px 24px; } .ds-head h2 { font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-weight: 400; font-size: 48px; line-height: 1.1; letter-spacing: -.02em; margin: 0; color: #111; text-wrap: balance; } .ds-head p { font-family: 'Libre Caslon Text', 'Times New Roman', serif; font-size: 17px; line-height: 1.75; color: #57524b; margin: 24px auto 0; max-width: 36rem; }"
     },
     {
-      "name": "Numbered Entry",
+      "name": "Schedule Column",
       "kind": "custom",
       "refersTo": "headline",
-      "description": "Signature pattern: an italic number, an italic title and soft body text sitting on a hairline.",
-      "html": "<ol class=\"ds-entries\"><li><span class=\"ds-num\">01. 2018</span><h3 class=\"ds-h3\">Första kaffet</h3><p class=\"ds-text\">En septemberkväll på Hornsgatan.</p></li><li><span class=\"ds-num\">02. 2024</span><h3 class=\"ds-h3\">Ja på Fårö</h3><p class=\"ds-text\">En klippa i blåsten.</p></li></ol>",
-      "css": ".ds-entries { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 32px; list-style: none; margin: 0; padding: 32px 0 0; border-top: 1px solid rgba(29,26,23,.18); } .ds-num { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.4; letter-spacing: 0.01em; font-variant-numeric: lining-nums; color: #5d574f; } .ds-h3 { font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-weight: 400; font-size: 32px; line-height: 1.02; margin: 16px 0 0; color: #1d1a17; } .ds-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 17px; line-height: 1.6; color: #5d574f; margin: 16px 0 0; }"
+      "description": "Like Morais's Ceremony / Reception: centred title, time and place.",
+      "html": "<ol class=\"ds-sched\"><li><h3>Vigsel</h3><p>14.00</p><p class=\"soft\">Ekerö kyrka</p></li><li><h3>Middag</h3><p>17.30</p><p class=\"soft\">Orangeriet</p></li></ol>",
+      "css": ".ds-sched { list-style: none; margin: 0; padding: 32px; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 40px; text-align: center; background: #fff; } .ds-sched h3 { font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-weight: 400; font-size: 30px; letter-spacing: -.02em; line-height: 1.1; margin: 0; color: #111; } .ds-sched p { font-family: 'Libre Caslon Text', 'Times New Roman', serif; font-size: 17px; line-height: 1.75; margin: 12px 0 0; color: #111; } .ds-sched p.soft { margin: 0; color: #57524b; }"
     },
     {
-      "name": "Countdown",
+      "name": "Footer RSVP",
       "kind": "custom",
-      "refersTo": "headline",
-      "description": "Signature hero detail: display-type digits over italic unit labels, on Dark Roast.",
-      "html": "<dl class=\"ds-count\"><div><dd>243</dd><dt>dagar</dt></div><div><dd>18</dd><dt>timmar</dt></div><div><dd>41</dd><dt>minuter</dt></div><div><dd>09</dd><dt>sekunder</dt></div></dl>",
-      "css": ".ds-count { display: flex; gap: 40px; margin: 0; padding: 32px; background: #2a1412; color: #efece6; } .ds-count div { display: flex; flex-direction: column; align-items: center; min-width: 64px; } .ds-count dd { margin: 0; font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: 44px; line-height: 1.02; font-variant-numeric: tabular-nums; } .ds-count dt { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.4; letter-spacing: 0.01em; font-variant-numeric: lining-nums; margin-top: 8px; opacity: .7; }"
+      "refersTo": "hero",
+      "description": "Closing note, an em dash, and a big underlined reply link, lifted from Morais.",
+      "html": "<footer class=\"ds-foot\"><p>Vi längtar tills vi får fira med er.</p><span>—</span><a href=\"#\">OSA</a><small>#johannaochgustav</small></footer>",
+      "css": ".ds-foot { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 64px 24px; background: #f5f1eb; color: #111; font-family: 'Libre Caslon Text', 'Times New Roman', serif; font-size: 17px; } .ds-foot p { margin: 0; } .ds-foot span { margin-top: 16px; } .ds-foot a { margin-top: 32px; font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-size: 64px; letter-spacing: -.02em; line-height: 1.1; color: #111; text-decoration: none; border-bottom: 1px solid #111; padding-bottom: 4px; } .ds-foot small { margin-top: 48px; font-family: 'Helvetica Neue', Helvetica, 'Inter Tight', Arial, sans-serif; font-size: 15px; }"
     }
   ],
   "narrative": {
-    "northStar": "Squarespace's Morais, made personal",
-    "overview": "**Creative North Star: \"Squarespace's Morais, made personal\"**\n\nThe site follows Squarespace's Morais, an editorial photography template: big italic serif headlines, numbered lists, and full-width sections in alternating colours. This version makes it warm, unhurried and intimate. Morais's tracked uppercase mono labels made it look like a business, so every small piece of text is now an italic serif note in sentence case, like something written in the margin of a letter. Paper-coloured pages, dark-roast and sage sections, slow fade-ins and plenty of whitespace make it read like a personal letter, not a product. Nothing hurries the guest along. There is one long page, one action (reply), and room to read.\n\nIt's a long-scroll page with a calm pace. Each section is one idea, set inside a 1280px column with generous vertical padding, and the theme alternates from section to section. Photos are square-cornered and usually full-bleed, in fixed aspect ratios. All depth comes from colour changes between sections, never from shadows.\n\nThe look must never drift toward three things: template wedding sites (script fonts, blush pink, floral clip art, gold foil), app or SaaS UI (rounded cards, drop shadows, bright accent buttons, icons everywhere) or rustic DIY (kraft paper, twine, chalkboard, mason jars).",
+    "northStar": "Squarespace's Morais, made by a friend with taste",
+    "overview": "**Creative North Star: \"Squarespace's Morais, made by a friend with taste\"**\n\nThe page follows Squarespace's Morais wedding template closely. It should look like someone without much web experience made it, but someone with impeccable taste. Cream and white sections alternate down one long page. Everything is centred. Headings are a plain grotesque at regular weight, never bold. Everything you read is a bookish serif. Photos are black and white. There are no tricks: no eyebrows, no section numbers, no entrance animations, no sticky header changing colour, no ticking countdown.\n\nThe page is warm, unhurried and intimate. Each section is one heading, a few lines of text and maybe a photo or a short list, with generous space between. Its personality comes from restraint and good type, not decoration.\n\nThree looks are off limits: template wedding sites (script fonts, blush pink, floral clip art, gold foil), app or SaaS UI (rounded cards, drop shadows, bright accent buttons, icons everywhere) and rustic DIY (kraft paper, twine, chalkboard, mason jars). The same goes for the developer-portfolio habits the first design had: tracked uppercase mono labels and 01 / 02 / 03 numbering.",
     "keyCharacteristics": [
-      "Three section themes (Paper, Dark Roast, Sage) that editors choose block by block",
-      "An italic serif for every headline, and a soft serif for body text and the small italic notes around it",
-      "Square corners everywhere, hairline rules, no shadows",
-      "Numbered entries (01, 02, 03) as the main way to organise content",
-      "Printed, not pressed: controls are outlines and underlines that fill in with ink on hover"
+      "Cream (#f5f1eb) and white sections alternate; one optional cream panel set on white",
+      "Centred column, headings in regular-weight Helvetica Neue, body in Libre Caslon Text",
+      "Black-and-white photographs inset in the column, never full-bleed",
+      "Black 1px outlined buttons and boxed form fields, square corners, no shadows",
+      "Nothing moves except colour on hover"
     ],
     "rules": [
       {
-        "name": "The Theme Token Rule",
-        "body": "Components never name a colour directly. They use `--fg`, `--bg`, `--fg-soft` and `--line`. Anything that inverts on hover or selection uses `text-(--bg)`, because a hard-coded Paper is invisible on a Paper section.",
+        "name": "The Two Papers Rule",
+        "body": "Backgrounds are only cream or white. No colour fields, no dark sections, no gradients.",
         "section": "colors"
       },
       {
-        "name": "The No Pure Black Rule",
-        "body": "Text is Ink (#1d1a17) or Dark Roast; never #000 or #fff.",
+        "name": "The Colour Is in the Photos Rule",
+        "body": "Photos are shown in black and white (`grayscale`), so nothing on the page competes with the type.",
         "section": "colors"
       },
       {
-        "name": "The Å Ä Ö Rule",
-        "body": "Display type keeps a line-height of at least 1.02, so the rings and dots on Å, Ä and Ö don't touch the line above. The hero names use 0.95, which works only because names rarely carry them. Don't copy 0.95 elsewhere.",
+        "name": "The No Eyebrow Rule",
+        "body": "Headings stand alone. No small labels above them, no \"01 —\" numbering, no tracked capitals. The block `label` field in the CMS is deliberately not rendered.",
         "section": "typography"
       },
       {
-        "name": "The Margin Note Rule",
-        "body": "Small text is an italic serif note in sentence case. Never use uppercase with wide letter-spacing, and never use a mono or sans font. Those make the site look like a business.",
+        "name": "The Regular Weight Rule",
+        "body": "Headings are weight 400. Size and space make them headings, never boldness.",
         "section": "typography"
       },
       {
-        "name": "The Lining Figures Rule",
-        "body": "Cormorant's default old-style figures make \"01\" read as \"o1\" and \"1\" as \"ı\". Labels and form fields use lining figures (`lining-nums`).",
-        "section": "typography"
-      },
-      {
-        "name": "The Ink-on-Paper Rule",
-        "body": "Nothing floats. If something needs separating, use a hairline in `--line` or a change of section colour, never a shadow or a raised card.",
+        "name": "The Flat Paper Rule",
+        "body": "If two things need separating, use a 1px hairline in `--line` or a change of paper, never a shadow or a raised card.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "**Do** take every colour from the section's theme variables (`--fg`, `--bg`, `--fg-soft`, `--line`) so a block works on Paper, Dark Roast and Sage alike.",
-      "**Do** set headlines in EB Garamond Italic 400 with a line-height of at least 1.02, and every small piece of text as a Cormorant italic note at 1.125rem in sentence case.",
-      "**Do** organise content with label-type numbers (01, 02, 03) and hairline rules.",
-      "**Do** keep corners square and lines at 1px.",
-      "**Do** keep motion to the `fade-up` entrance and 300ms colour fades.",
-      "**Do** leave room: sections get 96–144px of vertical padding, and running text stays under about 42rem wide."
+      "**Do** centre everything and keep running text under 36rem wide.",
+      "**Do** set headings in the grotesque at weight 400 with -0.02em tracking, and everything people read in Libre Caslon Text.",
+      "**Do** alternate cream and white sections, and use the cream panel on white at most once or twice a page.",
+      "**Do** show photographs in black and white, inset in the column.",
+      "**Do** use 1px ink outlines for buttons and 1px `--line` boxes for fields, square corners only.",
+      "**Do** keep form labels and button text in sentence case, at readable sizes (0.9375rem or larger)."
     ],
     "donts": [
       "**Don't** drift toward template wedding sites: no script fonts, blush pink, floral clip art or gold foil.",
       "**Don't** use app or SaaS UI: no rounded cards, drop shadows, bright accent buttons or icon-heavy layouts.",
       "**Don't** go rustic DIY: no kraft paper, twine, chalkboard or mason-jar textures.",
-      "**Don't** hard-code Paper or Ink in components. An inverted state that hard-codes Paper disappears on a Paper section.",
-      "**Don't** use #000, #fff or any saturated colour outside the palette. The red error text is the only exception.",
-      "**Don't** set display type tighter than a line-height of 1.02 outside the hero names.",
-      "**Don't** bring back tracked uppercase or mono labels. They made the site look like a business."
+      "**Don't** put eyebrows or section numbers above headings, or use tracked uppercase labels.",
+      "**Don't** add entrance animations, a sticky header that changes on scroll, or a ticking seconds countdown.",
+      "**Don't** make headings bold or larger than 6rem."
     ]
   }
 }

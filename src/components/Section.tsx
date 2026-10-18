@@ -8,31 +8,23 @@ type Props = {
   children: React.ReactNode
 }
 
-/** Shared wrapper: sets the colour theme and the scroll anchor for a block. */
+/** Shared wrapper: background theme, scroll anchor, and the centred Morais column. */
 export function Section({ anchor, theme, className, children }: Props) {
   return (
-    <section id={anchor} className={cn('relative', themeClass[theme ?? 'ivory'], className)}>
-      <div className="mx-auto max-w-7xl px-5 py-24 md:px-10 md:py-36">{children}</div>
+    <section id={anchor} className={cn('scroll-mt-4', themeClass[theme ?? 'ivory'], className)}>
+      <div className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-28">
+        {theme === 'olive' ? <div className="bg-cream px-6 py-16 md:px-16 md:py-24">{children}</div> : children}
+      </div>
     </section>
   )
 }
 
-export function SectionHeading({
-  label,
-  heading,
-  intro,
-  align = 'left',
-}: {
-  label?: string | null
-  heading: string
-  intro?: string | null
-  align?: 'left' | 'center'
-}) {
+/** Centred heading with an optional intro. No eyebrow: the heading carries itself. */
+export function SectionHeading({ heading, intro }: { heading: string; intro?: string | null }) {
   return (
-    <div className={cn('mb-14 max-w-3xl md:mb-20', align === 'center' && 'mx-auto text-center')}>
-      {label && <p className="label mb-5">{label}</p>}
-      <h2 className="display text-4xl md:text-6xl">{heading}</h2>
-      {intro && <p className="mt-6 max-w-xl text-lg text-(--fg-soft) md:text-xl">{intro}</p>}
+    <div className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
+      <h2 className="display text-4xl md:text-5xl">{heading}</h2>
+      {intro && <p className="mx-auto mt-6 max-w-xl text-(--fg-soft)">{intro}</p>}
     </div>
   )
 }

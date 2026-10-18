@@ -1,98 +1,92 @@
 @import 'tailwindcss';
 
+/* After Squarespace's Morais: cream paper, black ink, a plain grotesque for
+   headings and a bookish serif for everything you read. Centred, quiet, no tricks. */
 @theme {
-  --color-ivory: #efece6;
-  --color-ivory-deep: #e4dfd5;
-  --color-sand: #cfc6b6;
-  --color-espresso: #2a1412;
-  --color-espresso-soft: #3b1f1b;
-  --color-olive: #7f8158;
-  --color-olive-deep: #666841;
-  --color-ink: #1d1a17;
-  --color-ink-soft: #5d574f;
+  --color-cream: #f5f1eb;
+  --color-cream-deep: #ece6dc;
+  --color-white: #ffffff;
+  --color-ink: #111111;
+  --color-ink-soft: #57524b;
+  --color-error: #9b2c2c;
 
-  --font-display: var(--font-display), 'EB Garamond', Georgia, serif;
-  --font-serif: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
+  /* Helvetica Neue is Morais's own face (on Apple devices, where most guests are);
+     Inter Tight is the self-hosted stand-in everywhere else. */
+  --font-sans: 'Helvetica Neue', Helvetica, var(--font-grotesk), Arial, sans-serif;
+  --font-serif: var(--font-book), 'Times New Roman', Times, serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
-
-  --animate-fade-up: fade-up 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-
-  @keyframes fade-up {
-    from {
-      opacity: 0;
-      transform: translateY(18px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 }
 
-/* Per-theme tokens: components use these so a block looks right on any background. */
+/* Section themes. The stored values are still ivory / espresso / olive; they now
+   mean cream, white, and a cream panel set on white. */
 .theme-ivory {
-  --bg: var(--color-ivory);
+  --bg: var(--color-cream);
   --fg: var(--color-ink);
   --fg-soft: var(--color-ink-soft);
-  --line: color-mix(in oklab, var(--color-ink) 18%, transparent);
-  --surface: color-mix(in oklab, var(--color-ivory) 70%, white);
-  --accent: var(--color-olive);
+  --line: color-mix(in oklab, var(--color-ink) 22%, transparent);
+  --field: var(--color-white);
 }
-.theme-espresso {
-  --bg: var(--color-espresso);
-  --fg: var(--color-ivory);
-  --fg-soft: color-mix(in oklab, var(--color-ivory) 70%, var(--color-espresso));
-  --line: color-mix(in oklab, var(--color-ivory) 22%, transparent);
-  --surface: color-mix(in oklab, var(--color-espresso) 80%, white 8%);
-  --accent: var(--color-sand);
+.theme-espresso,
+.theme-olive {
+  --bg: var(--color-white);
+  --fg: var(--color-ink);
+  --fg-soft: var(--color-ink-soft);
+  --line: color-mix(in oklab, var(--color-ink) 22%, transparent);
+  --field: var(--color-cream);
 }
 .theme-olive {
-  --bg: var(--color-olive);
-  --fg: var(--color-ivory);
-  --fg-soft: color-mix(in oklab, var(--color-ivory) 75%, var(--color-olive));
-  --line: color-mix(in oklab, var(--color-ivory) 25%, transparent);
-  --surface: color-mix(in oklab, var(--color-olive) 85%, white 10%);
-  --accent: var(--color-ivory);
+  --field: var(--color-white);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
   }
   body {
-    @apply bg-ivory text-ink font-serif antialiased;
+    @apply bg-cream text-ink font-serif antialiased;
     font-size: 1.0625rem;
-    line-height: 1.6;
+    line-height: 1.75;
   }
   ::selection {
-    background: var(--color-olive);
-    color: var(--color-ivory);
+    background: var(--color-ink);
+    color: var(--color-cream);
+  }
+  :focus-visible {
+    outline: 1px solid var(--color-ink);
+    outline-offset: 4px;
+  }
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+  input,
+  textarea,
+  select {
+    caret-color: var(--color-ink);
   }
 }
 
-/* The small voice: eyebrows, nav, field labels, buttons, dates. Italic serif in
-   sentence case, like a note in the margin of a letter, never tracked caps. */
-@utility label {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.125rem;
-  line-height: 1.4;
-  letter-spacing: 0.01em;
-  font-variant-numeric: lining-nums; /* Cormorant's old-style 0 reads as an o in "01" */
-  color: var(--fg-soft, var(--color-ink-soft));
+/* Headings: plain grotesque, regular weight, slightly tight. */
+@utility display {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-wrap: balance;
 }
 
-@utility display {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 400;
-  line-height: 1.02; /* room for Å Ä Ö rings */
+/* Small print: the serif, a little smaller, in the softer ink. */
+@utility label {
+  font-family: var(--font-serif);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--fg-soft, var(--color-ink-soft));
 }
 
 @utility prose-wedding {
   & p {
-    margin-block: 0.75em;
+    margin-block: 0.9em;
   }
   & p:first-child {
     margin-top: 0;
@@ -102,24 +96,27 @@
   }
   & a {
     text-decoration: underline;
-    text-underline-offset: 3px;
+  }
+  & ul,
+  & ol {
+    padding-left: 1.25em;
+    text-align: left;
+    display: inline-block;
   }
   & ul {
     list-style: disc;
-    padding-left: 1.25em;
   }
   & ol {
     list-style: decimal;
-    padding-left: 1.25em;
   }
   & h3,
   & h4 {
-    font-family: var(--font-display);
-    font-style: italic;
+    font-family: var(--font-sans);
+    letter-spacing: -0.01em;
     margin-top: 1.5em;
   }
   & strong {
-    font-weight: 600;
+    font-weight: 700;
   }
 }
 

@@ -14,17 +14,15 @@ export function RsvpBlockComponent({ block, settings }: { block: RsvpBlock; sett
 
   return (
     <Section anchor={block.anchor} theme={block.theme}>
-      <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
-        <div className="lg:col-span-5">
-          <SectionHeading label={block.label} heading={block.heading} />
-          <RichText data={block.intro} className="max-w-md text-lg text-(--fg-soft)" />
-          {block.deadline && (
-            <p className="label mt-10">
-              {ui.deadline}: <span className="text-(--fg)">{formatDate(block.deadline, locale)}</span>
-            </p>
-          )}
-        </div>
-        <div className="lg:col-span-6 lg:col-start-7">
+      <SectionHeading heading={block.heading} />
+      <div className="mx-auto max-w-xl">
+        <RichText data={block.intro} className="text-center" />
+        {block.deadline && (
+          <p className="mt-4 text-center">
+            {ui.deadline} {formatDate(block.deadline, locale)}.
+          </p>
+        )}
+        <div className="mt-12">
           {open ? (
             <RsvpForm
               ui={ui}
@@ -34,7 +32,7 @@ export function RsvpBlockComponent({ block, settings }: { block: RsvpBlock; sett
               askMessage={block.askMessage ?? true}
             />
           ) : (
-            <p className="font-serif text-2xl italic">{block.closedMessage || ui.closed}</p>
+            <p className="text-center text-xl">{block.closedMessage || ui.closed}</p>
           )}
         </div>
       </div>

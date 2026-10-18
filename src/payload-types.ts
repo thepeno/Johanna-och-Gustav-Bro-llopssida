@@ -157,14 +157,20 @@ export interface HeroBlock {
    * Leave empty to hide this section from the menu
    */
   navLabel?: string | null;
+  /**
+   * Background. Alternate cream and white between sections.
+   */
+  /**
+   * Background. Alternate cream and white between sections.
+   */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   image: string | Media;
   /**
-   * Small text above the names, e.g. "Vi gifter oss"
+   * The big opening line, e.g. "Vi gifter oss". Empty shows the names.
    */
   eyebrow?: string | null;
   /**
-   * Italic line under the names. Leave empty to show the date and venue from Site settings.
+   * Line under the date. Leave empty to show the weekday and venue from Site settings.
    */
   tagline?: string | null;
   showCountdown?: boolean | null;
@@ -244,9 +250,15 @@ export interface StoryBlock {
    * Leave empty to hide this section from the menu
    */
   navLabel?: string | null;
+  /**
+   * Background. Alternate cream and white between sections.
+   */
+  /**
+   * Background. Alternate cream and white between sections.
+   */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   /**
-   * Small uppercase label, e.g. "01 — Vår historia"
+   * Not shown on the page (kept for older content)
    */
   label?: string | null;
   heading: string;
@@ -298,9 +310,15 @@ export interface ScheduleBlock {
    * Leave empty to hide this section from the menu
    */
   navLabel?: string | null;
+  /**
+   * Background. Alternate cream and white between sections.
+   */
+  /**
+   * Background. Alternate cream and white between sections.
+   */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   /**
-   * Small uppercase label, e.g. "01 — Vår historia"
+   * Not shown on the page (kept for older content)
    */
   label?: string | null;
   heading: string;
@@ -334,9 +352,15 @@ export interface DetailsBlock {
    * Leave empty to hide this section from the menu
    */
   navLabel?: string | null;
+  /**
+   * Background. Alternate cream and white between sections.
+   */
+  /**
+   * Background. Alternate cream and white between sections.
+   */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   /**
-   * Small uppercase label, e.g. "01 — Vår historia"
+   * Not shown on the page (kept for older content)
    */
   label?: string | null;
   heading: string;
@@ -385,9 +409,15 @@ export interface GalleryBlock {
    * Leave empty to hide this section from the menu
    */
   navLabel?: string | null;
+  /**
+   * Background. Alternate cream and white between sections.
+   */
+  /**
+   * Background. Alternate cream and white between sections.
+   */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   /**
-   * Small uppercase label, e.g. "01 — Vår historia"
+   * Not shown on the page (kept for older content)
    */
   label?: string | null;
   heading: string;
@@ -416,9 +446,15 @@ export interface RsvpBlock {
    * Leave empty to hide this section from the menu
    */
   navLabel?: string | null;
+  /**
+   * Background. Alternate cream and white between sections.
+   */
+  /**
+   * Background. Alternate cream and white between sections.
+   */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   /**
-   * Small uppercase label, e.g. "01 — Vår historia"
+   * Not shown on the page (kept for older content)
    */
   label?: string | null;
   heading: string;
@@ -467,9 +503,15 @@ export interface FaqBlock {
    * Leave empty to hide this section from the menu
    */
   navLabel?: string | null;
+  /**
+   * Background. Alternate cream and white between sections.
+   */
+  /**
+   * Background. Alternate cream and white between sections.
+   */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   /**
-   * Small uppercase label, e.g. "01 — Vår historia"
+   * Not shown on the page (kept for older content)
    */
   label?: string | null;
   heading: string;

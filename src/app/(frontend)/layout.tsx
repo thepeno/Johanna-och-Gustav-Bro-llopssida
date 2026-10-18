@@ -1,23 +1,18 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, EB_Garamond } from 'next/font/google'
+import { Inter_Tight, Libre_Caslon_Text } from 'next/font/google'
 import React from 'react'
 import { getSiteSettings } from '@/lib/data'
 import './styles.css'
 
-const display = EB_Garamond({
+const book = Libre_Caslon_Text({
   subsets: ['latin'],
-  weight: ['400'],
-  style: ['italic'],
-  variable: '--font-display',
-  display: 'swap',
-})
-const serif = Cormorant_Garamond({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
+  weight: ['400', '700'],
   style: ['normal', 'italic'],
-  variable: '--font-serif',
+  variable: '--font-book',
   display: 'swap',
 })
+// Fallback for devices without Helvetica Neue; not preloaded since Apple devices never need it
+const grotesk = Inter_Tight({ subsets: ['latin'], weight: ['400'], variable: '--font-grotesk', display: 'swap', preload: false })
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings()
@@ -32,7 +27,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const settings = await getSiteSettings()
   const lang = (settings?.locale || 'sv-SE').split('-')[0]
   return (
-    <html lang={lang} className={`${display.variable} ${serif.variable}`}>
+    <html lang={lang} className={`${book.variable} ${grotesk.variable}`}>
       <body>{children}</body>
     </html>
   )

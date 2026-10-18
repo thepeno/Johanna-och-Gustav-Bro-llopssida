@@ -23,11 +23,10 @@ export default async function HomePage() {
 
   if (!page || !settings) {
     return (
-      <main className="theme-ivory mx-auto flex min-h-screen max-w-xl flex-col justify-center gap-4 px-6">
-        <p className="label">Nästan klart</p>
+      <main className="theme-ivory mx-auto flex min-h-screen max-w-xl flex-col justify-center gap-4 px-6 text-center">
         <h1 className="display text-4xl">Sidan saknar innehåll</h1>
         <p>
-          Kör <code className="font-mono text-sm">pnpm seed</code> för exempelinnehåll, eller skapa en sida med slug
+          Kör <code className="font-mono text-sm">npm run seed</code> för exempelinnehåll, eller skapa en sida med slug
           <code className="font-mono text-sm"> home</code> och fyll i Site settings i{' '}
           <Link className="underline" href="/admin">
             /admin
@@ -41,14 +40,16 @@ export default async function HomePage() {
   const navItems = page.layout
     .filter((block) => block.navLabel && block.blockType !== 'hero')
     .map((block) => ({ anchor: block.anchor, label: block.navLabel as string }))
+  const rsvpBlock = page.layout.find((block) => block.blockType === 'rsvp')
+  const rsvp = rsvpBlock ? { anchor: rsvpBlock.anchor, label: rsvpBlock.navLabel || rsvpBlock.heading } : undefined
 
   return (
     <>
-      <Nav items={navItems} settings={settings} />
+      <Nav items={navItems} settings={settings} rsvpAnchor={rsvp?.anchor} />
       <main>
         <RenderBlocks blocks={page.layout} settings={settings} />
       </main>
-      <Footer settings={settings} />
+      <Footer settings={settings} rsvp={rsvp} />
     </>
   )
 }

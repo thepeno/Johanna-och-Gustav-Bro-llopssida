@@ -15,7 +15,7 @@ type Props = {
 }
 
 const field =
-  'w-full border-0 border-b border-(--line) bg-transparent px-0 py-3 font-serif text-xl lining-nums text-(--fg) placeholder:text-(--fg-soft)/60 focus:border-(--fg) focus:outline-none'
+  'w-full rounded-none border border-(--line) bg-(--field) px-4 py-3 font-serif text-base text-(--fg) transition-colors focus:border-(--fg) focus:outline-none'
 
 function Field({
   label,
@@ -31,14 +31,14 @@ function Field({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex flex-col gap-1">
-      <label htmlFor={name} className="label flex items-baseline justify-between">
+    <div className="flex flex-col gap-2">
+      <label htmlFor={name} className="font-sans text-[0.9375rem]">
         {label}
-        {optional && <span className="opacity-70">{optional}</span>}
+        {optional && <span className="text-(--fg-soft)"> ({optional})</span>}
       </label>
       {children}
       {error && (
-        <p className="label text-red-400" role="alert">
+        <p className="text-[0.9375rem] text-error" role="alert">
           {error[0]}
         </p>
       )}
@@ -58,15 +58,14 @@ export function RsvpForm({ ui, maxPartySize, askDietary, askSong, askMessage }: 
 
   if (state.status === 'success') {
     return (
-      <div className="border-t border-(--line) pt-8" aria-live="polite">
-        <p className="display text-4xl">♡</p>
-        <p className="mt-4 max-w-md font-serif text-2xl italic">{state.message}</p>
+      <div className="text-center" aria-live="polite">
+        <p className="display text-3xl md:text-4xl">{state.message}</p>
       </div>
     )
   }
 
   return (
-    <form action={action} className="flex flex-col gap-8" noValidate>
+    <form action={action} className="flex flex-col gap-7" noValidate>
       {/* Honeypot – hidden from people, filled by bots */}
       <div className="absolute -left-[9999px]" aria-hidden>
         <label>
@@ -74,22 +73,16 @@ export function RsvpForm({ ui, maxPartySize, askDietary, askSong, askMessage }: 
         </label>
       </div>
 
-      <fieldset className="flex flex-col gap-3">
-        <legend className="label mb-3">{ui.attending}</legend>
-        <div className="flex flex-wrap gap-3">
+      <fieldset>
+        <legend className="mb-3 font-sans text-[0.9375rem]">{ui.attending}</legend>
+        <div className="flex flex-col gap-1">
           {(['yes', 'no'] as const).map((value) => (
-            <label
-              key={value}
-              className={cn(
-                'label cursor-pointer border border-(--line) px-5 py-3 transition-colors',
-                attending === value && 'border-(--fg) bg-(--fg) text-(--bg)',
-              )}
-            >
+            <label key={value} className="flex min-h-11 cursor-pointer items-center gap-3">
               <input
                 type="radio"
                 name="attending"
                 value={value}
-                className="sr-only"
+                className="size-[18px] accent-ink"
                 checked={attending === value}
                 onChange={() => setAttending(value)}
               />
@@ -99,7 +92,7 @@ export function RsvpForm({ ui, maxPartySize, askDietary, askSong, askMessage }: 
         </div>
       </fieldset>
 
-      <div className="grid gap-8 sm:grid-cols-2">
+      <div className="grid gap-7 sm:grid-cols-2">
         <Field label={ui.name} name="name" error={errors?.name}>
           <input
             id="name"
@@ -125,17 +118,17 @@ export function RsvpForm({ ui, maxPartySize, askDietary, askSong, askMessage }: 
       </div>
 
       {attending === 'yes' && maxPartySize > 1 && (
-        <div className="grid gap-8 sm:grid-cols-2">
+        <div className="grid gap-7 sm:grid-cols-2">
           <Field label={ui.partySize} name="partySize" error={errors?.partySize}>
             <select
               id="partySize"
               name="partySize"
               value={partySize}
               onChange={(e) => setPartySize(Number(e.target.value))}
-              className={cn(field, 'appearance-none')}
+              className={cn(field, 'appearance-none bg-[url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 8%27%3E%3Cpath d=%27M1 1l5 5 5-5%27 stroke=%27%23111%27 fill=%27none%27/%3E%3C/svg%3E")] bg-[length:12px_8px] bg-[right_1rem_center] bg-no-repeat pr-10')}
             >
               {Array.from({ length: maxPartySize }, (_, i) => i + 1).map((n) => (
-                <option key={n} value={n} className="text-ink">
+                <option key={n} value={n}>
                   {n}
                 </option>
               ))}
@@ -184,12 +177,12 @@ export function RsvpForm({ ui, maxPartySize, askDietary, askSong, askMessage }: 
       )}
 
       {state.status === 'error' && (
-        <p className="label text-red-400" role="alert">
+        <p className="text-center text-error" role="alert">
           {state.message}
         </p>
       )}
 
-      <Button as="button" type="submit" disabled={pending} className="w-fit">
+      <Button as="button" type="submit" disabled={pending} className="mx-auto mt-2 w-full sm:w-fit">
         {pending ? ui.sending : ui.send}
       </Button>
     </form>

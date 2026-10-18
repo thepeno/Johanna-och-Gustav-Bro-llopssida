@@ -6,42 +6,30 @@ import { RichText } from '@/components/RichText'
 import { asMedia } from '@/lib/utils'
 
 export function StoryBlockComponent({ block }: { block: StoryBlock }) {
-  const image = asMedia(block.image)
-  const second = asMedia(block.imageSecondary)
+  const images = [asMedia(block.image), asMedia(block.imageSecondary)].filter((m) => m !== null)
 
   return (
     <Section anchor={block.anchor} theme={block.theme}>
-      <div className="grid gap-16 lg:grid-cols-12 lg:gap-10">
-        <div className="lg:col-span-6">
-          <SectionHeading label={block.label} heading={block.heading} />
-          <RichText data={block.body} className="max-w-xl text-lg text-(--fg-soft) md:text-xl" />
-        </div>
+      <SectionHeading heading={block.heading} />
+      <RichText data={block.body} className="mx-auto max-w-xl text-center" />
 
-        {(image || second) && (
-          <div className="relative grid grid-cols-6 gap-4 lg:col-span-6">
-            {image && (
-              <div className="col-span-4 aspect-[4/5] overflow-hidden">
-                <Img media={image} size="card" sizes="(min-width:1024px) 40vw, 70vw" className="h-full w-full object-cover" />
-              </div>
-            )}
-            {second && (
-              <div className="col-span-2 mt-24 aspect-[3/4] overflow-hidden">
-                <Img media={second} size="card" sizes="(min-width:1024px) 20vw, 30vw" className="h-full w-full object-cover" />
-              </div>
-            )}
-          </div>
-        )}
-      </div>
+      {images.length > 0 && (
+        <div className={`mx-auto mt-16 grid max-w-4xl gap-4 md:mt-20 md:gap-6 ${images.length > 1 ? 'grid-cols-2' : ''}`}>
+          {images.map((image) => (
+            <div key={image.id} className="aspect-[4/5] overflow-hidden">
+              <Img media={image} size="card" sizes="(min-width: 768px) 440px, 50vw" className="h-full w-full object-cover grayscale" />
+            </div>
+          ))}
+        </div>
+      )}
 
       {block.milestones && block.milestones.length > 0 && (
-        <ol className="mt-24 grid gap-10 border-t border-(--line) pt-16 md:grid-cols-3 md:gap-8">
+        <ol className="mx-auto mt-20 grid max-w-4xl gap-12 text-center md:mt-24 md:grid-cols-3 md:gap-10">
           {block.milestones.map((m, i) => (
-            <li key={m.id ?? i} className="flex flex-col">
-              <span className="label">
-                {String(i + 1).padStart(2, '0')}.{m.date ? ` ${m.date}` : ''}
-              </span>
-              <h3 className="display mt-4 text-3xl md:text-4xl">{m.title}</h3>
-              {m.text && <p className="mt-4 max-w-sm text-(--fg-soft)">{m.text}</p>}
+            <li key={m.id ?? i}>
+              {m.date && <p className="label">{m.date}</p>}
+              <h3 className="display mt-1 text-2xl">{m.title}</h3>
+              {m.text && <p className="mx-auto mt-3 max-w-xs text-(--fg-soft)">{m.text}</p>}
             </li>
           ))}
         </ol>

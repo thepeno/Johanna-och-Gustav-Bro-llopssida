@@ -23,18 +23,13 @@ export default async function GuestLoginPage() {
     : null
 
   return (
-    <main className="theme-espresso flex min-h-svh flex-col justify-center bg-espresso px-5 py-16 text-ivory">
-      <div className="mx-auto flex w-full max-w-md animate-fade-up flex-col gap-10">
-        <div className="flex flex-col gap-5">
-          <p className="label">{ui.gateEyebrow}</p>
-          <h1 className="display text-6xl sm:text-7xl">
-            {settings?.partnerOne ?? 'Johanna'}
-            <span className="font-serif font-normal italic"> &amp; </span>
-            {settings?.partnerTwo ?? 'Gustav'}
-          </h1>
-          {dateLine && <p className="font-serif text-2xl italic text-(--fg-soft)">{dateLine}</p>}
-        </div>
-        <p className="text-xl">{ui.gateIntro}</p>
+    <main className="theme-ivory flex min-h-svh flex-col items-center justify-center bg-cream px-5 py-16 text-center text-ink">
+      <div className="flex w-full max-w-md flex-col items-center">
+        <h1 className="display text-[clamp(3rem,12vw,4.5rem)] leading-[1.02]">
+          {settings?.partnerOne ?? 'Johanna'} &amp; {settings?.partnerTwo ?? 'Gustav'}
+        </h1>
+        {dateLine && <p className="mt-4 text-lg">{dateLine}</p>}
+        <p className="mt-12 text-(--fg-soft)">{ui.gateIntro}</p>
         <GuestLoginForm ui={ui} />
       </div>
     </main>

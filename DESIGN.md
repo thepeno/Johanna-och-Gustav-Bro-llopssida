@@ -1,234 +1,201 @@
 ---
 name: Johanna & Gustav
-description: A one-page wedding site after Squarespace's Morais, made warm, unhurried and personal.
+description: A one-page wedding site directly inspired by Squarespace's Morais. Cream paper, black ink, everything centred.
 colors:
-  paper: "#efece6"
-  paper-deep: "#e4dfd5"
-  sand: "#cfc6b6"
-  dark-roast: "#2a1412"
-  dark-roast-soft: "#3b1f1b"
-  sage: "#7f8158"
-  sage-deep: "#666841"
-  ink: "#1d1a17"
-  ink-soft: "#5d574f"
+  cream: "#f5f1eb"
+  cream-deep: "#ece6dc"
+  white: "#ffffff"
+  ink: "#111111"
+  ink-soft: "#57524b"
+  error: "#9b2c2c"
 typography:
   hero:
-    fontFamily: "EB Garamond, Georgia, serif"
-    fontSize: "clamp(3rem, 15vw, 9.5vw)"
-    fontWeight: 400
-    lineHeight: 0.95
-    letterSpacing: "normal"
-  display:
-    fontFamily: "EB Garamond, Georgia, serif"
-    fontSize: "3.75rem"
+    fontFamily: "Helvetica Neue, Helvetica, Inter Tight, Arial, sans-serif"
+    fontSize: "clamp(3.25rem, 10vw, 6rem)"
     fontWeight: 400
     lineHeight: 1.02
-    letterSpacing: "normal"
+    letterSpacing: "-0.02em"
+  display:
+    fontFamily: "Helvetica Neue, Helvetica, Inter Tight, Arial, sans-serif"
+    fontSize: "3rem"
+    fontWeight: 400
+    lineHeight: 1.1
+    letterSpacing: "-0.02em"
   headline:
-    fontFamily: "EB Garamond, Georgia, serif"
+    fontFamily: "Helvetica Neue, Helvetica, Inter Tight, Arial, sans-serif"
     fontSize: "1.875rem"
     fontWeight: 400
-    lineHeight: 1.02
-  lead:
-    fontFamily: "Cormorant Garamond, Georgia, serif"
-    fontSize: "1.5rem"
-    fontWeight: 400
-    lineHeight: 1.4
+    lineHeight: 1.1
+    letterSpacing: "-0.02em"
   body:
-    fontFamily: "Cormorant Garamond, Georgia, serif"
+    fontFamily: "Libre Caslon Text, Times New Roman, serif"
     fontSize: "1.0625rem"
     fontWeight: 400
-    lineHeight: 1.6
-  label:
-    fontFamily: "Cormorant Garamond, Georgia, serif"
-    fontSize: "1.125rem"
+    lineHeight: 1.75
+  small:
+    fontFamily: "Libre Caslon Text, Times New Roman, serif"
+    fontSize: "0.9375rem"
     fontWeight: 400
-    lineHeight: 1.4
+    lineHeight: 1.6
+  ui:
+    fontFamily: "Helvetica Neue, Helvetica, Inter Tight, Arial, sans-serif"
+    fontSize: "0.9375rem"
+    fontWeight: 400
     letterSpacing: "0.01em"
-    fontFeature: "lnum"
 rounded:
   none: "0px"
 spacing:
   gutter: "20px"
   gutter-md: "40px"
-  section: "96px"
-  section-md: "144px"
-  heading-gap: "56px"
-  heading-gap-md: "80px"
-  container: "1280px"
+  section: "80px"
+  section-md: "112px"
+  heading-gap: "48px"
+  heading-gap-md: "64px"
+  container: "1152px"
 components:
   button-outline:
     backgroundColor: "transparent"
     textColor: "{colors.ink}"
-    typography: "{typography.label}"
+    typography: "{typography.ui}"
     rounded: "{rounded.none}"
-    padding: "16px 28px"
+    padding: "12px 32px"
+    height: "48px"
+    width: "224px"
   button-outline-hover:
     backgroundColor: "{colors.ink}"
-    textColor: "{colors.paper}"
-  button-outline-on-dark:
-    backgroundColor: "transparent"
-    textColor: "{colors.paper}"
-    typography: "{typography.label}"
-    rounded: "{rounded.none}"
-    padding: "16px 28px"
-  button-outline-on-dark-hover:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.dark-roast}"
-  input-underline:
-    backgroundColor: "transparent"
+    textColor: "{colors.cream}"
+  input-box:
+    backgroundColor: "{colors.white}"
     textColor: "{colors.ink}"
     typography: "{typography.body}"
     rounded: "{rounded.none}"
-    padding: "12px 0"
-  choice-chip:
-    backgroundColor: "transparent"
+    padding: "12px 16px"
+  nav-bar:
+    backgroundColor: "{colors.cream}"
     textColor: "{colors.ink}"
-    typography: "{typography.label}"
-    rounded: "{rounded.none}"
-    padding: "12px 20px"
-  choice-chip-selected:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.paper}"
-  nav-bar-solid:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
-    typography: "{typography.label}"
-    padding: "16px 40px"
+    typography: "{typography.ui}"
+    padding: "28px 40px"
 ---
 
 # Design System: Johanna & Gustav
 
 ## Overview
 
-**Creative North Star: "Squarespace's Morais, made personal"**
+**Creative North Star: "Squarespace's Morais, made by a friend with taste"**
 
-The site follows Squarespace's Morais, an editorial photography template: big italic serif headlines, numbered lists, and full-width sections in alternating colours. This version makes it warm, unhurried and intimate. Morais's tracked uppercase mono labels made it look like a business, so every small piece of text is now an italic serif note in sentence case, like something written in the margin of a letter. Paper-coloured pages, dark-roast and sage sections, slow fade-ins and plenty of whitespace make it read like a personal letter, not a product. Nothing hurries the guest along. There is one long page, one action (reply), and room to read.
+The page follows Squarespace's Morais wedding template closely. It should look like someone without much web experience made it, but someone with impeccable taste. Cream and white sections alternate down one long page. Everything is centred. Headings are a plain grotesque at regular weight, never bold. Everything you read is a bookish serif. Photos are black and white. There are no tricks: no eyebrows, no section numbers, no entrance animations, no sticky header changing colour, no ticking countdown.
 
-It's a long-scroll page with a calm pace. Each section is one idea, set inside a 1280px column with generous vertical padding, and the theme alternates from section to section. Photos are square-cornered and usually full-bleed, in fixed aspect ratios. All depth comes from colour changes between sections, never from shadows.
+The page is warm, unhurried and intimate. Each section is one heading, a few lines of text and maybe a photo or a short list, with generous space between. Its personality comes from restraint and good type, not decoration.
 
-The look must never drift toward three things: template wedding sites (script fonts, blush pink, floral clip art, gold foil), app or SaaS UI (rounded cards, drop shadows, bright accent buttons, icons everywhere) or rustic DIY (kraft paper, twine, chalkboard, mason jars).
+Three looks are off limits: template wedding sites (script fonts, blush pink, floral clip art, gold foil), app or SaaS UI (rounded cards, drop shadows, bright accent buttons, icons everywhere) and rustic DIY (kraft paper, twine, chalkboard, mason jars). The same goes for the developer-portfolio habits the first design had: tracked uppercase mono labels and 01 / 02 / 03 numbering.
 
 **Key Characteristics:**
-- Three section themes (Paper, Dark Roast, Sage) that editors choose block by block
-- An italic serif for every headline, and a soft serif for body text and the small italic notes around it
-- Square corners everywhere, hairline rules, no shadows
-- Numbered entries (01, 02, 03) as the main way to organise content
-- Printed, not pressed: controls are outlines and underlines that fill in with ink on hover
+- Cream (#f5f1eb) and white sections alternate; one optional cream panel set on white
+- Centred column, headings in regular-weight Helvetica Neue, body in Libre Caslon Text
+- Black-and-white photographs inset in the column, never full-bleed
+- Black 1px outlined buttons and boxed form fields, square corners, no shadows
+- Nothing moves except colour on hover
 
 ## Colors
 
-A warm, low-chroma palette of paper, coffee and leaf, with near-black ink in place of pure black.
-
-### Primary
-- **Dark Roast** (#2a1412): the dark theme. The hero, footer and password screen use it, and editors pick it for any section that should feel like evening. Text on it is Paper.
-- **Sage** (#7f8158): the third section theme, a muted green-grey for one or two calm sections. Text on it is Paper, with Paper as the accent.
+Two papers and one ink. Colour comes from the photographs, and they're black and white too.
 
 ### Neutral
-- **Paper** (#efece6): the default page and section background, and the text colour on dark sections.
-- **Paper Deep** (#e4dfd5): a slightly darker paper, defined as a token for tonal variation.
-- **Sand** (#cfc6b6): the accent on Dark Roast sections, and the tick colour of the password screen's "show" checkbox.
-- **Dark Roast Soft** (#3b1f1b): a lighter step of Dark Roast, defined as a token for tonal variation.
-- **Sage Deep** (#666841): a darker step of Sage, defined as a token.
-- **Ink** (#1d1a17): body text and headlines on Paper. Never use #000.
-- **Ink Soft** (#5d574f): secondary text and labels on Paper.
+- **Cream** (#f5f1eb): the page, the header, the footer, the hero and every second section. Form fields on a cream panel are white.
+- **Cream Deep** (#ece6dc): a slightly darker cream, defined as a token for tonal variation.
+- **White** (#ffffff): the alternate section background. Form fields on white are cream.
+- **Ink** (#111111): all text, button outlines, the radio and checkbox fill, text selection.
+- **Ink Soft** (#57524b): secondary text such as intros, locations and descriptions. It is 6.6:1 on cream.
+- **Error** (#9b2c2c): form errors only. It is 6.5:1 on cream.
 
-Every section theme sets five CSS variables: `--bg`, `--fg`, `--fg-soft`, `--line` (the foreground at 18–25% opacity, for hairlines) and `--accent`. Components only ever read these variables, so the same block works on all three themes.
+Each section theme sets `--bg`, `--fg`, `--fg-soft`, `--line` (ink at 22%) and `--field` (the input background). Components read only these. The stored theme values are still `ivory`, `espresso` and `olive`. They now mean Cream, White, and Cream panel on white, and the admin labels say so.
 
 ### Named Rules
-**The Theme Token Rule.** Components never name a colour directly. They use `--fg`, `--bg`, `--fg-soft` and `--line`. Anything that inverts on hover or selection uses `text-(--bg)`, because a hard-coded Paper is invisible on a Paper section.
+**The Two Papers Rule.** Backgrounds are only cream or white. No colour fields, no dark sections, no gradients.
 
-**The No Pure Black Rule.** Text is Ink (#1d1a17) or Dark Roast; never #000 or #fff.
+**The Colour Is in the Photos Rule.** Photos are shown in black and white (`grayscale`), so nothing on the page competes with the type.
 
 ## Typography
 
-**Display Font:** EB Garamond Italic, weight 400 (fallback Georgia, serif)
-**Body Font:** Cormorant Garamond, weights 400/500/600, roman and italic (fallback Georgia, serif)
-**Label Font:** Cormorant Garamond Italic, the same family as the body text
+**Heading Font:** Helvetica Neue 400, the face Morais uses, on Apple devices. Inter Tight 400 is self-hosted for every other device (fallback Arial).
+**Body Font:** Libre Caslon Text 400/700 with italic (fallback Times New Roman)
 
-**Character:** Two Garamonds set the tone. One is a formal italic for names and headlines, the other a softer serif that reads like handwriting set in type. The small notes (dates, numbers, labels) are that softer serif in italic: personal, not printed by a machine.
+**Character:** A quiet Swiss grotesque for anything you glance at (names, headings, buttons, labels on form fields), and a warm book serif for anything you read. It's the pairing Morais uses, and it looks like a printed card rather than a website.
 
 ### Hierarchy
-- **Hero** (400 italic, 15vw on phones and 9.5vw on desktop, line-height 0.95): only the couple's names in the hero.
-- **Display** (400 italic, 2.25rem rising to 3.75rem, line-height 1.02): section headlines (h2), the footer names, the password screen names (3.75–4.5rem).
-- **Headline** (400 italic, 1.875–2.25rem, line-height 1.02): h3s for milestones, schedule times, detail cards and countdown digits.
-- **Lead** (Cormorant italic, 1.25–1.5rem): taglines, locations, the footer note, success and closed messages.
-- **Body** (Cormorant 400, 1.0625rem, line-height 1.6; intros at 1.125–1.25rem): running text, kept to about 36–42rem wide (`max-w-xl` / `max-w-2xl`).
-- **Label** (Cormorant Garamond italic 400, 1.125rem, line-height 1.4, letter-spacing 0.01em, sentence case, lining figures, `--fg-soft`): eyebrows, nav links, field labels, numbering, buttons, dates. At 18px it also stays readable for older relatives.
+- **Hero** (400, clamp(3.25rem, 10vw, 6rem), line-height 1.02, -0.02em): the opening line ("Vi gifter oss") and the big date. Never larger than 6rem.
+- **Display** (400, 2.25rem rising to 3rem, line-height 1.1, -0.02em): section headings (h2), always centred and balanced.
+- **Headline** (400, 1.5–1.875rem): schedule items, detail cards, milestones.
+- **Body** (Libre Caslon 400, 1.0625rem, line-height 1.75): running text, centred, 36rem wide at most.
+- **Small** (Libre Caslon 400, 0.9375rem): captions, milestone dates, the contact email.
+- **UI** (grotesque 400, 0.9375–1rem): nav links, button text, form field labels, in sentence case.
 
 ### Named Rules
-**The Å Ä Ö Rule.** Display type keeps a line-height of at least 1.02, so the rings and dots on Å, Ä and Ö don't touch the line above. The hero names use 0.95, which works only because names rarely carry them. Don't copy 0.95 elsewhere.
+**The No Eyebrow Rule.** Headings stand alone. No small labels above them, no "01 —" numbering, no tracked capitals. The block `label` field in the CMS is deliberately not rendered.
 
-**The Margin Note Rule.** Small text is an italic serif note in sentence case. Never use uppercase with wide letter-spacing, and never use a mono or sans font. Those make the site look like a business.
-
-**The Lining Figures Rule.** Cormorant's default old-style figures make "01" read as "o1" and "1" as "ı". Labels and form fields use lining figures (`lining-nums`).
+**The Regular Weight Rule.** Headings are weight 400. Size and space make them headings, never boldness.
 
 ## Layout
 
-There is one column per section: `max-width: 1280px`, side padding 20px (40px from 768px up), vertical padding 96px (144px from 768px up). A section heading sits 56–80px above its content. Inside sections, a 12-column grid splits content asymmetrically: text 5–6 columns, form or images 6 columns, FAQ heading 4 columns and answers 8. On phones everything stacks in one column.
+Everything sits in one centred column: max-width 1152px, side padding 20px (40px from 768px up), vertical section padding 80px (112px from 768px up). The heading sits 48–64px above its content. Text is centred. Lists of things (the schedule, detail cards, milestones) become centred columns in a grid: one on phones, two from 640px, three from 1024px. The FAQ is a single 42rem column with hairline rules. Breakpoints are Tailwind's defaults, 640 / 768 / 1024px.
 
-Breakpoints are Tailwind's defaults: 640px (`sm`), 768px (`md`) and 1024px (`lg`). Lists are separated by hairline rules (`border-t` in `--line`, with a closing `border-b`), not by cards or boxes. Images keep fixed aspect ratios (4:5 and 3:4), and the Story block staggers two images vertically by 96px. The gallery is a masonry layout, two columns on phones and three from 768px.
+The header is not fixed. The names are on the left; section links and an outlined reply button are on the right. On phones a two-line menu icon opens a full-screen cream overlay with the links in large grotesque. The hero is the announcement in large type, then a black-and-white photo inset (4:5 on phones, 3:2 from 640px), then the date set large, then one serif line and the reply button. The footer has the closing note, an em dash, a big underlined reply link, then the hashtag and email.
 
-Motion is slow and rare. Entry content uses `fade-up` (0.9s, `cubic-bezier(0.2, 0.7, 0.2, 1)`, rising 18px). Hover states fade over 300ms, and the nav changes from transparent to solid over 500ms. Nothing bounces.
+Motion is limited to colour changes on hover (200ms) and the FAQ plus rotating 45°. Nothing fades in and nothing parallaxes.
 
 ## Elevation & Depth
 
-The system is flat. Depth comes from the colour of whole sections: a Dark Roast hero, Paper content, a Sage section, a Dark Roast footer. There are no `box-shadow`s, with one exception: the scrolled nav bar draws a 1px hairline as `shadow-[0_1px_0_var(--line)]` over a backdrop blur, a border rather than a lift. The hero darkens its photo with a Dark Roast gradient (55% → 25% → 85%) so Paper text stays readable.
+Completely flat. There are no shadows and no blur. Depth only comes from cream and white sections alternating, and from the one cream panel on white.
 
 ### Named Rules
-**The Ink-on-Paper Rule.** Nothing floats. If something needs separating, use a hairline in `--line` or a change of section colour, never a shadow or a raised card.
+**The Flat Paper Rule.** If two things need separating, use a 1px hairline in `--line` or a change of paper, never a shadow or a raised card.
 
 ## Shapes
 
-Every corner is square (0px): images, buttons, fields, choice chips, the nav bar. Lines are 1px, either `--line` for structure or `currentColor` for interactive outlines and link underlines. The FAQ's open/close sign is a typographic `+` that rotates 45°, not an icon. Arrows are text characters (`↗`), not icon fonts.
+Every corner is square: photos, buttons, inputs, the panel. Lines are 1px. The FAQ's open/close mark is a drawn 16px SVG plus, not a text character. Radios and checkboxes are native, tinted ink with `accent-color`, so they look the way people expect.
 
 ## Components
 
-Printed, not pressed. Controls look like ink on paper: outlines, underlines and type. They answer hover by filling with ink, never by lifting.
+Plain, familiar and well spaced, like a good Squarespace site set up by someone careful.
 
 ### Buttons
-- **Shape:** square (0px), 1px `currentColor` outline.
-- **Default:** transparent background, label type (Cormorant italic, 1.125rem, sentence case), padding 16px × 28px, takes the section's `--fg`.
-- **Hover:** fills with `--fg` and the text turns `--bg`, over 300ms. On the hero the button's `--fg`/`--bg` are forced to Paper/Dark Roast.
+- **Shape:** square, 1px ink outline, at least 48px tall and 224px wide.
+- **Default:** transparent background, grotesque 1rem in sentence case, ink text.
+- **Hover:** fills ink, and the text turns the section's paper colour (200ms).
 - **Disabled:** 50% opacity, not clickable.
-- **Text link:** label type with a 1px `currentColor` underline (`border-b`, padding-bottom 4px) and an optional `↗`.
-
-### Choice chips (RSVP yes/no)
-- **Style:** label type in a 1px `--line` outline, padding 12px × 20px, with a hidden radio inside.
-- **Selected:** outline and fill in `--fg`, text in `--bg`.
+- **Links:** serif text with a 1px underline offset by 0.2em.
 
 ### Inputs / Fields
-- **Style:** no box. Only a 1px `--line` bottom border, transparent background, no side padding, 12px top and bottom, Cormorant at 1.25rem (1.5rem on the password screen) with lining figures, text in `--fg`.
-- **Label:** label type above the field. "Optional" hints sit at the right at 70% opacity.
-- **Focus:** the bottom border turns `--fg`. There is no glow or ring.
-- **Error:** label-type text in red-400 (red-300 on Dark Roast) with `role="alert"` under the field. Red-400 on Paper has low contrast. That's a known gap, not part of the style.
+- **Style:** a full 1px box in `--line`, background `--field` (cream on white sections, white on cream), padding 12px × 16px, serif body text, square corners.
+- **Label:** grotesque 0.9375rem above the field, in sentence case. "(frivilligt)" follows it in Ink Soft.
+- **Focus:** the border turns ink and there is no glow. The global focus ring is a 1px ink outline offset by 4px.
+- **Error:** Error-coloured text under the field with `role="alert"`.
+- **Choice (attending):** native radio buttons stacked vertically with 44px tap rows, not styled chips.
 
 ### Navigation
-- **Top of page:** transparent over the hero, Paper text, the couple's initials as a monogram on the left ("J & G", display type, letter-spacing 0.15em), label-type links on the right at 80% opacity, full opacity on hover.
-- **Scrolled or open:** switches to the Paper theme at 95% opacity with a backdrop blur and a 1px hairline underneath.
-- **Mobile:** a "Meny"/"Stäng" text button with a 24px rule beside it. The menu opens as a list of display-type links at 1.875rem.
+- **Desktop:** names on the left (grotesque 1.125rem), section links at 0.9375rem that underline on hover, and the reply link as a small outlined box.
+- **Mobile:** a two-line icon that becomes an X, opening a full-height cream overlay with centred links at 2.25rem.
 
-### Numbered entry (signature)
-Content in Story milestones, Details cards and the schedule is organised by number, not by boxes. Each entry has a label-type number ("01." with an optional date), a display-type title and body text in `--fg-soft`. Entries sit on hairline rules or in a 2–3 column grid.
+### Hero (signature)
+The announcement in large type, a black-and-white photo, the date in large type, then the weekday and venue with "244 dagar kvar" underneath. The day count updates once a minute and is blank on the server. The reply button comes last.
 
-### Countdown (signature)
-Four units in a row. The digits are display type at 1.875–3rem with tabular figures, and the unit names are label type at 70% opacity. The server renders `--` so the page never mismatches on hydration.
+### Footer (signature)
+The closing note, an em dash, the reply link at 3.75–4.5rem with a 1px underline, then the hashtag and contact email in small type. Lifted straight from Morais's closing RSVP.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** take every colour from the section's theme variables (`--fg`, `--bg`, `--fg-soft`, `--line`) so a block works on Paper, Dark Roast and Sage alike.
-- **Do** set headlines in EB Garamond Italic 400 with a line-height of at least 1.02, and every small piece of text as a Cormorant italic note at 1.125rem in sentence case.
-- **Do** organise content with label-type numbers (01, 02, 03) and hairline rules.
-- **Do** keep corners square and lines at 1px.
-- **Do** keep motion to the `fade-up` entrance and 300ms colour fades.
-- **Do** leave room: sections get 96–144px of vertical padding, and running text stays under about 42rem wide.
+- **Do** centre everything and keep running text under 36rem wide.
+- **Do** set headings in the grotesque at weight 400 with -0.02em tracking, and everything people read in Libre Caslon Text.
+- **Do** alternate cream and white sections, and use the cream panel on white at most once or twice a page.
+- **Do** show photographs in black and white, inset in the column.
+- **Do** use 1px ink outlines for buttons and 1px `--line` boxes for fields, square corners only.
+- **Do** keep form labels and button text in sentence case, at readable sizes (0.9375rem or larger).
 
 ### Don't:
 - **Don't** drift toward template wedding sites: no script fonts, blush pink, floral clip art or gold foil.
 - **Don't** use app or SaaS UI: no rounded cards, drop shadows, bright accent buttons or icon-heavy layouts.
 - **Don't** go rustic DIY: no kraft paper, twine, chalkboard or mason-jar textures.
-- **Don't** hard-code Paper or Ink in components. An inverted state that hard-codes Paper disappears on a Paper section.
-- **Don't** use #000, #fff or any saturated colour outside the palette. The red error text is the only exception.
-- **Don't** set display type tighter than a line-height of 1.02 outside the hero names.
-- **Don't** bring back tracked uppercase or mono labels. They made the site look like a business.
+- **Don't** put eyebrows or section numbers above headings, or use tracked uppercase labels.
+- **Don't** add entrance animations, a sticky header that changes on scroll, or a ticking seconds countdown.
+- **Don't** make headings bold or larger than 6rem.

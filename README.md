@@ -30,12 +30,12 @@ The seed creates the first admin from `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD`
 
 ### Blocks
 
-Every block has an **anchor** (its `#hash`), an optional **nav label** (empty = not in the menu) and a **theme**: `ivory`, `espresso` or `olive`, so sections can alternate like the reference design.
+Every block has an **anchor** (its `#hash`), an optional **nav label** (empty = not in the menu) and a **background**: Cream, White, or Cream panel on white (stored as `ivory`, `espresso`, `olive` from the first design), so sections can alternate like the Morais reference. The block **label** field is no longer shown on the page.
 
 | Block | Purpose | Notable fields |
 | --- | --- | --- |
-| Hero | Full-screen opener | background image, eyebrow, tagline (falls back to date + venue), countdown, CTA button |
-| Our story | Text + two staggered photos | rich text, numbered milestones (01. 02. 03.) |
+| Hero | Opener | announcement line set large (empty = the names), photo, line under the date (falls back to weekday + venue), days-left line, CTA button |
+| Our story | Text + up to two photos | rich text, milestones (date, title, text) |
 | Schedule | Timeline of the day | events with time, title, location, description |
 | Details | Practical info cards | venue, travel, accommodation, dress code, gifts… each with optional image and link |
 | Gallery | Masonry photo grid | images with captions |
@@ -79,7 +79,7 @@ src/
 
 ## Design notes
 
-Inspired by editorial photography templates: condensed uppercase serif headlines (Bodoni Moda), italic serif body (Cormorant Garamond), tiny tracked mono labels (DM Mono), numbered lists and full-bleed colour sections. Colours and fonts are tokens in `src/app/(frontend)/styles.css`; each theme sets `--bg`, `--fg`, `--fg-soft`, `--line` so components look right on any section colour.
+Directly inspired by Squarespace's [Morais](https://www.squarespace.com/templates/morais-fluid-demo) wedding template: cream and white sections, everything centred, headings in regular-weight Helvetica Neue (Inter Tight on devices without it), body text in Libre Caslon Text, black outlined buttons, black-and-white photos. No eyebrows, section numbers or entrance animations. See `DESIGN.md` for the tokens and rules; colours and fonts live in `src/app/(frontend)/styles.css`.
 
 ## Scripts
 

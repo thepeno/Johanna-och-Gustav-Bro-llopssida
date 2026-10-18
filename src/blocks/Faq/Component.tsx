@@ -6,23 +6,19 @@ import { RichText } from '@/components/RichText'
 export function FaqBlockComponent({ block }: { block: FaqBlock }) {
   return (
     <Section anchor={block.anchor} theme={block.theme}>
-      <div className="grid gap-12 lg:grid-cols-12">
-        <div className="lg:col-span-4">
-          <SectionHeading label={block.label} heading={block.heading} />
-        </div>
-        <div className="lg:col-span-8">
-          {block.items?.map((item, i) => (
-            <details key={item.id ?? i} className="group border-t border-(--line) last:border-b">
-              <summary className="flex cursor-pointer items-start justify-between gap-6 py-6 font-serif text-xl md:text-2xl">
-                <span>{item.question}</span>
-                <span aria-hidden className="faq-icon mt-1 shrink-0 text-2xl leading-none transition-transform duration-300">
-                  +
-                </span>
-              </summary>
-              <RichText data={item.answer} className="max-w-2xl pb-8 text-(--fg-soft)" />
-            </details>
-          ))}
-        </div>
+      <SectionHeading heading={block.heading} />
+      <div className="mx-auto max-w-2xl">
+        {block.items?.map((item, i) => (
+          <details key={item.id ?? i} className="border-t border-(--line) last:border-b">
+            <summary className="flex cursor-pointer items-baseline justify-between gap-6 py-5 font-sans text-lg tracking-[-0.01em] md:text-xl">
+              <span>{item.question}</span>
+              <svg aria-hidden viewBox="0 0 16 16" className="faq-icon size-4 shrink-0 transition-transform duration-200">
+                <path d="M8 1v14M1 8h14" stroke="currentColor" strokeWidth="1" fill="none" />
+              </svg>
+            </summary>
+            <RichText data={item.answer} className="pb-7 text-(--fg-soft)" />
+          </details>
+        ))}
       </div>
     </Section>
   )
