@@ -4,7 +4,6 @@
   "private": true,
   "description": "One-page wedding website built with Payload CMS, MongoDB and Tailwind",
   "type": "module",
-  "packageManager": "pnpm@9.9.0+sha512.YMGKzROL/2ldM5vmrRP36TbupnRWYNTMSndtUkfFQNDt7hpWNpXBg6ZuuRfviPK0/rH8JfMqetytx6rzQ46ZwQ==",
   "scripts": {
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
@@ -48,14 +47,7 @@
     "typescript": "5.7.3"
   },
   "engines": {
-    "node": "^18.20.2 || >=20.9.0",
-    "pnpm": "^9"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "sharp",
-      "esbuild",
-      "unrs-resolver"
-    ]
+    "node": ">=20.9.0",
+    "npm": ">=10"
   }
 }

@@ -12,7 +12,7 @@ One lesson per entry. Update entries instead of duplicating them.
 - **Payload's console email adapter logs only `to` and `subject`.** With no `RESEND_API_KEY` the RSVP hook (`src/hooks/rsvpEmails.ts`) logs the full body itself when `payload.email.name === 'console'`, so local dev shows what would have been sent. Email hooks are wrapped in try/catch and use `Promise.allSettled`: a failed mail is logged, never surfaced to the guest.
 - **Seed runs outside Next.** Hooks that call `revalidatePath` must check `context.disableRevalidate` (the seed passes it) and are wrapped in try/catch.
 
-- **Pin pnpm with `packageManager`.** A collaborator on pnpm 11 hit `ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION` because a transitive dependency (strtok3) in the lockfile was published hours earlier. Pinning `pnpm@9.9.0` via `packageManager` + `corepack enable` keeps everyone on the version the lockfile was built with.
+- **npm, not pnpm.** The project started on pnpm; a collaborator on pnpm 11 hit `ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION` (a transitive dependency published hours earlier). Switched to npm with `package-lock.json` so that no extra tooling is needed beyond Node. Seed flags are passed as `npm run seed -- --reset`.
 
 ## Open items
 

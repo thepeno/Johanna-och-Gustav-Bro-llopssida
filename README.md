@@ -2,22 +2,22 @@
 
 One-page wedding website. Editors build the page from blocks in Payload CMS; guests RSVP through a form that writes straight to the database.
 
-**Stack:** Next.js 16 (App Router) · Payload CMS 3 · MongoDB · Tailwind CSS 4 · TypeScript
+**Stack:** Next.js 16 (App Router) · Payload CMS 3 · MongoDB · Tailwind CSS 4 · TypeScript · npm
 
 ## Getting started
 
 ```bash
 cp .env.example .env        # then set PAYLOAD_SECRET to a long random string
-pnpm install
-pnpm seed                   # first admin user + demo content with placeholder images
-pnpm dev                    # http://localhost:3000  (admin at /admin)
+npm install
+npm run seed                # first admin user + demo content with placeholder images
+npm run dev                 # http://localhost:3000  (admin at /admin)
 ```
 
-Requires Node 20+ and a MongoDB reachable at `DATABASE_URL` (a free MongoDB Atlas cluster works; locally: `brew services start mongodb-community`).
+Requires Node 20.9+ and a MongoDB reachable at `DATABASE_URL` (a free MongoDB Atlas cluster works; locally: `brew services start mongodb-community`).
 
-The project is pinned to pnpm 9.9.0 through the `packageManager` field. With Node installed, run `corepack enable` once and the right pnpm version is used automatically. Newer pnpm (10+) applies a minimum-release-age policy that can reject freshly published transitive dependencies in the lockfile, which is why the version is pinned.
+Use npm (10+), which ships with Node. The lockfile is `package-lock.json`.
 
-The seed creates the first admin from `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD` only when no user exists. Change that password after the first login. Re-running `pnpm seed` leaves an existing home page alone; `pnpm seed --reset` replaces the page and media (RSVPs are never touched).
+The seed creates the first admin from `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD` only when no user exists. Change that password after the first login. Re-running `npm run seed` leaves an existing home page alone; `npm run seed -- --reset` replaces the page and media (RSVPs are never touched).
 
 ## Content model
 
@@ -42,7 +42,7 @@ Every block has an **anchor** (its `#hash`), an optional **nav label** (empty = 
 | RSVP form | Reply form | deadline (form closes after that day), max party size, toggles for dietary / song / message, success and closed messages |
 | FAQ | Accordion | question + rich-text answer |
 
-Add, remove and reorder blocks freely in the admin; the frontend renders whatever is in `layout`. To add a new block type: create `src/blocks/<Name>/config.ts` and `Component.tsx`, register both in `src/collections/Pages.ts` and `src/blocks/RenderBlocks.tsx`, then run `pnpm generate:types`.
+Add, remove and reorder blocks freely in the admin; the frontend renders whatever is in `layout`. To add a new block type: create `src/blocks/<Name>/config.ts` and `Component.tsx`, register both in `src/collections/Pages.ts` and `src/blocks/RenderBlocks.tsx`, then run `npm run generate:types`.
 
 ### RSVP flow
 
@@ -76,11 +76,11 @@ Inspired by editorial photography templates: condensed uppercase serif headlines
 
 | Command | |
 | --- | --- |
-| `pnpm dev` / `pnpm build` / `pnpm start` | Next.js |
-| `pnpm seed [--reset]` | Demo content |
-| `pnpm generate:types` | Regenerate `src/payload-types.ts` after changing collections or blocks |
-| `pnpm generate:importmap` | Regenerate the admin import map after adding custom admin components |
-| `pnpm lint` / `pnpm typecheck` | Checks |
+| `npm run dev` / `npm run build` / `npm start` | Next.js |
+| `npm run seed [-- --reset]` | Demo content |
+| `npm run generate:types` | Regenerate `src/payload-types.ts` after changing collections or blocks |
+| `npm run generate:importmap` | Regenerate the admin import map after adding custom admin components |
+| `npm run lint` / `npm run typecheck` | Checks |
 
 ## Deploying
 
