@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { sendRsvpEmails } from '@/hooks/rsvpEmails'
 
 // Guest replies. Guests never talk to this collection directly: the public form
 // goes through a server action (src/actions/rsvp.ts) that validates and writes
@@ -12,6 +13,7 @@ export const Rsvps: CollectionConfig = {
     defaultColumns: ['name', 'attending', 'partySize', 'email', 'createdAt'],
     listSearchableFields: ['name', 'email', 'guestNames'],
   },
+  hooks: { afterChange: [sendRsvpEmails] },
   access: {
     read: ({ req }) => Boolean(req.user),
     create: ({ req }) => Boolean(req.user),

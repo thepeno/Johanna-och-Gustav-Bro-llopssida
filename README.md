@@ -46,6 +46,8 @@ Add, remove and reorder blocks freely in the admin; the frontend renders whateve
 
 `src/blocks/Rsvp/Form.tsx` (client) → `src/actions/rsvp.ts` (server action) → Payload Local API. The action validates with zod, drops honeypot submissions, enforces the deadline and max party size from the block config, and rate-limits to 5 replies per 10 minutes per IP (in memory, per instance). Replies are listed under **Guests → RSVPs** in the admin and can be exported from there.
 
+Every new reply triggers two plain-text emails from an `afterChange` hook on the collection (`src/hooks/rsvpEmails.ts`): a summary to the couple (`RSVP_NOTIFY_TO`, comma-separated; falls back to Site settings → contact email) and a confirmation to the guest in the site language with the wedding date. Mail goes through [Resend](https://resend.com) when `RESEND_API_KEY` is set (`EMAIL_FROM_ADDRESS` must be on a domain verified there); without it Payload logs the emails to the dev server console instead. Sending never blocks the reply: failures are logged and the guest still sees the success message.
+
 ## Project layout
 
 ```

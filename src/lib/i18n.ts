@@ -52,4 +52,44 @@ export const ui = {
 export type Locale = keyof typeof ui
 export type Ui = (typeof ui)[Locale]
 
-export const t = (locale?: string | null): Ui => ui[(locale && locale in ui ? locale : 'sv-SE') as Locale]
+const asLocale = (locale?: string | null): Locale => (locale && locale in ui ? locale : 'sv-SE') as Locale
+
+export const t = (locale?: string | null): Ui => ui[asLocale(locale)]
+
+// Confirmation sent to the guest right after they reply (plain text).
+type RsvpEmailVars = { name: string; attending: boolean; couple: string; date: string; contact?: string | null }
+const rsvpEmail: Record<Locale, (v: RsvpEmailVars) => { subject: string; text: string }> = {
+  'sv-SE': ({ name, attending, couple, date, contact }) => ({
+    subject: `Tack för ditt svar – ${couple}`,
+    text: [
+      `Hej ${name}!`,
+      '',
+      attending
+        ? `Vad roligt att du kommer! Vi ses ${date}.`
+        : `Tack för att du hörde av dig. Vi kommer att sakna dig ${date}.`,
+      '',
+      contact ? `Behöver du ändra något? Mejla oss på ${contact}.` : 'Behöver du ändra något? Svara på det här mejlet.',
+      '',
+      `Varma hälsningar,`,
+      couple,
+    ].join('\n'),
+  }),
+  'en-GB': ({ name, attending, couple, date, contact }) => ({
+    subject: `Thank you for your reply – ${couple}`,
+    text: [
+      `Hi ${name}!`,
+      '',
+      attending
+        ? `We're so glad you can make it! See you on ${date}.`
+        : `Thank you for letting us know. We'll miss you on ${date}.`,
+      '',
+      contact ? `Need to change anything? Email us at ${contact}.` : 'Need to change anything? Just reply to this email.',
+      '',
+      'With love,',
+      couple,
+    ].join('\n'),
+  }),
+}
+
+export const rsvpConfirmation = (locale: string | null | undefined, vars: RsvpEmailVars) =>
+  rsvpEmail[asLocale(locale)](vars)
