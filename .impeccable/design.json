@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-18T17:25:08+00:00",
+  "title": "Design System: Johanna & Gustav",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "oklch(94.4% 0.009 84.6)",
+        "tonalRamp": [
+          "#0c0b08",
+          "#272521",
+          "#44423d",
+          "#63615c",
+          "#85827d",
+          "#a7a59f",
+          "#cbc9c3",
+          "#f1eee9"
+        ]
+      },
+      "paper-deep": {
+        "role": "neutral",
+        "displayName": "Paper Deep",
+        "canonical": "oklch(90.5% 0.015 84.6)",
+        "tonalRamp": [
+          "#0d0b06",
+          "#28251e",
+          "#464239",
+          "#656158",
+          "#868279",
+          "#a9a49b",
+          "#cdc9c0",
+          "#f2eee6"
+        ]
+      },
+      "sand": {
+        "role": "neutral",
+        "displayName": "Sand",
+        "canonical": "oklch(82.9% 0.024 82.1)",
+        "tonalRamp": [
+          "#0f0a03",
+          "#2a2419",
+          "#484134",
+          "#686052",
+          "#8a8172",
+          "#ada494",
+          "#d0c8b9",
+          "#f5eee0"
+        ]
+      },
+      "dark-roast": {
+        "role": "primary",
+        "displayName": "Dark Roast",
+        "canonical": "oklch(22.2% 0.037 25.9)",
+        "tonalRamp": [
+          "#160605",
+          "#341f1c",
+          "#543b38",
+          "#755956",
+          "#977a77",
+          "#bb9d99",
+          "#dec1be",
+          "#ffe8e4"
+        ]
+      },
+      "dark-roast-soft": {
+        "role": "neutral",
+        "displayName": "Dark Roast Soft",
+        "canonical": "oklch(27.6% 0.045 28.9)",
+        "tonalRamp": [
+          "#180504",
+          "#361d19",
+          "#573934",
+          "#795853",
+          "#9b7973",
+          "#c09b95",
+          "#e3c0ba",
+          "#ffe6e1"
+        ]
+      },
+      "sage": {
+        "role": "primary",
+        "displayName": "Sage",
+        "canonical": "oklch(59.1% 0.059 110.4)",
+        "tonalRamp": [
+          "#0d0c00",
+          "#272703",
+          "#44451d",
+          "#63643c",
+          "#84865d",
+          "#a6a97e",
+          "#cacda5",
+          "#f0f2ce"
+        ]
+      },
+      "sage-deep": {
+        "role": "neutral",
+        "displayName": "Sage Deep",
+        "canonical": "oklch(50.5% 0.057 110.8)",
+        "tonalRamp": [
+          "#0c0c00",
+          "#262704",
+          "#43451f",
+          "#62643e",
+          "#84865e",
+          "#a6a97f",
+          "#cacda6",
+          "#eff2cf"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(22.0% 0.007 67.4)",
+        "tonalRamp": [
+          "#0d0b09",
+          "#272422",
+          "#45413e",
+          "#64605d",
+          "#85827e",
+          "#a8a4a0",
+          "#ccc8c4",
+          "#f1eeea"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Ink Soft",
+        "canonical": "oklch(46.0% 0.015 75.2)",
+        "tonalRamp": [
+          "#0e0a06",
+          "#29241e",
+          "#474139",
+          "#666058",
+          "#888179",
+          "#aba49b",
+          "#cec8c0",
+          "#f3eee6"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "hero": {
+        "displayName": "Hero",
+        "purpose": "Only the couple's names in the hero."
+      },
+      "display": {
+        "displayName": "Display",
+        "purpose": "Section headlines, footer names, password screen names."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Milestones, schedule times, detail cards, countdown digits."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Taglines, locations, footer note, success and closed messages."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, kept to about 36–42rem wide."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Eyebrows, nav, field labels, numbering, buttons, dates."
+      }
+    },
+    "shadows": [
+      {
+        "name": "nav-hairline",
+        "value": "0 1px 0 var(--line)",
+        "purpose": "The only shadow: a 1px hairline under the scrolled nav bar, acting as a border, not a lift."
+      }
+    ],
+    "motion": [
+      {
+        "name": "fade-up",
+        "value": "0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; from opacity 0, translateY(18px)",
+        "purpose": "Entrance for hero and password screen content."
+      },
+      {
+        "name": "state-fade",
+        "value": "300ms",
+        "purpose": "Colour changes on hover and the FAQ + rotation."
+      },
+      {
+        "name": "nav-fade",
+        "value": "500ms",
+        "purpose": "Nav changing from transparent to solid on scroll."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "The only button style. Outline in the section colour that fills with ink on hover.",
+      "html": "<button class=\"ds-btn\">Skicka svar</button>",
+      "css": ".ds-btn { font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 12px; padding: 16px 28px; background: transparent; color: #1d1a17; border: 1px solid currentColor; border-radius: 0; cursor: pointer; transition: background-color .3s, color .3s; } .ds-btn:hover { background: #1d1a17; color: #efece6; } .ds-btn:focus-visible { outline: 1px solid #1d1a17; outline-offset: 4px; } .ds-btn:disabled { opacity: .5; pointer-events: none; }"
+    },
+    {
+      "name": "Outline Button on Dark Roast",
+      "kind": "button",
+      "refersTo": "button-outline-on-dark",
+      "description": "The same button on a Dark Roast section (hero, password screen).",
+      "html": "<div class=\"ds-dark\"><button class=\"ds-btn-dark\">Öppna sidan</button></div>",
+      "css": ".ds-dark { background: #2a1412; padding: 32px; } .ds-btn-dark { font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; padding: 16px 28px; background: transparent; color: #efece6; border: 1px solid currentColor; border-radius: 0; cursor: pointer; transition: background-color .3s, color .3s; } .ds-btn-dark:hover { background: #efece6; color: #2a1412; } .ds-btn-dark:focus-visible { outline: 1px solid #efece6; outline-offset: 4px; }"
+    },
+    {
+      "name": "Underline Field",
+      "kind": "input",
+      "refersTo": "input-underline",
+      "description": "Text input with no box: a mono label above a single hairline that darkens on focus.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Namn</span><input class=\"ds-input\" type=\"text\" placeholder=\"Johanna Andersson\"></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 4px; max-width: 360px; } .ds-field-label { font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #5d574f; } .ds-input { border: 0; border-bottom: 1px solid rgba(29,26,23,.18); background: transparent; padding: 12px 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; color: #1d1a17; border-radius: 0; transition: border-color .3s; } .ds-input:focus, .ds-input:focus-visible { outline: none; border-bottom-color: #1d1a17; } .ds-input::placeholder { color: rgba(93,87,79,.6); }"
+    },
+    {
+      "name": "Choice Chips",
+      "kind": "chip",
+      "refersTo": "choice-chip",
+      "description": "The RSVP yes/no choice: radio buttons that look like outlined labels.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip is-selected\">Ja, jag kommer</button><button class=\"ds-chip\">Tyvärr, jag kan inte</button></div>",
+      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 12px; } .ds-chip { font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; padding: 12px 20px; background: transparent; color: #5d574f; border: 1px solid rgba(29,26,23,.18); border-radius: 0; cursor: pointer; transition: background-color .3s, color .3s, border-color .3s; } .ds-chip:hover { border-color: #1d1a17; color: #1d1a17; } .ds-chip.is-selected { background: #1d1a17; border-color: #1d1a17; color: #efece6; } .ds-chip:focus-visible { outline: 1px solid #1d1a17; outline-offset: 3px; }"
+    },
+    {
+      "name": "Navigation Bar (scrolled)",
+      "kind": "nav",
+      "refersTo": "nav-bar-solid",
+      "description": "Fixed top bar with the initials monogram on the left and mono links on the right, shown solid once the page scrolls.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-mono\" href=\"#\">J &amp; G</a><ul class=\"ds-links\"><li><a href=\"#\">Vår historia</a></li><li><a href=\"#\">Dagen</a></li><li><a href=\"#\">OSA</a></li></ul></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; background: rgba(239,236,230,.95); color: #1d1a17; box-shadow: 0 1px 0 rgba(29,26,23,.18); backdrop-filter: blur(8px); } .ds-mono { font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: 20px; letter-spacing: .15em; color: inherit; text-decoration: none; } .ds-links { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; } .ds-links a { font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(29,26,23,.8); text-decoration: none; transition: color .3s; } .ds-links a:hover, .ds-links a:focus-visible { color: #1d1a17; }"
+    },
+    {
+      "name": "Section Heading",
+      "kind": "custom",
+      "refersTo": "display",
+      "description": "Mono eyebrow, italic display headline and an intro in the softer text colour. Opens every section.",
+      "html": "<div class=\"ds-head\"><p class=\"ds-eyebrow\">01 — Vår historia</p><h2 class=\"ds-h2\">Från en kaffe på Söder till ett ja på Fårö</h2><p class=\"ds-intro\">Det började med en kopp kaffe som blev tre.</p></div>",
+      "css": ".ds-head { max-width: 640px; } .ds-eyebrow { font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #5d574f; margin: 0 0 20px; } .ds-h2 { font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-weight: 400; font-size: 52px; line-height: 1.02; color: #1d1a17; margin: 0; } .ds-intro { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; line-height: 1.6; color: #5d574f; margin: 24px 0 0; max-width: 36rem; }"
+    },
+    {
+      "name": "Numbered Entry",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "Signature pattern: a mono number, an italic title and soft body text sitting on a hairline.",
+      "html": "<ol class=\"ds-entries\"><li><span class=\"ds-num\">01. 2018</span><h3 class=\"ds-h3\">Första kaffet</h3><p class=\"ds-text\">En septemberkväll på Hornsgatan.</p></li><li><span class=\"ds-num\">02. 2024</span><h3 class=\"ds-h3\">Ja på Fårö</h3><p class=\"ds-text\">En klippa i blåsten.</p></li></ol>",
+      "css": ".ds-entries { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 32px; list-style: none; margin: 0; padding: 32px 0 0; border-top: 1px solid rgba(29,26,23,.18); } .ds-num { font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #5d574f; } .ds-h3 { font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-weight: 400; font-size: 32px; line-height: 1.02; margin: 16px 0 0; color: #1d1a17; } .ds-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 17px; line-height: 1.6; color: #5d574f; margin: 16px 0 0; }"
+    },
+    {
+      "name": "Countdown",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "Signature hero detail: display-type digits over mono unit labels, on Dark Roast.",
+      "html": "<dl class=\"ds-count\"><div><dd>243</dd><dt>dagar</dt></div><div><dd>18</dd><dt>timmar</dt></div><div><dd>41</dd><dt>minuter</dt></div><div><dd>09</dd><dt>sekunder</dt></div></dl>",
+      "css": ".ds-count { display: flex; gap: 40px; margin: 0; padding: 32px; background: #2a1412; color: #efece6; } .ds-count div { display: flex; flex-direction: column; align-items: center; min-width: 64px; } .ds-count dd { margin: 0; font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: 44px; line-height: 1.02; font-variant-numeric: tabular-nums; } .ds-count dt { font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; margin-top: 8px; opacity: .7; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Squarespace's Morais, made personal",
+    "overview": "**Creative North Star: \"Squarespace's Morais, made personal\"**\n\nThe site follows Squarespace's Morais, an editorial photography template: big italic serif headlines, tiny mono labels with wide letter-spacing, numbered lists, and full-width sections in alternating colours. This version makes it warm, unhurried and intimate. Paper-coloured pages, dark-roast and sage sections, slow fade-ins and plenty of whitespace make it read like a personal letter, not a product. Nothing hurries the guest along. There is one long page, one action (reply), and room to read.\n\nIt's a long-scroll page with a calm pace. Each section is one idea, set inside a 1280px column with generous vertical padding, and the theme alternates from section to section. Photos are square-cornered and usually full-bleed, in fixed aspect ratios. All depth comes from colour changes between sections, never from shadows.\n\nThe look must never drift toward three things: template wedding sites (script fonts, blush pink, floral clip art, gold foil), app or SaaS UI (rounded cards, drop shadows, bright accent buttons, icons everywhere) or rustic DIY (kraft paper, twine, chalkboard, mason jars).",
+    "keyCharacteristics": [
+      "Three section themes (Paper, Dark Roast, Sage) that editors choose block by block",
+      "An italic serif for every headline, a soft serif for body text, and tiny uppercase mono labels",
+      "Square corners everywhere, hairline rules, no shadows",
+      "Numbered entries (01, 02, 03) as the main way to organise content",
+      "Printed, not pressed: controls are outlines and underlines that fill in with ink on hover"
+    ],
+    "rules": [
+      {
+        "name": "The Theme Token Rule",
+        "body": "Components never name a colour directly. They use `--fg`, `--bg`, `--fg-soft` and `--line`. Anything that inverts on hover or selection uses `text-(--bg)`, because a hard-coded Paper is invisible on a Paper section.",
+        "section": "colors"
+      },
+      {
+        "name": "The No Pure Black Rule",
+        "body": "Text is Ink (#1d1a17) or Dark Roast; never #000 or #fff.",
+        "section": "colors"
+      },
+      {
+        "name": "The Å Ä Ö Rule",
+        "body": "Display type keeps a line-height of at least 1.02, so the rings and dots on Å, Ä and Ö don't touch the line above. The hero names use 0.95, which works only because names rarely carry them. Don't copy 0.95 elsewhere.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Any piece of text is either serif or mono label. Never set body text in mono, and never set labels in serif.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ink-on-Paper Rule",
+        "body": "Nothing floats. If something needs separating, use a hairline in `--line` or a change of section colour, never a shadow or a raised card.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** take every colour from the section's theme variables (`--fg`, `--bg`, `--fg-soft`, `--line`) so a block works on Paper, Dark Roast and Sage alike.",
+      "**Do** set headlines in EB Garamond Italic 400 with a line-height of at least 1.02, and every small piece of metadata in DM Mono uppercase at 0.6875rem and letter-spacing 0.22em.",
+      "**Do** organise content with label-type numbers (01, 02, 03) and hairline rules.",
+      "**Do** keep corners square and lines at 1px.",
+      "**Do** keep motion to the `fade-up` entrance and 300ms colour fades.",
+      "**Do** leave room: sections get 96–144px of vertical padding, and running text stays under about 42rem wide."
+    ],
+    "donts": [
+      "**Don't** drift toward template wedding sites: no script fonts, blush pink, floral clip art or gold foil.",
+      "**Don't** use app or SaaS UI: no rounded cards, drop shadows, bright accent buttons or icon-heavy layouts.",
+      "**Don't** go rustic DIY: no kraft paper, twine, chalkboard or mason-jar textures.",
+      "**Don't** hard-code Paper or Ink in components. An inverted state that hard-codes Paper disappears on a Paper section.",
+      "**Don't** use #000, #fff or any saturated colour outside the palette. The red error text is the only exception.",
+      "**Don't** set display type tighter than a line-height of 1.02 outside the hero names."
+    ]
+  }
+}
