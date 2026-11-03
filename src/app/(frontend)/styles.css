@@ -35,7 +35,7 @@
     @apply paper-ground;
     color: var(--color-graphite);
     font-family: var(--font-hand);
-    font-size: 0.75rem; /* 12px floor on phones, as the card's lines */
+    font-size: 0.8rem; /* 12.8px floor on phones, as the card's lines */
     line-height: 1.85;
     letter-spacing: 0.06em;
     word-spacing: 0.3em;
@@ -43,7 +43,7 @@
   }
   @media (min-width: 768px) {
     body {
-      font-size: 0.84rem; /* 13.5px, the same as the card's lines */
+      font-size: 0.9rem; /* 14.4px, the same as the card's lines */
     }
   }
   ::selection {
@@ -84,7 +84,7 @@
 
 /* The names line and other small headlines: widely spaced, like the card. */
 @utility names {
-  font-size: clamp(0.75rem, 1.16vw, 0.82rem);
+  font-size: clamp(0.8rem, 1.24vw, 0.88rem);
   letter-spacing: 0.16em;
   word-spacing: 0.35em;
   line-height: 1.4;
@@ -93,8 +93,8 @@
 /* The invitation lines on the opening. Sized so the card's longest line fits a phone. */
 @utility invitation {
   /* by width so the longest line fits a phone, by height so the card fits the first screen */
-  /* floor at 12px so a phone never goes smaller */
-  font-size: clamp(0.75rem, min(2.24vw, 1.5svh), 0.88rem);
+  /* floor at 12.8px so a phone never goes smaller */
+  font-size: clamp(0.8rem, min(2.4vw, 1.6svh), 0.94rem);
   letter-spacing: 0.09em;
   word-spacing: 0.3em;
   @media (min-width: 768px) {
@@ -107,7 +107,7 @@
 /* Section headings: barely larger than the text, like the names on the card. A pencil
    line doesn't get thicker when you write bigger, so hierarchy comes from space. */
 @utility statement {
-  font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+  font-size: clamp(0.86rem, 1.28vw, 0.96rem);
   letter-spacing: 0.16em;
   word-spacing: 0.35em;
   line-height: 1.45;
@@ -116,19 +116,19 @@
 
 /* The closing "OSA": the largest the hand gets before its stroke turns to marker. */
 @utility title {
-  font-size: clamp(1.25rem, 2.6vw, 1.63rem);
+  font-size: clamp(1.34rem, 2.78vw, 1.74rem);
   letter-spacing: 0.14em;
   line-height: 1.1;
 }
 
 /* Small print, like the card's corner notes. */
 @utility label {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   letter-spacing: 0.08em;
   line-height: 1.7;
   color: var(--fg-soft, var(--color-graphite-soft));
   @media (min-width: 768px) {
-    font-size: 0.8rem;
+    font-size: 0.86rem;
   }
 }
 
