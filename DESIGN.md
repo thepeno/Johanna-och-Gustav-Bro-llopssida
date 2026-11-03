@@ -149,7 +149,7 @@ A monochrome pencil-on-card palette: a cool, barely blue grey paper and near-bla
 **Body Font:** Gustavs Hand, the same face
 **Plain Font:** Helvetica Neue, Helvetica, Arial, only where the hand cannot show the content
 
-**Character:** One hand for everything: upright pencil capitals, spaced out the way someone letters a card slowly. The face is 20% wider than the photographed sheet and every glyph is re-stroked at one even, fine pen width (65 units at a 700-unit cap height, about half the marker on the sheet, chosen by the couple for a light pencil line): each glyph is reduced to its centre line and redrawn, so the stroke is even while the shapes stay Gustav's. Å is A with a ring drawn from a small O; the 4 is drawn from its own stem, diagonal and crossbar. Lowercase maps to the capitals, so case does not exist on the site. Weight is always 400.
+**Character:** One hand for everything: upright pencil capitals, spaced out the way someone letters a card slowly. The face is 20% wider than the photographed sheet and every glyph is re-stroked at one even, solid pen width (150 units at a 700-unit cap height, about 22% of the cap: the weight the couple picked from a screenshot): each glyph is reduced to its centre line and redrawn, so the stroke is even while the shapes stay Gustav's. Å is A with a ring drawn from a small O; the 4 is drawn from its own stem, diagonal and crossbar. Lowercase maps to the capitals, so case does not exist on the site. Weight is always 400.
 
 ### Hierarchy
 - **Display** (400, clamp(1.8rem, 3.8vw, 2.4rem), 1.1, 0.14em): only the closing "OSA" in the footer, underlined in pencil. This is the largest the hand gets before its stroke reads as marker.

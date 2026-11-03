@@ -178,7 +178,7 @@
       },
       {
         "path": "src/app/(frontend)/fonts/GustavsHand.woff2",
-        "purpose": "Gustavs Hand, capitals only, built by design/handwriting/build.py: 20% wider than the sheet, every glyph re-stroked along its centre line at one even, fine 65-unit pen (700-unit cap height; the sheet's marker is 118)."
+        "purpose": "Gustavs Hand, capitals only, built by design/handwriting/build.py: 20% wider than the sheet, every glyph re-stroked along its centre line at one even, solid 150-unit pen (700-unit cap height, about 22% of the cap; the sheet's marker is 118)."
       }
     ]
   },

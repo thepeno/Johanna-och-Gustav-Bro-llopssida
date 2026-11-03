@@ -338,7 +338,8 @@ def stroke_width(names_):
 def restroke(rec, width_units):
     mask, (tx, ty, h) = raster(rec)
     r = width_units * RS / 2
-    smooth = ndi.gaussian_filter(mask.astype(float), r * 0.35) > 0.5   # no spurs from ragged edges
+    # smoothing is fixed to the sheet pen (not the drawn width), so sharp joins like V stay sharp
+    smooth = ndi.gaussian_filter(mask.astype(float), 20 * RS) > 0.5   # no spurs from ragged edges
     skel = skeletonize(smooth)
     if not skel.any():
         return rec
@@ -360,10 +361,10 @@ def restroke(rec, width_units):
     return out
 
 
-# The pen's width. The sheet measures 118 units (6.1px at a 36px cap height), but
-# the couple chose a finer line: 65 units, the weight the 118 pen showed in a
-# screenshot scaled to 55%, which they picked as how the site should look.
-STROKE = 65
+# One pen width for every glyph. The sheet measures 118 units (6.1px at a 36px cap);
+# 150 matches how the site looked in the screenshot the couple approved (stroke about
+# 22% of the cap height), which reads as the card's even, solid line at text sizes.
+STROKE = 150
 print('even stroke width', STROKE, 'units; traced outlines measure', round(stroke_width(['A', 'E', 'H', 'T', 'O']), 1))
 def line(p, q, t=STROKE / 2):
     """A pen-width bar from p to q; re-stroking reduces it to its centre line again."""
@@ -387,6 +388,18 @@ for sfx in ('', '.alt'):
         combine(line((xs, y1), (x0, yb)), line((x0, yb), (x1, yb)), line((xs, y1), (xs, y0))),
         glyphs['four' + sfx][1],
     )
+
+# V was written small on the sheet and the marker filled its point, so its centre line
+# forks into a Y. Draw V and W (which is built from V) as straight pen strokes over
+# their own bounds instead, with the point slightly rounded off the baseline.
+for sfx in ('', '.alt'):
+    x0, y0, x1, y1 = bounds(glyphs['V' + sfx][0])
+    xm = (x0 + x1) / 2
+    glyphs['V' + sfx] = (combine(line((x0, y1), (xm, y0)), line((xm, y0), (x1, y1))), glyphs['V' + sfx][1])
+    x0, y0, x1, y1 = bounds(glyphs['W' + sfx][0])
+    q = (x1 - x0) / 4
+    pts = [(x0, y1), (x0 + q, y0), (x0 + 2 * q, y1 * 0.72), (x0 + 3 * q, y0), (x1, y1)]
+    glyphs['W' + sfx] = (combine(*[line(a_, b_) for a_, b_ in zip(pts, pts[1:])]), glyphs['W' + sfx][1])
 
 for name in list(glyphs):
     rec, w = glyphs[name]
