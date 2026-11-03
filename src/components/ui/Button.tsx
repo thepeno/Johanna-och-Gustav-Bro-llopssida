@@ -1,16 +1,31 @@
 import React from 'react'
 import { cn } from '@/lib/utils'
+import { PencilLoop } from '@/components/PencilLoop'
 
-type Props = React.ComponentPropsWithoutRef<'a'> & { as?: 'a' } | (React.ComponentPropsWithoutRef<'button'> & { as: 'button' })
+type Props = (React.ComponentPropsWithoutRef<'a'> & { as?: 'a' }) | (React.ComponentPropsWithoutRef<'button'> & { as: 'button' })
 
-/** The Morais button: sans capitals in a plain black outline, filled on hover. */
+/** A word circled in pencil, as you'd mark the answer on a card. The loop redraws on hover. */
 export function Button(props: Props) {
   const base =
-    'inline-flex min-h-14 min-w-60 items-center justify-center border border-(--fg) px-8 py-3 font-sans text-[1.0625rem] uppercase tracking-[0.05em] text-(--fg) transition-colors duration-200 hover:bg-(--fg) hover:text-(--bg) disabled:pointer-events-none disabled:opacity-50'
+    'loop-hover relative mx-[0.9em] inline-flex min-h-12 items-center justify-center px-2 py-1 text-[1.15em] tracking-[0.12em] text-(--fg) no-underline disabled:pointer-events-none disabled:opacity-50'
+  const inner = (children: React.ReactNode) => (
+    <>
+      <PencilLoop />
+      <span className="relative">{children}</span>
+    </>
+  )
   if (props.as === 'button') {
-    const { as: _as, className, ...rest } = props
-    return <button {...rest} className={cn(base, className)} />
+    const { as: _as, className, children, ...rest } = props
+    return (
+      <button {...rest} className={cn(base, 'cursor-pointer', className)}>
+        {inner(children)}
+      </button>
+    )
   }
-  const { as: _as, className, ...rest } = props
-  return <a {...rest} className={cn(base, className)} />
+  const { as: _as, className, children, ...rest } = props
+  return (
+    <a {...rest} className={cn(base, className)}>
+      {inner(children)}
+    </a>
+  )
 }

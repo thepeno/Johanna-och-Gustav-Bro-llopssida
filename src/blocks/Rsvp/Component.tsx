@@ -7,23 +7,23 @@ import { rsvpIsOpen } from './shared'
 import { formatDate } from '@/lib/utils'
 import { t } from '@/lib/i18n'
 
-/** The reply section. On the RSVP page (`standalone`) it sits on cream with the heading as the page's h1. */
+/** The reply section. On the RSVP page (`standalone`) the heading becomes the page's h1. */
 export function RsvpBlockComponent({ block, settings, standalone }: { block: RsvpBlock; settings: SiteSetting; standalone?: boolean }) {
   const locale = settings.locale || 'sv-SE'
   const ui = t(locale)
   const open = rsvpIsOpen(block.deadline)
 
   return (
-    <Section anchor={block.anchor} theme={standalone ? 'ivory' : block.theme} className={standalone ? '[&>div]:pt-10 md:[&>div]:pt-14' : undefined}>
+    <Section anchor={block.anchor} theme={standalone ? 'ivory' : block.theme} className={standalone ? '[&>div]:pt-28 md:[&>div]:pt-32' : undefined}>
       <SectionHeading heading={block.heading} as={standalone ? 'h1' : 'h2'} />
-      <div className="mx-auto max-w-xl">
-        <RichText data={block.intro} className="text-center" />
+      <div className="mx-auto max-w-[36rem]">
+        <RichText data={block.intro} />
         {block.deadline && (
-          <p className="mt-4 text-center">
+          <p className="mt-3">
             {ui.deadline} {formatDate(block.deadline, locale)}.
           </p>
         )}
-        <div className="mt-12">
+        <div className="mt-14">
           {open ? (
             <RsvpForm
               ui={ui}
@@ -33,7 +33,7 @@ export function RsvpBlockComponent({ block, settings, standalone }: { block: Rsv
               askMessage={block.askMessage ?? true}
             />
           ) : (
-            <p className="text-center text-xl">{block.closedMessage || ui.closed}</p>
+            <p className="statement text-center">{block.closedMessage || ui.closed}</p>
           )}
         </div>
       </div>

@@ -8,7 +8,7 @@ export const Text: Block = {
   labels: { singular: 'Text', plural: 'Texts' },
   fields: [
     ...sectionFields,
-    { name: 'label', type: 'text', admin: { description: 'Small capitals above the text, e.g. "Önskelista"' } },
+    { name: 'label', type: 'text', admin: { description: 'Heading above the text, e.g. "Önskelista"' } },
     { name: 'text', type: 'textarea', required: true, admin: { description: 'Shown in large type' } },
     {
       type: 'row',

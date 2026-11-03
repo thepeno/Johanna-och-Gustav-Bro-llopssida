@@ -4,29 +4,27 @@ import { Section, SectionHeading } from '@/components/Section'
 import { Button } from '@/components/ui/Button'
 import { sectionHref } from '@/lib/utils'
 
-// Morais's Ceremony / Reception: a 43px title over the place, its address and
-// the time, side by side, with the reply button underneath.
+// The day, as more lines on the card: what, where, when, side by side on wide
+// screens, then the reply circled in pencil.
 export function ScheduleBlockComponent({ block, rsvpAnchor }: { block: ScheduleBlock; rsvpAnchor?: string }) {
   const events = block.events ?? []
   return (
-    <Section anchor={block.anchor} theme={block.theme} className={block.heading ? undefined : "[&>div]:pt-0 md:[&>div]:pt-0"}>
+    <Section anchor={block.anchor} theme={block.theme}>
       {block.heading && <SectionHeading heading={block.heading} intro={block.intro} />}
-      <ol
-        className={`mx-auto grid max-w-4xl gap-x-16 gap-y-16 text-center ${events.length > 1 ? 'sm:grid-cols-2' : ''} ${events.length > 2 ? 'lg:grid-cols-3' : ''}`}
-      >
+      <ol className={`mx-auto grid w-fit max-w-full gap-x-24 gap-y-14 ${events.length > 1 ? 'sm:grid-cols-2' : ''} ${events.length > 2 ? 'lg:grid-cols-3' : ''}`}>
         {events.map((event, i) => (
           <li key={event.id ?? i}>
             <h3 className="statement">{event.title}</h3>
-            <div className="mt-6">
-              {event.location && <p className="underline">{event.location}</p>}
-              {event.description && <p className="whitespace-pre-line">{event.description}</p>}
-              <p className="mt-7">{event.time}</p>
+            <div className="mt-4">
+              <p>{event.time}</p>
+              {event.location && <p>{event.location}</p>}
+              {event.description && <p className="whitespace-pre-line text-(--fg-soft)">{event.description}</p>}
             </div>
           </li>
         ))}
       </ol>
       {block.ctaLabel && block.ctaAnchor && (
-        <div className="mt-16 text-center">
+        <div className="mt-20 text-center">
           <Button href={sectionHref(block.ctaAnchor, rsvpAnchor)}>{block.ctaLabel}</Button>
         </div>
       )}

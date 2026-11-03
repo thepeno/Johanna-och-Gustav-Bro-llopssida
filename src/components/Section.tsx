@@ -8,23 +8,21 @@ type Props = {
   children: React.ReactNode
 }
 
-/** Shared wrapper: background theme, scroll anchor, and the centred Morais column. */
+/** Shared wrapper: the scroll anchor and the card's narrow column. Every section is the same paper. */
 export function Section({ anchor, theme, className, children }: Props) {
   return (
-    <section id={anchor} className={cn('scroll-mt-4', themeClass[theme ?? 'ivory'], className)}>
-      <div className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-28">
-        {theme === 'olive' ? <div className="bg-cream px-6 py-16 md:px-16 md:py-24">{children}</div> : children}
-      </div>
+    <section id={anchor} className={cn('scroll-mt-6', themeClass[theme ?? 'ivory'], className)}>
+      <div className="mx-auto max-w-4xl px-5 py-20 md:px-10 md:py-28">{children}</div>
     </section>
   )
 }
 
-/** Centred 43px heading with an optional intro, as in Morais's Travel section. */
+/** A heading set like the names on the card, centred, with an optional intro below. */
 export function SectionHeading({ heading, intro, as: Tag = 'h2' }: { heading: string; intro?: string | null; as?: 'h1' | 'h2' }) {
   return (
-    <div className="mx-auto mb-12 max-w-2xl text-center md:mb-14">
+    <div className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
       <Tag className="statement">{heading}</Tag>
-      {intro && <p className="mx-auto mt-6 max-w-xl whitespace-pre-line">{intro}</p>}
+      {intro && <p className="mx-auto mt-6 max-w-[34rem] text-left whitespace-pre-line">{intro}</p>}
     </div>
   )
 }

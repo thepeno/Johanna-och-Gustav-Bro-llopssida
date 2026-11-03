@@ -1,8 +1,8 @@
 import type { Field } from 'payload'
 
 // Fields shared by every block: an anchor id for in-page navigation, an
-// optional label that puts the section in the top nav, and a background that
-// lets editors alternate cream and white sections like the Morais reference.
+// optional label that puts the section in the top nav, and a legacy background
+// value (every section is now the same card paper).
 export const sectionFields: Field[] = [
   {
     type: 'row',
@@ -23,11 +23,11 @@ export const sectionFields: Field[] = [
         type: 'select',
         defaultValue: 'ivory',
         options: [
-          { label: 'Cream', value: 'ivory' },
-          { label: 'White', value: 'espresso' },
-          { label: 'Cream panel on white', value: 'olive' },
+          { label: 'Paper', value: 'ivory' },
+          { label: 'Paper (was White)', value: 'espresso' },
+          { label: 'Paper (was Cream panel)', value: 'olive' },
         ],
-        admin: { width: '33%', description: 'Background. Alternate cream and white between sections.' },
+        admin: { width: '33%', description: 'No longer changes anything: every section is the card paper.' },
       },
     ],
   },

@@ -1,0 +1,44 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/blocks/Hero/Component.tsx"
+        ],
+        "createdAt": "2026-11-03T19:41:31.669Z",
+        "reason": "Claude: <Img> is the project's next/image wrapper (src/components/Img.tsx) that sets src from the Payload upload"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/blocks/Details/Component.tsx"
+        ],
+        "createdAt": "2026-11-03T19:42:19.401Z",
+        "reason": "Claude: <Img> is the project's next/image wrapper (src/components/Img.tsx) that sets src from the Payload upload"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/blocks/Story/Component.tsx"
+        ],
+        "createdAt": "2026-11-03T19:42:19.420Z",
+        "reason": "Claude: <Img> is the project's next/image wrapper (src/components/Img.tsx) that sets src from the Payload upload"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/blocks/Gallery/Component.tsx"
+        ],
+        "createdAt": "2026-11-03T19:42:19.438Z",
+        "reason": "Claude: <Img> is the project's next/image wrapper (src/components/Img.tsx) that sets src from the Payload upload"
+      }
+    ]
+  }
+}

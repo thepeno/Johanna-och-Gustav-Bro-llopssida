@@ -5,39 +5,36 @@ import { Img } from '@/components/Img'
 import { RichText } from '@/components/RichText'
 import { asMedia } from '@/lib/utils'
 
-// Like Morais's Travel: heading, a paragraph, then each place as an underlined
-// name (linked when there is a URL) with its address below.
+// Travel and stay: each place as an underlined name (a map link when there is
+// one) with its details below, left-aligned like the card's lines.
 export function DetailsBlockComponent({ block }: { block: DetailsBlock }) {
   const cards = block.cards ?? []
   return (
     <Section anchor={block.anchor} theme={block.theme}>
       <SectionHeading heading={block.heading} intro={block.intro} />
-      <ul className={`mx-auto grid max-w-4xl gap-x-16 gap-y-14 text-center ${cards.length > 1 ? 'sm:grid-cols-2' : ''} ${cards.length > 2 ? 'lg:grid-cols-3' : ''}`}>
+      <ul className={`mx-auto grid w-fit max-w-full gap-x-24 gap-y-12 ${cards.length > 1 ? 'sm:grid-cols-2' : ''} ${cards.length > 2 ? 'lg:grid-cols-3' : ''}`}>
         {cards.map((card, i) => {
           const image = asMedia(card.image)
           const external = card.linkUrl?.startsWith('http')
           return (
-            <li key={card.id ?? i} className="flex flex-col items-center">
+            <li key={card.id ?? i} className="max-w-[22rem]">
               {image && (
-                <div className="mb-8 aspect-[4/5] w-full overflow-hidden">
-                  <Img
-                    media={image}
-                    size="card"
-                    sizes="(min-width:1024px) 30vw, (min-width:640px) 45vw, 90vw"
-                    className="h-full w-full object-cover grayscale"
-                  />
+                <div className="print mb-8 -rotate-1">
+                  <div className="relative aspect-[4/5] overflow-hidden">
+                    <Img media={image} size="card" fill sizes="(min-width:640px) 22rem, 80vw" className="grayscale" />
+                  </div>
                 </div>
               )}
               {card.linkUrl ? (
-                <a href={card.linkUrl} target={external ? '_blank' : undefined} rel="noreferrer" className="underline">
+                <a href={card.linkUrl} target={external ? '_blank' : undefined} rel="noreferrer">
                   {card.title}
                 </a>
               ) : (
-                <p className="underline">{card.title}</p>
+                <p>{card.title}</p>
               )}
-              <RichText data={card.body} className="max-w-sm" />
+              <RichText data={card.body} className="text-(--fg-soft)" />
               {card.linkLabel && card.linkUrl && (
-                <a href={card.linkUrl} target={external ? '_blank' : undefined} rel="noreferrer" className="mt-3 underline">
+                <a href={card.linkUrl} target={external ? '_blank' : undefined} rel="noreferrer" className="mt-2 inline-block">
                   {card.linkLabel}
                 </a>
               )}

@@ -3,13 +3,15 @@ import React from 'react'
 import { getSiteSettings } from '@/lib/data'
 import { t } from '@/lib/i18n'
 import { formatDate } from '@/lib/utils'
+import Image from 'next/image'
 import { GuestLoginForm } from './Form'
+import sheep from '../../../../public/card/sheep.png'
 
 // Shown by src/proxy.ts in place of any page until the guest has the cookie.
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings()
   return {
-    title: { absolute: settings ? `${settings.partnerOne} & ${settings.partnerTwo}` : 'Bröllop' },
+    title: { absolute: settings ? `${settings.partnerOne} + ${settings.partnerTwo}` : 'Bröllop' },
     robots: { index: false, follow: false },
   }
 }
@@ -23,13 +25,20 @@ export default async function GuestLoginPage() {
     : null
 
   return (
-    <main className="theme-ivory flex min-h-svh flex-col items-center justify-center bg-cream px-5 py-16 text-center text-ink">
-      <div className="flex w-full max-w-md flex-col items-center">
-        <h1 className="display text-[clamp(3rem,12vw,4.5rem)] leading-[1.02]">
-          {settings?.partnerOne ?? 'Johanna'} &amp; {settings?.partnerTwo ?? 'Gustav'}
+    <main className="theme-ivory flex min-h-svh flex-col items-center justify-center px-5 py-16 text-center">
+      <div className="flex w-full max-w-sm flex-col items-center">
+        <Image src={sheep} alt="" priority sizes="12rem" className="card-in h-auto w-48" />
+        <h1 className="names card-in mt-8" style={{ '--i': 1 } as React.CSSProperties}>
+          {settings?.partnerOne ?? 'Gustav'} + {settings?.partnerTwo ?? 'Johanna'}
         </h1>
-        {dateLine && <p className="mt-4 text-lg">{dateLine}</p>}
-        <p className="mt-12 text-(--fg-soft)">{ui.gateIntro}</p>
+        {dateLine && (
+          <p className="label card-in mt-2" style={{ '--i': 2 } as React.CSSProperties}>
+            {dateLine}
+          </p>
+        )}
+        <p className="card-in mt-12" style={{ '--i': 3 } as React.CSSProperties}>
+          {ui.gateIntro}
+        </p>
         <GuestLoginForm ui={ui} />
       </div>
     </main>

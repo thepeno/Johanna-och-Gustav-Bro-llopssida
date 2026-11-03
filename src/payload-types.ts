@@ -158,30 +158,33 @@ export interface HeroBlock {
    */
   navLabel?: string | null;
   /**
-   * Background. Alternate cream and white between sections.
+   * No longer changes anything: every section is the card paper.
    */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
+  /**
+   * Photo shown under the invitation, like a print laid on the card
+   */
   image: string | Media;
   /**
-   * Small capitals above the headline, e.g. "Spara datumet"
-   */
-  eyebrow?: string | null;
-  /**
-   * The big opening line, e.g. "Vi gifter oss!". Empty shows the names.
+   * The names line under the sheep. Empty shows "Partner one + Partner two".
    */
   heading?: string | null;
   /**
-   * Paragraph under the date. Leave empty to show the weekday and venue from Site settings.
+   * The invitation text, written as on the card: one line per line, and an empty line between groups. Leave empty to show the date and venue from Site settings.
    */
   tagline?: string | null;
+  /**
+   * Small note in the bottom-right corner of the opening, e.g. "Klädsel:" and "Mörk kostym" on two lines
+   */
+  cornerNote?: string | null;
   showCountdown?: boolean | null;
   showScrollHint?: boolean | null;
   /**
-   * Button text, e.g. "OSA"
+   * Reply link in the bottom-left corner, e.g. "OSA senast 15 juni"
    */
   ctaLabel?: string | null;
   /**
-   * Anchor of the section to scroll to, e.g. "osa"
+   * Where it goes: "osa" opens the reply page, any other anchor scrolls to that section
    */
   ctaAnchor?: string | null;
   id?: string | null;
@@ -252,7 +255,7 @@ export interface StoryBlock {
    */
   navLabel?: string | null;
   /**
-   * Background. Alternate cream and white between sections.
+   * No longer changes anything: every section is the card paper.
    */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   /**
@@ -309,7 +312,7 @@ export interface ScheduleBlock {
    */
   navLabel?: string | null;
   /**
-   * Background. Alternate cream and white between sections.
+   * No longer changes anything: every section is the card paper.
    */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   /**
@@ -362,7 +365,7 @@ export interface DetailsBlock {
    */
   navLabel?: string | null;
   /**
-   * Background. Alternate cream and white between sections.
+   * No longer changes anything: every section is the card paper.
    */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   /**
@@ -416,7 +419,7 @@ export interface GalleryBlock {
    */
   navLabel?: string | null;
   /**
-   * Background. Alternate cream and white between sections.
+   * No longer changes anything: every section is the card paper.
    */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   /**
@@ -450,7 +453,7 @@ export interface RsvpBlock {
    */
   navLabel?: string | null;
   /**
-   * Background. Alternate cream and white between sections.
+   * No longer changes anything: every section is the card paper.
    */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   /**
@@ -504,7 +507,7 @@ export interface FaqBlock {
    */
   navLabel?: string | null;
   /**
-   * Background. Alternate cream and white between sections.
+   * No longer changes anything: every section is the card paper.
    */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   /**
@@ -551,11 +554,11 @@ export interface TextBlock {
    */
   navLabel?: string | null;
   /**
-   * Background. Alternate cream and white between sections.
+   * No longer changes anything: every section is the card paper.
    */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   /**
-   * Small capitals above the text, e.g. "Önskelista"
+   * Heading above the text, e.g. "Önskelista"
    */
   label?: string | null;
   /**
@@ -743,9 +746,9 @@ export interface HeroBlockSelect<T extends boolean = true> {
   navLabel?: T;
   theme?: T;
   image?: T;
-  eyebrow?: T;
   heading?: T;
   tagline?: T;
+  cornerNote?: T;
   showCountdown?: T;
   showScrollHint?: T;
   ctaLabel?: T;

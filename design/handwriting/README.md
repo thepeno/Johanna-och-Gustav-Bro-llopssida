@@ -6,12 +6,12 @@ The handwriting font in `src/app/(frontend)/fonts/GustavsHand.woff2`, built from
 
 - A–Z, Å Ä Ö, 0–9 and `+ - ! ?`, each written twice. The first version is the normal letter; the second is an alternate that the font swaps in for every other letter (OpenType `calt`), so doubled letters like the TT in ATT don't look identical.
 - Lowercase letters map to the same capitals, as on the invitation.
-- Made from the drawn letters, not written separately: W (two Vs), Ü (U with Ö's dots), `.` `:` `,` (the dot from `!`), and `'`/`’` (the top of an I).
-- Not included: `@ / & ( ) " é ü` and other characters. Text that uses them falls back to the site's sans.
+- Made from the drawn letters, not written separately: W (two Vs), Ü (U with Ö's dots), `.` `:` `,` (the dot from `!`), `'` `’` `"` (the top of an I), `/` (a leaning I), `– —` (a longer hyphen), `( )` (a narrowed C), `#` (two leaning strokes and two dashes), and É (E with an acute made from the apostrophe). `&` is drawn as the `+`, as on the invitation.
+- Not included: `@` (an O-and-A version was unreadable at text size) and other symbols. Text that uses them falls back to a plain sans.
 
 ## Using it
 
-The `font-hand` Tailwind class (or `font-family: var(--font-hand)`) sets text in it. Nothing on the page uses it yet. Give it extra letter and word spacing, roughly `letter-spacing: 0.08em; word-spacing: 0.35em`, to look like the invitation.
+The whole site is set in it: `body` uses `var(--font-hand)` in `src/app/(frontend)/styles.css`. Give it wide letter and word spacing, roughly `letter-spacing: 0.08em; word-spacing: 0.35em`, to look like the invitation. Where case matters (the password field), use `font-plain` instead, because every letter is a capital.
 
 ## Rebuilding
 

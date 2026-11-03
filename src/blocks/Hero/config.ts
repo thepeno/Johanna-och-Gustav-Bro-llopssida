@@ -7,13 +7,30 @@ export const Hero: Block = {
   labels: { singular: 'Hero', plural: 'Heroes' },
   fields: [
     ...sectionFields,
-    { name: 'image', type: 'upload', relationTo: 'media', required: true },
-    { name: 'eyebrow', type: 'text', admin: { description: 'Small capitals above the headline, e.g. "Spara datumet"' } },
-    { name: 'heading', type: 'text', admin: { description: 'The big opening line, e.g. "Vi gifter oss!". Empty shows the names.' } },
+    {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
+      admin: { description: 'Photo shown under the invitation, like a print laid on the card' },
+    },
+    {
+      name: 'heading',
+      type: 'text',
+      admin: { description: 'The names line under the sheep. Empty shows "Partner one + Partner two".' },
+    },
     {
       name: 'tagline',
       type: 'textarea',
-      admin: { description: 'Paragraph under the date. Leave empty to show the weekday and venue from Site settings.' },
+      admin: {
+        description:
+          'The invitation text, written as on the card: one line per line, and an empty line between groups. Leave empty to show the date and venue from Site settings.',
+      },
+    },
+    {
+      name: 'cornerNote',
+      type: 'textarea',
+      admin: { description: 'Small note in the bottom-right corner of the opening, e.g. "Klädsel:" and "Mörk kostym" on two lines' },
     },
     {
       type: 'row',
@@ -25,8 +42,8 @@ export const Hero: Block = {
     {
       type: 'row',
       fields: [
-        { name: 'ctaLabel', type: 'text', admin: { width: '50%', description: 'Button text, e.g. "OSA"' } },
-        { name: 'ctaAnchor', type: 'text', admin: { width: '50%', description: 'Anchor of the section to scroll to, e.g. "osa"' } },
+        { name: 'ctaLabel', type: 'text', admin: { width: '50%', description: 'Reply link in the bottom-left corner, e.g. "OSA senast 15 juni"' } },
+        { name: 'ctaAnchor', type: 'text', admin: { width: '50%', description: 'Where it goes: "osa" opens the reply page, any other anchor scrolls to that section' } },
       ],
     },
   ],

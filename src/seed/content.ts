@@ -25,11 +25,11 @@ export const rich = (...paragraphs: string[]): RichText => ({
 })
 
 export const siteSettings = {
-  partnerOne: 'Johanna',
-  partnerTwo: 'Gustav',
-  weddingDate: '2027-08-14T13:00:00.000Z', // 15:00 Swedish summer time
+  partnerOne: 'Gustav',
+  partnerTwo: 'Johanna',
+  weddingDate: '2027-08-14T11:00:00.000Z', // 13:00 Swedish summer time, "klockan ett" on the card
   locale: 'sv-SE' as const,
-  venueShort: 'Agdatorps gård, Blekinge',
+  venueShort: 'Förkärla kyrka, Blekinge',
   hashtag: '#JG140827',
   contactEmail: 'brollop@example.com',
   footerNote: 'Vi ser fram emot att fira med er!',
@@ -43,16 +43,23 @@ export const images = {
 export type ImageKey = keyof typeof images
 
 export const layout = (img: Record<ImageKey, string>) => [
-  // Save the date, headline, photo, date, paragraph
+  // The invitation card: sheep, names, the card's text line for line, corner notes
   {
     blockType: 'hero',
     anchor: 'start',
     theme: 'ivory',
     image: img.hero,
-    eyebrow: 'Spara datumet',
-    heading: 'Vi gifter oss!',
-    tagline:
-      'Bröllopet hålls lördagen den 14 augusti 2027 på Agdatorps gård i Blekinge. Vi börjar med vigsel och fortsätter sedan med middag och fest.',
+    tagline: [
+      'Har nöjet att bjuda in er\nför att fira vår bröllopsdag',
+      'Lördag den 14 augusti',
+      'Klockan ett',
+      'Vid Förkärla kyrka',
+      'Blekinge',
+      'Senare utlovas brakfest och\nmassor av kärlek på Agdatorps gård',
+    ].join('\n\n'),
+    cornerNote: 'Klädsel:\nMörk kostym',
+    ctaLabel: 'OSA senast 15 juni',
+    ctaAnchor: 'osa',
     showCountdown: false,
     showScrollHint: false,
   },
@@ -62,8 +69,8 @@ export const layout = (img: Record<ImageKey, string>) => [
     anchor: 'dagen',
     theme: 'ivory',
     events: [
-      { title: 'Vigsel', location: 'Agdatorps gård', description: 'Blekinge', time: '15.00 — 16.00' },
-      { title: 'Fest', location: 'Agdatorps gård', description: 'Blekinge', time: '17.00 — 01.00' },
+      { title: 'Vigsel', location: 'Förkärla kyrka', description: 'Blekinge', time: 'Klockan 13.00' },
+      { title: 'Fest', location: 'Agdatorps gård', description: 'Blekinge', time: 'Efter vigseln' },
     ],
     ctaLabel: 'OSA',
     ctaAnchor: 'osa',
@@ -75,7 +82,7 @@ export const layout = (img: Record<ImageKey, string>) => [
     navLabel: 'OSA',
     theme: 'espresso',
     heading: 'OSA',
-    intro: rich('Svara gärna så snart du kan.'),
+    // No intro: the deadline line under the heading already asks guests to reply
     deadline: '2027-06-15T12:00:00.000Z',
     maxPartySize: 2,
     askDietary: true,
@@ -90,8 +97,11 @@ export const layout = (img: Record<ImageKey, string>) => [
     anchor: 'resa',
     theme: 'olive',
     heading: 'Resa och boende',
-    intro: 'Agdatorps gård ligger i Blekinge. Vi återkommer med tips om hur ni tar er hit och var ni kan bo i närheten.',
-    cards: [{ title: 'Agdatorps gård', body: rich('Blekinge'), linkUrl: 'https://www.google.com/maps/search/?api=1&query=Agdatorps+g%C3%A5rd+Blekinge' }],
+    intro: 'Vi återkommer med tips om hur ni tar er hit och var ni kan bo i närheten.',
+    cards: [
+      { title: 'Förkärla kyrka', linkUrl: 'https://www.google.com/maps/search/?api=1&query=F%C3%B6rk%C3%A4rla+kyrka' },
+      { title: 'Agdatorps gård', linkUrl: 'https://www.google.com/maps/search/?api=1&query=Agdatorps+g%C3%A5rd+Blekinge' },
+    ],
   },
   // Registry
   {

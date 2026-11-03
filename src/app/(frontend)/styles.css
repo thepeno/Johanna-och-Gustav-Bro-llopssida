@@ -1,115 +1,130 @@
 @import 'tailwindcss';
 
-/* After Squarespace's Morais: cream paper, black ink, a plain grotesque for
-   headings and a bookish serif for everything you read. Centred, quiet, no tricks. */
+/* The invitation card, opened: one sheet of the card's grey paper, graphite
+   pencil, and every word in Gustav's handwriting. */
 @theme {
-  --color-cream: #f5f1eb;
-  --color-cream-deep: #ece6dc;
-  --color-white: #ffffff;
-  --color-ink: #000000; /* Morais uses pure black */
-  --color-ink-soft: #57524b;
-  --color-error: #9b2c2c;
+  --color-paper: #e6e8e8; /* sampled from the card */
+  --color-graphite: #262626;
+  --color-graphite-soft: #4f5150; /* 6.9:1 on the paper */
+  --color-print: #f7f7f4; /* the white border of the photo print */
+  --color-error: #8a2a22;
 
-  /* Helvetica Neue is Morais's own face (on Apple devices, where most guests are);
-     Inter Tight is the self-hosted stand-in everywhere else. */
-  --font-sans: 'Helvetica Neue', Helvetica, var(--font-grotesk), Arial, sans-serif;
-  --font-serif: var(--font-book), 'Times New Roman', Times, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
-  --font-hand: var(--font-handwriting), var(--font-sans);
+  --font-hand: var(--font-handwriting), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /* Only where case must be visible (the password field): the hand has capitals only */
+  --font-plain: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  --ease-pencil: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Section themes. The stored values are still ivory / espresso / olive; they now
-   mean cream, white, and a cream panel set on white. */
-.theme-ivory {
-  --bg: var(--color-cream);
-  --fg: var(--color-ink);
-  --fg-soft: var(--color-ink-soft);
-  --line: color-mix(in oklab, var(--color-ink) 22%, transparent);
-  --field: var(--color-white);
-}
+/* Every section is the same paper. The stored theme values (ivory / espresso /
+   olive) are kept so old content still renders; they no longer change anything. */
+.theme-ivory,
 .theme-espresso,
 .theme-olive {
-  --bg: var(--color-white);
-  --fg: var(--color-ink);
-  --fg-soft: var(--color-ink-soft);
-  --line: color-mix(in oklab, var(--color-ink) 22%, transparent);
-  --field: var(--color-cream);
-}
-.theme-olive {
-  --field: var(--color-white);
+  --fg: var(--color-graphite);
+  --fg-soft: var(--color-graphite-soft);
+  --line: color-mix(in oklab, var(--color-graphite) 55%, transparent);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    scrollbar-color: color-mix(in oklab, var(--color-graphite) 45%, transparent) var(--color-paper);
   }
   body {
-    @apply bg-cream text-ink font-serif antialiased;
-    font-size: 1.0625rem;
-    line-height: 1.75;
+    background: var(--color-paper) url('/card/paper.jpg') repeat;
+    background-size: 1024px 1024px;
+    color: var(--color-graphite);
+    font-family: var(--font-hand);
+    font-size: 1.1875rem;
+    line-height: 1.85;
+    letter-spacing: 0.07em;
+    word-spacing: 0.3em;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (min-width: 768px) {
+    body {
+      font-size: 1.3125rem;
+    }
   }
   ::selection {
-    background: var(--color-ink);
-    color: var(--color-cream);
+    background: color-mix(in oklab, var(--color-graphite) 18%, transparent);
+    color: var(--color-graphite);
   }
   :focus-visible {
-    outline: 1px solid var(--color-ink);
-    outline-offset: 4px;
+    outline: 1.5px dashed var(--color-graphite);
+    outline-offset: 5px;
   }
   a {
-    text-underline-offset: 0.2em;
-    text-decoration-thickness: 1px;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.32em;
+    text-decoration-color: color-mix(in oklab, var(--color-graphite) 70%, transparent);
+    transition: text-decoration-color 200ms;
+  }
+  a:hover {
+    text-decoration-color: var(--color-graphite);
   }
   input,
   textarea,
   select {
-    caret-color: var(--color-ink);
+    caret-color: var(--color-graphite);
+  }
+  h1,
+  h2,
+  h3 {
+    font-weight: 400;
   }
 }
 
-/* Headings: plain grotesque, regular weight, slightly tight. */
-@utility display {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  text-wrap: balance;
+/* The names line and other small headlines: widely spaced, like the card. */
+@utility names {
+  font-size: clamp(1.15rem, 2.1vw, 1.5rem);
+  letter-spacing: 0.16em;
+  word-spacing: 0.35em;
+  line-height: 1.4;
 }
 
-/* Morais's sizes, measured from the demo at 1280px: 100px titles, 43px headings
-   and statements, 17.5px everything else. */
-@utility title {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: clamp(3.25rem, 7.85vw, 6.3rem);
-  letter-spacing: -0.02em;
-  line-height: 1.09;
-  text-wrap: balance;
+/* The invitation lines on the opening. Sized so the card's longest line fits a phone. */
+@utility invitation {
+  /* by width so the longest line fits a phone, by height so the card fits the first screen */
+  font-size: clamp(0.97rem, min(4vw, 2.6svh), 1.6rem);
+  letter-spacing: 0.09em;
+  word-spacing: 0.3em;
+  @media (min-width: 768px) {
+    word-spacing: 0.45em;
+  }
+  line-height: 1.65;
+  text-wrap: pretty;
 }
+
+/* Section headings: barely larger than the text, like the names on the card. A pencil
+   line doesn't get thicker when you write bigger, so hierarchy comes from space. */
 @utility statement {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: clamp(1.75rem, 3.4vw, 2.73rem);
-  letter-spacing: -0.02em;
-  line-height: 1.3;
+  font-size: clamp(1.35rem, 2.2vw, 1.65rem);
+  letter-spacing: 0.16em;
+  word-spacing: 0.35em;
+  line-height: 1.45;
   text-wrap: balance;
 }
 
-/* "SAVE THE DATE": the serif in plain capitals, no extra spacing. */
-@utility eyebrow {
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  line-height: 1.8;
-  text-transform: uppercase;
+/* The closing "OSA": the largest the hand gets before its stroke turns to marker. */
+@utility title {
+  font-size: clamp(2.25rem, 5vw, 3rem);
+  letter-spacing: 0.14em;
+  line-height: 1.1;
 }
 
-/* Small print: the serif, a little smaller, in the softer ink. */
+/* Small print, like the card's corner notes. */
 @utility label {
-  font-family: var(--font-serif);
   font-size: 0.9375rem;
-  line-height: 1.6;
-  color: var(--fg-soft, var(--color-ink-soft));
+  letter-spacing: 0.08em;
+  line-height: 1.7;
+  color: var(--fg-soft, var(--color-graphite-soft));
+  @media (min-width: 768px) {
+    font-size: 1rem;
+  }
 }
 
 @utility prose-wedding {
@@ -122,29 +137,66 @@
   & p:last-child {
     margin-bottom: 0;
   }
-  & a {
-    text-decoration: underline;
-  }
   & ul,
   & ol {
     padding-left: 1.25em;
-    text-align: left;
-    display: inline-block;
   }
   & ul {
-    list-style: disc;
+    list-style: '–  ';
   }
   & ol {
     list-style: decimal;
   }
   & h3,
   & h4 {
-    font-family: var(--font-sans);
-    letter-spacing: -0.01em;
+    font-size: 1.15em;
     margin-top: 1.5em;
   }
-  & strong {
-    font-weight: 700;
+}
+
+/* The photo, laid on the card like a small print. */
+@utility print {
+  background: var(--color-print);
+  padding: 0.6rem 0.6rem 2.4rem;
+  box-shadow:
+    0 1px 1px rgb(38 38 38 / 0.12),
+    0 10px 26px -8px rgb(38 38 38 / 0.28);
+}
+
+/* The pencil loop (components/PencilLoop) draws itself when it appears. */
+.pencil-loop[data-draw='true'] path {
+  animation: pencil-draw 650ms var(--ease-pencil) both;
+}
+.loop-hover:hover .pencil-loop path,
+.loop-hover:focus-visible .pencil-loop path {
+  animation: pencil-draw 650ms var(--ease-pencil) both;
+  stroke-width: 2.2;
+}
+@keyframes pencil-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+/* The card settles in once on load: its lines fade up in reading order. */
+.card-in {
+  animation: card-in 900ms var(--ease-pencil) both;
+  animation-delay: calc(var(--i, 0) * 90ms + 120ms);
+}
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-in,
+  .pencil-loop path {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
   }
 }
 

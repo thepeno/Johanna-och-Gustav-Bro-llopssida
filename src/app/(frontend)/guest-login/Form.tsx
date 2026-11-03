@@ -10,9 +10,9 @@ export function GuestLoginForm({ ui }: { ui: Ui }) {
   const [show, setShow] = useState(false)
 
   return (
-    <form action={action} className="mt-6 flex w-full flex-col gap-5 text-left">
+    <form action={action} className="mt-8 flex w-full flex-col gap-6 text-left">
       <div className="flex flex-col gap-2">
-        <label htmlFor="password" className="font-sans text-[0.9375rem]">
+        <label htmlFor="password" className="label text-(--fg)">
           {ui.gatePassword}
         </label>
         <input
@@ -27,24 +27,25 @@ export function GuestLoginForm({ ui }: { ui: Ui }) {
           autoFocus
           aria-invalid={Boolean(state.error)}
           aria-describedby={state.error ? 'password-error' : undefined}
-          className="w-full rounded-none border border-(--line) bg-white px-4 py-3 font-serif text-lg text-ink focus:border-ink focus:outline-none"
+          // The plain face: the hand has capitals only, so typed case would be invisible
+          className="min-h-12 w-full rounded-none border-0 border-b-[1.5px] border-(--line) bg-transparent px-0 py-2 font-plain text-lg tracking-normal text-(--fg) focus:border-(--fg) focus:outline-none"
         />
-        <label className="flex min-h-11 w-fit cursor-pointer items-center gap-3 text-(--fg-soft)">
+        <label className="label flex min-h-11 w-fit cursor-pointer items-center gap-3">
           <input
             type="checkbox"
             checked={show}
             onChange={(e) => setShow(e.target.checked)}
-            className="size-[18px] accent-ink"
+            className="size-4 accent-graphite"
           />
           {ui.gateShow}
         </label>
         {state.error && (
-          <p id="password-error" className="text-error" role="alert">
+          <p id="password-error" className="label text-error" role="alert">
             {state.error}
           </p>
         )}
       </div>
-      <Button as="button" type="submit" disabled={pending} className="w-full">
+      <Button as="button" type="submit" disabled={pending} className="mt-2 self-center">
         {pending ? ui.gateChecking : ui.gateSubmit}
       </Button>
     </form>

@@ -5,6 +5,7 @@ import { submitRsvp, type RsvpState } from '@/actions/rsvp'
 import type { Ui } from '@/lib/i18n'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
+import { PencilLoop } from '@/components/PencilLoop'
 
 type Props = {
   ui: Ui
@@ -14,8 +15,9 @@ type Props = {
   askMessage: boolean
 }
 
+// A line to write on, as on a card: no box, just a pencil rule that darkens while you write
 const field =
-  'min-h-[3.35rem] w-full rounded-none border border-(--fg) bg-[#fafafa] px-4 py-3 font-serif text-[1.0625rem] text-(--fg) focus:outline-none focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-(--fg)'
+  'min-h-12 w-full rounded-none border-0 border-b-[1.5px] border-(--line) bg-transparent px-0 py-2 text-(--fg) transition-colors focus:border-(--fg) focus:outline-none aria-[invalid=true]:border-error'
 
 function Field({
   label,
@@ -32,13 +34,13 @@ function Field({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={name} className="font-serif text-[1.0625rem]">
+      <label htmlFor={name} className="label text-(--fg)">
         {label}
         {optional && <span className="text-(--fg-soft)"> ({optional})</span>}
       </label>
       {children}
       {error && (
-        <p className="text-[0.9375rem] text-error" role="alert">
+        <p className="label text-error" role="alert">
           {error[0]}
         </p>
       )}
@@ -59,13 +61,13 @@ export function RsvpForm({ ui, maxPartySize, askDietary, askSong, askMessage }: 
   if (state.status === 'success') {
     return (
       <div className="text-center" aria-live="polite">
-        <p className="display text-3xl md:text-4xl">{state.message}</p>
+        <p className="statement">{state.message}</p>
       </div>
     )
   }
 
   return (
-    <form action={action} className="flex flex-col gap-7" noValidate>
+    <form action={action} className="flex flex-col gap-9" noValidate>
       {/* Honeypot – hidden from people, filled by bots */}
       <div className="absolute -left-[9999px]" aria-hidden>
         <label>
@@ -74,25 +76,30 @@ export function RsvpForm({ ui, maxPartySize, askDietary, askSong, askMessage }: 
       </div>
 
       <fieldset>
-        <legend className="mb-3 font-serif text-[1.0625rem]">{ui.attending}</legend>
-        <div className="flex flex-col gap-1">
+        <legend className="label mb-4 text-(--fg)">{ui.attending}</legend>
+        {/* Circle your answer: the chosen one gets a pencil loop drawn around it */}
+        <div className="flex flex-wrap gap-x-14 gap-y-4 px-[0.9em]">
           {(['yes', 'no'] as const).map((value) => (
-            <label key={value} className="flex min-h-11 cursor-pointer items-center gap-3">
+            <label
+              key={value}
+              className="relative inline-flex min-h-12 cursor-pointer items-center px-1 text-[1.15em] has-[:focus-visible]:outline-[1.5px] has-[:focus-visible]:outline-offset-[0.7em] has-[:focus-visible]:outline-dashed"
+            >
               <input
                 type="radio"
                 name="attending"
                 value={value}
-                className="size-[18px] accent-ink"
+                className="sr-only"
                 checked={attending === value}
                 onChange={() => setAttending(value)}
               />
-              {value === 'yes' ? ui.yes : ui.no}
+              {attending === value && <PencilLoop draw />}
+              <span className="relative">{value === 'yes' ? ui.yes : ui.no}</span>
             </label>
           ))}
         </div>
       </fieldset>
 
-      <div className="grid gap-7 sm:grid-cols-2">
+      <div className="grid gap-9 sm:grid-cols-2 sm:gap-x-12">
         <Field label={ui.name} name="name" error={errors?.name}>
           <input
             id="name"
@@ -112,20 +119,21 @@ export function RsvpForm({ ui, maxPartySize, askDietary, askSong, askMessage }: 
             type="email"
             autoComplete="email"
             required
-            className={field}
+            // the plain face: the hand has no @ and shows every letter as a capital
+            className={cn(field, 'font-plain tracking-normal')}
           />
         </Field>
       </div>
 
       {attending === 'yes' && maxPartySize > 1 && (
-        <div className="grid gap-7 sm:grid-cols-2">
+        <div className="grid gap-9 sm:grid-cols-2 sm:gap-x-12">
           <Field label={ui.partySize} name="partySize" error={errors?.partySize}>
             <select
               id="partySize"
               name="partySize"
               value={partySize}
               onChange={(e) => setPartySize(Number(e.target.value))}
-              className={cn(field, 'appearance-none bg-[url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 8%27%3E%3Cpath d=%27M1 1l5 5 5-5%27 stroke=%27%23111%27 fill=%27none%27/%3E%3C/svg%3E")] bg-[length:12px_8px] bg-[right_1rem_center] bg-no-repeat pr-10')}
+              className={cn(field, 'appearance-none bg-[url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 12 8%27%3E%3Cpath d=%27M1 1l5 5 5-5%27 stroke=%27%23262626%27 stroke-width=%271.5%27 stroke-linecap=%27round%27 fill=%27none%27/%3E%3C/svg%3E")] bg-[length:14px_9px] bg-[right_0.25rem_center] bg-no-repeat pr-8')}
             >
               {Array.from({ length: maxPartySize }, (_, i) => i + 1).map((n) => (
                 <option key={n} value={n}>
@@ -171,18 +179,22 @@ export function RsvpForm({ ui, maxPartySize, askDietary, askSong, askMessage }: 
             name="message"
             defaultValue={values?.message}
             rows={3}
-            className={cn(field, 'resize-y')}
+            className={cn(
+              field,
+              // ruled like notepaper: one pencil line under every line of text
+              'resize-y border-b-0 py-0 leading-[2.5rem] [background-attachment:local] bg-[repeating-linear-gradient(transparent_0,transparent_calc(2.5rem-1.5px),var(--line)_calc(2.5rem-1.5px),var(--line)_2.5rem)]',
+            )}
           />
         </Field>
       )}
 
       {state.status === 'error' && (
-        <p className="text-center text-error" role="alert">
+        <p className="text-error" role="alert">
           {state.message}
         </p>
       )}
 
-      <Button as="button" type="submit" disabled={pending} className="mx-auto mt-2 w-full sm:w-fit">
+      <Button as="button" type="submit" disabled={pending} className="mt-4 self-center">
         {pending ? ui.sending : ui.send}
       </Button>
     </form>

@@ -9,7 +9,7 @@ One-page wedding website. Editors build the page from blocks in Payload CMS; gue
 ```bash
 cp .env.example .env        # then set PAYLOAD_SECRET to a long random string and GUEST_PASSWORD
 npm install
-npm run seed                # first admin user + the page content (Morais layout, placeholder photo)
+npm run seed                # first admin user + the page content (the invitation card, placeholder photo)
 npm run dev                 # http://localhost:3000  (admin at /admin)
 ```
 
@@ -30,7 +30,7 @@ The seed creates the first admin from `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD`
 
 ### Blocks
 
-Every block has an **anchor** (its `#hash`), an optional **nav label** (empty = not in the menu) and a **background**: Cream, White, or Cream panel on white (stored as `ivory`, `espresso`, `olive` from the first design), so sections can alternate like the Morais reference. The block **label** field is no longer shown on the page.
+Every block has an **anchor** (its `#hash`), an optional **nav label** (empty = not in the menu) and a **background** value (`ivory`, `espresso`, `olive`) kept from earlier designs. Every section is now the same card paper, so it no longer changes anything. The Text block's **label** is shown as its heading.
 
 | Block | Purpose | Notable fields |
 | --- | --- | --- |
@@ -80,7 +80,9 @@ src/
 
 ## Design notes
 
-Directly inspired by Squarespace's [Morais](https://www.squarespace.com/templates/morais-fluid-demo) wedding template: cream and white sections, everything centred, headings in regular-weight Helvetica Neue (Inter Tight on devices without it), body text in Libre Caslon Text, black outlined buttons, black-and-white photos. No eyebrows, section numbers or entrance animations. See `DESIGN.md` for the tokens and rules; colours and fonts live in `src/app/(frontend)/styles.css`.
+The site is the printed invitation card, opened: the card's grey paper (`public/card/paper.jpg`), the pencil drawing of two sheep cut from the card (`public/card/sheep.png`), and every word in a font made from Gustav's handwriting (`design/handwriting/`). Graphite is the only colour. Buttons are words circled in pencil, form fields are ruled lines, and the photo sits on the paper as a small print. See `DESIGN.md` for the tokens and rules; colours and fonts live in `src/app/(frontend)/styles.css`.
+
+To copy the card's facts into existing content (Site settings and the home page's opening, schedule and travel blocks), run `npx tsx --env-file=.env src/seed/apply-card.ts`.
 
 ## Scripts
 

@@ -6,48 +6,50 @@ import type { SiteSetting } from '@/payload-types'
 import { t } from '@/lib/i18n'
 import type { NavLink } from '@/lib/links'
 
-/** Morais's header: the names on the left, one outlined reply button on the right; a menu on phones. */
-export function Nav({ items, settings, rsvp }: { items: NavLink[]; settings: SiteSetting; rsvp?: NavLink }) {
+/**
+ * Nothing sits over the card but a quiet line of handwritten links at the top
+ * right (one "Meny" word on phones that opens the same list on the paper).
+ */
+export function Nav({ items, settings }: { items: NavLink[]; settings: SiteSetting; rsvp?: NavLink }) {
   const [open, setOpen] = useState(false)
   const ui = t(settings.locale)
 
   return (
-    <header className="theme-ivory relative z-50 bg-cream text-ink">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-6 md:px-10 md:py-8" aria-label={ui.menu}>
-        <Link href="/" className="max-w-[12rem] font-sans text-[1.0625rem] leading-snug tracking-[-0.02em] uppercase md:max-w-none" onClick={() => setOpen(false)}>
-          {settings.partnerOne} &amp; {settings.partnerTwo}
+    <header className="theme-ivory absolute inset-x-0 top-0 z-50">
+      <nav className="mx-auto flex max-w-5xl items-center justify-between gap-6 px-5 py-5 md:px-10 md:py-7" aria-label={ui.menu}>
+        <Link href="/" className="label text-(--fg) no-underline" onClick={() => setOpen(false)}>
+          {settings.partnerOne[0]} + {settings.partnerTwo[0]}
         </Link>
 
-        {rsvp && (
-          <a
-            href={rsvp.href}
-            className="hidden min-h-12 items-center border border-ink px-6 font-sans text-[1.0625rem] uppercase tracking-[0.05em] transition-colors hover:bg-ink hover:text-cream md:inline-flex"
-          >
-            {rsvp.label}
-          </a>
-        )}
+        <ul className="label hidden items-center gap-8 md:flex">
+          {items.map((item) => (
+            <li key={item.href}>
+              <a href={item.href} className="text-(--fg) no-underline hover:underline">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
 
         <button
           type="button"
-          className="-mr-2 flex size-12 flex-col items-center justify-center gap-[9px] md:hidden"
+          className="label -mr-2 min-h-12 cursor-pointer px-2 text-(--fg) md:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
-          aria-label={open ? ui.close : ui.menu}
           onClick={() => setOpen((v) => !v)}
         >
-          <span aria-hidden className={`block h-px w-9 bg-ink transition-transform ${open ? 'translate-y-[5px] rotate-45' : ''}`} />
-          <span aria-hidden className={`block h-px w-9 bg-ink transition-transform ${open ? '-translate-y-[5px] -rotate-45' : ''}`} />
+          {open ? ui.close : ui.menu}
         </button>
       </nav>
 
       {open && (
         <ul
           id="mobile-menu"
-          className="absolute inset-x-0 top-full flex h-[calc(100svh-6rem)] flex-col items-center justify-center gap-6 bg-cream pb-20 md:hidden"
+          className="fixed inset-x-0 top-[4.5rem] bottom-0 flex flex-col items-center justify-center gap-7 bg-paper bg-[url('/card/paper.jpg')] bg-[length:1024px_1024px] pb-24 md:hidden"
         >
           {items.map((item) => (
             <li key={item.href}>
-              <a href={item.href} className="statement" onClick={() => setOpen(false)}>
+              <a href={item.href} className="statement no-underline" onClick={() => setOpen(false)}>
                 {item.label}
               </a>
             </li>

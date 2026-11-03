@@ -89,7 +89,12 @@ for r, (row, chars) in enumerate(zip(rows, ROWS)):
     for idx, (g, ch) in enumerate(zip(groups, chars)):
         alt = idx % 2 == 1
         g['char'], g['alt'] = ch, alt
-        g['baseline'] = k * (g['x0'] + g['x1']) / 2 + m
+        fit = k * (g['x0'] + g['x1']) / 2 + m
+        if ch in '+-!?Q':
+            g['baseline'] = fit          # floating marks and Q's tail keep the row's line
+        else:
+            # sit on the glyph's own bottom, keeping at most a pixel of the hand's bounce
+            g['baseline'] = g['body'][1] + float(np.clip(fit - g['body'][1], -1.0, 1.0))
         cells.append(g)
 
 # global scale: median height of plain capitals (no diacritics) -> CAP
@@ -193,6 +198,21 @@ def split_dot(name):
     return dot
 
 
+def dots_of(name, base):
+    rec, _ = glyphs[name]
+    top = bounds(glyphs[base][0])[3]
+    out, cont = RecordingPen(), []
+    for op, a in rec.value:
+        cont.append((op, a))
+        if op == 'closePath':
+            if min(p[1] for o, aa in cont for p in aa) > top * 0.98:
+                out.value += cont
+            cont = []
+    return out
+
+
+DOTS = dots_of('Odieresis.alt', 'O.alt')   # the only Ö on the sheet with two separate dots
+
 for alt in (False, True):
     sfx = '.alt' if alt else ''
     # W from two Vs
@@ -227,6 +247,53 @@ for alt in (False, True):
     # apostrophe: top third of I
     i_rec, iw = glyphs['I' + sfx]
     glyphs['quotesingle' + sfx] = (shifted(i_rec, 0, CAP * 0.62, 1, 0.38), iw)
+    q, qw = glyphs['quotesingle' + sfx]
+    glyphs['quotedbl' + sfx] = (combine(q, shifted(q, qw * 1.1)), qw * 2.1)
+    # slash: the I leaned over
+    lean = RecordingPen()
+    i_rec.replay(TransformPen(lean, (1, 0, 0.42, 1, 0, 0)))
+    glyphs['slash' + sfx] = (lean, bounds(lean)[2])
+    # dashes: the hyphen drawn longer
+    h, hw = glyphs['hyphen' + sfx]
+    glyphs['endash' + sfx] = (shifted(h, 0, 0, 1.6), hw * 1.6)
+    glyphs['emdash' + sfx] = (shifted(h, 0, 0, 2.6), hw * 2.6)
+    # brackets: a narrowed C, and the same C mirrored
+    c, cw = glyphs['C' + sfx]
+    glyphs['parenleft' + sfx] = (shifted(c, 0, -CAP * 0.1, 0.5, 1.2), cw * 0.5)
+    glyphs['parenright' + sfx] = (shifted(c, cw * 0.5, -CAP * 0.1, -0.5, 1.2), cw * 0.5)
+    # É: E with an acute made from the apostrophe, leaned and shortened
+    e, ew = glyphs['E' + sfx]
+    acute = RecordingPen()
+    q.replay(TransformPen(acute, (1, 0, 0.9, 0.55, 0, 0)))
+    ab = bounds(acute)
+    glyphs['Eacute' + sfx] = (combine(e, shifted(acute, (ew - (ab[2] - ab[0])) / 2 - ab[0], CAP * 1.08 - ab[1])), ew)
+
+    # Hyphen and plus: centred at mid cap height
+    for nm in ('hyphen', 'plus', 'endash', 'emdash'):
+        r_, w_ = glyphs[nm + sfx]
+        b_ = bounds(r_)
+        glyphs[nm + sfx] = (shifted(r_, 0, CAP * 0.42 - (b_[1] + b_[3]) / 2), w_)
+
+    # Ä, Ö and Ü: the plain letter with two separate dots, as on the card
+    for base, nm in (('A', 'Adieresis'), ('O', 'Odieresis'), ('U', 'Udieresis')):
+        b_rec, bw = glyphs[base + sfx]
+        db_ = bounds(DOTS)
+        dw_ = db_[2] - db_[0]
+        glyphs[nm + sfx] = (combine(b_rec, shifted(DOTS, (bw - dw_) / 2 - db_[0], CAP * 1.07 - db_[1])), bw)
+
+    # comma: the dot with a short tail running down and left
+    tail = RecordingPen()
+    d.replay(TransformPen(tail, (0.55, 0, -0.3, 2.6, dw * 0.25, -CAP * 0.2)))
+    glyphs['comma' + sfx] = (combine(d, tail), dw)
+
+    # #: two leaning strokes crossed by two short dashes
+    sl, slw = glyphs['slash' + sfx]
+    sl2 = shifted(sl, 0, CAP * 0.05, 0.75, 0.85)
+    hy, hyw = glyphs['hyphen' + sfx]
+    hb = bounds(hy)
+    bar = shifted(hy, -hb[0], -(hb[1] + hb[3]) / 2, (slw * 1.3) / max(hb[2] - hb[0], 1), 0.8)
+    glyphs['numbersign' + sfx] = (combine(sl2, shifted(sl2, slw * 0.45), shifted(bar, 0, CAP * 0.3), shifted(bar, 0, CAP * 0.6)), slw * 1.3)
+
 
 # --- assemble font --------------------------------------------------------
 names = ['.notdef', 'space'] + sorted(glyphs)
@@ -240,8 +307,11 @@ for name in glyphs:
     cmap[ord(ch)] = name
     if ch.lower() != ch:
         cmap[ord(ch.lower())] = name   # all-caps hand: lowercase uses the same letters
-cmap[ord("’")] = 'quotesingle'
-cmap[0x2013] = 'hyphen'
+for ch in "‘’":
+    cmap[ord(ch)] = 'quotesingle'
+for ch in '“”„':
+    cmap[ord(ch)] = 'quotedbl'
+cmap[ord('&')] = 'plus'   # the invitation writes "Gustav + Johanna"
 
 charstrings, metrics = {}, {}
 for name in names:

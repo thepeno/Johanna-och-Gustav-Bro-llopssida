@@ -16,11 +16,11 @@ export const asMedia = (value: unknown): Media | null =>
 
 export type Theme = 'ivory' | 'espresso' | 'olive'
 
-// Stored values kept from the first design; they now mean cream, white, and a cream panel on white
+// Stored values kept from earlier designs; every section is now the same card paper
 export const themeClass: Record<Theme, string> = {
-  ivory: 'theme-ivory bg-cream text-ink',
-  espresso: 'theme-espresso bg-white text-ink',
-  olive: 'theme-olive bg-white text-ink',
+  ivory: 'theme-ivory',
+  espresso: 'theme-espresso',
+  olive: 'theme-olive',
 }
 
 export const formatDate = (iso: string, locale = 'sv-SE', opts?: Intl.DateTimeFormatOptions) =>

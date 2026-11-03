@@ -10,7 +10,7 @@ import { siteLinks } from '@/lib/links'
 
 export async function generateMetadata(): Promise<Metadata> {
   const [page, settings] = await Promise.all([getHomePage(), getSiteSettings()])
-  const names = settings ? `${settings.partnerOne} & ${settings.partnerTwo}` : 'Bröllop'
+  const names = settings ? `${settings.partnerOne} + ${settings.partnerTwo}` : 'Bröllop'
   const image = asMedia(page?.meta?.image)
   return {
     title: page?.meta?.title || names,
@@ -24,12 +24,12 @@ export default async function HomePage() {
 
   if (!page || !settings) {
     return (
-      <main className="theme-ivory mx-auto flex min-h-screen max-w-xl flex-col justify-center gap-4 px-6 text-center">
-        <h1 className="display text-4xl">Sidan saknar innehåll</h1>
+      <main className="theme-ivory mx-auto flex min-h-svh max-w-xl flex-col justify-center gap-6 px-6 text-center">
+        <h1 className="statement">Sidan saknar innehåll</h1>
         <p>
-          Kör <code className="font-mono text-sm">npm run seed</code> för exempelinnehåll, eller skapa en sida med slug
-          <code className="font-mono text-sm"> home</code> och fyll i Site settings i{' '}
-          <Link className="underline" href="/admin">
+          Kör <code className="font-plain text-base tracking-normal">npm run seed</code> för exempelinnehåll, eller skapa en sida med slug
+          <code className="font-plain text-base tracking-normal"> home</code> och fyll i Site settings i{' '}
+          <Link href="/admin">
             /admin
           </Link>
           .
