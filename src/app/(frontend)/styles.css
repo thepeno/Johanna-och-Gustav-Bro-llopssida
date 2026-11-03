@@ -15,6 +15,7 @@
   --font-sans: 'Helvetica Neue', Helvetica, var(--font-grotesk), Arial, sans-serif;
   --font-serif: var(--font-book), 'Times New Roman', Times, serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-hand: var(--font-handwriting), var(--font-sans);
 }
 
 /* Section themes. The stored values are still ivory / espresso / olive; they now

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter_Tight, Libre_Caslon_Text } from 'next/font/google'
+import localFont from 'next/font/local'
 import React from 'react'
 import { getSiteSettings } from '@/lib/data'
 import './styles.css'
@@ -13,6 +14,8 @@ const book = Libre_Caslon_Text({
 })
 // Fallback for devices without Helvetica Neue; not preloaded since Apple devices never need it
 const grotesk = Inter_Tight({ subsets: ['latin'], weight: ['400'], variable: '--font-grotesk', display: 'swap', preload: false })
+// Gustav's handwriting, built from design/handwriting (see the README there). Not used on the page yet.
+const hand = localFont({ src: './fonts/GustavsHand.woff2', variable: '--font-handwriting', display: 'swap', preload: false })
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings()
@@ -27,7 +30,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const settings = await getSiteSettings()
   const lang = (settings?.locale || 'sv-SE').split('-')[0]
   return (
-    <html lang={lang} className={`${book.variable} ${grotesk.variable}`}>
+    <html lang={lang} className={`${book.variable} ${grotesk.variable} ${hand.variable}`}>
       <body>{children}</body>
     </html>
   )
