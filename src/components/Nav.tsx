@@ -45,7 +45,7 @@ export function Nav({ items, settings }: { items: NavLink[]; settings: SiteSetti
       {open && (
         <ul
           id="mobile-menu"
-          className="fixed inset-x-0 top-[4.5rem] bottom-0 flex flex-col items-center justify-center gap-7 bg-paper bg-[url('/card/paper.jpg')] bg-[length:1024px_1024px] pb-24 md:hidden"
+          className="fixed inset-x-0 top-[4.5rem] bottom-0 flex flex-col items-center justify-center gap-7 paper-ground pb-24 md:hidden"
         >
           {items.map((item) => (
             <li key={item.href}>

@@ -64,21 +64,6 @@
           "#f4f5f5"
         ]
       },
-      "print-white": {
-        "role": "neutral",
-        "displayName": "Print White",
-        "canonical": "#f7f7f4",
-        "tonalRamp": [
-          "#262624",
-          "#45453f",
-          "#67675f",
-          "#8b8b82",
-          "#adada5",
-          "#cfcfc8",
-          "#e8e8e3",
-          "#f7f7f4"
-        ]
-      },
       "error-red": {
         "role": "functional",
         "displayName": "Error Red",
@@ -110,7 +95,7 @@
       },
       "invitation": {
         "displayName": "Invitation",
-        "purpose": "The card's lines on the first screen, sized to fit a phone's width and the first viewport's height."
+        "purpose": "The card's lines on the first screen, sized to fit a phone's width and the first viewport's height, never below 12px."
       },
       "body": {
         "displayName": "Body",
@@ -129,13 +114,7 @@
         "purpose": "Only the password field and the footer email: content the hand cannot render (case, @)."
       }
     },
-    "shadows": [
-      {
-        "name": "laid-print",
-        "value": "0 1px 1px rgb(38 38 38 / 0.12), 0 10px 26px -8px rgb(38 38 38 / 0.28)",
-        "purpose": "Only on photo prints laid on the card."
-      }
-    ],
+    "shadows": [],
     "motion": [
       {
         "name": "ease-pencil",
@@ -164,8 +143,8 @@
     ],
     "texture": {
       "name": "card-grain",
-      "value": "url('/card/paper.jpg') repeat, 1024px 1024px tile over #e6e8e8",
-      "purpose": "The card's own grain under every surface."
+      "value": "linear-gradient(color-mix(in oklab, #e6e8e8 50%, transparent), color-mix(in oklab, #e6e8e8 50%, transparent)), #e6e8e8 url('/card/paper.jpg') repeat; background-size: auto, 1024px 1024px",
+      "purpose": "The card's own grain at half strength: the paper colour laid at 50% over the tiled grain. Used by the page body and the mobile menu."
     },
     "assets": [
       {
@@ -174,7 +153,7 @@
       },
       {
         "path": "public/card/paper.jpg",
-        "purpose": "Tiled card-paper grain."
+        "purpose": "Tiled card-paper grain, shown at half strength under a 50% paper wash."
       },
       {
         "path": "src/app/(frontend)/fonts/GustavsHand.woff2",
@@ -224,12 +203,11 @@
       "css": ".ds-nav { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 20px; font-family: var(--font-hand, 'Gustavs Hand', 'Helvetica Neue', Helvetica, Arial, sans-serif); text-transform: uppercase; font-size: 0.8125rem; letter-spacing: 0.08em; } .ds-nav ul { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; } .ds-nav a { color: #262626; text-decoration: none; text-underline-offset: 0.32em; text-decoration-thickness: 1.5px; } .ds-nav a:hover { text-decoration-line: underline; } .ds-nav a:focus-visible { outline: 1.5px dashed #262626; outline-offset: 5px; }"
     },
     {
-      "name": "Photo Print",
-      "kind": "card",
-      "refersTo": "photo-print",
-      "description": "The only lifted object: a greyscale photo in a white print border, slightly askew.",
-      "html": "<figure class=\"ds-print\"><div class=\"ds-print-img\"></div></figure>",
-      "css": ".ds-print { width: 14rem; margin: 0; padding: 0.6rem 0.6rem 2.4rem; background: #f7f7f4; transform: rotate(-1.5deg); box-shadow: 0 1px 1px rgb(38 38 38 / 0.12), 0 10px 26px -8px rgb(38 38 38 / 0.28); } .ds-print-img { aspect-ratio: 4 / 5; background: linear-gradient(160deg, #8f8f8f, #3a3a3a); filter: grayscale(1); }"
+      "name": "Photo",
+      "kind": "custom",
+      "description": "A plain greyscale photograph set directly on the paper: no border, tilt or shadow.",
+      "html": "<figure class=\"ds-photo\"><div class=\"ds-photo-img\"></div></figure>",
+      "css": ".ds-photo { width: 14rem; margin: 0; } .ds-photo-img { aspect-ratio: 4 / 5; background: linear-gradient(160deg, #8f8f8f, #3a3a3a); filter: grayscale(1); }"
     },
     {
       "name": "Pencil Link",
@@ -241,14 +219,14 @@
   ],
   "narrative": {
     "northStar": "The Card, Opened",
-    "overview": "The site is the printed invitation the guests were sent, unfolded into a scrolling sheet. There is one ground, the card's own cool grey paper with its grain tiled from a photograph of the card, and one ink, graphite pencil. Gustav's pencil sheep, cut from the card, sits at the top of the first screen; every word below it, body text included, is set in Gustavs Hand, a font built from his own capitals (`design/handwriting/build.py`). The page reads like further lines written on the same sheet, not like a wedding template.\n\nDensity is low and the measure is narrow. Lines are widely letter- and word-spaced, as on the card, and grouped by blank space rather than by boxes or bands. Hierarchy is carried by space, position and the pencil underline, never by weight or large size, because a pencil stroke does not get thicker when you write bigger. The only object laid on the paper is a photo, a small black-and-white print with a white border, slightly askew.\n\nThis world replaces the earlier Squarespace-Morais system (cream and white bands, Helvetica headlines with a Caslon italic). Nothing from that system carries forward except the stored section theme names, kept so old content still renders.",
+    "overview": "The site is the printed invitation the guests were sent, unfolded into a scrolling sheet. There is one ground, the card's own cool grey paper with its grain tiled from a photograph of the card, and one ink, graphite pencil. Gustav's pencil sheep, cut from the card, sits at the top of the first screen; every word below it, body text included, is set in Gustavs Hand, a font built from his own capitals (`design/handwriting/build.py`). The page reads like further lines written on the same sheet, not like a wedding template.\n\nDensity is low and the measure is narrow. Lines are widely letter- and word-spaced, as on the card, and grouped by blank space rather than by boxes or bands. Hierarchy is carried by space, position and the pencil underline, never by weight or large size, because a pencil stroke does not get thicker when you write bigger. Photos are plain greyscale photographs set directly on the paper, square to the column, with no border, tilt or shadow.\n\nThis world replaces the earlier Squarespace-Morais system (cream and white bands, Helvetica headlines with a Caslon italic). Nothing from that system carries forward except the stored section theme names, kept so old content still renders.",
     "keyCharacteristics": [
       "One paper, one graphite ink; no second surface, no colour bands.",
       "Every word in Gustavs Hand, capitals only, widely spaced.",
       "Sizes held close together; hierarchy from space and position.",
       "Actions are words underlined in pencil.",
       "Fields are written on a single ruled pencil line.",
-      "The photo print is the only lifted object; everything else is flat on the paper.",
+      "Nothing is lifted off the paper; photos sit flat on it like everything else.",
       "Motion is the card settling in once; everything else only changes colour or line weight."
     ],
     "rules": [
@@ -264,7 +242,7 @@
       },
       {
         "name": "The Pencil Doesn't Thicken Rule",
-        "body": "Sizes stay between roughly 13px and 38px and the weight never changes. A new level of importance is made with more space around it, a position (centred, a corner), or a pencil underline, not with a bigger or bolder setting.",
+        "body": "Sizes stay between roughly 12px and 38px and the weight never changes. A new level of importance is made with more space around it, a position (centred, a corner), or a pencil underline, not with a bigger or bolder setting.",
         "section": "typography"
       },
       {
@@ -278,18 +256,18 @@
         "section": "layout"
       },
       {
-        "name": "The Single Print Rule",
-        "body": "Only a photograph may be lifted off the paper. Text, buttons, fields, menus and panels never take a shadow, fill or box.",
+        "name": "The Nothing Is Lifted Rule",
+        "body": "Nothing is lifted off the paper. Text, buttons, fields, menus, panels and photos never take a shadow, and nothing takes a fill or box.",
         "section": "elevation"
       }
     ],
     "dos": [
       "**Do** set every word in Gustavs Hand at weight 400, widely tracked (0.06em body, 0.16em headings).",
-      "**Do** keep every section on the same card paper with its tiled grain.",
+      "**Do** keep every section on the same card paper with its tiled grain at half strength.",
       "**Do** make actions a word underlined in pencil, and answers a word that gets underlined when chosen.",
       "**Do** write fields on a single 1.5px ruled line that darkens to graphite on focus.",
       "**Do** create hierarchy with space, centring and corner positions before reaching for size.",
-      "**Do** lay photos as greyscale prints with a white border, a soft shadow and a slight tilt.",
+      "**Do** set photos as plain greyscale photographs directly on the paper, square to the column (4:5, gallery at natural ratios).",
       "**Do** switch a whole string to the plain face when the hand cannot render it (visible case, an @).",
       "**Do** keep motion to the one load sequence (lines fade up 8px in reading order, 900ms, 90ms apart), off under reduced motion with the content fully visible; otherwise only colour and underline transitions and the FAQ marker turn."
     ],
@@ -297,7 +275,7 @@
       "**Don't** introduce a second surface colour or alternate section bands; the theme values are inert.",
       "**Don't** add a second accent colour; error red is for errors only.",
       "**Don't** set display text larger than 2.4rem or use bold; the pencil stroke would turn into marker.",
-      "**Don't** put text, buttons, fields or menus in boxes, fills or shadows; the photo print is the only lifted object.",
+      "**Don't** give anything a shadow, a white print border or a tilt, photos included; and don't put text, buttons, fields or menus in boxes or fills.",
       "**Don't** use filled or bordered rectangular buttons, or rounded corners.",
       "**Don't** mix the hand and the plain face inside one word or line.",
       "**Don't** put a navigation bar over the card."

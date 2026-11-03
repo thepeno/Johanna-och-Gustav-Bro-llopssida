@@ -19,7 +19,7 @@ export function DetailsBlockComponent({ block }: { block: DetailsBlock }) {
           return (
             <li key={card.id ?? i} className="max-w-[22rem]">
               {image && (
-                <div className="print mb-8 -rotate-1">
+                <div className="mb-8">
                   <div className="relative aspect-[4/5] overflow-hidden">
                     <Img media={image} size="card" fill sizes="(min-width:640px) 22rem, 80vw" className="grayscale" />
                   </div>

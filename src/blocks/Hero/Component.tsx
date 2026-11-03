@@ -7,7 +7,7 @@ import sheep from '../../../public/card/sheep.png'
 
 // The invitation card as the first screen: the sheep, the names, the card's
 // lines with its line breaks, and the two corner notes (reply on the left,
-// dress code on the right). The photo follows below, laid on the card like a print.
+// dress code on the right). The photo follows below, plain.
 export function HeroBlockComponent({ block, settings, rsvpAnchor }: { block: HeroBlock; settings: SiteSetting; rsvpAnchor?: string }) {
   const media = asMedia(block.image)
   const locale = settings.locale || 'sv-SE'
@@ -63,7 +63,7 @@ export function HeroBlockComponent({ block, settings, rsvpAnchor }: { block: Her
 
       {media && (
         <div className="px-5 pt-12 pb-8 md:pt-20">
-          <figure className="print mx-auto w-[min(78vw,21rem)] -rotate-[1.5deg] md:w-[24rem]">
+          <figure className="mx-auto w-[min(78vw,21rem)] md:w-[24rem]">
             <div className="relative aspect-[4/5] overflow-hidden">
               <Img media={media} size="card" fill sizes="(min-width: 768px) 24rem, 78vw" className="grayscale" />
             </div>

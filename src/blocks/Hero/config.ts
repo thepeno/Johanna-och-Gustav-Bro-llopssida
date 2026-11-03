@@ -12,7 +12,7 @@ export const Hero: Block = {
       type: 'upload',
       relationTo: 'media',
       required: true,
-      admin: { description: 'Photo shown under the invitation, like a print laid on the card' },
+      admin: { description: 'Photo shown under the invitation' },
     },
     {
       name: 'heading',
