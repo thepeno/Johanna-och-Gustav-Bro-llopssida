@@ -11,7 +11,7 @@ The handwriting font in `src/app/(frontend)/fonts/GustavsHand.woff2`, built from
 
 ## Even stroke and width
 
-After tracing, every glyph is widened 20% and then re-stroked: it is reduced to the centre line the pen travelled and redrawn at one constant width. That width is 118 units at a 700-unit cap height, the pen's own width measured on the photographed sheet. The shapes stay the hand's own, without the marker's uneven pressure. Widening happens before re-stroking, so vertical strokes don't come out thicker than horizontal ones. Two glyphs are drawn rather than traced:
+After tracing, every glyph is widened 20% and then re-stroked: it is reduced to the centre line the pen travelled and redrawn at one constant width. That width is 65 units at a 700-unit cap height. The marker on the sheet measures 118 units, but the couple chose the finer line: it is how the 118 pen looked in a screenshot shown at 55% size. The shapes stay the hand's own, without the marker's uneven pressure. Widening happens before re-stroking, so vertical strokes don't come out thicker than horizontal ones. Two glyphs are drawn rather than traced:
 - Å is A with a ring made from a small O, so the ring stays open.
 - The 4 is drawn from its proportions (stem, diagonal, crossbar), because the marker filled its little triangle and its centre line read as "+".
 

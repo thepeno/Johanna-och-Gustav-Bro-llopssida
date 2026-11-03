@@ -360,9 +360,10 @@ def restroke(rec, width_units):
     return out
 
 
-# The pen's width measured on the photographed sheet (ink core, skeleton median):
-# 6.1px at a 36px cap height. The traced outlines run heavier because tracing blurs.
-STROKE = 118
+# The pen's width. The sheet measures 118 units (6.1px at a 36px cap height), but
+# the couple chose a finer line: 65 units, the weight the 118 pen showed in a
+# screenshot scaled to 55%, which they picked as how the site should look.
+STROKE = 65
 print('even stroke width', STROKE, 'units; traced outlines measure', round(stroke_width(['A', 'E', 'H', 'T', 'O']), 1))
 def line(p, q, t=STROKE / 2):
     """A pen-width bar from p to q; re-stroking reduces it to its centre line again."""
