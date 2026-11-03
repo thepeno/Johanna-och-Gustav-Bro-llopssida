@@ -84,7 +84,7 @@
 
 /* The names line and other small headlines: widely spaced, like the card. */
 @utility names {
-  font-size: clamp(0.8rem, 1.36vw, 0.96rem);
+  font-size: clamp(0.75rem, 1.16vw, 0.82rem);
   letter-spacing: 0.16em;
   word-spacing: 0.35em;
   line-height: 1.4;
@@ -94,7 +94,7 @@
 @utility invitation {
   /* by width so the longest line fits a phone, by height so the card fits the first screen */
   /* floor at 12px so a phone never goes smaller */
-  font-size: clamp(0.75rem, min(2.64vw, 1.76svh), 1.04rem);
+  font-size: clamp(0.75rem, min(2.24vw, 1.5svh), 0.88rem);
   letter-spacing: 0.09em;
   word-spacing: 0.3em;
   @media (min-width: 768px) {

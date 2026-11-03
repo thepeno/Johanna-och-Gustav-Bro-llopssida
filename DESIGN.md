@@ -22,13 +22,13 @@ typography:
     letterSpacing: "0.16em"
   title:
     fontFamily: "Gustavs Hand, Helvetica Neue, Helvetica, Arial, sans-serif"
-    fontSize: "clamp(0.8rem, 1.36vw, 0.96rem)"
+    fontSize: "clamp(0.75rem, 1.16vw, 0.82rem)"
     fontWeight: 400
     lineHeight: 1.4
     letterSpacing: "0.16em"
   invitation:
     fontFamily: "Gustavs Hand, Helvetica Neue, Helvetica, Arial, sans-serif"
-    fontSize: "clamp(0.75rem, min(2.64vw, 1.76svh), 1.04rem)"
+    fontSize: "clamp(0.75rem, min(2.24vw, 1.5svh), 0.88rem)"
     fontWeight: 400
     lineHeight: 1.65
     letterSpacing: "0.09em"
@@ -148,8 +148,8 @@ A monochrome pencil-on-paper palette: plain white and near-black graphite.
 ### Hierarchy
 - **Display** (400, clamp(1.8rem, 3.8vw, 2.4rem), 1.1, 0.14em): only the closing "OSA" in the footer, underlined in pencil. This is the largest the hand gets before its stroke reads as marker.
 - **Headline** (400, clamp(1.1rem, 1.7vw, 1.3rem), 1.45, 0.16em, word-spacing 0.35em, balanced): section headings and schedule event titles, barely larger than the text, centred like the names on the card.
-- **Title** (400, clamp(0.8rem, 1.36vw, 0.96rem), 1.4, 0.16em, word-spacing 0.35em): the names line under the sheep and on the guest login.
-- **Invitation** (400, clamp(0.75rem, min(2.64vw, 1.76svh), 1.04rem), 1.65, 0.09em, word-spacing 0.3em / 0.4em from 768px): the card's lines on the first screen, sized by both width and height so the longest line fits a phone and the whole card fits the first viewport, with a 12px floor so phones never go smaller. Keeps the card's own line breaks; an empty line starts a new group.
+- **Title** (400, clamp(0.75rem, 1.16vw, 0.82rem), 1.4, 0.16em, word-spacing 0.35em): the names line under the sheep and on the guest login.
+- **Invitation** (400, clamp(0.75rem, min(2.24vw, 1.5svh), 0.88rem), 1.65, 0.09em, word-spacing 0.3em / 0.4em from 768px): the card's lines on the first screen, sized by both width and height so the longest line fits a phone and the whole card fits the first viewport, with a 12px floor so phones never go smaller. Keeps the card's own line breaks; an empty line starts a new group.
 - **Body** (400, 1rem / 1.0625rem from 768px, 1.85, 0.06em, word-spacing 0.3em): all running text. Measure is held to about 34–36rem.
 - **Label** (400, 0.8125rem / 0.875rem from 768px, 1.7, 0.08em, soft graphite): corner notes, field labels, the nav, milestone dates, footer small print.
 - **Plain** (Helvetica, 400, normal tracking): the password field and the footer email address only.
