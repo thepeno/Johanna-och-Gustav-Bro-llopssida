@@ -3,7 +3,7 @@
 /* The invitation card, opened: one sheet of the card's grey paper, graphite
    pencil, and every word in Gustav's handwriting. */
 @theme {
-  --color-paper: #e6e8e8; /* sampled from the card */
+  --color-paper: #ffffff; /* plain white; the card's grey (#e6e8e8) and grain are set aside */
   --color-graphite: #262626;
   --color-graphite-soft: #4f5150; /* 6.9:1 on the paper */
   --color-error: #8a2a22;
@@ -76,12 +76,10 @@
   }
 }
 
-/* The card's paper: its grain at half strength (half-transparent paper laid over the tile). */
+/* The page ground: plain white, no texture. (The card grain tile is kept at
+   /card/paper.jpg if the paper look comes back.) */
 @utility paper-ground {
-  background:
-    linear-gradient(color-mix(in oklab, var(--color-paper) 50%, transparent), color-mix(in oklab, var(--color-paper) 50%, transparent)),
-    var(--color-paper) url('/card/paper.jpg') repeat;
-  background-size: auto, 1024px 1024px;
+  background: var(--color-paper);
 }
 
 /* The names line and other small headlines: widely spaced, like the card. */

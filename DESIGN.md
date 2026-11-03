@@ -1,11 +1,11 @@
 ---
 name: Johanna & Gustav
-description: The wedding invitation card, opened. One sheet of cool grey card paper, graphite pencil, and every word in Gustav's own hand-lettered capitals.
+description: The wedding invitation card, opened. One plain white sheet, graphite pencil, and every word in Gustav's own hand-lettered capitals.
 colors:
   graphite: "#262626"
   graphite-soft: "#4f5150"
   pencil-line: "#7c7d7d"
-  paper: "#e6e8e8"
+  paper: "#ffffff"
   error-red: "#8a2a22"
 typography:
   display:
@@ -102,7 +102,7 @@ components:
 
 **Creative North Star: "The Card, Opened"**
 
-The site is the printed invitation the guests were sent, unfolded into a scrolling sheet. There is one ground, the card's own cool grey paper with its grain tiled from a photograph of the card, and one ink, graphite pencil. Gustav's pencil sheep, cut from the card, sits at the top of the first screen; every word below it, body text included, is set in Gustavs Hand, a font built from his own capitals (`design/handwriting/build.py`). The page reads like further lines written on the same sheet, not like a wedding template.
+The site is the printed invitation the guests were sent, unfolded into a scrolling sheet. There is one ground, plain white with no texture, and one ink, graphite pencil. Gustav's pencil sheep, cut from the card, sits at the top of the first screen; every word below it, body text included, is set in Gustavs Hand, a font built from his own capitals (`design/handwriting/build.py`). The page reads like further lines written on the same sheet, not like a wedding template.
 
 Density is low and the measure is narrow. Lines are widely letter- and word-spaced, as on the card, and grouped by blank space rather than by boxes or bands. Hierarchy is carried by space, position and the pencil underline, never by weight or large size, because a pencil stroke does not get thicker when you write bigger. Photos are plain greyscale photographs set directly on the paper, square to the column, with no border, tilt or shadow.
 
@@ -119,15 +119,15 @@ This world replaces the earlier Squarespace-Morais system (cream and white bands
 
 ## Colors
 
-A monochrome pencil-on-card palette: a cool, barely blue grey paper and near-black graphite.
+A monochrome pencil-on-paper palette: plain white and near-black graphite.
 
 ### Primary
 - **Graphite** (#262626): all text, the pencil underline under actions, the select chevron, focus outlines and the active state of ruled lines. It is the only ink.
 
 ### Neutral
-- **Card Paper** (#e6e8e8): the single ground for every section, the guest login and the open mobile menu. It is laid at 50% over the tiled card-grain photo (`/card/paper.jpg`, 1024px tile), so the grain shows at half strength: a faint texture, not a pattern. Sampled from the card.
+- **Paper** (#ffffff): plain white, the single ground for every section, the guest login and the open mobile menu (the `paper-ground` utility). No texture. The card's grey (#e6e8e8) and its grain tile (`/card/paper.jpg`) were tried and set aside; the tile stays in the project.
 - **Soft Graphite** (#4f5150): small print, corner notes, secondary lines in schedule and details, answers in the FAQ (6.9:1 on the paper).
-- **Pencil Line** (#7c7d7d): resting ruled lines under fields and between FAQ rows. Canonically graphite mixed at 55% into transparency, so the paper grain shows through; it reads as a lighter pencil stroke and darkens to full graphite on focus.
+- **Pencil Line** (#7c7d7d): resting ruled lines under fields and between FAQ rows. Canonically graphite mixed at 55% into transparency, it reads as a lighter pencil stroke and darkens to full graphite on focus.
 
 ### Functional
 - **Error Red** (#8a2a22): form error messages and the ruled line of an invalid field. Nothing else.
@@ -172,7 +172,7 @@ Photos sit square in the column: the hero photo centred below the card, story ph
 
 ## Elevation & Depth
 
-The system is entirely flat and has no shadows at all: everything, photos included, is written or set directly on the paper, and the paper's half-strength grain is the only texture. Depth is never simulated.
+The system is entirely flat and has no shadows at all: everything, photos included, is written or set directly on plain white paper, with no texture anywhere. Depth is never simulated.
 
 ### Named Rules
 **The Nothing Is Lifted Rule.** Nothing is lifted off the paper. Text, buttons, fields, menus, panels and photos never take a shadow, and nothing takes a fill or box.
@@ -215,7 +215,7 @@ Native disclosure rows separated by 1.5px pencil lines, at least 56px tall; the 
 
 ### Do:
 - **Do** set every word in Gustavs Hand at weight 400, widely tracked (0.06em body, 0.16em headings).
-- **Do** keep every section on the same card paper with its tiled grain at half strength.
+- **Do** keep every section on the same plain white ground, with no texture.
 - **Do** make actions a word underlined in pencil, and answers a word that gets underlined when chosen.
 - **Do** write fields on a single 1.5px ruled line that darkens to graphite on focus.
 - **Do** create hierarchy with space, centring and corner positions before reaching for size.

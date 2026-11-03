@@ -51,17 +51,17 @@
       },
       "paper": {
         "role": "neutral",
-        "displayName": "Card Paper",
-        "canonical": "#e6e8e8",
+        "displayName": "Paper",
+        "canonical": "#ffffff",
         "tonalRamp": [
-          "#232525",
-          "#3d4040",
-          "#5d6161",
-          "#808484",
-          "#a3a7a7",
-          "#c4c7c7",
+          "#262626",
+          "#4f5150",
+          "#7c7d7d",
+          "#a6a7a7",
+          "#cfd0d0",
           "#e6e8e8",
-          "#f4f5f5"
+          "#f4f5f5",
+          "#ffffff"
         ]
       },
       "error-red": {
@@ -142,9 +142,9 @@
       }
     ],
     "texture": {
-      "name": "card-grain",
-      "value": "linear-gradient(color-mix(in oklab, #e6e8e8 50%, transparent), color-mix(in oklab, #e6e8e8 50%, transparent)), #e6e8e8 url('/card/paper.jpg') repeat; background-size: auto, 1024px 1024px",
-      "purpose": "The card's own grain at half strength: the paper colour laid at 50% over the tiled grain. Used by the page body and the mobile menu."
+      "name": "none",
+      "value": "#ffffff",
+      "purpose": "Plain white ground (paper-ground utility), no texture. The card grain tile public/card/paper.jpg is kept but unused."
     },
     "assets": [
       {
@@ -153,7 +153,7 @@
       },
       {
         "path": "public/card/paper.jpg",
-        "purpose": "Tiled card-paper grain, shown at half strength under a 50% paper wash."
+        "purpose": "Card-paper grain tile from the earlier grey-paper look; kept in the project but not used."
       },
       {
         "path": "src/app/(frontend)/fonts/GustavsHand.woff2",
@@ -219,7 +219,7 @@
   ],
   "narrative": {
     "northStar": "The Card, Opened",
-    "overview": "The site is the printed invitation the guests were sent, unfolded into a scrolling sheet. There is one ground, the card's own cool grey paper with its grain tiled from a photograph of the card, and one ink, graphite pencil. Gustav's pencil sheep, cut from the card, sits at the top of the first screen; every word below it, body text included, is set in Gustavs Hand, a font built from his own capitals (`design/handwriting/build.py`). The page reads like further lines written on the same sheet, not like a wedding template.\n\nDensity is low and the measure is narrow. Lines are widely letter- and word-spaced, as on the card, and grouped by blank space rather than by boxes or bands. Hierarchy is carried by space, position and the pencil underline, never by weight or large size, because a pencil stroke does not get thicker when you write bigger. Photos are plain greyscale photographs set directly on the paper, square to the column, with no border, tilt or shadow.\n\nThis world replaces the earlier Squarespace-Morais system (cream and white bands, Helvetica headlines with a Caslon italic). Nothing from that system carries forward except the stored section theme names, kept so old content still renders.",
+    "overview": "The site is the printed invitation the guests were sent, unfolded into a scrolling sheet. There is one ground, plain white with no texture, and one ink, graphite pencil. Gustav's pencil sheep, cut from the card, sits at the top of the first screen; every word below it, body text included, is set in Gustavs Hand, a font built from his own capitals (`design/handwriting/build.py`). The page reads like further lines written on the same sheet, not like a wedding template.\n\nDensity is low and the measure is narrow. Lines are widely letter- and word-spaced, as on the card, and grouped by blank space rather than by boxes or bands. Hierarchy is carried by space, position and the pencil underline, never by weight or large size, because a pencil stroke does not get thicker when you write bigger. Photos are plain greyscale photographs set directly on the paper, square to the column, with no border, tilt or shadow.\n\nThis world replaces the earlier Squarespace-Morais system (cream and white bands, Helvetica headlines with a Caslon italic). Nothing from that system carries forward except the stored section theme names, kept so old content still renders.",
     "keyCharacteristics": [
       "One paper, one graphite ink; no second surface, no colour bands.",
       "Every word in Gustavs Hand, capitals only, widely spaced.",
@@ -263,7 +263,7 @@
     ],
     "dos": [
       "**Do** set every word in Gustavs Hand at weight 400, widely tracked (0.06em body, 0.16em headings).",
-      "**Do** keep every section on the same card paper with its tiled grain at half strength.",
+      "**Do** keep every section on the same plain white ground, with no texture.",
       "**Do** make actions a word underlined in pencil, and answers a word that gets underlined when chosen.",
       "**Do** write fields on a single 1.5px ruled line that darkens to graphite on focus.",
       "**Do** create hierarchy with space, centring and corner positions before reaching for size.",
