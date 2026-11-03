@@ -15,6 +15,7 @@ After tracing, every glyph is widened 20% and then re-stroked: it is reduced to 
 - Å is A with a ring made from a small O, so the ring stays open.
 - The 4 is drawn from its proportions (stem, diagonal, crossbar), because the marker filled its little triangle and its centre line read as "+".
 - V and W are straight pen strokes over their own bounds, because the sheet's V is small and its filled point forked into a Y.
+- The alternate G is the second C with a G's bar and downstroke added, because the sheet's second G is a small filled loop that came out as a C.
 
 The re-stroke step needs two more packages: `pip install scikit-image freetype-py`.
 

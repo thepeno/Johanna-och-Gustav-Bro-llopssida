@@ -401,6 +401,17 @@ for sfx in ('', '.alt'):
     pts = [(x0, y1), (x0 + q, y0), (x0 + 2 * q, y1 * 0.72), (x0 + 3 * q, y0), (x1, y1)]
     glyphs['W' + sfx] = (combine(*[line(a_, b_) for a_, b_ in zip(pts, pts[1:])]), glyphs['W' + sfx][1])
 
+# The second G on the sheet is a small, 6-like loop the marker filled solid; its
+# centre line comes out as a C. Build it from the second C instead, adding the G's
+# bar (from the middle in to the right edge) and a short downstroke on the right.
+cx0, cy0, cx1, cy1 = bounds(glyphs['C.alt'][0])
+gy = cy0 + 0.45 * (cy1 - cy0)
+gx = cx0 + 0.55 * (cx1 - cx0)
+glyphs['G.alt'] = (
+    combine(glyphs['C.alt'][0], line((gx, gy), (cx1, gy)), line((cx1, gy), (cx1, cy0 + 0.12 * (cy1 - cy0)))),
+    glyphs['C.alt'][1],
+)
+
 for name in list(glyphs):
     rec, w = glyphs[name]
     wide = shifted(rec, 0, 0, WIDEN, 1)
