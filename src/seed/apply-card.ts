@@ -16,6 +16,8 @@ await payload.updateGlobal({
     partnerTwo: siteSettings.partnerTwo,
     weddingDate: siteSettings.weddingDate,
     venueShort: siteSettings.venueShort,
+    hashtag: siteSettings.hashtag,
+    contactEmail: siteSettings.contactEmail,
   },
   context,
 })

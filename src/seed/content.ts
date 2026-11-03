@@ -30,8 +30,9 @@ export const siteSettings = {
   weddingDate: '2027-08-14T11:00:00.000Z', // 13:00 Swedish summer time, "klockan ett" on the card
   locale: 'sv-SE' as const,
   venueShort: 'Förkärla kyrka, Blekinge',
-  hashtag: '#JG140827',
-  contactEmail: 'brollop@example.com',
+  // No hashtag or contact email on the site, by the couple's choice
+  hashtag: null,
+  contactEmail: null,
   footerNote: 'Vi ser fram emot att fira med er!',
   countdownLabels: { days: 'dagar', hours: 'timmar', minutes: 'minuter', seconds: 'sekunder' },
 }
