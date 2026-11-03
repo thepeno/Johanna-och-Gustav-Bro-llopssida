@@ -37,15 +37,15 @@
     background-size: 1024px 1024px;
     color: var(--color-graphite);
     font-family: var(--font-hand);
-    font-size: 1.1875rem;
+    font-size: 1rem;
     line-height: 1.85;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.06em;
     word-spacing: 0.3em;
     -webkit-font-smoothing: antialiased;
   }
   @media (min-width: 768px) {
     body {
-      font-size: 1.3125rem;
+      font-size: 1.0625rem;
     }
   }
   ::selection {
@@ -80,7 +80,7 @@
 
 /* The names line and other small headlines: widely spaced, like the card. */
 @utility names {
-  font-size: clamp(1.15rem, 2.1vw, 1.5rem);
+  font-size: clamp(1rem, 1.7vw, 1.2rem);
   letter-spacing: 0.16em;
   word-spacing: 0.35em;
   line-height: 1.4;
@@ -89,11 +89,11 @@
 /* The invitation lines on the opening. Sized so the card's longest line fits a phone. */
 @utility invitation {
   /* by width so the longest line fits a phone, by height so the card fits the first screen */
-  font-size: clamp(0.97rem, min(4vw, 2.6svh), 1.6rem);
+  font-size: clamp(0.82rem, min(3.3vw, 2.2svh), 1.3rem);
   letter-spacing: 0.09em;
   word-spacing: 0.3em;
   @media (min-width: 768px) {
-    word-spacing: 0.45em;
+    word-spacing: 0.4em;
   }
   line-height: 1.65;
   text-wrap: pretty;
@@ -102,7 +102,7 @@
 /* Section headings: barely larger than the text, like the names on the card. A pencil
    line doesn't get thicker when you write bigger, so hierarchy comes from space. */
 @utility statement {
-  font-size: clamp(1.35rem, 2.2vw, 1.65rem);
+  font-size: clamp(1.1rem, 1.7vw, 1.3rem);
   letter-spacing: 0.16em;
   word-spacing: 0.35em;
   line-height: 1.45;
@@ -111,19 +111,19 @@
 
 /* The closing "OSA": the largest the hand gets before its stroke turns to marker. */
 @utility title {
-  font-size: clamp(2.25rem, 5vw, 3rem);
+  font-size: clamp(1.8rem, 3.8vw, 2.4rem);
   letter-spacing: 0.14em;
   line-height: 1.1;
 }
 
 /* Small print, like the card's corner notes. */
 @utility label {
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.08em;
   line-height: 1.7;
   color: var(--fg-soft, var(--color-graphite-soft));
   @media (min-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
 }
 
@@ -163,19 +163,20 @@
     0 10px 26px -8px rgb(38 38 38 / 0.28);
 }
 
-/* The pencil loop (components/PencilLoop) draws itself when it appears. */
-.pencil-loop[data-draw='true'] path {
-  animation: pencil-draw 650ms var(--ease-pencil) both;
+/* Actions (buttons, the closing OSA): a word underlined in pencil; the line darkens and thickens on hover. */
+.pencil-action {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.35em;
+  text-decoration-color: color-mix(in oklab, var(--color-graphite) 70%, transparent);
+  transition:
+    text-decoration-color 200ms,
+    text-decoration-thickness 200ms;
 }
-.loop-hover:hover .pencil-loop path,
-.loop-hover:focus-visible .pencil-loop path {
-  animation: pencil-draw 650ms var(--ease-pencil) both;
-  stroke-width: 2.2;
-}
-@keyframes pencil-draw {
-  from {
-    stroke-dashoffset: 1;
-  }
+.pencil-action:hover,
+.pencil-action:focus-visible {
+  text-decoration-color: var(--color-graphite);
+  text-decoration-thickness: 2.5px;
 }
 
 /* The card settles in once on load: its lines fade up in reading order. */
@@ -191,8 +192,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card-in,
-  .pencil-loop path {
+  .card-in {
     animation: none;
   }
   html {

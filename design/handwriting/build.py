@@ -281,6 +281,13 @@ for alt in (False, True):
         dw_ = db_[2] - db_[0]
         glyphs[nm + sfx] = (combine(b_rec, shifted(DOTS, (bw - dw_) / 2 - db_[0], CAP * 1.07 - db_[1])), bw)
 
+    # Å: the plain A with a ring drawn as a small O, so the ring stays open at an even stroke
+    a_r, a_w = glyphs['A' + sfx]
+    o_r, _ = glyphs['O' + sfx]
+    ring = shifted(o_r, 0, 0, 0.42, 0.42)
+    rb = bounds(ring)
+    glyphs['Aring' + sfx] = (combine(a_r, shifted(ring, (a_w - (rb[2] - rb[0])) / 2 - rb[0], CAP * 1.04 - rb[1])), a_w)
+
     # comma: the dot with a short tail running down and left
     tail = RecordingPen()
     d.replay(TransformPen(tail, (0.55, 0, -0.3, 2.6, dw * 0.25, -CAP * 0.2)))
@@ -294,6 +301,96 @@ for alt in (False, True):
     bar = shifted(hy, -hb[0], -(hb[1] + hb[3]) / 2, (slw * 1.3) / max(hb[2] - hb[0], 1), 0.8)
     glyphs['numbersign' + sfx] = (combine(sl2, shifted(sl2, slw * 0.45), shifted(bar, 0, CAP * 0.3), shifted(bar, 0, CAP * 0.6)), slw * 1.3)
 
+
+# --- even stroke ------------------------------------------------------------
+# Widen every glyph, reduce it to the centre line the pen travelled, and redraw
+# that line at one constant width. The shapes stay the hand's own; the marker's
+# uneven pressure goes. Widening comes first so vertical strokes don't thicken.
+from fontTools.pens.freetypePen import FreeTypePen
+from skimage.morphology import skeletonize
+
+WIDEN = 1.2      # horizontal stretch
+RS = 1.0         # raster pixels per font unit while re-stroking
+PAD = 80
+
+
+def raster(rec):
+    x0, y0, x1, y1 = bounds(rec)
+    w, h = int((x1 - x0 + 2 * PAD) * RS), int((y1 - y0 + 2 * PAD) * RS)
+    tx, ty = (PAD - x0) * RS, (PAD - y0) * RS
+    pen = FreeTypePen(None)
+    rec.replay(pen)
+    img = pen.array(width=w, height=h, transform=(RS, 0, 0, RS, tx, ty), evenOdd=False)
+    return img > 0.5, (tx, ty, h)
+
+
+def stroke_width(names_):
+    """Median stroke width of the drawn letters, in font units."""
+    widths = []
+    for n in names_:
+        mask, _ = raster(glyphs[n][0])
+        skel = skeletonize(mask)
+        d = ndi.distance_transform_edt(mask)
+        widths.extend(2 * d[skel])
+    return float(np.median(widths)) / RS
+
+
+def restroke(rec, width_units):
+    mask, (tx, ty, h) = raster(rec)
+    r = width_units * RS / 2
+    smooth = ndi.gaussian_filter(mask.astype(float), r * 0.35) > 0.5   # no spurs from ragged edges
+    skel = skeletonize(smooth)
+    if not skel.any():
+        return rec
+    ink = ndi.distance_transform_edt(~skel) <= r
+    path = potrace.Bitmap(~ink).trace(turdsize=int(r * r), alphamax=1.1, opticurve=True, opttolerance=0.4)
+    out = RecordingPen()
+
+    def tf(p):
+        return (round((p.x - tx) / RS, 1), round((h - p.y - ty) / RS, 1))
+
+    for curve in path:
+        out.moveTo(tf(curve.start_point))
+        for seg in curve.segments:
+            if seg.is_corner:
+                out.lineTo(tf(seg.c)); out.lineTo(tf(seg.end_point))
+            else:
+                out.curveTo(tf(seg.c1), tf(seg.c2), tf(seg.end_point))
+        out.closePath()
+    return out
+
+
+# The pen's width measured on the photographed sheet (ink core, skeleton median):
+# 6.1px at a 36px cap height. The traced outlines run heavier because tracing blurs.
+STROKE = 118
+print('even stroke width', STROKE, 'units; traced outlines measure', round(stroke_width(['A', 'E', 'H', 'T', 'O']), 1))
+def line(p, q, t=STROKE / 2):
+    """A pen-width bar from p to q; re-stroking reduces it to its centre line again."""
+    (x0, y0), (x1, y1) = p, q
+    dx, dy = x1 - x0, y1 - y0
+    n = max((dx * dx + dy * dy) ** 0.5, 1)
+    ox, oy = -dy / n * t, dx / n * t
+    r = RecordingPen()
+    r.moveTo((x0 + ox, y0 + oy)); r.lineTo((x1 + ox, y1 + oy)); r.lineTo((x1 - ox, y1 - oy)); r.lineTo((x0 - ox, y0 - oy))
+    r.closePath()
+    return r
+
+
+# The 4 was written with a small triangle the marker filled solid, so its centre
+# line loses the diagonal and reads as "+". Draw it from its own proportions on the
+# sheet instead: stem at 62% of the width, crossbar at 36% of the height.
+for sfx in ('', '.alt'):
+    x0, y0, x1, y1 = bounds(glyphs['four' + sfx][0])
+    xs, yb = x0 + 0.62 * (x1 - x0), y0 + 0.36 * (y1 - y0)
+    glyphs['four' + sfx] = (
+        combine(line((xs, y1), (x0, yb)), line((x0, yb), (x1, yb)), line((xs, y1), (xs, y0))),
+        glyphs['four' + sfx][1],
+    )
+
+for name in list(glyphs):
+    rec, w = glyphs[name]
+    wide = shifted(rec, 0, 0, WIDEN, 1)
+    glyphs[name] = (restroke(wide, STROKE), w * WIDEN)
 
 # --- assemble font --------------------------------------------------------
 names = ['.notdef', 'space'] + sorted(glyphs)
@@ -322,7 +419,7 @@ for name in names:
         adv = round(w + 2 * SB)
         lsb = round(bounds(rec)[0] + SB) if bounds(rec) else 0
     elif name == 'space':
-        adv, lsb = SPACE, 0
+        adv, lsb = round(SPACE * WIDEN), 0
     else:
         adv, lsb = 500, 0
     charstrings[name] = pen.getCharString()

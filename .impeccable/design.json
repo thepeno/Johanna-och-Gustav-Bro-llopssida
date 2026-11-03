@@ -98,7 +98,7 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Only the closing OSA in the footer, circled in pencil. The largest the hand gets."
+        "purpose": "Only the closing OSA in the footer, underlined in pencil. The largest the hand gets."
       },
       "headline": {
         "displayName": "Headline",
@@ -122,7 +122,7 @@
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Corner notes, field labels, nav, dates, footer small print, in soft graphite (16px from 768px)."
+        "purpose": "Corner notes, field labels, nav, dates, footer small print, in soft graphite (14px from 768px)."
       },
       "plain": {
         "displayName": "Plain",
@@ -140,17 +140,12 @@
       {
         "name": "ease-pencil",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "The one easing: card load, loop draw, FAQ marker turn."
+        "purpose": "The one easing: card load, FAQ marker turn."
       },
       {
         "name": "card-in",
         "value": "900ms ease-pencil, opacity 0 and translateY(8px) to rest, delay i*90ms + 120ms",
         "purpose": "The card's lines settle in once on load in reading order. Off under reduced motion."
-      },
-      {
-        "name": "pencil-draw",
-        "value": "650ms ease-pencil, stroke-dashoffset 1 to 0",
-        "purpose": "The pencil loop draws itself on a chosen answer and on button hover/focus. Off under reduced motion; the loop stays visible."
       }
     ],
     "breakpoints": [
@@ -183,26 +178,26 @@
       },
       {
         "path": "src/app/(frontend)/fonts/GustavsHand.woff2",
-        "purpose": "Gustavs Hand, capitals only, built by design/handwriting/build.py."
+        "purpose": "Gustavs Hand, capitals only, built by design/handwriting/build.py: 20% wider than the sheet, every glyph re-stroked along its centre line at one even 118-unit pen (700-unit cap height)."
       }
     ]
   },
   "components": [
     {
-      "name": "Circled Word Button",
+      "name": "Underlined Word Button",
       "kind": "button",
-      "refersTo": "button-loop",
-      "description": "Every action: a word circled in pencil. The loop redraws and thickens on hover and focus.",
-      "html": "<a class=\"ds-btn-loop\" href=\"#\"><svg class=\"ds-loop\" viewBox=\"0 0 200 60\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><path d=\"M 46 14 C 80 4, 150 3, 184 12 C 202 18, 199 42, 176 50 C 140 60, 52 59, 20 50 C 0 44, 2 22, 24 12 C 48 2, 98 -1, 140 3\" pathLength=\"1\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-dasharray=\"1\" vector-effect=\"non-scaling-stroke\"/></svg><span>Till OSA</span></a>",
-      "css": ".ds-btn-loop { position: relative; display: inline-flex; align-items: center; justify-content: center; min-height: 48px; margin: 0 0.9em; padding: 4px 8px; font-family: var(--font-hand, 'Gustavs Hand', 'Helvetica Neue', Helvetica, Arial, sans-serif); font-size: 1.3em; letter-spacing: 0.12em; color: #262626; text-decoration: none; text-transform: uppercase; background: transparent; border: 0; } .ds-btn-loop span { position: relative; } .ds-loop { position: absolute; left: -0.9em; top: -0.45em; width: calc(100% + 1.8em); height: calc(100% + 0.9em); overflow: visible; pointer-events: none; } @keyframes ds-draw { from { stroke-dashoffset: 1; } } @media (prefers-reduced-motion: reduce) { .ds-loop path { animation: none !important; } } .ds-btn-loop:hover .ds-loop path, .ds-btn-loop:focus-visible .ds-loop path { animation: ds-draw 650ms cubic-bezier(0.16, 1, 0.3, 1) both; stroke-width: 2.2; } .ds-btn-loop:focus-visible { outline: 1.5px dashed #262626; outline-offset: 5px; }"
+      "refersTo": "button-underline",
+      "description": "Every action: a word underlined in pencil. The line darkens and thickens on hover and focus.",
+      "html": "<a class=\"ds-btn-underline\" href=\"#\">Till OSA</a>",
+      "css": ".ds-btn-underline { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 4px; font-family: var(--font-hand, 'Gustavs Hand', 'Helvetica Neue', Helvetica, Arial, sans-serif); font-size: 1.1em; letter-spacing: 0.12em; color: #262626; text-transform: uppercase; background: transparent; border: 0; text-decoration-line: underline; text-decoration-thickness: 1.5px; text-underline-offset: 0.35em; text-decoration-color: color-mix(in oklab, #262626 70%, transparent); transition: text-decoration-color 200ms, text-decoration-thickness 200ms; } .ds-btn-underline:hover, .ds-btn-underline:focus-visible { text-decoration-color: #262626; text-decoration-thickness: 2.5px; } .ds-btn-underline:focus-visible { outline: 1.5px dashed #262626; outline-offset: 5px; }"
     },
     {
-      "name": "Circled Answer",
+      "name": "Underlined Answer",
       "kind": "custom",
-      "refersTo": "button-loop",
-      "description": "Signature: choosing an RSVP answer draws a pencil loop around it.",
-      "html": "<div class=\"ds-choice\"><label class=\"ds-choice-opt\"><input type=\"radio\" name=\"ds-a\" checked><svg class=\"ds-loop\" viewBox=\"0 0 200 60\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><path d=\"M 46 14 C 80 4, 150 3, 184 12 C 202 18, 199 42, 176 50 C 140 60, 52 59, 20 50 C 0 44, 2 22, 24 12 C 48 2, 98 -1, 140 3\" pathLength=\"1\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-dasharray=\"1\" vector-effect=\"non-scaling-stroke\"/></svg><span>Ja, jag kommer</span></label><label class=\"ds-choice-opt\"><input type=\"radio\" name=\"ds-a\"><span>Tyvärr, jag kan inte</span></label></div>",
-      "css": ".ds-choice { display: flex; flex-wrap: wrap; gap: 16px 56px; padding: 0 0.9em; font-family: var(--font-hand, 'Gustavs Hand', 'Helvetica Neue', Helvetica, Arial, sans-serif); text-transform: uppercase; color: #262626; letter-spacing: 0.07em; } .ds-choice-opt { position: relative; display: inline-flex; align-items: center; min-height: 48px; padding: 0 4px; font-size: 1.3em; cursor: pointer; } .ds-choice-opt input { position: absolute; opacity: 0; width: 1px; height: 1px; } .ds-choice-opt span { position: relative; } .ds-loop { position: absolute; left: -0.9em; top: -0.45em; width: calc(100% + 1.8em); height: calc(100% + 0.9em); overflow: visible; pointer-events: none; } @keyframes ds-draw { from { stroke-dashoffset: 1; } } @media (prefers-reduced-motion: reduce) { .ds-loop path { animation: none !important; } } .ds-choice-opt .ds-loop path { animation: ds-draw 650ms cubic-bezier(0.16, 1, 0.3, 1) both; } .ds-choice-opt:has(:focus-visible) { outline: 1.5px dashed #262626; outline-offset: 0.7em; }"
+      "refersTo": "button-underline",
+      "description": "Signature: the chosen RSVP answer is underlined in graphite; the other stays soft.",
+      "html": "<div class=\"ds-choice\"><label class=\"ds-choice-opt\"><input type=\"radio\" name=\"ds-a\" checked><span>Ja, jag kommer</span></label><label class=\"ds-choice-opt\"><input type=\"radio\" name=\"ds-a\"><span>Tyvärr, jag kan inte</span></label></div>",
+      "css": ".ds-choice { display: flex; flex-wrap: wrap; gap: 16px 56px; font-family: var(--font-hand, 'Gustavs Hand', 'Helvetica Neue', Helvetica, Arial, sans-serif); text-transform: uppercase; letter-spacing: 0.06em; } .ds-choice-opt { display: inline-flex; align-items: center; min-height: 48px; font-size: 1.1em; cursor: pointer; color: #4f5150; text-decoration-thickness: 1.5px; text-underline-offset: 0.35em; transition: color 200ms; } .ds-choice-opt:hover { color: #262626; } .ds-choice-opt:has(:checked) { color: #262626; text-decoration-line: underline; } .ds-choice-opt input { position: absolute; opacity: 0; width: 1px; height: 1px; } .ds-choice-opt:has(:focus-visible) { outline: 1.5px dashed #262626; outline-offset: 0.5em; }"
     },
     {
       "name": "Ruled Field",
@@ -210,7 +205,7 @@
       "refersTo": "input-ruled",
       "description": "A field written on a single pencil line that darkens on focus.",
       "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Namn</span><input class=\"ds-input-ruled\" type=\"text\"></label>",
-      "css": ".ds-field { display: flex; flex-direction: column; gap: 8px; font-family: var(--font-hand, 'Gustavs Hand', 'Helvetica Neue', Helvetica, Arial, sans-serif); text-transform: uppercase; color: #262626; } .ds-field-label { font-size: 0.9375rem; letter-spacing: 0.08em; } .ds-input-ruled { min-height: 48px; width: 100%; padding: 8px 0; font: inherit; font-size: 1.1875rem; letter-spacing: 0.07em; color: #262626; caret-color: #262626; background: transparent; border: 0; border-bottom: 1.5px solid color-mix(in oklab, #262626 55%, transparent); border-radius: 0; transition: border-color 200ms; } .ds-input-ruled:focus { outline: none; border-bottom-color: #262626; } .ds-input-ruled[aria-invalid=true] { border-bottom-color: #8a2a22; }"
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 8px; font-family: var(--font-hand, 'Gustavs Hand', 'Helvetica Neue', Helvetica, Arial, sans-serif); text-transform: uppercase; color: #262626; } .ds-field-label { font-size: 0.8125rem; letter-spacing: 0.08em; } .ds-input-ruled { min-height: 48px; width: 100%; padding: 8px 0; font: inherit; font-size: 1rem; letter-spacing: 0.06em; color: #262626; caret-color: #262626; background: transparent; border: 0; border-bottom: 1.5px solid color-mix(in oklab, #262626 55%, transparent); border-radius: 0; transition: border-color 200ms; } .ds-input-ruled:focus { outline: none; border-bottom-color: #262626; } .ds-input-ruled[aria-invalid=true] { border-bottom-color: #8a2a22; }"
     },
     {
       "name": "Ruled Field (Plain)",
@@ -218,7 +213,7 @@
       "refersTo": "input-ruled-plain",
       "description": "Password only: the ruled line in the plain face so case is visible.",
       "html": "<label class=\"ds-field-p\"><span class=\"ds-field-p-label\">Lösenord</span><input class=\"ds-input-plain\" type=\"password\" value=\"Fårhage\"></label>",
-      "css": ".ds-field-p { display: flex; flex-direction: column; gap: 8px; color: #262626; } .ds-field-p-label { font-family: var(--font-hand, 'Gustavs Hand', 'Helvetica Neue', Helvetica, Arial, sans-serif); text-transform: uppercase; font-size: 0.9375rem; letter-spacing: 0.08em; } .ds-input-plain { min-height: 48px; width: 100%; padding: 8px 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1.125rem; letter-spacing: normal; color: #262626; background: transparent; border: 0; border-bottom: 1.5px solid color-mix(in oklab, #262626 55%, transparent); border-radius: 0; } .ds-input-plain:focus { outline: none; border-bottom-color: #262626; }"
+      "css": ".ds-field-p { display: flex; flex-direction: column; gap: 8px; color: #262626; } .ds-field-p-label { font-family: var(--font-hand, 'Gustavs Hand', 'Helvetica Neue', Helvetica, Arial, sans-serif); text-transform: uppercase; font-size: 0.8125rem; letter-spacing: 0.08em; } .ds-input-plain { min-height: 48px; width: 100%; padding: 8px 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 1.125rem; letter-spacing: normal; color: #262626; background: transparent; border: 0; border-bottom: 1.5px solid color-mix(in oklab, #262626 55%, transparent); border-radius: 0; } .ds-input-plain:focus { outline: none; border-bottom-color: #262626; }"
     },
     {
       "name": "Navigation",
@@ -226,7 +221,7 @@
       "refersTo": "nav-link",
       "description": "No bar: a monogram top-left and a quiet line of handwritten links top-right.",
       "html": "<nav class=\"ds-nav\"><a href=\"#\">G + J</a><ul><li><a href=\"#\">Dagen</a></li><li><a href=\"#\">Resa</a></li><li><a href=\"#\">OSA</a></li></ul></nav>",
-      "css": ".ds-nav { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 20px; font-family: var(--font-hand, 'Gustavs Hand', 'Helvetica Neue', Helvetica, Arial, sans-serif); text-transform: uppercase; font-size: 0.9375rem; letter-spacing: 0.08em; } .ds-nav ul { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; } .ds-nav a { color: #262626; text-decoration: none; text-underline-offset: 0.32em; text-decoration-thickness: 1.5px; } .ds-nav a:hover { text-decoration-line: underline; } .ds-nav a:focus-visible { outline: 1.5px dashed #262626; outline-offset: 5px; }"
+      "css": ".ds-nav { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 20px; font-family: var(--font-hand, 'Gustavs Hand', 'Helvetica Neue', Helvetica, Arial, sans-serif); text-transform: uppercase; font-size: 0.8125rem; letter-spacing: 0.08em; } .ds-nav ul { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; } .ds-nav a { color: #262626; text-decoration: none; text-underline-offset: 0.32em; text-decoration-thickness: 1.5px; } .ds-nav a:hover { text-decoration-line: underline; } .ds-nav a:focus-visible { outline: 1.5px dashed #262626; outline-offset: 5px; }"
     },
     {
       "name": "Photo Print",
@@ -246,15 +241,15 @@
   ],
   "narrative": {
     "northStar": "The Card, Opened",
-    "overview": "The site is the printed invitation the guests were sent, unfolded into a scrolling sheet. There is one ground, the card's own cool grey paper with its grain tiled from a photograph of the card, and one ink, graphite pencil. Gustav's pencil sheep, cut from the card, sits at the top of the first screen; every word below it, body text included, is set in Gustavs Hand, a font built from his own capitals (`design/handwriting/build.py`). The page reads like further lines written on the same sheet, not like a wedding template.\n\nDensity is low and the measure is narrow. Lines are widely letter- and word-spaced, as on the card, and grouped by blank space rather than by boxes or bands. Hierarchy is carried by space, position and the pencil loop, never by weight or large size, because a pencil stroke does not get thicker when you write bigger. The only object laid on the paper is a photo, a small black-and-white print with a white border, slightly askew.\n\nThis world replaces the earlier Squarespace-Morais system (cream and white bands, Helvetica headlines with a Caslon italic). Nothing from that system carries forward except the stored section theme names, kept so old content still renders.",
+    "overview": "The site is the printed invitation the guests were sent, unfolded into a scrolling sheet. There is one ground, the card's own cool grey paper with its grain tiled from a photograph of the card, and one ink, graphite pencil. Gustav's pencil sheep, cut from the card, sits at the top of the first screen; every word below it, body text included, is set in Gustavs Hand, a font built from his own capitals (`design/handwriting/build.py`). The page reads like further lines written on the same sheet, not like a wedding template.\n\nDensity is low and the measure is narrow. Lines are widely letter- and word-spaced, as on the card, and grouped by blank space rather than by boxes or bands. Hierarchy is carried by space, position and the pencil underline, never by weight or large size, because a pencil stroke does not get thicker when you write bigger. The only object laid on the paper is a photo, a small black-and-white print with a white border, slightly askew.\n\nThis world replaces the earlier Squarespace-Morais system (cream and white bands, Helvetica headlines with a Caslon italic). Nothing from that system carries forward except the stored section theme names, kept so old content still renders.",
     "keyCharacteristics": [
       "One paper, one graphite ink; no second surface, no colour bands.",
       "Every word in Gustavs Hand, capitals only, widely spaced.",
       "Sizes held close together; hierarchy from space and position.",
-      "Actions are words circled in a hand-drawn pencil loop.",
+      "Actions are words underlined in pencil.",
       "Fields are written on a single ruled pencil line.",
       "The photo print is the only lifted object; everything else is flat on the paper.",
-      "Motion is the card settling in once, and the pencil loop drawing itself."
+      "Motion is the card settling in once; everything else only changes colour or line weight."
     ],
     "rules": [
       {
@@ -269,7 +264,7 @@
       },
       {
         "name": "The Pencil Doesn't Thicken Rule",
-        "body": "Sizes stay between roughly 15px and 48px and the weight never changes. A new level of importance is made with more space around it, a position (centred, a corner), or a pencil loop, not with a bigger or bolder setting.",
+        "body": "Sizes stay between roughly 13px and 38px and the weight never changes. A new level of importance is made with more space around it, a position (centred, a corner), or a pencil underline, not with a bigger or bolder setting.",
         "section": "typography"
       },
       {
@@ -289,19 +284,19 @@
       }
     ],
     "dos": [
-      "**Do** set every word in Gustavs Hand at weight 400, widely tracked (0.07em body, 0.16em headings).",
+      "**Do** set every word in Gustavs Hand at weight 400, widely tracked (0.06em body, 0.16em headings).",
       "**Do** keep every section on the same card paper with its tiled grain.",
-      "**Do** make actions a word circled with the pencil loop, and answers a word that gets circled when chosen.",
+      "**Do** make actions a word underlined in pencil, and answers a word that gets underlined when chosen.",
       "**Do** write fields on a single 1.5px ruled line that darkens to graphite on focus.",
       "**Do** create hierarchy with space, centring and corner positions before reaching for size.",
       "**Do** lay photos as greyscale prints with a white border, a soft shadow and a slight tilt.",
       "**Do** switch a whole string to the plain face when the hand cannot render it (visible case, an @).",
-      "**Do** keep motion to the one load sequence (lines fade up 8px in reading order, 900ms, 90ms apart) and the pencil-loop draw, both off under reduced motion with the content fully visible."
+      "**Do** keep motion to the one load sequence (lines fade up 8px in reading order, 900ms, 90ms apart), off under reduced motion with the content fully visible; otherwise only colour and underline transitions and the FAQ marker turn."
     ],
     "donts": [
       "**Don't** introduce a second surface colour or alternate section bands; the theme values are inert.",
       "**Don't** add a second accent colour; error red is for errors only.",
-      "**Don't** set display text larger than 3rem or use bold; the pencil stroke would turn into marker.",
+      "**Don't** set display text larger than 2.4rem or use bold; the pencil stroke would turn into marker.",
       "**Don't** put text, buttons, fields or menus in boxes, fills or shadows; the photo print is the only lifted object.",
       "**Don't** use filled or bordered rectangular buttons, or rounded corners.",
       "**Don't** mix the hand and the plain face inside one word or line.",

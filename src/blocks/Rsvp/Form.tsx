@@ -5,7 +5,6 @@ import { submitRsvp, type RsvpState } from '@/actions/rsvp'
 import type { Ui } from '@/lib/i18n'
 import { Button } from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
-import { PencilLoop } from '@/components/PencilLoop'
 
 type Props = {
   ui: Ui
@@ -77,12 +76,15 @@ export function RsvpForm({ ui, maxPartySize, askDietary, askSong, askMessage }: 
 
       <fieldset>
         <legend className="label mb-4 text-(--fg)">{ui.attending}</legend>
-        {/* Circle your answer: the chosen one gets a pencil loop drawn around it */}
-        <div className="flex flex-wrap gap-x-14 gap-y-4 px-[0.9em]">
+        {/* The chosen answer is underlined in pencil; the other one stays soft */}
+        <div className="flex flex-wrap gap-x-12 gap-y-3">
           {(['yes', 'no'] as const).map((value) => (
             <label
               key={value}
-              className="relative inline-flex min-h-12 cursor-pointer items-center px-1 text-[1.15em] has-[:focus-visible]:outline-[1.5px] has-[:focus-visible]:outline-offset-[0.7em] has-[:focus-visible]:outline-dashed"
+              className={cn(
+                'inline-flex min-h-12 cursor-pointer items-center text-[1.1em] decoration-[1.5px] underline-offset-[0.35em] transition-colors has-[:focus-visible]:outline-[1.5px] has-[:focus-visible]:outline-offset-[0.5em] has-[:focus-visible]:outline-dashed',
+                attending === value ? 'text-(--fg) underline' : 'text-(--fg-soft) hover:text-(--fg)',
+              )}
             >
               <input
                 type="radio"
@@ -92,8 +94,7 @@ export function RsvpForm({ ui, maxPartySize, askDietary, askSong, askMessage }: 
                 checked={attending === value}
                 onChange={() => setAttending(value)}
               />
-              {attending === value && <PencilLoop draw />}
-              <span className="relative">{value === 'yes' ? ui.yes : ui.no}</span>
+              {value === 'yes' ? ui.yes : ui.no}
             </label>
           ))}
         </div>

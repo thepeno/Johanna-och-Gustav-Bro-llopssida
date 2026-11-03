@@ -9,6 +9,14 @@ The handwriting font in `src/app/(frontend)/fonts/GustavsHand.woff2`, built from
 - Made from the drawn letters, not written separately: W (two Vs), Ü (U with Ö's dots), `.` `:` `,` (the dot from `!`), `'` `’` `"` (the top of an I), `/` (a leaning I), `– —` (a longer hyphen), `( )` (a narrowed C), `#` (two leaning strokes and two dashes), and É (E with an acute made from the apostrophe). `&` is drawn as the `+`, as on the invitation.
 - Not included: `@` (an O-and-A version was unreadable at text size) and other symbols. Text that uses them falls back to a plain sans.
 
+## Even stroke and width
+
+After tracing, every glyph is widened 20% and then re-stroked: it is reduced to the centre line the pen travelled and redrawn at one constant width. That width is 118 units at a 700-unit cap height, the pen's own width measured on the photographed sheet. The shapes stay the hand's own, without the marker's uneven pressure. Widening happens before re-stroking, so vertical strokes don't come out thicker than horizontal ones. Two glyphs are drawn rather than traced:
+- Å is A with a ring made from a small O, so the ring stays open.
+- The 4 is drawn from its proportions (stem, diagonal, crossbar), because the marker filled its little triangle and its centre line read as "+".
+
+The re-stroke step needs two more packages: `pip install scikit-image freetype-py`.
+
 ## Using it
 
 The whole site is set in it: `body` uses `var(--font-hand)` in `src/app/(frontend)/styles.css`. Give it wide letter and word spacing, roughly `letter-spacing: 0.08em; word-spacing: 0.35em`, to look like the invitation. Where case matters (the password field), use `font-plain` instead, because every letter is a capital.
@@ -18,7 +26,7 @@ The whole site is set in it: `body` uses `var(--font-hand)` in `src/app/(fronten
 To change letters: write them again with the same pen on plain paper, in the same rows and order as `sheet.jpg`, with every character written twice. Photograph the page flat in daylight, then run:
 
 ```
-python3 -m venv .venv && .venv/bin/pip install pillow numpy scipy fonttools brotli potracer
+python3 -m venv .venv && .venv/bin/pip install pillow numpy scipy fonttools brotli potracer scikit-image freetype-py
 .venv/bin/python build.py sheet.jpg out
 cp out/GustavsHand.woff2 "../../src/app/(frontend)/fonts/"
 ```
