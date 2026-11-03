@@ -205,9 +205,9 @@
     {
       "name": "Photo",
       "kind": "custom",
-      "description": "A plain greyscale photograph set directly on the paper: no border, tilt or shadow.",
+      "description": "A plain photograph in its own colours, set directly on the paper: no border, tilt or shadow.",
       "html": "<figure class=\"ds-photo\"><div class=\"ds-photo-img\"></div></figure>",
-      "css": ".ds-photo { width: 14rem; margin: 0; } .ds-photo-img { aspect-ratio: 4 / 5; background: linear-gradient(160deg, #8f8f8f, #3a3a3a); filter: grayscale(1); }"
+      "css": ".ds-photo { width: 14rem; margin: 0; } .ds-photo-img { aspect-ratio: 4 / 5; background: linear-gradient(160deg, #8f8f8f, #3a3a3a); }"
     },
     {
       "name": "Pencil Link",
@@ -219,7 +219,7 @@
   ],
   "narrative": {
     "northStar": "The Card, Opened",
-    "overview": "The site is the printed invitation the guests were sent, unfolded into a scrolling sheet. There is one ground, plain white with no texture, and one ink, graphite pencil. Gustav's pencil sheep, cut from the card, sits at the top of the first screen; every word below it, body text included, is set in Gustavs Hand, a font built from his own capitals (`design/handwriting/build.py`). The page reads like further lines written on the same sheet, not like a wedding template.\n\nDensity is low and the measure is narrow. Lines are widely letter- and word-spaced, as on the card, and grouped by blank space rather than by boxes or bands. Hierarchy is carried by space, position and the pencil underline, never by weight or large size, because a pencil stroke does not get thicker when you write bigger. Photos are plain greyscale photographs set directly on the paper, square to the column, with no border, tilt or shadow.\n\nThis world replaces the earlier Squarespace-Morais system (cream and white bands, Helvetica headlines with a Caslon italic). Nothing from that system carries forward except the stored section theme names, kept so old content still renders.",
+    "overview": "The site is the printed invitation the guests were sent, unfolded into a scrolling sheet. There is one ground, plain white with no texture, and one ink, graphite pencil. Gustav's pencil sheep, cut from the card, sits at the top of the first screen; every word below it, body text included, is set in Gustavs Hand, a font built from his own capitals (`design/handwriting/build.py`). The page reads like further lines written on the same sheet, not like a wedding template.\n\nDensity is low and the measure is narrow. Lines are widely letter- and word-spaced, as on the card, and grouped by blank space rather than by boxes or bands. Hierarchy is carried by space, position and the pencil underline, never by weight or large size, because a pencil stroke does not get thicker when you write bigger. Photos are plain photographs in their own colours, set directly on the paper, square to the column, with no border, tilt or shadow.\n\nThis world replaces the earlier Squarespace-Morais system (cream and white bands, Helvetica headlines with a Caslon italic). Nothing from that system carries forward except the stored section theme names, kept so old content still renders.",
     "keyCharacteristics": [
       "One paper, one graphite ink; no second surface, no colour bands.",
       "Every word in Gustavs Hand, capitals only, widely spaced.",
@@ -237,7 +237,7 @@
       },
       {
         "name": "The Graphite Only Rule",
-        "body": "Graphite is the only colour that carries meaning. Error red is the single functional exception and appears only beside a failed field.",
+        "body": "Graphite is the only colour the interface uses. Photos keep their own colours; error red is the single functional exception and appears only beside a failed field.",
         "section": "colors"
       },
       {
@@ -267,7 +267,7 @@
       "**Do** make actions a word underlined in pencil, and answers a word that gets underlined when chosen.",
       "**Do** write fields on a single 1.5px ruled line that darkens to graphite on focus.",
       "**Do** create hierarchy with space, centring and corner positions before reaching for size.",
-      "**Do** set photos as plain greyscale photographs directly on the paper, square to the column (4:5, gallery at natural ratios).",
+      "**Do** set photos as plain photographs in their own colours, directly on the paper, square to the column (4:5, gallery at natural ratios).",
       "**Do** switch a whole string to the plain face when the hand cannot render it (visible case, an @).",
       "**Do** keep motion to the one load sequence (lines fade up 8px in reading order, 900ms, 90ms apart), off under reduced motion with the content fully visible; otherwise only colour and underline transitions and the FAQ marker turn."
     ],

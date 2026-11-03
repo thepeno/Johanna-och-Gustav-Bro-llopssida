@@ -21,7 +21,7 @@ export function DetailsBlockComponent({ block }: { block: DetailsBlock }) {
               {image && (
                 <div className="mb-8">
                   <div className="relative aspect-[4/5] overflow-hidden">
-                    <Img media={image} size="card" fill sizes="(min-width:640px) 22rem, 80vw" className="grayscale" />
+                    <Img media={image} size="card" fill sizes="(min-width:640px) 22rem, 80vw" />
                   </div>
                 </div>
               )}

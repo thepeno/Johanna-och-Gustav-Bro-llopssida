@@ -104,7 +104,7 @@ components:
 
 The site is the printed invitation the guests were sent, unfolded into a scrolling sheet. There is one ground, plain white with no texture, and one ink, graphite pencil. Gustav's pencil sheep, cut from the card, sits at the top of the first screen; every word below it, body text included, is set in Gustavs Hand, a font built from his own capitals (`design/handwriting/build.py`). The page reads like further lines written on the same sheet, not like a wedding template.
 
-Density is low and the measure is narrow. Lines are widely letter- and word-spaced, as on the card, and grouped by blank space rather than by boxes or bands. Hierarchy is carried by space, position and the pencil underline, never by weight or large size, because a pencil stroke does not get thicker when you write bigger. Photos are plain greyscale photographs set directly on the paper, square to the column, with no border, tilt or shadow.
+Density is low and the measure is narrow. Lines are widely letter- and word-spaced, as on the card, and grouped by blank space rather than by boxes or bands. Hierarchy is carried by space, position and the pencil underline, never by weight or large size, because a pencil stroke does not get thicker when you write bigger. Photos are plain photographs in their own colours, set directly on the paper, square to the column, with no border, tilt or shadow.
 
 This world replaces the earlier Squarespace-Morais system (cream and white bands, Helvetica headlines with a Caslon italic). Nothing from that system carries forward except the stored section theme names, kept so old content still renders.
 
@@ -135,7 +135,7 @@ A monochrome pencil-on-paper palette: plain white and near-black graphite.
 ### Named Rules
 **The One Sheet Rule.** Every section is the same paper. The stored section themes (ivory, espresso, olive) all resolve to the same graphite on the same paper; they exist for content compatibility and must not be revived as alternating bands.
 
-**The Graphite Only Rule.** Graphite is the only colour that carries meaning. Error red is the single functional exception and appears only beside a failed field.
+**The Graphite Only Rule.** Graphite is the only colour the interface uses. Photos keep their own colours; error red is the single functional exception and appears only beside a failed field.
 
 ## Typography
 
@@ -179,7 +179,7 @@ The system is entirely flat and has no shadows at all: everything, photos includ
 
 ## Shapes
 
-No radius anywhere; nothing is a rectangle that needs one, because nothing is boxed. Form language is the pencil stroke: 1.5px ruled lines (fields, FAQ rows, link underlines at 0.32em offset), action underlines at 0.35em offset that thicken to 2.5px, and a 1.5px dashed focus outline 5px off the element. Photos are plain greyscale rectangles with no border or rotation: 4:5 for the hero, story and detail photos, natural ratios in the gallery.
+No radius anywhere; nothing is a rectangle that needs one, because nothing is boxed. Form language is the pencil stroke: 1.5px ruled lines (fields, FAQ rows, link underlines at 0.32em offset), action underlines at 0.35em offset that thicken to 2.5px, and a 1.5px dashed focus outline 5px off the element. Photos are plain rectangles in their own colours, with no border or rotation: 4:5 for the hero, story and detail photos, natural ratios in the gallery.
 
 ## Components
 
@@ -206,7 +206,7 @@ The signature interaction. Radio answers ("Ja, jag kommer" / "Tyvärr, jag kan i
 - **Mobile:** the links collapse to one word, "Meny" / "Stäng", which opens a full-screen sheet of the same paper with the links centred at Headline size.
 
 ### Photos
-Plain greyscale photographs set directly on the paper: no border, no tilt, no shadow. The hero, story and detail photos are cropped to 4:5; gallery photos keep their natural ratio. Gallery captions are written underneath at Label size, centred.
+Plain photographs in their own colours, set directly on the paper: no border, no tilt, no shadow. The hero, story and detail photos are cropped to 4:5; gallery photos keep their natural ratio. Gallery captions are written underneath at Label size, centred.
 
 ### FAQ Rows
 Native disclosure rows separated by 1.5px pencil lines, at least 56px tall; the answer opens below in soft graphite.
@@ -219,7 +219,7 @@ Native disclosure rows separated by 1.5px pencil lines, at least 56px tall; the 
 - **Do** make actions a word underlined in pencil, and answers a word that gets underlined when chosen.
 - **Do** write fields on a single 1.5px ruled line that darkens to graphite on focus.
 - **Do** create hierarchy with space, centring and corner positions before reaching for size.
-- **Do** set photos as plain greyscale photographs directly on the paper, square to the column (4:5, gallery at natural ratios).
+- **Do** set photos as plain photographs in their own colours, directly on the paper, square to the column (4:5, gallery at natural ratios).
 - **Do** switch a whole string to the plain face when the hand cannot render it (visible case, an @).
 - **Do** keep motion to the one load sequence (lines fade up 8px in reading order, 900ms, 90ms apart), off under reduced motion with the content fully visible; otherwise only colour and underline transitions and the FAQ marker turn.
 

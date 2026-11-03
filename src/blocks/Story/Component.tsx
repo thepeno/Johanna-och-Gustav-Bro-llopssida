@@ -18,7 +18,7 @@ export function StoryBlockComponent({ block }: { block: StoryBlock }) {
           {images.map((image, i) => (
             <figure key={image.id} className={`w-[min(70vw,17rem)] ${i % 2 ? 'mt-10' : ''}`}>
               <div className="relative aspect-[4/5] overflow-hidden">
-                <Img media={image} size="card" fill sizes="17rem" className="grayscale" />
+                <Img media={image} size="card" fill sizes="17rem" />
               </div>
             </figure>
           ))}

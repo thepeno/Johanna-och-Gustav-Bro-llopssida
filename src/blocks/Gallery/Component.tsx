@@ -15,7 +15,7 @@ export function GalleryBlockComponent({ block }: { block: GalleryBlock }) {
           if (!image) return null
           return (
             <figure key={item.id ?? i} className="mb-8 break-inside-avoid md:mb-12">
-              <Img media={image} size="card" sizes="(min-width:768px) 30vw, 45vw" className="w-full grayscale" />
+              <Img media={image} size="card" sizes="(min-width:768px) 30vw, 45vw" className="w-full" />
               {item.caption && <figcaption className="label mt-2 text-center">{item.caption}</figcaption>}
             </figure>
           )

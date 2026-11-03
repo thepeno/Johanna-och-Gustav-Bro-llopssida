@@ -65,7 +65,7 @@ export function HeroBlockComponent({ block, settings, rsvpAnchor }: { block: Her
         <div className="px-5 pt-12 pb-8 md:pt-20">
           <figure className="mx-auto w-[min(78vw,21rem)] md:w-[24rem]">
             <div className="relative aspect-[4/5] overflow-hidden">
-              <Img media={media} size="card" fill sizes="(min-width: 768px) 24rem, 78vw" className="grayscale" />
+              <Img media={media} size="card" fill sizes="(min-width: 768px) 24rem, 78vw" />
             </div>
           </figure>
         </div>
