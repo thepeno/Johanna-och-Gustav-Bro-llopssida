@@ -7,7 +7,7 @@ export function Footer({ settings, rsvp }: { settings: SiteSetting; rsvp?: NavLi
   return (
     <footer className="theme-ivory">
       <div className="mx-auto flex max-w-4xl flex-col items-center px-5 pt-20 pb-16 text-center md:px-10 md:pt-28 md:pb-20">
-        {settings.footerNote && <p className="max-w-[30rem] text-balance">{settings.footerNote}</p>}
+        {settings.footerNote && <p className="max-w-[24rem] text-balance">{settings.footerNote}</p>}
         {rsvp && (
           <a href={rsvp.href} className="pencil-action title mt-12 text-(--fg) md:mt-14">
             {rsvp.label}

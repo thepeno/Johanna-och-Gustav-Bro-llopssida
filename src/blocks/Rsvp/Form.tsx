@@ -14,9 +14,10 @@ type Props = {
   askMessage: boolean
 }
 
-// A line to write on, as on a card: no box, just a pencil rule that darkens while you write
+// A line to write on, as on a card: no box, just a pencil rule that darkens while you write.
+// Typed text stays at 16px so phones don't zoom in on the field.
 const field =
-  'min-h-12 w-full rounded-none border-0 border-b-[1.5px] border-(--line) bg-transparent px-0 py-2 text-(--fg) transition-colors focus:border-(--fg) focus:outline-none aria-[invalid=true]:border-error'
+  'min-h-12 w-full rounded-none border-0 border-b-[1.5px] border-(--line) bg-transparent px-0 py-2 text-base text-(--fg) transition-colors focus:border-(--fg) focus:outline-none aria-[invalid=true]:border-error'
 
 function Field({
   label,

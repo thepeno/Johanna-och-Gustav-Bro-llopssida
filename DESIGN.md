@@ -10,13 +10,13 @@ colors:
 typography:
   display:
     fontFamily: "Gustavs Hand, Helvetica Neue, Helvetica, Arial, sans-serif"
-    fontSize: "clamp(1.8rem, 3.8vw, 2.4rem)"
+    fontSize: "clamp(1.25rem, 2.6vw, 1.63rem)"
     fontWeight: 400
     lineHeight: 1.1
     letterSpacing: "0.14em"
   headline:
     fontFamily: "Gustavs Hand, Helvetica Neue, Helvetica, Arial, sans-serif"
-    fontSize: "clamp(1.1rem, 1.7vw, 1.3rem)"
+    fontSize: "clamp(0.8rem, 1.2vw, 0.9rem)"
     fontWeight: 400
     lineHeight: 1.45
     letterSpacing: "0.16em"
@@ -34,19 +34,19 @@ typography:
     letterSpacing: "0.09em"
   body:
     fontFamily: "Gustavs Hand, Helvetica Neue, Helvetica, Arial, sans-serif"
-    fontSize: "1rem"
+    fontSize: "0.75rem"
     fontWeight: 400
     lineHeight: 1.85
     letterSpacing: "0.06em"
   body-md:
     fontFamily: "Gustavs Hand, Helvetica Neue, Helvetica, Arial, sans-serif"
-    fontSize: "1.0625rem"
+    fontSize: "0.84rem"
     fontWeight: 400
     lineHeight: 1.85
     letterSpacing: "0.06em"
   label:
     fontFamily: "Gustavs Hand, Helvetica Neue, Helvetica, Arial, sans-serif"
-    fontSize: "0.8125rem"
+    fontSize: "0.75rem"
     fontWeight: 400
     lineHeight: 1.7
     letterSpacing: "0.08em"
@@ -146,16 +146,16 @@ A monochrome pencil-on-paper palette: plain white and near-black graphite.
 **Character:** One hand for everything: upright pencil capitals, spaced out the way someone letters a card slowly. The face is 20% wider than the photographed sheet and every glyph is re-stroked at one even, solid pen width (150 units at a 700-unit cap height, about 22% of the cap: the weight the couple picked from a screenshot): each glyph is reduced to its centre line and redrawn, so the stroke is even while the shapes stay Gustav's. Å is A with a ring drawn from a small O; the 4 is drawn from its own stem, diagonal and crossbar. Lowercase maps to the capitals, so case does not exist on the site. Weight is always 400.
 
 ### Hierarchy
-- **Display** (400, clamp(1.8rem, 3.8vw, 2.4rem), 1.1, 0.14em): only the closing "OSA" in the footer, underlined in pencil. This is the largest the hand gets before its stroke reads as marker.
-- **Headline** (400, clamp(1.1rem, 1.7vw, 1.3rem), 1.45, 0.16em, word-spacing 0.35em, balanced): section headings and schedule event titles, barely larger than the text, centred like the names on the card.
+- **Display** (400, clamp(1.25rem, 2.6vw, 1.63rem), 1.1, 0.14em): only the closing "OSA" in the footer, underlined in pencil. This is the largest the hand gets before its stroke reads as marker.
+- **Headline** (400, clamp(0.8rem, 1.2vw, 0.9rem), 1.45, 0.16em, word-spacing 0.35em, balanced): section headings and schedule event titles, barely larger than the text, centred like the names on the card.
 - **Title** (400, clamp(0.75rem, 1.16vw, 0.82rem), 1.4, 0.16em, word-spacing 0.35em): the names line under the sheep and on the guest login.
 - **Invitation** (400, clamp(0.75rem, min(2.24vw, 1.5svh), 0.88rem), 1.65, 0.09em, word-spacing 0.3em / 0.4em from 768px): the card's lines on the first screen, sized by both width and height so the longest line fits a phone and the whole card fits the first viewport, with a 12px floor so phones never go smaller. Keeps the card's own line breaks; an empty line starts a new group.
-- **Body** (400, 1rem / 1.0625rem from 768px, 1.85, 0.06em, word-spacing 0.3em): all running text. Measure is held to about 34–36rem.
-- **Label** (400, 0.8125rem / 0.875rem from 768px, 1.7, 0.08em, soft graphite): corner notes, field labels, the nav, milestone dates, footer small print.
+- **Body** (400, 0.75rem / 0.84rem from 768px, i.e. 12px / 13.5px, the same as the card's lines, 1.85, 0.06em, word-spacing 0.3em): all running text. Measure is held to about 26rem. Form inputs are the exception: typed text stays at 16px so phones don't zoom in.
+- **Label** (400, 0.75rem / 0.8rem from 768px, 1.7, 0.08em, soft graphite): corner notes, field labels, the nav, milestone dates, footer small print.
 - **Plain** (Helvetica, 400, normal tracking): the password field and the footer email address only.
 
 ### Named Rules
-**The Pencil Doesn't Thicken Rule.** Sizes stay between roughly 12px and 38px and the weight never changes. A new level of importance is made with more space around it, a position (centred, a corner), or a pencil underline, not with a bigger or bolder setting.
+**The Pencil Doesn't Thicken Rule.** Sizes stay between roughly 12px and 26px and the weight never changes. A new level of importance is made with more space around it, a position (centred, a corner), or a pencil underline, not with a bigger or bolder setting.
 
 **The One Hand Rule.** Every word is in Gustavs Hand. The plain face is used only when the hand physically cannot render the content (visible case in a password, an @ in an address), and then for the whole string; never mix the two faces within one line.
 
@@ -163,7 +163,7 @@ A monochrome pencil-on-paper palette: plain white and near-black graphite.
 
 A single centred column on one continuous sheet. The first screen is a full-viewport card (min-height 100svh, max width 64rem): the sheep centred in the upper part at about a quarter to a third of the screen height (width min(56vw, 15rem, 30svh) on phones, min(20rem, 26svh) from 768px), the names centred beneath, then the invitation as a left-aligned block that is itself centred on the page (`w-fit`). The two corner notes sit on the bottom edge: the reply link bottom-left, the dress code bottom-right.
 
-Sections below use a 56rem sheet with 20px side gutters (40px from 768px) and 80px vertical padding (112px from 768px). Headings are centred with 48px (64px) of space before content; intros and prose drop back to a left-aligned measure of about 34rem. Repeated items (schedule events, detail entries, milestones) form a narrow grid that is centred as a whole, with wide gutters (96px between columns, 48–56px between rows), going to two columns from 640px and three from 1024px. Forms stack fields with 36px between them, two columns from 640px for short fields.
+Sections below use a 56rem sheet with 20px side gutters (40px from 768px) and 80px vertical padding (112px from 768px). Headings are centred with 48px (64px) of space before content; intros and prose drop back to a left-aligned measure of about 26rem. Repeated items (schedule events, detail entries, milestones) form a narrow grid that is centred as a whole, with wide gutters (96px between columns, 48–56px between rows), going to two columns from 640px and three from 1024px. Forms stack fields with 36px between them, two columns from 640px for short fields.
 
 Photos sit square in the column: the hero photo centred below the card, story photos in a centred row with every second one dropped 40px, and galleries flowing as two columns (three from 768px).
 
@@ -226,7 +226,7 @@ Native disclosure rows separated by 1.5px pencil lines, at least 56px tall; the 
 ### Don't:
 - **Don't** introduce a second surface colour or alternate section bands; the theme values are inert.
 - **Don't** add a second accent colour; error red is for errors only.
-- **Don't** set display text larger than 2.4rem or use bold; the pencil stroke would turn into marker.
+- **Don't** set display text larger than 1.63rem or use bold; the pencil stroke would turn into marker.
 - **Don't** give anything a shadow, a white print border or a tilt, photos included; and don't put text, buttons, fields or menus in boxes or fills.
 - **Don't** use filled or bordered rectangular buttons, or rounded corners.
 - **Don't** mix the hand and the plain face inside one word or line.

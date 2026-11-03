@@ -35,7 +35,7 @@
     @apply paper-ground;
     color: var(--color-graphite);
     font-family: var(--font-hand);
-    font-size: 1rem;
+    font-size: 0.75rem; /* 12px floor on phones, as the card's lines */
     line-height: 1.85;
     letter-spacing: 0.06em;
     word-spacing: 0.3em;
@@ -43,7 +43,7 @@
   }
   @media (min-width: 768px) {
     body {
-      font-size: 1.0625rem;
+      font-size: 0.84rem; /* 13.5px, the same as the card's lines */
     }
   }
   ::selection {
@@ -107,7 +107,7 @@
 /* Section headings: barely larger than the text, like the names on the card. A pencil
    line doesn't get thicker when you write bigger, so hierarchy comes from space. */
 @utility statement {
-  font-size: clamp(1.1rem, 1.7vw, 1.3rem);
+  font-size: clamp(0.8rem, 1.2vw, 0.9rem);
   letter-spacing: 0.16em;
   word-spacing: 0.35em;
   line-height: 1.45;
@@ -116,19 +116,19 @@
 
 /* The closing "OSA": the largest the hand gets before its stroke turns to marker. */
 @utility title {
-  font-size: clamp(1.8rem, 3.8vw, 2.4rem);
+  font-size: clamp(1.25rem, 2.6vw, 1.63rem);
   letter-spacing: 0.14em;
   line-height: 1.1;
 }
 
 /* Small print, like the card's corner notes. */
 @utility label {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
   line-height: 1.7;
   color: var(--fg-soft, var(--color-graphite-soft));
   @media (min-width: 768px) {
-    font-size: 0.875rem;
+    font-size: 0.8rem;
   }
 }
 

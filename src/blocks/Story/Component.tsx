@@ -11,7 +11,7 @@ export function StoryBlockComponent({ block }: { block: StoryBlock }) {
   return (
     <Section anchor={block.anchor} theme={block.theme}>
       <SectionHeading heading={block.heading} />
-      <RichText data={block.body} className="mx-auto max-w-[34rem]" />
+      <RichText data={block.body} className="mx-auto max-w-[26rem]" />
 
       {images.length > 0 && (
         <div className="mx-auto mt-16 flex max-w-3xl flex-wrap justify-center gap-8 md:mt-20 md:gap-12">

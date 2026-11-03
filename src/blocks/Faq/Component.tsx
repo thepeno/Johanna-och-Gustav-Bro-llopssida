@@ -7,7 +7,7 @@ export function FaqBlockComponent({ block }: { block: FaqBlock }) {
   return (
     <Section anchor={block.anchor} theme={block.theme}>
       <SectionHeading heading={block.heading} />
-      <div className="mx-auto max-w-[36rem]">
+      <div className="mx-auto max-w-[26rem]">
         {block.items?.map((item, i) => (
           <details key={item.id ?? i} className="border-t-[1.5px] border-(--line) last:border-b-[1.5px]">
             <summary className="flex min-h-14 cursor-pointer items-baseline justify-between gap-6 py-4">

@@ -242,7 +242,7 @@
       },
       {
         "name": "The Pencil Doesn't Thicken Rule",
-        "body": "Sizes stay between roughly 12px and 38px and the weight never changes. A new level of importance is made with more space around it, a position (centred, a corner), or a pencil underline, not with a bigger or bolder setting.",
+        "body": "Sizes stay between roughly 12px and 26px and the weight never changes. A new level of importance is made with more space around it, a position (centred, a corner), or a pencil underline, not with a bigger or bolder setting.",
         "section": "typography"
       },
       {
@@ -274,7 +274,7 @@
     "donts": [
       "**Don't** introduce a second surface colour or alternate section bands; the theme values are inert.",
       "**Don't** add a second accent colour; error red is for errors only.",
-      "**Don't** set display text larger than 2.4rem or use bold; the pencil stroke would turn into marker.",
+      "**Don't** set display text larger than 1.63rem or use bold; the pencil stroke would turn into marker.",
       "**Don't** give anything a shadow, a white print border or a tilt, photos included; and don't put text, buttons, fields or menus in boxes or fills.",
       "**Don't** use filled or bordered rectangular buttons, or rounded corners.",
       "**Don't** mix the hand and the plain face inside one word or line.",
