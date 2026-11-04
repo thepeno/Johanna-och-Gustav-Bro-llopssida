@@ -437,16 +437,19 @@ cmap[ord('&')] = 'plus'   # the invitation writes "Gustav + Johanna"
 
 charstrings, metrics = {}, {}
 for name in names:
-    pen = T2CharStringPen(0, None)
     if name in glyphs:
         rec, w = glyphs[name]
-        rec.replay(TransformPen(pen, (1, 0, 0, 1, SB, 0)))
         adv = round(w + 2 * SB)
         lsb = round(bounds(rec)[0] + SB) if bounds(rec) else 0
     elif name == 'space':
-        adv, lsb = round(SPACE * WIDEN), 0
+        rec, adv, lsb = None, round(SPACE * WIDEN), 0
     else:
-        adv, lsb = 500, 0
+        rec, adv, lsb = None, 500, 0
+    # The advance must be in the CFF charstring too: Adobe apps read it from there
+    # (browsers use hmtx), and a zero here stacks every letter on the first one.
+    pen = T2CharStringPen(adv, None)
+    if rec is not None:
+        rec.replay(TransformPen(pen, (1, 0, 0, 1, SB, 0)))
     charstrings[name] = pen.getCharString()
     metrics[name] = (adv, lsb)
 
@@ -457,7 +460,7 @@ fb.setupCharacterMap(cmap)
 fb.setupCFF('GustavsHand-Regular', {'FullName': fam}, charstrings, {})
 fb.setupHorizontalMetrics(metrics)
 fb.setupHorizontalHeader(ascent=950, descent=-250)
-fb.setupNameTable({'familyName': fam, 'styleName': 'Regular'})
+fb.setupNameTable({'familyName': fam, 'styleName': 'Regular', 'fullName': fam + ' Regular', 'psName': 'GustavsHand-Regular', 'uniqueFontIdentifier': 'GustavsHand-Regular;1.000', 'version': 'Version 1.000'})
 fb.setupOS2(sTypoAscender=950, sTypoDescender=-250, sTypoLineGap=0, usWinAscent=1000, usWinDescent=300,
             sCapHeight=CAP, sxHeight=CAP)
 fb.setupPost()
