@@ -23,6 +23,10 @@ The re-stroke step needs two more packages: `pip install scikit-image freetype-p
 
 The whole site is set in it: `body` uses `var(--font-hand)` in `src/app/(frontend)/styles.css`. Give it wide letter and word spacing, roughly `letter-spacing: 0.08em; word-spacing: 0.35em`, to look like the invitation. Where case matters (the password field), use `font-plain` instead, because every letter is a capital.
 
+## Desktop use (Photoshop, Illustrator, Word)
+
+`GustavsHand.otf` in this folder is the same font as an installable OpenType file: double-click it and choose Install. Keep contextual alternates on (Photoshop: Character panel → OpenType → Contextual Alternates) so repeated letters alternate between the two versions. After a rebuild, regenerate it from the new `.otf` in the build output.
+
 ## Rebuilding
 
 To change letters: write them again with the same pen on plain paper, in the same rows and order as `sheet.jpg`, with every character written twice. Photograph the page flat in daylight, then run:
