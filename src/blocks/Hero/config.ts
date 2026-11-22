@@ -30,7 +30,7 @@ export const Hero: Block = {
     {
       name: 'cornerNote',
       type: 'textarea', localized: true,
-      admin: { description: 'Small note in the bottom-right corner of the opening, e.g. "Klädsel:" and "Mörk kostym" on two lines' },
+      admin: { description: 'Dress code note, e.g. "Klädsel:" and "Mörk kostym" on two lines. Shown under the schedule, next to the reply link (in the opening if there is no schedule).' },
     },
     {
       type: 'row',
@@ -42,7 +42,7 @@ export const Hero: Block = {
     {
       type: 'row',
       fields: [
-        { name: 'ctaLabel', type: 'text', localized: true, admin: { width: '50%', description: 'Reply link in the bottom-left corner, e.g. "OSA senast 15 juni"' } },
+        { name: 'ctaLabel', type: 'text', localized: true, admin: { width: '50%', description: 'Reply link, e.g. "OSA senast 15 juni". Shown under the schedule next to the dress code (in the opening if there is no schedule).' } },
         { name: 'ctaAnchor', type: 'text', admin: { width: '50%', description: 'Where it goes: "osa" opens the reply page, any other anchor scrolls to that section' } },
       ],
     },

@@ -35,7 +35,7 @@ export const Schedule: Block = {
     {
       type: 'row',
       fields: [
-        { name: 'ctaLabel', type: 'text', localized: true, admin: { width: '50%', description: 'Button under the schedule, e.g. "OSA"' } },
+        { name: 'ctaLabel', type: 'text', localized: true, admin: { width: '50%', description: 'Button under the schedule, e.g. "OSA". Not shown when the hero has a reply link or dress code; those take its place.' } },
         { name: 'ctaAnchor', type: 'text', admin: { width: '50%', description: 'Anchor to scroll to, e.g. "osa"' } },
       ],
     },

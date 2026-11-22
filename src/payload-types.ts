@@ -174,13 +174,13 @@ export interface HeroBlock {
    */
   tagline?: string | null;
   /**
-   * Small note in the bottom-right corner of the opening, e.g. "Klädsel:" and "Mörk kostym" on two lines
+   * Dress code note, e.g. "Klädsel:" and "Mörk kostym" on two lines. Shown under the schedule, next to the reply link (in the opening if there is no schedule).
    */
   cornerNote?: string | null;
   showCountdown?: boolean | null;
   showScrollHint?: boolean | null;
   /**
-   * Reply link in the bottom-left corner, e.g. "OSA senast 15 juni"
+   * Reply link, e.g. "OSA senast 15 juni". Shown under the schedule next to the dress code (in the opening if there is no schedule).
    */
   ctaLabel?: string | null;
   /**
@@ -340,7 +340,7 @@ export interface ScheduleBlock {
       }[]
     | null;
   /**
-   * Button under the schedule, e.g. "OSA"
+   * Button under the schedule, e.g. "OSA". Not shown when the hero has a reply link or dress code; those take its place.
    */
   ctaLabel?: string | null;
   /**

@@ -3,10 +3,11 @@ import type { ScheduleBlock } from '@/payload-types'
 import { Section, SectionHeading } from '@/components/Section'
 import { Button } from '@/components/ui/Button'
 import { sectionHref } from '@/lib/utils'
+import { CardNotes, type CardNotesProps } from '@/components/CardNotes'
 
 // The day, as more lines on the card: what, where, when, side by side on wide
 // screens, then the reply circled in pencil.
-export function ScheduleBlockComponent({ block, rsvpAnchor }: { block: ScheduleBlock; rsvpAnchor?: string }) {
+export function ScheduleBlockComponent({ block, rsvpAnchor, notes }: { block: ScheduleBlock; rsvpAnchor?: string; notes?: CardNotesProps }) {
   const events = block.events ?? []
   // Without a section heading the items are the next level under the page's h1
   const Title = block.heading ? 'h3' : 'h2'
@@ -25,7 +26,10 @@ export function ScheduleBlockComponent({ block, rsvpAnchor }: { block: ScheduleB
           </li>
         ))}
       </ol>
-      {block.ctaLabel && block.ctaAnchor && (
+      {/* The card's reply and dress-code notes (from the hero) replace the schedule's own button */}
+      {notes ? (
+        <CardNotes {...notes} className="mt-20" />
+      ) : block.ctaLabel && block.ctaAnchor && (
         <div className="mt-20 text-center">
           <Button href={sectionHref(block.ctaAnchor, rsvpAnchor)}>{block.ctaLabel}</Button>
         </div>

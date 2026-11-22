@@ -2,13 +2,24 @@ import React from 'react'
 import Image from 'next/image'
 import type { HeroBlock, SiteSetting } from '@/payload-types'
 import { Img } from '@/components/Img'
+import { CardNotes } from '@/components/CardNotes'
 import { asMedia, formatDate, sectionHref } from '@/lib/utils'
 import sheep from '../../../public/card/sheep.png'
 
 // The invitation card as the first screen: the sheep, the names, the card's
 // lines with its line breaks, and the two corner notes (reply on the left,
 // dress code on the right). The photo follows below, plain.
-export function HeroBlockComponent({ block, settings, rsvpAnchor }: { block: HeroBlock; settings: SiteSetting; rsvpAnchor?: string }) {
+export function HeroBlockComponent({
+  block,
+  settings,
+  rsvpAnchor,
+  showNotes = true,
+}: {
+  block: HeroBlock
+  settings: SiteSetting
+  rsvpAnchor?: string
+  showNotes?: boolean
+}) {
   const media = asMedia(block.image)
   const locale = settings.locale || 'sv-SE'
   const names = block.heading || `${settings.partnerOne} + ${settings.partnerTwo}`
@@ -46,18 +57,15 @@ export function HeroBlockComponent({ block, settings, rsvpAnchor }: { block: Her
           </div>
         </div>
 
-        {(block.ctaLabel || block.cornerNote) && (
-          <div className="label card-in mt-8 flex items-end justify-between gap-12" style={{ '--i': groups.length + 2 } as React.CSSProperties}>
-            {block.ctaLabel && block.ctaAnchor ? (
-              // two lines on a phone, like the card's corner notes
-              <a href={sectionHref(block.ctaAnchor, rsvpAnchor)} className="max-w-[9.5em] text-(--fg) md:max-w-none">
-                {block.ctaLabel}
-              </a>
-            ) : (
-              <span />
-            )}
-            {block.cornerNote && <p className="whitespace-pre">{block.cornerNote}</p>}
-          </div>
+        {/* Shown here only when the page has no schedule; otherwise they sit under it */}
+        {showNotes && (
+          <CardNotes
+            label={block.ctaLabel}
+            href={block.ctaAnchor ? sectionHref(block.ctaAnchor, rsvpAnchor) : null}
+            note={block.cornerNote}
+            className="card-in mt-8"
+            style={{ '--i': groups.length + 2 } as React.CSSProperties}
+          />
         )}
       </div>
 
