@@ -13,5 +13,5 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   // Everything except Payload, Next internals and files with an extension (favicon, images…)
-  matcher: ['/((?!admin|api|_next/|guest-login|.*\\.[a-zA-Z0-9]+$).*)'],
+  matcher: ['/((?!admin|api|_next/|guest-login|opengraph-image|apple-icon|icon|.*\\.[a-zA-Z0-9]+$).*)'],
 }

@@ -8,13 +8,15 @@ import { sectionHref } from '@/lib/utils'
 // screens, then the reply circled in pencil.
 export function ScheduleBlockComponent({ block, rsvpAnchor }: { block: ScheduleBlock; rsvpAnchor?: string }) {
   const events = block.events ?? []
+  // Without a section heading the items are the next level under the page's h1
+  const Title = block.heading ? 'h3' : 'h2'
   return (
     <Section anchor={block.anchor} theme={block.theme}>
       {block.heading && <SectionHeading heading={block.heading} intro={block.intro} />}
       <ol className={`mx-auto grid w-fit max-w-full gap-x-24 gap-y-14 ${events.length > 1 ? 'sm:grid-cols-2' : ''} ${events.length > 2 ? 'lg:grid-cols-3' : ''}`}>
         {events.map((event, i) => (
           <li key={event.id ?? i}>
-            <h3 className="statement">{event.title}</h3>
+            <Title className="statement">{event.title}</Title>
             <div className="mt-4">
               <p>{event.time}</p>
               {event.location && <p>{event.location}</p>}

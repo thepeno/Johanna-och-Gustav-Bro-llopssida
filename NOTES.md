@@ -22,11 +22,14 @@ One lesson per entry. Update entries instead of duplicating them.
 - **Turning on localization needs a data migration in MongoDB.** Payload stores localized fields as `{ sv, en }`; values saved before were plain, and Payload neither converts nor reads them. `src/seed/localize.ts` wraps every localized value as Swedish by walking the field config (`src/seed/localized.ts`), straight in Mongo. Back up first with `src/seed/backup.ts`. Writing the old content back through the Local API instead risks Payload merging a plain string as if it were a locale object.
 - **The language is a cookie, so pages render per request.** `getLang()` in `src/lib/data.ts` reads it and every loader passes `locale` + `fallbackLocale: 'sv'`; `getSiteSettings()` also overwrites `settings.locale` with the active language so dates and UI strings follow without threading a prop through every component.
 - **A required localized field needs a value in each locale you save.** `src/seed/english.ts` lists place names that are the same in both languages (Agdatorps gård, Blekinge) so required titles aren't empty in English.
+- **Vercel Blob is switched on by its token.** `vercelBlobStorage({ enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN) })`, so local dev keeps writing to `media/`. Files are still served through `/api/media/file/…`, so stored URLs and `images.localPatterns` don't change. Photos uploaded before Blob existed have to be copied once (`src/seed/upload-media-to-blob.ts`).
+- **The share image and icons sit outside the guest gate.** The proxy matcher skips `opengraph-image`, `icon` and `apple-icon`; otherwise WhatsApp would get the password page's HTML instead of the image. They're generated at build (`share-card.tsx` reads Site settings once; if the database is unreachable they fall back to "Gustav + Johanna").
 
 ## Open items
 
 - Replace placeholder images with real photos (upload in /admin → Media, then swap in the blocks).
 - Real venue, hotel, map and booking links in the Details block; toastmaster email in the FAQ.
 - Set `RESEND_API_KEY`, `EMAIL_FROM_*` and `RSVP_NOTIFY_TO` before launch (RSVP emails only log to the console until then).
-- Storage adapter for uploads before deploying to a serverless host.
 - Set `GUEST_PASSWORD` on the host before launch (without it, production shows the password screen and nobody gets in).
+- Deploy to Vercel: follow README → Deploying (Atlas network access, Blob store, env vars, copy photos to Blob once).
+- Buy the domain, add it in Vercel and update `NEXT_PUBLIC_SERVER_URL`.

@@ -100,6 +100,27 @@ To copy the card's facts into existing content (Site settings and the home page'
 | `npm run generate:importmap` | Regenerate the admin import map after adding custom admin components |
 | `npm run lint` / `npm run typecheck` | Checks |
 
-## Deploying
+## Deploying (Vercel)
 
-Any Node host works (Vercel, Railway, a VPS). Set `DATABASE_URL`, `PAYLOAD_SECRET`, `NEXT_PUBLIC_SERVER_URL` and `GUEST_PASSWORD`. Uploaded files are stored on disk under `media/`; on serverless hosts swap in a Payload storage adapter (S3, Vercel Blob, Cloudflare R2).
+The site is set up for [Vercel](https://vercel.com) with photos in Vercel Blob. `npm run build` passes locally; these steps are done once, in the browser, by whoever owns the accounts.
+
+1. **MongoDB Atlas → Network Access:** add `0.0.0.0/0` (Vercel has no fixed IP addresses), and keep the database user's password long.
+2. **Vercel → Add New → Project:** import the GitHub repo. Framework is detected as Next.js; leave the build settings as they are.
+3. **Vercel → Storage → Create → Blob**, connected to the project. This adds `BLOB_READ_WRITE_TOKEN` to the project automatically.
+4. **Vercel → Settings → Environment Variables** (Production):
+
+   | Variable | Value |
+   | --- | --- |
+   | `DATABASE_URL` | the Atlas connection string (same as in `.env`) |
+   | `PAYLOAD_SECRET` | a long random string (keep it: changing it signs out admins and every guest) |
+   | `NEXT_PUBLIC_SERVER_URL` | the site's address, e.g. `https://johanna-gustav.vercel.app` (later your own domain) |
+   | `GUEST_PASSWORD` | the password printed on the invitation |
+   | `RESEND_API_KEY`, `EMAIL_FROM_ADDRESS`, `EMAIL_FROM_NAME`, `RSVP_NOTIFY_TO` | for RSVP emails (see RSVP flow); without them replies are still saved, just not emailed |
+
+5. **Copy the existing photos to Blob** (once): put the same `BLOB_READ_WRITE_TOKEN` in your local `.env`, then run `npx tsx --env-file=.env src/seed/upload-media-to-blob.ts`. New uploads in `/admin` go to Blob by themselves.
+6. **Deploy**, open the site, check the password screen, the English switch and a test RSVP, then delete the test reply in `/admin`.
+7. **Domain (when bought):** Vercel → Settings → Domains → add it and follow the DNS records Vercel shows; then update `NEXT_PUBLIC_SERVER_URL` and redeploy. For RSVP email from your own address, verify the domain in Resend and set `EMAIL_FROM_ADDRESS` on it.
+
+Without `BLOB_READ_WRITE_TOKEN` photos are saved under `media/` on disk, which is what local development uses. Any other Node host also works; on one with a persistent disk no storage step is needed.
+
+The link preview (WhatsApp, iMessage), the browser-tab icon and the home-screen icon are generated at build from the sheep drawing, Gustav's handwriting and Site settings (`src/app/(frontend)/opengraph-image.tsx`, `icon.tsx`, `apple-icon.tsx`). Link-preview crawlers only ever see the password screen, so the preview shows the card, never a photo.

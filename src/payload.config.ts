@@ -1,5 +1,6 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { resendAdapter } from '@payloadcms/email-resend'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -48,4 +49,14 @@ export default buildConfig({
   db: mongooseAdapter({ url: process.env.DATABASE_URL || '' }),
   email,
   sharp,
+  plugins: [
+    // Photos go to Vercel Blob when its token is set (on Vercel, where the disk is
+    // thrown away on every deploy). Locally they stay in media/. Files are still
+    // served through /api/media/file/…, so URLs don't change between the two.
+    vercelBlobStorage({
+      enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+      collections: { media: true },
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+    }),
+  ],
 })

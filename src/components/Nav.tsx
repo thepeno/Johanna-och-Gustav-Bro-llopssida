@@ -18,7 +18,7 @@ export function Nav({ items, settings }: { items: NavLink[]; settings: SiteSetti
   return (
     <header className="theme-ivory absolute inset-x-0 top-0 z-50">
       <nav className="mx-auto flex max-w-5xl items-center justify-between gap-6 px-5 py-5 md:px-10 md:py-7" aria-label={ui.menu}>
-        <Link href="/" className="label text-(--fg) no-underline" onClick={() => setOpen(false)}>
+        <Link href="/" className="label -ml-2 inline-flex min-h-12 items-center px-2 text-(--fg) no-underline" onClick={() => setOpen(false)}>
           {settings.partnerOne[0]} + {settings.partnerTwo[0]}
         </Link>
 
