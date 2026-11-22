@@ -3,6 +3,7 @@ import config from '@payload-config'
 import { HOME_SLUG } from '@/collections/Pages'
 import { images, layout, siteSettings, type ImageKey } from './content'
 import { renderPlaceholders } from './placeholders'
+import { applyEnglish } from './english'
 
 const reset = process.argv.includes('--reset')
 const context = { disableRevalidate: true }
@@ -65,6 +66,8 @@ async function run() {
     context,
   })
   payload.logger.info('Seeded site settings and home page')
+  await applyEnglish(payload)
+  payload.logger.info('Added the English translations')
   process.exit(0)
 }
 

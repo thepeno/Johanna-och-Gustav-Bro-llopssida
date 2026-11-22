@@ -16,12 +16,12 @@ export const Hero: Block = {
     },
     {
       name: 'heading',
-      type: 'text',
+      type: 'text', localized: true,
       admin: { description: 'The names line under the sheep. Empty shows "Partner one + Partner two".' },
     },
     {
       name: 'tagline',
-      type: 'textarea',
+      type: 'textarea', localized: true,
       admin: {
         description:
           'The invitation text, written as on the card: one line per line, and an empty line between groups. Leave empty to show the date and venue from Site settings.',
@@ -29,7 +29,7 @@ export const Hero: Block = {
     },
     {
       name: 'cornerNote',
-      type: 'textarea',
+      type: 'textarea', localized: true,
       admin: { description: 'Small note in the bottom-right corner of the opening, e.g. "Klädsel:" and "Mörk kostym" on two lines' },
     },
     {
@@ -42,7 +42,7 @@ export const Hero: Block = {
     {
       type: 'row',
       fields: [
-        { name: 'ctaLabel', type: 'text', admin: { width: '50%', description: 'Reply link in the bottom-left corner, e.g. "OSA senast 15 juni"' } },
+        { name: 'ctaLabel', type: 'text', localized: true, admin: { width: '50%', description: 'Reply link in the bottom-left corner, e.g. "OSA senast 15 juni"' } },
         { name: 'ctaAnchor', type: 'text', admin: { width: '50%', description: 'Where it goes: "osa" opens the reply page, any other anchor scrolls to that section' } },
       ],
     },

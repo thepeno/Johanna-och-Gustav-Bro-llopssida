@@ -15,6 +15,6 @@ export const Media: CollectionConfig = {
     adminThumbnail: 'thumbnail',
   },
   fields: [
-    { name: 'alt', type: 'text', required: true, admin: { description: 'Short description for screen readers.' } },
+    { name: 'alt', type: 'text', localized: true, required: true, admin: { description: 'Short description for screen readers.' } },
   ],
 }

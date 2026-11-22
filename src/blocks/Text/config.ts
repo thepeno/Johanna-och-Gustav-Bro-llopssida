@@ -8,12 +8,12 @@ export const Text: Block = {
   labels: { singular: 'Text', plural: 'Texts' },
   fields: [
     ...sectionFields,
-    { name: 'label', type: 'text', admin: { description: 'Heading above the text, e.g. "Önskelista"' } },
-    { name: 'text', type: 'textarea', required: true, admin: { description: 'Shown in large type' } },
+    { name: 'label', type: 'text', localized: true, admin: { description: 'Heading above the text, e.g. "Önskelista"' } },
+    { name: 'text', type: 'textarea', localized: true, required: true, admin: { description: 'Shown in large type' } },
     {
       type: 'row',
       fields: [
-        { name: 'linkLabel', type: 'text', admin: { width: '40%', description: 'Button text' } },
+        { name: 'linkLabel', type: 'text', localized: true, admin: { width: '40%', description: 'Button text' } },
         { name: 'linkUrl', type: 'text', admin: { width: '60%', description: 'Button link. No link, no button.' } },
       ],
     },

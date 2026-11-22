@@ -59,6 +59,12 @@ Why an env var and not a Site settings field: the Site settings global is public
 
 If `GUEST_PASSWORD` is unset the gate is off in development, and in production nobody gets past it, so a missing variable can't leave the page open.
 
+### Svenska / English
+
+The site is in Swedish and English. Every text field in Pages, Site settings and Media is localized in Payload (`sv` default, `en`, with fallback to Swedish), so in `/admin` you pick the language at the top of the editor and translate field by field; anything not yet translated shows the Swedish text. Visitors switch with the word "English" / "Svenska" in the header (also on the password screen). The choice is kept in a `lang` cookie for a year; without one they see Site settings → Default language. Interface strings (form labels, errors, the password screen) live in `src/lib/i18n.ts`.
+
+Each RSVP records the language the guest replied in (`language`), and their confirmation email is sent in it. The English copy of the seed content is in `src/seed/english.ts`; `npm run seed` writes both languages.
+
 ## Project layout
 
 ```

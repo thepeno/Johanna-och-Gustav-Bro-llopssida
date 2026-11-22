@@ -3,6 +3,7 @@ import React from 'react'
 import { getSiteSettings } from '@/lib/data'
 import { t } from '@/lib/i18n'
 import { formatDate } from '@/lib/utils'
+import { LanguageSwitch } from '@/components/LanguageSwitch'
 import Image from 'next/image'
 import { GuestLoginForm } from './Form'
 import sheep from '../../../../public/card/sheep.png'
@@ -25,7 +26,9 @@ export default async function GuestLoginPage() {
     : null
 
   return (
-    <main className="theme-ivory flex min-h-svh flex-col items-center justify-center px-5 py-16 text-center">
+    <main className="theme-ivory relative flex min-h-svh flex-col items-center justify-center px-5 py-16 text-center">
+      {/* Guests who don't read Swedish need the switch before they can get in */}
+      <LanguageSwitch locale={locale} className="absolute top-3 right-3 md:top-5 md:right-8" />
       <div className="flex w-full max-w-sm flex-col items-center">
         <Image src={sheep} alt="" priority sizes="12rem" className="card-in h-auto w-48" />
         <h1 className="names card-in mt-8" style={{ '--i': 1 } as React.CSSProperties}>

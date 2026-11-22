@@ -23,6 +23,7 @@ const summary = (doc: Rsvp) =>
       ['Dietary', doc.dietary],
       ['Song', doc.song],
       ['Message', doc.message],
+      ['Language', doc.language === 'en' ? 'English' : 'Svenska'],
     ] as const
   )
     .filter(([, value]) => value !== undefined && value !== null && value !== '')
@@ -57,13 +58,15 @@ export const sendRsvpEmails: CollectionAfterChangeHook<Rsvp> = async ({ doc, ope
       payload.logger.warn({ msg: 'RSVP received but no notification address: set RSVP_NOTIFY_TO or Site settings → contact email' })
     }
 
-    const date = formatDate(settings.weddingDate, settings.locale || 'sv-SE', {
+    // The guest's confirmation is in the language they replied in
+    const locale = doc.language === 'en' ? 'en-GB' : 'sv-SE'
+    const date = formatDate(settings.weddingDate, locale, {
       weekday: 'long',
       day: 'numeric',
       month: 'long',
       year: 'numeric',
     })
-    const confirmation = rsvpConfirmation(settings.locale, {
+    const confirmation = rsvpConfirmation(locale, {
       name: doc.name,
       attending: doc.attending === 'yes',
       couple,

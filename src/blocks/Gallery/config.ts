@@ -8,7 +8,7 @@ export const Gallery: Block = {
   fields: [
     ...sectionFields,
     ...headingFields,
-    { name: 'intro', type: 'textarea' },
+    { name: 'intro', type: 'textarea', localized: true },
     {
       name: 'images',
       type: 'array',
@@ -16,7 +16,7 @@ export const Gallery: Block = {
       labels: { singular: 'Image', plural: 'Images' },
       fields: [
         { name: 'image', type: 'upload', relationTo: 'media', required: true },
-        { name: 'caption', type: 'text' },
+        { name: 'caption', type: 'text', localized: true },
       ],
     },
   ],

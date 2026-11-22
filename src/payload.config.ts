@@ -33,6 +33,16 @@ export default buildConfig({
   collections: [Pages, Rsvps, Media, Users],
   globals: [SiteSettings],
   editor: lexicalEditor(),
+  // Swedish first; English for guests who don't speak Swedish. Anything not yet
+  // translated falls back to the Swedish text.
+  localization: {
+    locales: [
+      { code: 'sv', label: 'Svenska' },
+      { code: 'en', label: 'English' },
+    ],
+    defaultLocale: 'sv',
+    fallback: true,
+  },
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: { outputFile: path.resolve(dirname, 'payload-types.ts') },
   db: mongooseAdapter({ url: process.env.DATABASE_URL || '' }),

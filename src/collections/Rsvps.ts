@@ -11,7 +11,7 @@ export const Rsvps: CollectionConfig = {
   admin: {
     group: 'Guests',
     useAsTitle: 'name',
-    defaultColumns: ['name', 'attending', 'partySize', 'email', 'createdAt'],
+    defaultColumns: ['name', 'attending', 'partySize', 'email', 'language', 'createdAt'],
     listSearchableFields: ['name', 'email', 'guestNames'],
     components: { beforeListTable: ['@/components/admin/ExportRsvpsButton#ExportRsvpsButton'] },
   },
@@ -24,6 +24,16 @@ export const Rsvps: CollectionConfig = {
     delete: ({ req }) => Boolean(req.user),
   },
   fields: [
+    {
+      name: 'language',
+      type: 'select',
+      defaultValue: 'sv',
+      options: [
+        { label: 'Svenska', value: 'sv' },
+        { label: 'English', value: 'en' },
+      ],
+      admin: { position: 'sidebar', readOnly: true, description: 'The language the guest replied in; their confirmation email uses it.' },
+    },
     {
       type: 'row',
       fields: [

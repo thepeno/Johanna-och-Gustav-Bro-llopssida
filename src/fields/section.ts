@@ -15,7 +15,7 @@ export const sectionFields: Field[] = [
       },
       {
         name: 'navLabel',
-        type: 'text',
+        type: 'text', localized: true,
         admin: { width: '33%', description: 'Leave empty to hide this section from the menu' },
       },
       {
@@ -37,8 +37,8 @@ export const headingFields: Field[] = [
   {
     type: 'row',
     fields: [
-      { name: 'label', type: 'text', admin: { width: '40%', description: 'Not shown on the page (kept for older content)' } },
-      { name: 'heading', type: 'text', required: true, admin: { width: '60%' } },
+      { name: 'label', type: 'text', localized: true, admin: { width: '40%', description: 'Not shown on the page (kept for older content)' } },
+      { name: 'heading', type: 'text', localized: true, required: true, admin: { width: '60%' } },
     ],
   },
 ]

@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers'
 import { z } from 'zod'
-import { getHomePage, getPayloadClient, getSiteSettings } from '@/lib/data'
+import { getHomePage, getLang, getPayloadClient, getSiteSettings } from '@/lib/data'
 import { t } from '@/lib/i18n'
 import { rsvpIsOpen } from '@/blocks/Rsvp/shared'
 import { GUEST_COOKIE, hasGuestAccess } from '@/lib/guestAccess'
@@ -83,6 +83,7 @@ export async function submitRsvp(_prev: RsvpState, formData: FormData): Promise<
         song: block.askSong ? data.song : undefined,
         message: block.askMessage ? data.message : undefined,
         source: ipHash,
+        language: await getLang(),
       },
     })
     return { status: 'success', message: block.successMessage || 'Tack!' }

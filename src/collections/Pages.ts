@@ -43,8 +43,8 @@ export const Pages: CollectionConfig = {
       type: 'group',
       label: 'SEO',
       fields: [
-        { name: 'title', type: 'text' },
-        { name: 'description', type: 'textarea' },
+        { name: 'title', type: 'text', localized: true },
+        { name: 'description', type: 'textarea', localized: true },
         { name: 'image', type: 'upload', relationTo: 'media' },
       ],
     },

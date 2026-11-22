@@ -10,11 +10,11 @@ export const Schedule: Block = {
     {
       type: 'row',
       fields: [
-        { name: 'label', type: 'text', admin: { width: '40%', description: 'Not shown on the page (kept for older content)' } },
-        { name: 'heading', type: 'text', admin: { width: '60%', description: 'Optional. Leave empty to continue straight from the hero, like Morais.' } },
+        { name: 'label', type: 'text', localized: true, admin: { width: '40%', description: 'Not shown on the page (kept for older content)' } },
+        { name: 'heading', type: 'text', localized: true, admin: { width: '60%', description: 'Optional. Leave empty to continue straight from the hero, like Morais.' } },
       ],
     },
-    { name: 'intro', type: 'textarea' },
+    { name: 'intro', type: 'textarea', localized: true },
     {
       name: 'events',
       type: 'array',
@@ -24,18 +24,18 @@ export const Schedule: Block = {
         {
           type: 'row',
           fields: [
-            { name: 'time', type: 'text', required: true, admin: { width: '25%', description: 'e.g. "14.00"' } },
-            { name: 'title', type: 'text', required: true, admin: { width: '40%' } },
-            { name: 'location', type: 'text', admin: { width: '35%' } },
+            { name: 'time', type: 'text', localized: true, required: true, admin: { width: '25%', description: 'e.g. "14.00"' } },
+            { name: 'title', type: 'text', localized: true, required: true, admin: { width: '40%' } },
+            { name: 'location', type: 'text', localized: true, admin: { width: '35%' } },
           ],
         },
-        { name: 'description', type: 'textarea', admin: { description: 'e.g. the address. Line breaks are kept.' } },
+        { name: 'description', type: 'textarea', localized: true, admin: { description: 'e.g. the address. Line breaks are kept.' } },
       ],
     },
     {
       type: 'row',
       fields: [
-        { name: 'ctaLabel', type: 'text', admin: { width: '50%', description: 'Button under the schedule, e.g. "OSA"' } },
+        { name: 'ctaLabel', type: 'text', localized: true, admin: { width: '50%', description: 'Button under the schedule, e.g. "OSA"' } },
         { name: 'ctaAnchor', type: 'text', admin: { width: '50%', description: 'Anchor to scroll to, e.g. "osa"' } },
       ],
     },

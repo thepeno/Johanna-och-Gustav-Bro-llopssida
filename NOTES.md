@@ -19,6 +19,9 @@ One lesson per entry. Update entries instead of duplicating them.
 - **Turbopack won't follow a symlinked `node_modules`** ("points out of the filesystem root"). In a git worktree, run `npm ci` instead of linking to the main checkout's modules.
 - **The RSVP form has its own page but no content of its own.** `/osa` renders the RSVP block from the home page's layout (and the home page skips it), so editors keep one place to change it. Links reach it through `sectionHref()`: any button or menu entry whose anchor matches the RSVP block's anchor goes to `/osa`.
 - **After the password, go back via the Referer.** The proxy rewrites to the password screen without changing the URL, so the unlock action reads the `Referer` header to return the guest to that path (same-site paths only, never `/guest-login`).
+- **Turning on localization needs a data migration in MongoDB.** Payload stores localized fields as `{ sv, en }`; values saved before were plain, and Payload neither converts nor reads them. `src/seed/localize.ts` wraps every localized value as Swedish by walking the field config (`src/seed/localized.ts`), straight in Mongo. Back up first with `src/seed/backup.ts`. Writing the old content back through the Local API instead risks Payload merging a plain string as if it were a locale object.
+- **The language is a cookie, so pages render per request.** `getLang()` in `src/lib/data.ts` reads it and every loader passes `locale` + `fallbackLocale: 'sv'`; `getSiteSettings()` also overwrites `settings.locale` with the active language so dates and UI strings follow without threading a prop through every component.
+- **A required localized field needs a value in each locale you save.** `src/seed/english.ts` lists place names that are the same in both languages (Agdatorps gård, Blekinge) so required titles aren't empty in English.
 
 ## Open items
 
@@ -27,4 +30,3 @@ One lesson per entry. Update entries instead of duplicating them.
 - Set `RESEND_API_KEY`, `EMAIL_FROM_*` and `RSVP_NOTIFY_TO` before launch (RSVP emails only log to the console until then).
 - Storage adapter for uploads before deploying to a serverless host.
 - Set `GUEST_PASSWORD` on the host before launch (without it, production shows the password screen and nobody gets in).
-- An English toggle (strings exist in `src/lib/i18n.ts`, content would need localization enabled in Payload).

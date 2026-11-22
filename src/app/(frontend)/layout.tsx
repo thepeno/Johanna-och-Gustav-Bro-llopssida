@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import React from 'react'
-import { getSiteSettings } from '@/lib/data'
+import { getLang, getSiteSettings } from '@/lib/data'
 import './styles.css'
 
 // Gustav's handwriting, built from design/handwriting. Every word on the site is set in it.
@@ -17,8 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const settings = await getSiteSettings()
-  const lang = (settings?.locale || 'sv-SE').split('-')[0]
+  const lang = await getLang()
   return (
     <html lang={lang} className={hand.variable}>
       <body>{children}</body>

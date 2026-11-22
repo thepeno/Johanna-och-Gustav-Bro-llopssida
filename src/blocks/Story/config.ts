@@ -8,7 +8,7 @@ export const Story: Block = {
   fields: [
     ...sectionFields,
     ...headingFields,
-    { name: 'body', type: 'richText' },
+    { name: 'body', type: 'richText', localized: true },
     {
       type: 'row',
       fields: [
@@ -25,11 +25,11 @@ export const Story: Block = {
         {
           type: 'row',
           fields: [
-            { name: 'date', type: 'text', admin: { width: '30%', description: 'e.g. "Sommaren 2019"' } },
-            { name: 'title', type: 'text', required: true, admin: { width: '70%' } },
+            { name: 'date', type: 'text', localized: true, admin: { width: '30%', description: 'e.g. "Sommaren 2019"' } },
+            { name: 'title', type: 'text', localized: true, required: true, admin: { width: '70%' } },
           ],
         },
-        { name: 'text', type: 'textarea' },
+        { name: 'text', type: 'textarea', localized: true },
       ],
     },
   ],

@@ -9,20 +9,20 @@ export const Details: Block = {
   fields: [
     ...sectionFields,
     ...headingFields,
-    { name: 'intro', type: 'textarea' },
+    { name: 'intro', type: 'textarea', localized: true },
     {
       name: 'cards',
       type: 'array',
       minRows: 1,
       labels: { singular: 'Card', plural: 'Cards' },
       fields: [
-        { name: 'title', type: 'text', required: true },
-        { name: 'body', type: 'richText' },
+        { name: 'title', type: 'text', localized: true, required: true },
+        { name: 'body', type: 'richText', localized: true },
         { name: 'image', type: 'upload', relationTo: 'media' },
         {
           type: 'row',
           fields: [
-            { name: 'linkLabel', type: 'text', admin: { width: '40%', description: 'e.g. "Visa på karta"' } },
+            { name: 'linkLabel', type: 'text', localized: true, admin: { width: '40%', description: 'e.g. "Visa på karta"' } },
             { name: 'linkUrl', type: 'text', admin: { width: '60%' } },
           ],
         },

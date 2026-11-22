@@ -8,7 +8,7 @@ export const Rsvp: Block = {
   fields: [
     ...sectionFields,
     ...headingFields,
-    { name: 'intro', type: 'richText' },
+    { name: 'intro', type: 'richText', localized: true },
     {
       type: 'row',
       fields: [
@@ -37,12 +37,12 @@ export const Rsvp: Block = {
     },
     {
       name: 'successMessage',
-      type: 'textarea',
+      type: 'textarea', localized: true,
       defaultValue: 'Tack! Vi har tagit emot ditt svar.',
     },
     {
       name: 'closedMessage',
-      type: 'textarea',
+      type: 'textarea', localized: true,
       defaultValue: 'Sista svarsdag har passerat. Hör av dig direkt till oss om något ändrats.',
     },
   ],

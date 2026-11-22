@@ -90,14 +90,14 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  fallbackLocale: null;
+  fallbackLocale: ('false' | 'none' | 'null') | false | null | ('sv' | 'en') | ('sv' | 'en')[];
   globals: {
     'site-settings': SiteSetting;
   };
   globalsSelect: {
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
   };
-  locale: null;
+  locale: 'sv' | 'en';
   widgets: {
     collections: CollectionsWidget;
   };
@@ -162,7 +162,7 @@ export interface HeroBlock {
    */
   theme?: ('ivory' | 'espresso' | 'olive') | null;
   /**
-   * Photo shown under the invitation, like a print laid on the card
+   * Photo shown under the invitation
    */
   image: string | Media;
   /**
@@ -583,6 +583,10 @@ export interface TextBlock {
  */
 export interface Rsvp {
   id: string;
+  /**
+   * The language the guest replied in; their confirmation email uses it.
+   */
+  language?: ('sv' | 'en') | null;
   name: string;
   email: string;
   attending: 'yes' | 'no';
@@ -911,6 +915,7 @@ export interface TextBlockSelect<T extends boolean = true> {
  * via the `definition` "rsvps_select".
  */
 export interface RsvpsSelect<T extends boolean = true> {
+  language?: T;
   name?: T;
   email?: T;
   attending?: T;
@@ -1047,7 +1052,7 @@ export interface SiteSetting {
   partnerTwo: string;
   weddingDate: string;
   /**
-   * Language for dates and the countdown
+   * Language visitors see first. They can switch with Svenska / English in the header.
    */
   locale?: ('sv-SE' | 'en-GB') | null;
   /**

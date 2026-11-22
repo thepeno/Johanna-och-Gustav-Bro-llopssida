@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import type { SiteSetting } from '@/payload-types'
 import { t } from '@/lib/i18n'
 import type { NavLink } from '@/lib/links'
+import { LanguageSwitch } from './LanguageSwitch'
 
 /**
  * Nothing sits over the card but a quiet line of handwritten links at the top
@@ -21,25 +22,28 @@ export function Nav({ items, settings }: { items: NavLink[]; settings: SiteSetti
           {settings.partnerOne[0]} + {settings.partnerTwo[0]}
         </Link>
 
-        <ul className="label hidden items-center gap-8 md:flex">
-          {items.map((item) => (
-            <li key={item.href}>
-              <a href={item.href} className="text-(--fg) no-underline hover:underline">
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center gap-2 md:gap-8">
+          <ul className="label hidden items-center gap-8 md:flex">
+            {items.map((item) => (
+              <li key={item.href}>
+                <a href={item.href} className="text-(--fg) no-underline hover:underline">
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <LanguageSwitch locale={settings.locale} />
 
-        <button
+          <button
           type="button"
           className="label -mr-2 min-h-12 cursor-pointer px-2 text-(--fg) md:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? ui.close : ui.menu}
-        </button>
+            {open ? ui.close : ui.menu}
+          </button>
+        </div>
       </nav>
 
       {open && (

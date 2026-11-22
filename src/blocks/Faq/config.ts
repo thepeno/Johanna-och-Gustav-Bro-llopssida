@@ -14,8 +14,8 @@ export const Faq: Block = {
       minRows: 1,
       labels: { singular: 'Question', plural: 'Questions' },
       fields: [
-        { name: 'question', type: 'text', required: true },
-        { name: 'answer', type: 'richText', required: true },
+        { name: 'question', type: 'text', localized: true, required: true },
+        { name: 'answer', type: 'richText', localized: true, required: true },
       ],
     },
   ],
