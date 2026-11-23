@@ -77,14 +77,14 @@ export function RsvpForm({ ui, maxPartySize, askDietary, askSong, askMessage }: 
 
       <fieldset>
         <legend className="label mb-4 text-(--fg)">{ui.attending}</legend>
-        {/* The chosen answer is underlined in pencil; the other one stays soft */}
+        {/* Both answers are the same graphite; the chosen one is underlined in pencil */}
         <div className="flex flex-wrap gap-x-12 gap-y-3">
           {(['yes', 'no'] as const).map((value) => (
             <label
               key={value}
               className={cn(
                 'inline-flex min-h-12 cursor-pointer items-center text-[1.1em] decoration-[1.5px] underline-offset-[0.35em] transition-colors has-[:focus-visible]:outline-[1.5px] has-[:focus-visible]:outline-offset-[0.5em] has-[:focus-visible]:outline-dashed',
-                attending === value ? 'text-(--fg) underline' : ' hover:text-(--fg)',
+                attending === value ? 'text-(--fg) underline' : 'text-(--fg) hover:underline',
               )}
             >
               <input

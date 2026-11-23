@@ -19,21 +19,6 @@
           "#ececec"
         ]
       },
-      "graphite-soft": {
-        "role": "neutral",
-        "displayName": "Soft Graphite",
-        "canonical": "#4f5150",
-        "tonalRamp": [
-          "#1d1e1e",
-          "#2f3030",
-          "#4f5150",
-          "#666867",
-          "#828483",
-          "#a3a5a4",
-          "#c7c9c8",
-          "#eceeed"
-        ]
-      },
       "pencil-line": {
         "role": "neutral",
         "displayName": "Pencil Line",
@@ -55,7 +40,7 @@
         "canonical": "#ffffff",
         "tonalRamp": [
           "#262626",
-          "#4f5150",
+          "#262626",
           "#7c7d7d",
           "#a6a7a7",
           "#cfd0d0",
@@ -176,7 +161,7 @@
       "refersTo": "button-underline",
       "description": "Signature: the chosen RSVP answer is underlined in graphite; the other stays soft.",
       "html": "<div class=\"ds-choice\"><label class=\"ds-choice-opt\"><input type=\"radio\" name=\"ds-a\" checked><span>Ja, jag kommer</span></label><label class=\"ds-choice-opt\"><input type=\"radio\" name=\"ds-a\"><span>Tyvärr, jag kan inte</span></label></div>",
-      "css": ".ds-choice { display: flex; flex-wrap: wrap; gap: 16px 56px; font-family: var(--font-hand, 'Gustavs Hand', 'Helvetica Neue', Helvetica, Arial, sans-serif); text-transform: uppercase; letter-spacing: 0.06em; } .ds-choice-opt { display: inline-flex; align-items: center; min-height: 48px; font-size: 1.1em; cursor: pointer; color: #4f5150; text-decoration-thickness: 1.5px; text-underline-offset: 0.35em; transition: color 200ms; } .ds-choice-opt:hover { color: #262626; } .ds-choice-opt:has(:checked) { color: #262626; text-decoration-line: underline; } .ds-choice-opt input { position: absolute; opacity: 0; width: 1px; height: 1px; } .ds-choice-opt:has(:focus-visible) { outline: 1.5px dashed #262626; outline-offset: 0.5em; }"
+      "css": ".ds-choice { display: flex; flex-wrap: wrap; gap: 16px 56px; font-family: var(--font-hand, 'Gustavs Hand', 'Helvetica Neue', Helvetica, Arial, sans-serif); text-transform: uppercase; letter-spacing: 0.06em; } .ds-choice-opt { display: inline-flex; align-items: center; min-height: 48px; font-size: 1.1em; cursor: pointer; color: #262626; text-decoration-thickness: 1.5px; text-underline-offset: 0.35em; transition: color 200ms; } .ds-choice-opt:hover { color: #262626; } .ds-choice-opt:has(:checked) { color: #262626; text-decoration-line: underline; } .ds-choice-opt input { position: absolute; opacity: 0; width: 1px; height: 1px; } .ds-choice-opt:has(:focus-visible) { outline: 1.5px dashed #262626; outline-offset: 0.5em; }"
     },
     {
       "name": "Ruled Field",

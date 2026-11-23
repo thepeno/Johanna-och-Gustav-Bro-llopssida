@@ -3,7 +3,6 @@ name: Johanna & Gustav
 description: The wedding invitation card, opened. One plain white sheet, graphite pencil, and every word in Gustav's own hand-lettered capitals.
 colors:
   graphite: "#262626"
-  graphite-soft: "#4f5150"
   pencil-line: "#7c7d7d"
   paper: "#ffffff"
   error-red: "#8a2a22"
@@ -122,11 +121,10 @@ This world replaces the earlier Squarespace-Morais system (cream and white bands
 A monochrome pencil-on-paper palette: plain white and near-black graphite.
 
 ### Primary
-- **Graphite** (#262626): all text, the pencil underline under actions, the select chevron, focus outlines and the active state of ruled lines. It is the only ink.
+- **Graphite** (#262626): all text, the pencil underline under actions, the select chevron, focus outlines and the active state of ruled lines. It is the only ink: every word, small print included, is this one tone at full strength, and link underlines are drawn in it too. Only error messages (red) and a disabled button (faded) differ, as states.
 
 ### Neutral
 - **Paper** (#ffffff): plain white, the single ground for every section, the guest login and the open mobile menu (the `paper-ground` utility). No texture. The card's grey (#e6e8e8) and its grain tile (`/card/paper.jpg`) were tried and set aside; the tile stays in the project.
-- **Soft Graphite** (#4f5150): small print, corner notes, secondary lines in schedule and details, answers in the FAQ (6.9:1 on the paper).
 - **Pencil Line** (#7c7d7d): resting ruled lines under fields and between FAQ rows. Canonically graphite mixed at 55% into transparency, it reads as a lighter pencil stroke and darkens to full graphite on focus.
 
 ### Functional
@@ -151,7 +149,7 @@ A monochrome pencil-on-paper palette: plain white and near-black graphite.
 - **Title** (400, clamp(0.8rem, 1.24vw, 0.88rem), 1.4, 0.16em, word-spacing 0.35em): the names line under the sheep and on the guest login.
 - **Invitation** (400, clamp(0.8rem, min(2.4vw, 1.6svh), 0.94rem), 1.65, 0.09em, word-spacing 0.3em / 0.4em from 768px): the card's lines on the first screen, sized by both width and height so the longest line fits a phone and the whole card fits the first viewport, with a 12.8px floor so phones never go smaller. Keeps the card's own line breaks; an empty line starts a new group.
 - **Body** (400, 0.8rem / 0.9rem from 768px, i.e. 12.8px / 14.4px, the same as the card's lines, 1.85, 0.06em, word-spacing 0.3em): all running text. Measure is held to about 26rem. Form inputs are the exception: typed text stays at 16px so phones don't zoom in.
-- **Label** (400, 0.8rem / 0.86rem from 768px, 1.7, 0.08em, soft graphite): corner notes, field labels, the nav, milestone dates, footer small print.
+- **Label** (400, 0.8rem / 0.86rem from 768px, 1.7, 0.08em, graphite): corner notes, field labels, the nav, milestone dates, footer small print.
 - **Plain** (Helvetica, 400, normal tracking): the password field and the footer email address only.
 
 ### Named Rules
@@ -199,7 +197,7 @@ A word underlined in pencil, as you would mark something on a card (`.pencil-act
 - **Password:** same ruled line, set in the plain face so case is visible.
 
 ### Choice (the underlined answer)
-The signature interaction. Radio answers ("Ja, jag kommer" / "Tyvärr, jag kan inte") are words at 1.1em; the chosen one is underlined in full graphite (1.5px, 0.35em offset), the other stays soft graphite and turns graphite on hover. The native radio is visually hidden; keyboard focus shows a 1.5px dashed outline 0.5em off the word.
+The signature interaction. Radio answers ("Ja, jag kommer" / "Tyvärr, jag kan inte") are words at 1.1em; the chosen one is underlined in full graphite (1.5px, 0.35em offset), the other is the same graphite, not underlined, and gets the underline on hover. The native radio is visually hidden; keyboard focus shows a 1.5px dashed outline 0.5em off the word.
 
 ### Navigation
 - **Style:** no bar. A monogram ("G + J") top-left and a line of label-size links top-right, absolutely positioned over the card, graphite, underlined only on hover.
@@ -209,7 +207,7 @@ The signature interaction. Radio answers ("Ja, jag kommer" / "Tyvärr, jag kan i
 Plain photographs in their own colours, set directly on the paper: no border, no tilt, no shadow. The hero, story and detail photos are cropped to 4:5; gallery photos keep their natural ratio. Gallery captions are written underneath at Label size, centred.
 
 ### FAQ Rows
-Native disclosure rows separated by 1.5px pencil lines, at least 56px tall; the answer opens below in soft graphite.
+Native disclosure rows separated by 1.5px pencil lines, at least 56px tall; the answer opens below in graphite.
 
 ## Do's and Don'ts
 
