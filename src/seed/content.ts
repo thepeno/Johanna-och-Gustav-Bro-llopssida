@@ -71,7 +71,7 @@ export const layout = (img: Record<ImageKey, string>) => [
     theme: 'ivory',
     events: [
       { title: 'Vigsel', location: 'Förkärla kyrka', description: 'Blekinge', time: 'Klockan 13.00' },
-      { title: 'Fest', location: 'Agdatorps gård', description: 'Blekinge', time: 'Efter vigseln' },
+      { title: 'Fest', location: 'Agdatorps gård', description: 'Blekinge\nMer info kommer', time: 'Efter vigseln' },
     ],
     ctaLabel: 'OSA',
     ctaAnchor: 'osa',
@@ -98,7 +98,8 @@ export const layout = (img: Record<ImageKey, string>) => [
     anchor: 'resa',
     theme: 'olive',
     heading: 'Resa och boende',
-    intro: 'Vi återkommer med tips om hur ni tar er hit och var ni kan bo i närheten.',
+    intro:
+      'Vi har ordnat ett bröllopspris på Scandic Karlskrona: ange koden `Wedding10` när ni bokar. Vill ni hellre bo lite mer lantligt finns det fina Airbnb runt om i trakten.',
     cards: [
       { title: 'Förkärla kyrka', linkUrl: 'https://www.google.com/maps/search/?api=1&query=F%C3%B6rk%C3%A4rla+kyrka' },
       { title: 'Agdatorps gård', linkUrl: 'https://www.google.com/maps/search/?api=1&query=Agdatorps+g%C3%A5rd+Blekinge' },

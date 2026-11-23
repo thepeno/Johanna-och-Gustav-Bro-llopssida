@@ -9,7 +9,12 @@ export const Details: Block = {
   fields: [
     ...sectionFields,
     ...headingFields,
-    { name: 'intro', type: 'textarea', localized: true },
+    {
+      name: 'intro',
+      type: 'textarea',
+      localized: true,
+      admin: { description: 'Wrap a booking code in `backticks` (e.g. `Wedding10`) to show it in plain letters, so upper and lower case are visible.' },
+    },
     {
       name: 'cards',
       type: 'array',

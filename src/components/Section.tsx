@@ -1,4 +1,5 @@
 import React from 'react'
+import { WithCodes } from './InlineCode'
 import { cn, themeClass, type Theme } from '@/lib/utils'
 
 type Props = {
@@ -22,7 +23,11 @@ export function SectionHeading({ heading, intro, as: Tag = 'h2' }: { heading: st
   return (
     <div className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
       <Tag className="statement">{heading}</Tag>
-      {intro && <p className="mx-auto mt-6 max-w-[26rem] text-left whitespace-pre-line">{intro}</p>}
+      {intro && (
+        <p className="mx-auto mt-6 max-w-[26rem] text-left whitespace-pre-line">
+          <WithCodes text={intro} />
+        </p>
+      )}
     </div>
   )
 }
