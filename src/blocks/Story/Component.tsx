@@ -31,7 +31,7 @@ export function StoryBlockComponent({ block }: { block: StoryBlock }) {
             <li key={m.id ?? i} className="max-w-[16rem]">
               {m.date && <p className="label">{m.date}</p>}
               <h3 className="mt-1 text-[1.15em]">{m.title}</h3>
-              {m.text && <p className="mt-2 text-(--fg-soft)">{m.text}</p>}
+              {m.text && <p className="mt-2">{m.text}</p>}
             </li>
           ))}
         </ol>

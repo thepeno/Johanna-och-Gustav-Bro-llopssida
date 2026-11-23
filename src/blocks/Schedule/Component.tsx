@@ -21,7 +21,7 @@ export function ScheduleBlockComponent({ block, rsvpAnchor, notes }: { block: Sc
             <div className="mt-4">
               <p>{event.time}</p>
               {event.location && <p>{event.location}</p>}
-              {event.description && <p className="whitespace-pre-line text-(--fg-soft)">{event.description}</p>}
+              {event.description && <p className="whitespace-pre-line">{event.description}</p>}
             </div>
           </li>
         ))}

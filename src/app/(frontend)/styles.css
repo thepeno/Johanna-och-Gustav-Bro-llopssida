@@ -5,7 +5,6 @@
 @theme {
   --color-paper: #ffffff; /* plain white; the card's grey (#e6e8e8) and grain are set aside */
   --color-graphite: #262626;
-  --color-graphite-soft: #4f5150; /* 6.9:1 on the paper */
   --color-error: #8a2a22;
 
   --font-hand: var(--font-handwriting), 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -20,8 +19,7 @@
 .theme-ivory,
 .theme-espresso,
 .theme-olive {
-  --fg: var(--color-graphite);
-  --fg-soft: var(--color-graphite-soft);
+  --fg: var(--color-graphite); /* one tone for every word, as written in one pencil */
   --line: color-mix(in oklab, var(--color-graphite) 55%, transparent);
 }
 
@@ -58,7 +56,7 @@
     text-decoration-line: underline;
     text-decoration-thickness: 1.5px;
     text-underline-offset: 0.32em;
-    text-decoration-color: color-mix(in oklab, var(--color-graphite) 70%, transparent);
+    text-decoration-color: var(--color-graphite);
     transition: text-decoration-color 200ms;
   }
   a:hover {
@@ -126,7 +124,7 @@
   font-size: 0.8rem;
   letter-spacing: 0.08em;
   line-height: 1.7;
-  color: var(--fg-soft, var(--color-graphite-soft));
+  color: var(--fg, var(--color-graphite));
   @media (min-width: 768px) {
     font-size: 0.86rem;
   }
@@ -164,7 +162,7 @@
   text-decoration-line: underline;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 0.35em;
-  text-decoration-color: color-mix(in oklab, var(--color-graphite) 70%, transparent);
+  text-decoration-color: var(--color-graphite);
   transition:
     text-decoration-color 200ms,
     text-decoration-thickness 200ms;

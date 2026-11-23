@@ -17,7 +17,7 @@ export function FaqBlockComponent({ block }: { block: FaqBlock }) {
                 +
               </span>
             </summary>
-            <RichText data={item.answer} className="pb-7 text-(--fg-soft)" />
+            <RichText data={item.answer} className="pb-7" />
           </details>
         ))}
       </div>

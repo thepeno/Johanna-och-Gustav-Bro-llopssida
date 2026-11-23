@@ -26,7 +26,7 @@ export default async function OpengraphImage() {
       >
         <img src={sheep} width={330} height={268} alt="" />
         <div style={{ marginTop: 44, fontSize: 64, letterSpacing: '0.08em', wordSpacing: '0.35em' }}>{names}</div>
-        {date && <div style={{ marginTop: 18, fontSize: 30, letterSpacing: '0.08em', color: '#4f5150' }}>{date}</div>}
+        {date && <div style={{ marginTop: 18, fontSize: 30, letterSpacing: '0.08em', }}>{date}</div>}
       </div>
     ),
     { ...size, fonts: [{ name: 'Hand', data: font, style: 'normal', weight: 400 }] },

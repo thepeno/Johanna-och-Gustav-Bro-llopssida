@@ -36,7 +36,7 @@ function Field({
     <div className="flex flex-col gap-2">
       <label htmlFor={name} className="label text-(--fg)">
         {label}
-        {optional && <span className="text-(--fg-soft)"> ({optional})</span>}
+        {optional && <span > ({optional})</span>}
       </label>
       {children}
       {error && (
@@ -84,7 +84,7 @@ export function RsvpForm({ ui, maxPartySize, askDietary, askSong, askMessage }: 
               key={value}
               className={cn(
                 'inline-flex min-h-12 cursor-pointer items-center text-[1.1em] decoration-[1.5px] underline-offset-[0.35em] transition-colors has-[:focus-visible]:outline-[1.5px] has-[:focus-visible]:outline-offset-[0.5em] has-[:focus-visible]:outline-dashed',
-                attending === value ? 'text-(--fg) underline' : 'text-(--fg-soft) hover:text-(--fg)',
+                attending === value ? 'text-(--fg) underline' : ' hover:text-(--fg)',
               )}
             >
               <input

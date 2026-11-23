@@ -20,7 +20,7 @@ export function Footer({ settings, rsvp }: { settings: SiteSetting; rsvp?: NavLi
               // the hand has no @, so the whole address is set in the plain face rather than mixing the two
               <a
                 href={`mailto:${settings.contactEmail}`}
-                className="font-plain tracking-normal text-(--fg-soft)"
+                className="font-plain tracking-normal"
               >
                 {settings.contactEmail}
               </a>

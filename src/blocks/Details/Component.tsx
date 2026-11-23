@@ -32,7 +32,7 @@ export function DetailsBlockComponent({ block }: { block: DetailsBlock }) {
               ) : (
                 <p>{card.title}</p>
               )}
-              <RichText data={card.body} className="text-(--fg-soft)" />
+              <RichText data={card.body}  />
               {card.linkLabel && card.linkUrl && (
                 <a href={card.linkUrl} target={external ? '_blank' : undefined} rel="noreferrer" className="mt-2 inline-block">
                   {card.linkLabel}
