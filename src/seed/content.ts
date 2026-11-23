@@ -99,7 +99,7 @@ export const layout = (img: Record<ImageKey, string>) => [
     theme: 'olive',
     heading: 'Resa och boende',
     intro:
-      'Vi har ordnat ett bröllopspris på Scandic Karlskrona: ange koden `Wedding10` när ni bokar. Vill ni hellre bo lite mer lantligt finns det fina Airbnb runt om i trakten.',
+      'Vi har ordnat ett bröllopspris på Scandic Karlskrona: ange koden WEDDING10 när ni bokar. Vill ni hellre bo lite mer lantligt finns det fina Airbnb runt om i trakten.',
     cards: [
       { title: 'Förkärla kyrka', linkUrl: 'https://www.google.com/maps/search/?api=1&query=F%C3%B6rk%C3%A4rla+kyrka' },
       { title: 'Agdatorps gård', linkUrl: 'https://www.google.com/maps/search/?api=1&query=Agdatorps+g%C3%A5rd+Blekinge' },

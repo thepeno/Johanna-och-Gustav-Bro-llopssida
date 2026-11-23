@@ -373,9 +373,6 @@ export interface DetailsBlock {
    */
   label?: string | null;
   heading: string;
-  /**
-   * Wrap a booking code in `backticks` (e.g. `Wedding10`) to show it in plain letters, so upper and lower case are visible.
-   */
   intro?: string | null;
   cards?:
     | {

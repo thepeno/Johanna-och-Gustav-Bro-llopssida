@@ -35,8 +35,8 @@ export const english: Record<string, string> = {
   'Resa och boende': 'Travel and accommodation',
   'Vi återkommer med tips om hur ni tar er hit och var ni kan bo i närheten.':
     'We’ll be in touch with tips on how to get here and where to stay nearby.',
-  'Vi har ordnat ett bröllopspris på Scandic Karlskrona: ange koden `Wedding10` när ni bokar. Vill ni hellre bo lite mer lantligt finns det fina Airbnb runt om i trakten.':
-    'We’ve arranged a wedding rate at Scandic Karlskrona: just use the code `Wedding10` when you book. If you’d rather stay somewhere more rural, there are lovely Airbnbs all around the area.',
+  'Vi har ordnat ett bröllopspris på Scandic Karlskrona: ange koden WEDDING10 när ni bokar. Vill ni hellre bo lite mer lantligt finns det fina Airbnb runt om i trakten.':
+    'We’ve arranged a wedding rate at Scandic Karlskrona: just use the code WEDDING10 when you book. If you’d rather stay somewhere more rural, there are lovely Airbnbs all around the area.',
 
   // Wish list
   'Önskelista': 'Wish list',
